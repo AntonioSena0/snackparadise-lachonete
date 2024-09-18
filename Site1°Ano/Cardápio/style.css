@@ -13,12 +13,6 @@ a{
 
 body{
     background-color: #fff;
-    transition: 0.5s ease-in-out;
-    opacity: 0;
-}
-
-body.loaded {
-    opacity: 2;
 }
 
 .logo{
@@ -109,6 +103,45 @@ header ul li a{
     border: solid #fff;
 }   
 
+.barra-lateral {
+    text-decoration: none;
+    width: 250px;
+    background-color: #fff;
+    height: 62.5vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.barra-lateral a{
+    display: block;
+    color: #FF3131;
+    padding: 15px;
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+.barra-lateral a:hover {
+    background-color: #FF3131;
+    color: #fff;
+}
+.conteúdo {
+    flex-grow: 1;
+    position: relative;
+}
+.section {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+.section.active {
+    display: block;
+    opacity: 1;
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -149,7 +182,6 @@ main{
 th{
     justify-content: center;
     align-items: center;
-    gap: 100px;
 }
 
 .container2{
@@ -157,8 +189,12 @@ th{
 }
 
 .cardápio-tradicional, .cardápio-vegano{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     border-collapse: separate;
-    border-spacing: 80px;
+    border-spacing: 80px;   
+    margin-top: 0;
 }
 
 .cardápio-tradicional img{
@@ -236,7 +272,7 @@ footer {
 
     .cardápio-tradicional, .cardápio-vegano{
         border-collapse: separate;
-        border-spacing: 50px;
+        border-spacing: 20px;
         margin-bottom: 10%;
     }
 
@@ -252,6 +288,17 @@ footer {
         padding: 0;
         margin: 0;
         width: 100%;
+    }
+
+    th{
+        height: 150px;
+        width: 150px;
+        border-spacing: 80px;
+        display: flex;
+        flex-direction: column;
+        column-gap: 100px;
+        row-gap: 100px;
+        gap: 100px;
     }
 
     .cardápio-tradicional, .cardápio-vegano{

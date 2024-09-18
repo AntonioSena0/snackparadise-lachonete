@@ -49,8 +49,15 @@
 
     <main class="main">
         
-        <div class="container2">
+        <div class="barra-lateral">
+            <a href="#" onclick="showSection('Tradicionais')">Tradicionais</a>
+            <a href="#" onclick="showSection('Veganos')">Veganos</a>
+            <a href="#" onclick="showSection('Acompanhamentos')">Acompanhamentos</a>
+        </div>
 
+        <div class="conteúdo">
+        <div class="container2">
+            <div id="Tradicionais" class="section">
                 <table class="cardápio-tradicional">
 
                     <tr>
@@ -147,7 +154,8 @@
                             </tr>    
                  
                 </table>            
-
+                </div>
+                <div id="Veganos" class="section">
                 <table class="cardápio-vegano">
 
                     <tr>
@@ -250,10 +258,9 @@
                                 </th>
             
                                 </tr>    
-
+                    
                 </table>
-
-        </div>
+                </div>
 
     </main><!--main-->
     <footer>

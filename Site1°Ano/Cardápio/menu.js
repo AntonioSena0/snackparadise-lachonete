@@ -9,19 +9,6 @@ window.addEventListener("scroll", function() {
         conta.classList.toggle('scroll', window.scrollY > 45);
     }
 });
-window.addEventListener("load", function() {
-    document.body.classList.add("loaded");
-});
-
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function(event) {
-        event.preventDefault();
-        document.body.classList.remove("loaded");
-        setTimeout(() => {
-            window.location.href = this.href;
-        }, 500);
-    });
-});
 
 const modals = document.querySelectorAll('.modal');
 const btns = document.querySelectorAll('.myBtn');
@@ -75,3 +62,13 @@ window.onclick = function(event) {
         }, 500);
     }
 }
+
+function showSection(sectionId) {
+    const sections = document.querySelectorAll('.section');
+    sections.forEach(section => {
+        section.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+}
+
+showSection('Tradicionais');
