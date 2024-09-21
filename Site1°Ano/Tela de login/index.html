@@ -16,7 +16,7 @@
 
             <div class="flex">
 
-                <a href="#">
+                <a href="../Quem somos/index.html">
                     <img src="../img's/Logo.png" class="logo">
                 </a>
 
@@ -52,81 +52,108 @@
 
     <main>
 
-        <div class="container" id="container">
+        <div class="main-container">
+            <div class="box">
+                <div class="forms">
+                    <form action="index.html" autocomplete="off" class="Entrar-Form">
+                        <div class="logo2">
+                            <img src="../img's/Logo.png" alt="SnackParadiseLogo">
+                            <h4>SnackParadise</h4>
+                        </div>
 
-            <div class="form-container sign-up">
+                        <div class="txt-inicial">
+                            <h2>Bem Vindo de Volta</h2>
+                            <h6>Ainda não possui uma conta?</h6>
+                            <div class="toggle">Cadastrar-se</div>
+                        </div>
 
-                <form>
+                        <div class="form-atual">
 
-                    <h1>Registrar-se</h1>
-                    <div class="social-icons">
+                            <div class="input-wrap">
 
-                        <a href="#" class="icons"><i class='bx bxl-google'></i></a>
-                        <a href="#" class="icons"><i class='bx bxl-facebook'></i></a>
-                        <a href="#" class="icons"><i class='bx bxl-linkedin-square'></i></a>
+                                <input type="email" minlength="4" class="input-field" autocomplete="off" required/>
+                                <label>Email</label>
 
-                    </div><!--social-icons-->
+                            </div>
 
-                    <span>Registrar-se com o E-mail</span>
+                            <div class="input-wrap">
 
-                    <input type="text" placeholder="Nome" required>
-                    <input type="email" placeholder="Insira seu E-mail" required>
-                    <input type="password" placeholder="Insira sua Senha" required>
-                    <button>Registrar-se</button>
-                </form>
+                                <input type="password" minlength="4" class="input-field" autocomplete="off" required/>
+                                <label>Senha</label>
 
-            </div><!--form-container sign-up-->
+                            </div>
 
-        <div class="form-container sign-in">
+                            <input type="submit" value="Entrar" class="botao-login">
 
-            <form>
+                            <p class="txt">
+                                Esqueceu a senha?
+                                <a href="#">Obter ajuda</a> para iniciar sessão
+                            </p>
 
-                <h1>Entrar</h1>
-                <div class="social-icons">
+                        </div>
+                    </form>
 
-                    <a href="#" class="icons"><i class='bx bxl-google'></i></a>
-                    <a href="#" class="icons"><i class='bx bxl-facebook'></i></a>
-                    <a href="#" class="icons"><i class='bx bxl-linkedin-square'></i></a>
+                    <form action="index.html" autocomplete="off" class="Cadastrar-se-Form">
+                        <div class="logo2">
+                            <img src="../img's/Logo.png" alt="SnackParadiseLogo">
+                            <h4>SnackParadise</h4>
+                        </div>
 
-                </div><!--social-icons-->
+                        <div class="txt-inicial">
+                            <h2>Seja Bem Vindo</h2>
+                            <h6>Já tem uma conta?</h6>
+                            <div class="toggle">Entrar</div>
+                        </div>
 
-                <span>Entrar com E-mail e Senha</span>
+                        <div class="form-atual">
 
-                <input type="email" placeholder="Insira seu E-mail" required>
-                <input type="password" placeholder="Insira sua Senha" required>
-                <a href="#">Esqueceu a senha?</a>
-                <button>Entrar</button>
+                            <div class="input-wrap">
 
-            </form>
+                                <input type="text" minlength="4" class="input-field" autocomplete="off" required/>
+                                <label>Nome</label>
 
-        </div><!--form-container sign-up-->
-        
-        <div class="toggle-container">
+                            </div>
 
-            <div class="toggle">
-                
-                <div class="toggle-panel toggle-left">
+                            <div class="input-wrap">
 
-                    <h1>Bem Vindo a<br> Nossa Lanchonete</h1>
-                    <p>Se junte a nós e experimente os <br>melhores lanches da sua vida</p>
-                    <button class="hidden" id="login">Entrar</button>
+                                <input type="email" class="input-field" autocomplete="off" required/>
+                                <label>Email</label>
 
+                            </div>
+
+                            <div class="input-wrap">
+
+                                <input type="password" minlength="4" class="input-field" autocomplete="off" required/>
+                                <label>Senha</label>
+
+                            </div>
+
+                            <input type="submit" value="Cadastrar-se" class="botao-login">
+
+                            <p class="txt">
+                                Cadastrando esta conta, você concorda com os
+                                <a href="#">Termos de Serviços</a> e
+                                <a href="#">Política de Privacidade</a>
+                            </p>
+
+                        </div>
+                    </form>
                 </div>
 
-                <div class="toggle-panel toggle-right">
-
-                    <h1>Bem Vindo de volta</h1>
-                    <p>Entre com e-mail e senha</p>
-                    <button class="hidden" id="register">Registrar-se</button>
-                    
-                </div><!--toggle-panel toggle-right-->
-
-            </div><!--toggle-->
-
-        </div><!--toggle-container-->
-
-    </div><!--container-->
-
+                <div class="carrossel">
+                    <div class="imagens">
+                        <img src="../img's/Slider-Login/1.png" class="imagem img-1 mostrar" alt="Sobre nós">
+                        <img src="../img's/Slider-Login/2.png" class="imagem img-2" alt="Junte se a nós">
+                        <img src="../img's/Slider-Login/3.png" class="imagem img-3" alt="Tenha a melhor experiência">
+                        <div class="bullets">
+                            <span class="active" data-value="1"></span>
+                            <span data-value="2"></span>
+                            <span data-value="3"></span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     </main>
         
     <footer>

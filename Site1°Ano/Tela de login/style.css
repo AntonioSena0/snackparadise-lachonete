@@ -19,197 +19,6 @@ body.loaded {
     opacity: 2;
 }
 
-main{
-    position: relative;
-    display: flex;
-    background-color: #FF3131;
-    padding: 10vh;
-}
-
-.container{
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px #000;
-    position: relative;
-    display: flex;
-    overflow: hidden;
-    width: 70%;
-    max-width: 100%;
-    height: 480px;
-    margin: 0 auto;
-}
-
-.container p{
-    font-size: 14px;
-    line-height: 20px;
-    letter-spacing: 0.1px;
-    margin: 20px 0;
-}
-
-.container span{
-    font-size: 12px;
-}
-
-.container a{
-    color: #333;
-    font-size: 13px;
-    text-decoration: none;
-    margin: 15px 0 10px;
-}
-
-.container button{
-    background-color: #FF3131;
-    color: #fff;
-    font-size: 12px;
-    padding: 10px 45px;
-    border: 1px solid transparent;
-    border-radius: 10px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    margin-top: 10px;
-    cursor: pointer;
-}
-
-.container button.hidden{
-    background-color: transparent;
-    border-color: #fff;
-}
-
-.container form{
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: 100%;
-    padding: 10px;
-}
-
-.container input{
-    background-color: #eee;
-    border: none;
-    margin: 8px 0;
-    padding: 10px 15px;
-    font-size: 13px;
-    width: 100%;
-    outline: none;
-}
-
-.form-container{
-    position: absolute;
-    top: 0;
-    height: 100%;
-    transition: all 0.6s ease-in-out;
-}
-
-.sign-in{
-    left: 0;
-    width: 50%;
-    z-index: 2;
-}
-
-.sign-up{
-    left: 0;
-    width: 50%;
-    opacity: 0;
-    z-index: 1;
-}
-
-.container.active .sign-up{
-    transform: translateX(100%);
-    opacity: 1;
-    z-index: 5;
-    animation: move 0.6s;
-}
-
-@keyframes move{
-    0%, 49.99%{
-        opacity: 0;
-        z-index: 1;
-    }
-    50%, 100%{
-        opacity: 1;
-        z-index: 5;
-    }
-}
-
-.social-icons{
-    margin: 20px 0;
-}
-
-.social-icons a{
-    border: 1px solid #ccc;
-    border-radius: 20%;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 3px;
-    width: 40px;
-    height: 40px;
-}
-
-.toggle-container{
-    position: relative;
-    top: 0;
-    left: 50%;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    transition: all 0.6s ease-in-out;
-    border-radius: 10px;
-    z-index: 1000;
-}
-
-.container.active .toggle-container{
-    transform: translateX(-100%);
-    border-radius: 10px;
-}
-
-.toggle{
-    background-color: #FF3131;
-    height: 100%;
-    color: #fff;
-    position: relative;
-    left: -100%;
-    height: 100%;
-    width: 200%;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
-}
-
-.container.active .toggle{
-    transform: translateX(50%);
-}
-
-.toggle-panel{
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    padding: 0 30px;
-    text-align: center;
-    top: 0;
-    transform: translateX(0);
-    transition: all 0.6s ease-in-out;
-}
-
-.toggle-left{
-    transform: translateX(-200%);
-}
-
-.container.active .toggle-left{
-    transform: translateX(0);
-}
-
-.toggle-right{
-    right: 0;
-    transform: translateX(0);
-}
-
 .logo{
     width: 80px;
     height: 80px
@@ -237,6 +46,7 @@ header{
     left: 0;
     box-shadow: 2px 2px 20px #000;
     transition: 0.5s;
+    background-color: #FF3131;
 }
 
 header i{
@@ -254,7 +64,7 @@ header ul li{
 }
 
 header ul li a{
-    color: red;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -264,29 +74,288 @@ header ul li a{
 
 .list-menu1:hover{
     transform: scale(1.4);
-    color: #FF3131;
+    color: #fff;
 }
 
 .btn-conta button{
     background: none;
     border: none;
     cursor: pointer;
-    color: #FF3131;
-    border: solid #FF3131;
+    color: #fff;
+    border: solid #fff;
     padding: 5px;
     transition: 500ms;
 }   
 
 .btn-conta button:hover{
-    background-color: #FF3131;
-    color: #fff;
-    border: solid #fff;
+    background-color: #fff;
+    color: #ff3131;
+    border: solid #ff3131;
     transform: scale(1.3);
 }
 
-footer {
-    background-color: #FFF;
+main{
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container{
+    position: relative;
+    width: 100%;
+    max-width: 1020px;
+    height: 640px;
+    background-color: #fff;
+    border-radius: 3.3rem;
+    box-shadow: 0 60px 40px -30px rgba(0, 0, 0, 0.27);
+}
+
+.box{
+    position: absolute;
+    width: calc(100% - 4.1rem);
+    height: calc(100% - 4.1rem);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.forms{
+    position: absolute;
+    height: 100%;
+    width: 45%;
+    top: 0;
+    left: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    transition: 0.8s ease-in-out;
+}
+
+form{
+    max-width: 260px;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    transition: opacity 0.02s 0.4s;
+}
+
+form.Cadastrar-se-Form{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.logo2{
+    display: flex;
+    align-items: center;
+}
+
+.logo2 img{
+    width: 60px;
+    margin-right: 0.3rem;
+}
+
+.logo2 h4{
+    font-size: 1.1rem;
+    margin-top: -9px;
+    letter-spacing: -0.5px;
+    color: #151111;
+}
+
+.txt-inicial h2{
+    font-size: 2.1rem;
+    font-weight: 600;
+    color: #151111;
+}
+
+.txt-inicial h6{
+    color: #0000007c;
+    font-weight: 400;
+    font-size: 0.75rem;
+    display: inline;
+}
+
+.toggle{
+    color: #151111;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 500;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.toggle:hover{
     color: #FF3131;
+}
+
+.input-wrap{
+    position: relative;
+    height: 37px;
+    margin-bottom: 2rem;
+}
+
+.input-field{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #a5a5a5;
+    padding: 0;
+    font-size: 0.95rem;
+    color: #151111;
+    transition: 0.4s;
+}
+
+label{
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    color: #a5a5a5;
+    transition: 0.4s;
+}
+
+.input-field.active{
+    border-bottom-color: #151111;
+}
+
+.input-field.active + label{
+    font-size: 0.75rem;
+    top: -2px;
+}
+
+.botao-login{
+    display: inline-block;
+    width: 100%;
+    height: 43px;
+    background-color: #151111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    margin-bottom: 2rem;
+    transition: 0.4s;
+}
+
+.botao-login:hover{
+    background-color: #FF3131;
+}
+
+.txt{
+    color: #a5a5a5;
+    font-size: 0.7rem;
+}
+
+.txt a{
+    color: #a5a5a5;
+    transition: 0.3s;
+}
+
+.txt a:hover{
+    color: #FF3131;
+}
+
+main.Modo-Cadastrar-se form.Entrar-Form{
+    opacity: 0;
+    pointer-events: none;
+}
+
+main.Modo-Cadastrar-se form.Cadastrar-se-Form{
+    opacity: 1;
+    pointer-events: all;
+}
+
+main.Modo-Cadastrar-se .forms{
+    left: 55%;
+}
+
+main.Modo-Cadastrar-se .carrossel{
+    left: 0;
+}
+
+.carrossel{
+    position: absolute;
+    height: 100%;
+    width: 55%;
+    left: 45%;
+    top: 0;
+    background-color: #9e1c1c;
+    border-radius: 50px;
+    transition: 0.8s ease-in-out;
+    overflow: hidden;
+}
+
+.imagens{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.imagem{
+    width: 100%;
+    height: 100%;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    opacity: 0;
+    border-radius: 50px;
+    transition: opacity 0.3s, transform 0.5s;
+}
+
+.img-1{
+    transform: translate(0, -50px);
+}
+
+.img-2{
+    transform: scale(0.4, 0.5);
+}
+
+.img-3{
+    transform: scale(0.3) rotate(20deg);
+}
+
+.imagem.mostrar{
+    opacity: 1;
+    transform: none;
+}
+
+.bullets{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bullets span{
+    display: block;
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: #fff;
+    margin: 0 0.25rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.bullets span.active{
+    width: 1.1rem;
+    background-color: #151111;
+    border-radius: 1rem;
+}
+
+footer {
+    background-color: #ff3131;
+    color: #fff;
     padding: 20px;
     text-align: center;
 }
@@ -304,7 +373,7 @@ footer {
 }
 
 .footer-container .footer-links a {
-    color: #FF3131;
+    color: #fff;
     text-decoration: none;
     margin: 0 10px;
     font-size: 1rem;
@@ -317,6 +386,58 @@ footer {
 .footer-container .footer-bottom {
     font-size: 1rem;
 }   
+
+@media screen and (max-width: 850px){
+    .main-container{
+        height: auto;
+        max-width: 550px;
+        overflow: hidden;
+    }
+
+    .box{
+        position: static;
+        transform: none;
+        width: revert;
+        height: revert;
+        padding: 2rem;
+    }
+
+    .forms{
+        position: revert;
+        width: 100%;
+        height: auto;
+    }
+
+    form{
+        max-width: revert;
+        padding: 1.5rem 2.5rem 2rem;
+        transition: transform 0.8s ease-in-out, opacity 0.45s linear;
+    }
+
+    .txt-inicial{
+        margin: 2rem 0;
+    }
+
+    form.Cadastrar-se-Form {
+        transform: translateX(100%);
+    }
+
+    main.Cadastrar-se-Form form.Entrar-Form{
+        transform: translateX(-100%);
+    }
+
+    main.Modo-Cadastrar-se form.Cadastrar-se-Form{
+        transform: translateX(0%);
+    }
+
+    .carrossel{
+        position: revert;
+        height: auto;
+        width: 100%;
+        padding: 3rem 2rem;
+        display: flex;
+    }
+}
 
 @media screen and (max-width: 768px){
 
@@ -363,5 +484,32 @@ footer {
 @media (max-width: 480px) {
     header{
         font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 530px){
+    main{
+        padding: 1rem;
+    }
+
+    .main-container{
+        border-radius: 2rem;
+    }
+    
+    .box{
+        padding: 1rem;
+    }
+
+    .carrossel{
+        padding: 1.5rem 1rem;
+        border-radius: 1.6rem;
+    }
+
+    .imagens{
+        margin-bottom: 1rem;
+    }
+
+    form{
+        padding: 1rem 2rem 1.5rem;
     }
 }
