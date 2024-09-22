@@ -1,0 +1,303 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Biko", sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    background-color: #fff;
+    transition: 0.5s ease-in-out;
+    overflow-x: hidden;
+}
+
+.logo{
+    width: 80px;
+    height: 80px
+}
+
+.container{
+    max-width: 1280px;
+    max-height: 720px;
+    margin: auto;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header{
+    width: 100%;
+    padding: 20px 4%;
+    position: relative;
+    z-index: 1;
+    height: 125px;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 20px #000;
+    transition: 500ms;
+}
+header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 20px 4%;
+    position: relative;
+    z-index: 1;
+    height: auto;
+    box-shadow: 2px 2px 20px #000;
+    transition: 500ms;
+}
+header.scroll{
+    background-color: #FF3131;
+    position: fixed;
+}
+
+header.scroll a{
+    color: #fff;
+}
+
+header i{
+    font-size: 30px;
+    color: #fff;
+}
+
+header ul{
+    list-style-type: none;
+}
+
+header ul li{
+    display: inline-block;
+    margin: 0 80px;
+}
+
+header ul li a{
+    color: red;
+    text-decoration: none;
+}
+
+.list-menu1{
+    transition: 500ms;
+}
+
+.list-menu1:hover{
+    transform: scale(1.3);
+    color: #FF3131;
+}
+
+.btn-conta button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FF3131;
+    border: solid #FF3131;
+    padding: 5px;
+    transition: 500ms;
+}   
+
+.btn-conta button:hover{
+    background-color: #FF3131;
+    color: #fff;
+    border: solid #fff;
+    transform: scale(1.3);
+}
+
+.conta.scroll{
+    color: #fff;
+    border: solid #fff;
+}  
+
+footer {
+    background-color: #FF3131;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container .footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-container .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+.footer-container .footer-links a:hover {
+    text-decoration: none;
+}
+
+.footer-container .footer-bottom {
+    font-size: 1rem;
+}
+
+@media screen and (max-width: 768px){
+    .botao {
+        height: 25vh; /* Diminuir altura em telas menores */
+        width: 35vw;  /* Diminuir largura em telas menores */
+    }
+    .flex{
+        flex-direction: column;
+    }
+    .container{
+        position: relative;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    footer{
+        margin-top: 18%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+    
+    .footer-container .footer-links {
+        margin-bottom: 10px;
+    }
+    
+    .footer-container .footer-links a {
+        display: block;
+        margin: 5px 0;
+    }
+    .logo{
+        width: 20px;
+        height: 20px;
+    }
+    header{
+        padding-top: 0;
+        font-size: 1.4rem;
+    }
+
+    header ul li{
+        padding-left: 60px;
+    }
+
+    .btn-opcoes{
+        align-items: center;
+        text-align: center;
+        padding-top: 10%;
+    }
+    .botão1{
+       font-size: 1.4rem;
+    }
+    .botão2{
+        font-size: 1.4rem;
+    }
+}
+@media (max-width: 612px) {
+    .btn-opcoes{
+        flex-direction: column;
+        padding: 12% 0 12% 0;
+    }
+    header ul li{
+        padding: 0;
+    }
+    
+}
+@media (max-width: 340px) {
+    .botão1{
+        height: 150px;
+        width: 185px;
+    }
+    .botão2{
+        height: 150px;
+        width: 185px;
+    }
+}
+@media (max-width: 478px) {
+    header{
+        text-align: center;
+        font-size: 0.7rem;
+    }
+}
+@media (max-width: 526px) {
+    header{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 480px) {
+    header{
+        font-size: 0.7rem;
+    }
+    .botao {
+        height: 20vh; /* Diminuir ainda mais em telas pequenas */
+        width: 30vw;  /* Diminuir ainda mais em telas pequenas */
+    }
+}
+
+.carousel{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    object-fit: cover; 
+    margin: 0 auto;
+}
+#img1, #img2, #img3{
+    width: 600;
+    height: 400;
+    object-fit: cover;
+}
+.carousel-caption h3{
+    color: #e1d41b;
+    font-weight: bolder;
+    text-shadow: #000 1px 0 10px;
+}
+.carousel-inner{
+    background-color: #FF3131;
+}
+.botaodaora {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 3%;
+}
+
+.botao {
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 600px; /* Altura fixa em pixels */
+    width: 400px;  /* Largura fixa em pixels */
+    max-height: 30vh; /* Limite máximo em vh */
+    max-width: 40vw;  /* Limite máximo em vw */
+    transition: 0.3s;
+    border-radius: 20px;
+    display: flex;
+    background-color: #FF3131;
+    color: white;
+    font-size: 2rem; /* Tamanho da fonte em rem */
+}
+
+.botao:hover {
+    transform: scale(1.1); /* Menor escala para suavizar o efeito */
+    background-color: red;
+    font-size: 2.2rem; /* Aumentar o tamanho da fonte em hover */
+    border-radius: 20px;
+    box-shadow: 2px 2px 50px red;
+}
+
+.carousel-indicators{
+z-index: 1;
+}
