@@ -105,15 +105,16 @@ main{
 
 .text{
     color: #2f3335;
-      font-size: 1rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      letter-spacing: 0.5mm;
-      text-align: center;
+      letter-spacing: 0.05mm;
+      padding-left: 5%;
+      padding-right: 5%;
   }
   
   .logo2{
-      width: 300px;
-      height: 300px;
+      width: 523px;
+      height: 523px;
   }
 
 footer {

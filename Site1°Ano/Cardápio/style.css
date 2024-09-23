@@ -42,6 +42,7 @@ header{
     left: 0;
     box-shadow: 2px 2px 20px #000;
     transition: 500ms;
+    z-index: 1001;
 }
 
 header.scroll{
@@ -107,7 +108,7 @@ header ul li a{
     text-decoration: none;
     width: 250px;
     background-color: #fff;
-    height: 62.5vh;
+    height: 76.5vh;
     padding: 20px;
     box-sizing: border-box;
 }
@@ -147,12 +148,14 @@ header ul li a{
     position: fixed;
     left: 0;
     top: 0;
-    background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: Surgimento 0.5s forwards;
 }
 .modal-content {
     background-color: white;
@@ -179,22 +182,27 @@ main{
     justify-content: space-between;
 }
 
-th{
-    justify-content: center;
-    align-items: center;
-}
-
 .container2{
     margin: auto;
 }
 
 .cardápio-tradicional, .cardápio-vegano{
+    align-items: center;
+    justify-content: center;
     display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    border-collapse: separate;
-    border-spacing: 80px;   
+    height: 20vh;
+    gap: 100px;
     margin-top: 0;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: Surgimento 1s forwards;
+}
+
+@keyframes Surgimento {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .cardápio-tradicional img{
@@ -227,10 +235,12 @@ th{
 
 .cardápio-tradicional button:hover{
     transform: scale(1.2);
+    transform: scale(1.3) rotate(5deg)
 }
 
 .cardápio-vegano button:hover{
     transform: scale(1.2);
+    transform: scale(1.3) rotate(5deg)
 }
 
 footer {
@@ -271,9 +281,13 @@ footer {
 @media screen and (max-width: 980px){
 
     .cardápio-tradicional, .cardápio-vegano{
-        border-collapse: separate;
-        border-spacing: 20px;
-        margin-bottom: 10%;
+        margin-top: 10%;
+        flex-direction: column;
+        gap: 50px;
+    }
+    .cardápio-tradicional button, .cardápio-vegano button{
+        height: 150px;
+        width: 150px;
     }
 
 @media screen and (max-width: 768px){
@@ -290,21 +304,8 @@ footer {
         width: 100%;
     }
 
-    th{
-        height: 150px;
-        width: 150px;
-        border-spacing: 80px;
-        display: flex;
-        flex-direction: column;
-        column-gap: 100px;
-        row-gap: 100px;
-        gap: 100px;
-    }
-
     .cardápio-tradicional, .cardápio-vegano{
-        border-collapse: separate;
-        border-spacing: 50px;
-        margin-bottom: 0;
+        margin-top: 10%;
     }
 
     footer{

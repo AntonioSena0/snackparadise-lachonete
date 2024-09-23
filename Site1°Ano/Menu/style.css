@@ -111,6 +111,8 @@ header ul li a{
 }   
 
 section.slider {
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 120vh;
     padding: 0;
@@ -231,7 +233,6 @@ section.slider {
     display: flex;
     gap: 100px;
     padding-top: 10%;
-    padding-bottom: 5%;
 }
 
 .botão1, .botão2 {
@@ -254,6 +255,7 @@ section.slider {
     color: #FFF;
     border-radius: 10px;
     box-shadow: 2px 2px 50px red;
+    font-weight: 400;
 }
 
 footer {
@@ -261,6 +263,7 @@ footer {
     color: #fff;
     padding: 20px;
     text-align: center;
+    margin-top: 10%;
 }
 
 .footer-container {
@@ -290,7 +293,23 @@ footer {
     font-size: 1rem;
 }
 
+@media screen and (max-width: 1650px){
+    section.slider{
+        height: 80vh;
+    }
+}    
+
+@media screen and (max-width: 1220px){
+    section.slider{
+        height: 50vh;
+    }
+}    
+
 @media screen and (max-width: 768px){
+
+    section.slider{
+        height: 40vh;
+    }
 
     .flex{
         flex-direction: column;

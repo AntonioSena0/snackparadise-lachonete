@@ -1,15 +1,3 @@
-window.addEventListener("scroll", function() {
-    let header = document.querySelector('header');
-    if (header) {
-        header.classList.toggle('scroll', window.scrollY > 50);
-    }
-    
-    let conta = document.querySelector('.conta');
-    if (conta) {
-        conta.classList.toggle('scroll', window.scrollY > 45);
-    }
-});
-
 const modals = document.querySelectorAll('.modal');
 const btns = document.querySelectorAll('.myBtn');
 const closes = document.querySelectorAll('.close');
