@@ -1,0 +1,338 @@
+@import url('https://fonts.cdnfonts.com/css/biko');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Biko", sans-serif;
+}
+a{
+    text-decoration: none;
+}
+body{
+    background-color: #fff;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+body.loaded {
+    opacity: 2;
+}
+/*header*/
+.logo{
+    width: 80px;
+    height: 80px;
+}
+.container{
+    max-width: 1280px;
+    max-height: 720px;
+    margin: auto;
+}
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header{
+    width: 100%;
+    padding: 60px 4%;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 20px #000;
+    transition: 500ms;
+    background-color: #FF3131;
+}
+header i{
+    font-size: 30px;
+    color: #fff;
+}
+header ul{
+    list-style-type: none;
+}
+header ul li{
+    display: inline-block;
+    margin: 0 80px;
+}
+header ul li a{
+    color: #FFF;
+    text-decoration: none;
+}
+.list-menu1{
+    transition: 500ms;
+}
+.list-menu1:hover{
+    transform: scale(1.3);
+    color: #fff;
+}
+.btn-conta a{
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 20px 4%;
+    display: flex;
+    line-height: 40px;
+}
+.btn-conta button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    border: solid #FFF;
+    padding: 5px;
+    transition: 500ms;
+}   
+
+.btn-conta button:hover{
+    background-color: #fff;
+    color: #FF3131;
+    border: solid #fff;
+    transform: scale(1.3);
+}
+
+main .janelas{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 200px;
+    padding-top: 100px;
+}
+main .itens, .pagamento{
+    background-color: #FF3131;
+    color: #FFF;
+    width: 400px;
+    height: 500px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 10px black;
+}
+main .itens tr{
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+}
+main .itens h1{
+    margin-bottom: 70px;
+}
+
+.col1{
+    width: 100px;
+    height: 100px;
+    border: solid #fff 5px;
+}
+
+.col3{
+    width: 120px;
+    height: 100px;
+    border: solid #fff 5px;
+}
+
+.col2{
+    text-align: center;
+    width: 200px;
+    font-size: 1.4rem;
+}
+main .itens ul{
+    list-style-type: none;
+}
+main .pagamento h1{
+    margin-bottom: 70px;
+}
+.form1{
+    height: 100px;
+}
+.form2{
+    height: 200px;
+    margin-top: 30px;
+}
+.pagamento ul{
+    list-style-type: none;
+}
+.pagamento li{
+    text-align: left;
+}
+.verde{
+    color: #13660C;
+}
+.pagamento li .forma{
+    background-color: #E32C2C;
+    color: #FFF;
+    border: 1px solid black;
+}
+.pagamento li .forma:hover{
+    background-color: #ec4444;
+}
+.form2 input{
+    width: 300px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+.form2 .confirmar{
+    margin-top: 30px;
+    width: 150px;
+    border-radius: 25px;
+}
+.form2 .confirmar:hover{
+    background-color: white;
+}
+/*footer*/
+footer {
+    background-color: #FF3131;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 2.3%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container .footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-container .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+.footer-container .footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-container .footer-bottom {
+    font-size: 1rem;
+    color: #fff;
+}   
+@media screen and (max-width: 768px){
+
+    .logo{
+        width: 20px;
+        height: 20px;
+    }
+
+    header{
+        padding-top: 0;
+        font-size: 1rem;
+    }
+    header ul li{
+        padding-left: 60px;
+    }
+
+    .btn-opcoes{
+        align-items: center;
+        text-align: center;
+        padding-top: 30%;
+        padding-bottom: 25.5%;
+    }
+
+    .btn-conta i{
+        font-size: 20px;
+    }
+
+    .flex{
+        flex-direction: column;
+    }
+    .janelas{
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 50vh;
+    }
+    .itens{
+       height: 50%;
+       width: 50%;
+    }
+    h1{
+        padding: 0px;
+        margin: 0px;
+        font-size: 15px;
+    }
+    .pagamento h1{
+        margin-top: 25px;
+    }
+
+    .col1{
+        width: 200px;
+        height: 120px;
+    }
+
+    .col2{
+        width: 50%;
+        font-size: 2rem;
+    }
+    
+    tr{
+        height: 50%;
+    }
+    .itens img{
+        width: 100%;
+        margin-left: 0.5rem;
+    }
+    .itens li{
+        font-size: 50%;
+    }
+    .pagamento li{
+        font-size: 60%;
+    }
+    .form1, .form2{
+        height: 50%;
+    }
+    .form2{
+        margin-bottom: 50px;
+    }
+    footer{
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        margin-top: 100px;
+    }
+    .btn-conta i{
+        font-size: 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+}
+
+.footer-container .footer-links {
+        margin-bottom: 10px;
+}
+
+.footer-container .footer-links a {
+        display: block;
+        margin: 5px 0;
+}
+}
+
+@media (max-width: 478px) {
+    header{
+        text-align: center;
+        font-size: 0.7rem;
+    }
+    .fundovermelho{
+        height: 20%;
+    }
+}
+@media (max-width: 526px) {
+    header{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 480px) {
+    header{
+        font-size: 0.7rem;
+    }
+}

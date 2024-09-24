@@ -227,6 +227,7 @@ footer {
 
 .footer-container .footer-bottom {
     font-size: 1rem;
+    color: #fff;
 }   
 
 @media (max-width: 768px) {
@@ -299,9 +300,6 @@ footer {
     header{
         text-align: center;
         font-size: 0.7rem;
-    }
-    .fundovermelho{
-        height: 20%;
     }
 }
 @media (max-width: 526px) {

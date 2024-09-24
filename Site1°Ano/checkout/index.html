@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="header">
+        <div class="container">
+            <div class="flex">
+                <a href="#">
+                    <img src="../img's/Logo.png" class="logo">
+                </a>
+                <nav>
+                    <ul>
+                        <li class="list-menu1">
+                            <a href="../Menu/index.html">Menu</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#">Cardápio</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#">Cupons</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#">Outros</a>
+                        </li>
+                    </ul>
+                </nav>
+                <div class="btn-conta">
+                    <a href="../Tela de login/index.html"><button class="conta">Conta</button></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="janelas">
+        <div class="itens">
+            <h1>Itens Selecionados</h1>
+            <table>    
+                <tr>
+                    <td><img class="col1" src="../img's/Encomendar e Retirar (Tradicional)/Hamburguer 2 1.png" /></td>
+                    <td class="col2"><ul>
+                        <li>Sunset Burguer</li>
+                        <li>Unidade(s): 1</li>
+                        <li>Total: R$20,00</li>
+                    </ul></td>
+                </tr>
+                <tr>
+                    <td><img class="col3" src="../img's/Acompanhamentos/Balde-Batata frita.jpg" /></td>
+                    <td class="col2">
+                    <ul>
+                        <li>Adicional: Batata Frita e Refrigerante</li>
+                        <li>Unidade(s): 1</li>
+                        <li>Total: R$10,00</li>
+                    </ul>
+                </td>
+                </tr>
+            </table>
+        </div>
+        <div class="pagamento">
+            <h1>Pagamento</h1>
+            <div class="form1">
+            <ul>
+                <li>Checkout:</li>
+                <li>Total: R$30,00</li>
+                <li>Descontos: <span class="verde">-R$0,00</span></li>
+                <li>
+                    <form action="#">
+                        <label for="forma">Forma de Pagamento</label>
+                        <select id="forma" name="forma" class="forma">
+                            <option value="debito">Débito</option>
+                            <option value="credito">Crédito</option>
+                            <option value="cedula">Cédula</option>
+                        </select>
+                </li>
+            </ul>
+            </div>
+                    <div class="form2">
+                        <input type="text" id="endereco" name="endereco" placeholder="Insira seu endereço" required><br />
+                        <input type="number" id="CEP" name="CEP" max="8" placeholder="Insira seu CEP" required><br />
+                        <input type="text" id="info" name="info" placeholder="Insira uma informação adicional (opcional)"><br />
+                        <input type="submit" value="Confirmar Pedido" class="confirmar">
+                    </form>
+                    </div>
+        </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../../Menu/index.html">Início</a>
+                <a href="../Quem somos/index.html">Sobre</a>
+                <a href="#">Serviços</a>
+                <a href="#">Contato</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SnackParadise. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="menu.js"></script>
+</body>
+</html>
