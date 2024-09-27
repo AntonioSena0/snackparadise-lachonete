@@ -186,7 +186,7 @@ main{
     margin: auto;
 }
 
-.cardápio-tradicional, .cardápio-vegano{
+.cardápio-tradicional, .cardápio-vegano, .Acompanhamentos-P, .Acompanhamentos-M, .Acompanhamentos-G{
     align-items: center;
     justify-content: center;
     display: flex;
@@ -243,6 +243,63 @@ main{
     transform: scale(1.3) rotate(5deg)
 }
 
+.Acompanhamentos-P img{
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.Acompanhamentos-P button{
+    height: 200px;
+    transition: 500ms;
+    border-radius: 10px;
+    border: solid 10px #FF3131;
+    cursor: pointer;
+}
+
+.Acompanhamentos-M img{
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.Acompanhamentos-M button{
+    height: 200px;
+    transition: 500ms;
+    border-radius: 10px;
+    border: solid 10px #FF3131;
+    cursor: pointer;
+}
+
+.Acompanhamentos-G img{
+    height: 100%;
+    width: 100%;
+    border-radius: 2px;
+}
+
+.Acompanhamentos-G button{
+    height: 200px;
+    transition: 500ms;
+    border-radius: 10px;
+    border: solid 10px #FF3131;
+    cursor: pointer;
+}
+
+.Acompanhamentos-P button:hover{
+    transform: scale(1.2);
+    transform: scale(1.3) rotate(5deg)
+}
+
+.Acompanhamentos-M button:hover{
+    transform: scale(1.2);
+    transform: scale(1.3) rotate(5deg)
+}
+
+.Acompanhamentos-G button:hover{
+    transform: scale(1.2);
+    transform: scale(1.3) rotate(5deg)
+}
+
 footer {
     background-color: #FF3131;
     color: #fff;
@@ -290,6 +347,17 @@ footer {
         width: 150px;
     }
 
+    .Acompanhamentos-P, .Acompanhamentos-M, .Acompanhamentos-G{
+        margin-top: 10%;
+        flex-direction: column;
+        gap: 50px;
+    }
+    
+    .Acompanhamentos-P button, .Acompanhamentos-M button, .Acompanhamentos-G button{
+        height: 150px;
+        width: 150px;
+    }
+
 @media screen and (max-width: 768px){
 
     .flex{
@@ -305,6 +373,10 @@ footer {
     }
 
     .cardápio-tradicional, .cardápio-vegano{
+        margin-top: 10%;
+    }
+
+    .Acompanhamentos-P, .Acompanhamentos-M, .Acompanhamentos-G{
         margin-top: 10%;
     }
 
@@ -338,20 +410,26 @@ footer {
     }
 }
 
-@media (max-width: 478px) {
-    header{
-        text-align: center;
-        font-size: 0.7rem;
-    }
-}
-@media (max-width: 526px) {
+@media screen and (max-width: 671px){
     header{
         font-size: 1rem;
     }
 }
-@media (max-width: 480px) {
+
+@media (max-width: 526px){
     header{
-        font-size: 0.7rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 435px){
+
+    .logo{
+        height: 30px;
+        width: 30px;
+    }
+    header ul li{
+        padding-left: 0;
     }
 }
 }
