@@ -336,3 +336,6 @@ footer {
         font-size: 0.7rem;
     }
 }
+.btn-danger:hover {
+    color: black;
+}
