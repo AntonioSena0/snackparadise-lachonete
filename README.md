@@ -6,3 +6,5 @@ Antonio Bernardino de Sena Neto: Responsável pela revisão e reconstrução de 
 Cesar Moreno Fernandes: Realizou a tela de checkout.
 
 Giovanna Alves Martins Torres: Responsável pela codificação da tela "Motoboy Vision".
+
+Eduardo Cavalcante: Responsável pela codificação do arquivo "auxílio preferêncial"
