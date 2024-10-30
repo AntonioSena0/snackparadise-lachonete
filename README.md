@@ -8,3 +8,5 @@ Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
 * Giovanna Alves Martins Torres: Responsável pela codificação da tela "Motoboy Vision".
 
 * Eduardo Cavalcante: Responsável pela codificação do arquivo "auxílio preferêncial"
+
+* João Victor de Paiva Carvalho: Responsável pela codificação da tela Landing Page e auxílio na codificação das telas "Motoboy Vision", "Checkout" e "Sobre Nós".
