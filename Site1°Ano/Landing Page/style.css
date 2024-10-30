@@ -141,6 +141,7 @@ section.slider {
     background: #fff;
     margin-top: 10%;
     border: solid #000 15px;
+    margin: auto;
 }
 
 .slider-content {
