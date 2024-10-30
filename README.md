@@ -9,4 +9,4 @@ Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
 
 * Eduardo Cavalcante: Responsável pela codificação do arquivo "auxílio preferêncial"
 
-* João Victor de Paiva Carvalho: Responsável pela codificação da tela Landing Page e auxílio na codificação das telas "Motoboy Vision", "Checkout" e "Sobre Nós".
+* João Victor de Paiva Carvalho: Responsável pela codificação da tela Landing Page e auxílio na codificação das telas "Motoboy Vision", "Checkout" e "Sobre Nós"; Auxiliar na reconstrução de telas junto a Antonio.
