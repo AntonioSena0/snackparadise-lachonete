@@ -332,6 +332,33 @@ main .pagamento h1{
 .form2 .confirmar:hover{
     background-color: white;
 }
+.payment-content {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+.form2 {
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.qrcode {
+    margin-top: 0;
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
 /*footer*/
 footer {
     background-color: #FF3131;
