@@ -50,18 +50,7 @@ header{
     box-shadow: 2px 2px 20px #000;
     transition: 500ms;
 }
-header {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between; 
-    padding: 20px 4%;
-    position: relative;
-    z-index: 1;
-    height: auto;
-    box-shadow: 2px 2px 20px #000;
-    transition: 500ms;
-}
+
 header.scroll{
     background-color: #FF3131;
     position: fixed;
@@ -88,6 +77,7 @@ header ul li{
 header ul li a{
     color: red;
     text-decoration: none;
+    font-size: 1.5rem;
 }
 
 .list-menu1{
@@ -107,6 +97,7 @@ header ul li a{
     border: solid #FF3131;
     padding: 5px;
     transition: 500ms;
+    font-size: 1.5rem;
 }   
 
 .btn-conta button:hover{
@@ -116,15 +107,41 @@ header ul li a{
     transform: scale(1.3);
 }
 
-section.slider {
+.conta.scroll{
+    color: #fff;
+    border: solid #fff;
+}   
+
+.main-part{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.fundo-txt{
+    background-color: #FF3131;
     width: 100%;
-    height: 120vh;
+    height: 130px;
+}
+
+.texto-slider{
+    text-align: center;
+    font-size: 2.1rem;
+    margin-top: 20px;
+    color: #FFF;
+}
+
+section.slider {
+    width: 80%;
+    height: 80%;
     padding: 0;
     overflow: hidden;
     position: relative;
     background: #fff;
     margin-top: 10%;
-    border: solid #FF3131;
+    border: solid #000 15px;
+    margin: auto;
 }
 
 .slider-content {
@@ -195,10 +212,41 @@ section.slider {
     margin-left: -50%;
 }
 
+.btn-conta a{
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    line-height: 40px;
+}
+
+.btn-conta button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FF3131;
+    border: solid #FF3131;
+    padding: 5px;
+    transition: 500ms;
+}   
+
+.btn-conta button:hover{
+    background-color: #FF3131;
+    color: #fff;
+    border: solid #fff;
+    transform: scale(1.3);
+}
+
 .conta.scroll{
     color: #fff;
     border: solid #fff;
-}  
+}   
+
+.conta.scroll:hover{
+    background-color: #fff;
+    color: #FF3131;
+    border: solid #fff;
+}
 
 .btn-entrada{
     justify-content: center;

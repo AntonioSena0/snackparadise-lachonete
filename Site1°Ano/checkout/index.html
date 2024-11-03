@@ -56,37 +56,55 @@
             </div>
             <div class="pagamento">
                 <h1>Pagamento</h1>
-                <div class="form1">
-                    <ul>
-                        <li>Checkout:</li>
-                        <li>Total: R$30,00</li>
-                        <li>Descontos: <span class="verde">-R$0,00</span></li>
-                        <li>
-                            <form id="payment-form">
-                                <label for="forma">Forma de Pagamento</label>
-                                <select id="forma" name="forma" class="forma">
-                                    <option value="debito">Débito</option>
-                                    <option value="credito">Crédito</option>
-                                    <option value="cedula">Cédula</option>
-                                </select>
-                                </li>
-                    </ul>
-                </div>
-                <div class="form2">
-                    <input type="text" id="endereco" name="endereco" placeholder="Insira seu endereço" required><br />
-                    <input type="text" id="CEP" name="CEP" maxlength="9" placeholder="Insira seu CEP" required><br />
-                    <input type="text" id="info" name="info" placeholder="Insira uma informação adicional (opcional)"><br />
-                    <input type="submit" value="Confirmar Pedido" class="btn btn-danger confirmar">
-                </div>
-                <!-- Spinner e mensagem de confirmação -->
-                <div class="text-center" id="spinner-container" style="display: none;">
-                    <div class="spinner-border" role="status">
-                        <span class="visually-hidden">Carregando...</span>
-                    </div>
-                </div>
-                <div class="message text-center" id="message" style="display: none;">Pagamento confirmado com sucesso!</div>
-            </div>
+                <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <style>
+        .qrcode {
+            margin-top: 20px;
+            display: none; /* Esconder inicialmente */
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="form1">
+        <ul>
+            <li>Checkout:</li>
+            <li>Total: R$30,00</li>
+            <li>Descontos: <span class="verde">-R$0,00</span></li>
+            <li>
+                <form id="payment-form">
+                    <label for="forma">Forma de Pagamento</label>
+                    <select id="forma" name="forma" class="forma">
+                        <option value="debito">Débito</option>
+                        <option value="credito">Crédito</option>
+                        <option value="cedula">Cédula</option>
+                        <option value="pix">Pix</option>
+                    </select>
+                </form>
+            </li>
+        </ul>
+        <div id="qrcode" class="qrcode"></div>
+    </div>
+    <div class="form2">
+        <input type="text" id="endereco" name="endereco" placeholder="Insira seu endereço" required><br />
+        <input type="text" id="CEP" name="CEP" maxlength="9" placeholder="Insira seu CEP" required><br />
+        <input type="text" id="info" name="info" placeholder="Insira uma informação adicional (opcional)"><br />
+        <input type="submit" value="Confirmar Pedido" class="btn btn-danger confirmar">
+    </div>
+    <!-- Spinner e mensagem de confirmação -->
+    <div class="text-center" id="spinner-container" style="display: none;">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Carregando...</span>
         </div>
+    </div>
+    <div class="message text-center" id="message" style="display: none;">Pagamento confirmado com sucesso!</div>
+</div>
+</div>
     </main>
     <footer>
         <div class="footer-container">

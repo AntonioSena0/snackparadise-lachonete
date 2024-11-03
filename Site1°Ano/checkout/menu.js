@@ -33,3 +33,21 @@ document.getElementById('CEP').addEventListener('input', function(event) {
         event.target.value = input.slice(0, 5) + '-' + input.slice(5, 8);
     }
 });
+
+document.getElementById('forma').addEventListener('change', function() {
+    var selected = this.value;
+    var qrcodeContainer = document.getElementById('qrcode');
+    qrcodeContainer.innerHTML = '';
+    
+    if (selected === 'pix') {
+        var qrContent = "Pix: R$30,00";
+        var qrcode = new QRCode(qrcodeContainer, {
+            text: qrContent,
+            width: 128,
+            height: 128,
+        });
+        qrcodeContainer.style.display = 'block';
+    } else {
+        qrcodeContainer.style.display = 'none';
+    }
+});
