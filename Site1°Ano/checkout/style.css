@@ -279,7 +279,7 @@ main .itens h1{
 }
 
 .col3{
-    width: 120px;
+    width: 100px;
     height: 100px;
     border: solid #fff 5px;
 }
@@ -312,12 +312,12 @@ main .pagamento h1{
     color: #13660C;
 }
 .pagamento li .forma{
-    background-color: #E32C2C;
+    background-color: #FF3131;
     color: #FFF;
     border: 1px solid black;
 }
 .pagamento li .forma:hover{
-    background-color: #ec4444;
+    background-color: #FF1111;
 }
 .form2 input{
     width: 300px;
@@ -444,8 +444,8 @@ footer {
     }
 
     .col1{
-        width: 200px;
-        height: 120px;
+        width: 40%;
+        height: 50%;
     }
 
     .col2{

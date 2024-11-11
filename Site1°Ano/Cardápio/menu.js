@@ -1,62 +1,130 @@
-const modals = document.querySelectorAll('.modal');
-const btns = document.querySelectorAll('.myBtn');
-const closes = document.querySelectorAll('.close');
-
-btns.forEach(btn => {
-    btn.onclick = function() {
-        const modalId = this.getAttribute('data-modal');
-        document.getElementById(modalId).style.display = 'flex';
-    }
+window.addEventListener("load", function() {
+    document.body.classList.add("loaded");
 });
 
-closes.forEach(closeBtn => {
-    closeBtn.onclick = function() {
-        this.closest('.modal').style.display = 'none';
-    }
-});
-
-window.onclick = function(event) {
-    modals.forEach(modal => {
-        if (event.target === modal) {
-            modal.style.display = 'none';
-        }
-    });
-}
-
-const modal = document.querySelectorAll(".modal");
-const btn = document.getElementById("myBtn");
-const span = document.getElementsByClassName("close")[0];
-const modalContent = document.querySelector('.modal-content');
-
-btn.onclick = function() {
-    modal.style.display = "flex";
-    setTimeout(() => {
-        modalContent.classList.add('show');
-    }, 10);
-}
-
-span.onclick = function() {
-    modalContent.classList.remove('show');
-    setTimeout(() => {
-        modal.style.display = "none";
-    }, 500);
-}
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modalContent.classList.remove('show');
+document.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", function(event) {
+        event.preventDefault();
+        document.body.classList.remove("loaded");
         setTimeout(() => {
-            modal.style.display = "none";
+            window.location.href = this.href;
         }, 500);
-    }
-}
-
-function showSection(sectionId) {
-    const sections = document.querySelectorAll('.section');
-    sections.forEach(section => {
-        section.classList.remove('active');
     });
-    document.getElementById(sectionId).classList.add('active');
+});
+
+let lanches = [
+    {id: 1, nome: 'Sunset Burguer', img: 'Assets/Encomendar e Retirar (Tradicional)/Hamburguer 2 1.png', preco: 25.00, descricao: 'Bacon, cheddar, Hamburguer grelhado, Molho Barbecue, Pão com gergelim'},
+    {id: 2, nome: 'Hamburguer Praiano', img: 'Assets/Encomendar e Retirar (Tradicional)/Hamburguer 1 1.png', preco: 27.00, descricao: 'Alface, cebola, hamburguer grelhado, pão com gergelim, picles, tomate'},
+    {id: 3, nome: 'Snack Praia do Sol', img: 'Assets/Encomendar e Retirar (Tradicional)/Hamburguer 3 1.png', preco: 25.00, descricao: 'Alface, bacon, cebola roxa, cheddar, hamburguer grelhado, pão com gergilim, tomate'},
+    {id: 4, nome: 'Palmeira Burguer', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer 1 1.png', preco: 27.00, descricao: 'Alface, cebola, coentro, molho bechamel vegano, pão com gergilim, seitan (hamburguer vegano), tomate'},
+    {id: 5, nome: 'Hamburguer Tropical', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer 2 1.png', preco: 25.00, descricao: 'Bacon, cheddar, Hamburguer grelhado, Molho Barbecue, Pão com gergelim'},
+    {id: 6, nome: 'Férias Saudaveis', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer3 1.png', preco: 27.00, descricao: 'Alface, cebola, hamburguer grelhado, pão com gergelim, picles, tomate'}
+];
+
+let acompanhamentos = [
+    {id: 7, nome: 'Batata tam.P', img: 'Assets/Acompanhamentos/Batata P.jpeg', preco: 7.75},
+    {id: 8, nome: 'Batata tam.M', img: 'Assets/Acompanhamentos/Batata M.jpeg', preco: 8.25},
+    {id: 9, nome: 'Batata tam.G', img: 'Assets/Acompanhamentos/Batata G.jpeg', preco: 8.99},
+];
+
+let bebidas = [
+    {id: 10, nome: 'Coca-cola', img: 'Assets/Bebidas/Coca-cola.png', preco: 5.50},
+    {id: 11, nome: 'Pepsi', img: 'Assets/Bebidas/Pepsi.png', preco: 5.50},
+    {id: 12, nome: 'Guarana', img: 'Assets/Bebidas/Guarana.png', preco: 4.50},
+    {id: 13, nome: 'Sprite', img: 'Assets/Bebidas/Sprite.png', preco: 4.50},
+    {id: 14, nome: 'Fanta Laranja', img: 'Assets/Bebidas/Fanta-Laranja.jpg', preco: 4.20},
+    {id: 15, nome: 'Fanta Uva', img: 'Assets/Bebidas/Fanta-Uva.jpg', preco: 4.00},
+];
+
+let carrinho = [];
+
+lanches.map((item) => {
+    let lancheItem = document.querySelector('.modelos .lanche-item').cloneNode(true);
+
+    document.querySelector('.area-lanches').append(lancheItem);
+
+    lancheItem.querySelector('.lanche-item--img img').src = item.img;
+    lancheItem.querySelector('.lanche-item--preco').innerHTML = `R$ ${item.preco.toFixed(2)}`;
+    lancheItem.querySelector('.lanche-item--nome').innerHTML = item.nome;
+    lancheItem.querySelector('.lanche-item--desc').innerHTML = item.descricao;
+
+    lancheItem.querySelector('.lanche-item--add').addEventListener('click', () => {
+        adicionarAoCarrinho(item);
+    });
+});
+
+acompanhamentos.map((item) => {
+    let lancheItem = document.querySelector('.modelos .lanche-item').cloneNode(true);
+
+    document.querySelector('.area-acompanhamentos').append(lancheItem);
+
+    lancheItem.querySelector('.lanche-item--img img').src = item.img;
+    lancheItem.querySelector('.lanche-item--preco').innerHTML = `R$ ${item.preco.toFixed(2)}`;
+    lancheItem.querySelector('.lanche-item--nome').innerHTML = item.nome;
+
+    lancheItem.querySelector('.lanche-item--add').addEventListener('click', () => {
+        adicionarAoCarrinho(item);
+    });
+});
+
+bebidas.map((item) => {
+    let lancheItem = document.querySelector('.modelos .lanche-item').cloneNode(true);
+
+    document.querySelector('.area-bebidas').append(lancheItem);
+
+    lancheItem.querySelector('.lanche-item--img img').src = item.img;
+    lancheItem.querySelector('.lanche-item--preco').innerHTML = `R$ ${item.preco.toFixed(2)}`;
+    lancheItem.querySelector('.lanche-item--nome').innerHTML = item.nome;
+
+    lancheItem.querySelector('.lanche-item--add').addEventListener('click', () => {
+        adicionarAoCarrinho(item);
+    });
+});
+
+function adicionarAoCarrinho(item) {
+    let itemCarrinho = carrinho.find(i => i.id === item.id);
+    if (itemCarrinho) {
+        itemCarrinho.qt++;
+    } else {
+        carrinho.push({
+            id: item.id,
+            nome: item.nome,
+            preco: item.preco,
+            qt: 1
+        });
+    }
+    atualizarCarrinho();
 }
 
-showSection('Tradicionais');
+function atualizarCarrinho() {
+    let areaCarrinho = document.querySelector('.carrinho');
+    areaCarrinho.innerHTML = '';
+
+    let total = 0;
+
+    carrinho.forEach((item) => {
+        total += item.preco * item.qt;
+
+        let itemCarrinho = document.createElement('div');
+        itemCarrinho.classList.add('carrinho--item');
+        itemCarrinho.innerHTML = `
+            <div>${item.nome} (x${item.qt})</div>
+            <div>R$ ${(item.preco * item.qt).toFixed(2)}</div>
+        `;
+
+        areaCarrinho.append(itemCarrinho);
+    });
+
+    document.querySelector('.total-carrinho.total span:last-child').innerHTML = `R$ ${total.toFixed(2)}`;
+    document.querySelector('.menu-aberto span').innerHTML = carrinho.length;
+
+    document.querySelector('.area-carrinho').style.display = 'block';
+}
+
+document.querySelector('.menu-aberto').addEventListener('click', () => {
+    document.querySelector('.area-carrinho').style.display = 'block';
+});
+
+document.querySelector('.menu-fechar').addEventListener('click', () => {
+    document.querySelector('.area-carrinho').style.display = 'none';
+});
