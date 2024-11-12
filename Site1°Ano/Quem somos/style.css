@@ -303,66 +303,42 @@ footer {
     font-size: 1rem;
 }
 
-@media screen and (max-width: 768px){
-
-    .flex{
-        flex-direction: column;
+@media screen and (max-width: 700px){
+    header ul li a{
+        font-size: 1.2rem;
     }
-    .container{
-        position: relative;
-        display: flex;
-        padding: 0;
-        margin: 0;
-        width: 100%;
-    }
-
-    footer{
-        margin-top: 18%;
-    }
-
-    .footer-container {
-        flex-direction: column;
-    }
-    
-    .footer-container .footer-links {
-        margin-bottom: 10px;
-    }
-    
-    .footer-container .footer-links a {
-        display: block;
-        margin: 5px 0;
-    }
-    .logo{
-        width: 20px;
-        height: 20px;
-    }
-    header{
-        padding-top: 0;
+    .btn-conta button{
         font-size: 1rem;
     }
+}
 
-    header ul li{
-        padding-left: 60px;
-    }
-
-    main{
-        flex-direction: column;
-    }
-
-    .text{
-        font-size: 1.4rem;
+@media screen and (max-width: 669px){
+    .texto-slider{
+        font-size: 1.6rem;
     }
 }
-@media (max-width: 612px) {
-    .btn-opcoes{
-        flex-direction: column;
-        padding: 12% 0 12% 0;
+
+@media screen and (max-width: 666px){
+    header ul li a{
+        font-size: 1.2rem;
     }
     header ul li{
         padding: 0;
     }
-    
+    .btn-conta button{
+        font-size: 0.7rem;
+    }
 }
+
+@media (max-width: 508px) {
+    header ul li a{
+        font-size: 1rem;
+    }
+    .texto-slider{
+        font-size: 1.2rem;
+    }
+}
+
 @media (max-width: 340px) {
     .botão1{
         height: 150px;
