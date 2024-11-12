@@ -9,277 +9,63 @@
 </head>
 <body>
     <header id="header">
-
-        <div class="container">
-
-            <div class="flex">
-
-                <a href="../Quem somos/index.html">
-                    <img alt="logo" src="../img's/Logo.png" class="logo">
-                </a>
-
-                <nav>
-                    <ul>
-                        <li class="list-menu1">
-                            <a href="../Menu/index.html">Menu</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="../Cardápio/index.html">Cardápio</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#">Promoções</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="../Auxílio Preferencial/auxilio.html">Outros</a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <div class="btn-conta">
-
-                    <a href="../Tela de login/index.html"><button class="conta">Conta</button></a>
-
-                </div><!--btn-conta-->
-
-            </div><!--Flex-->
-
-        </div><!--container-->
+        <a href="../Menu/index.html"><button class="retornar">Voltar</button></a>
+        <h1>Snack Paradise</h1>
+        <div class="menu-aberto"><span>0</span> 🛒</div>
 
     </header><!--header-->
 
     <main class="main">
         
-        <div class="barra-lateral">
-            <br>
-            <h2>Lanches</h2>
-            <a href="#" onclick="showSection('Tradicionais')">Tradicionais</a>
-            <a href="#" onclick="showSection('Veganos')">Veganos</a>
-            <h2>Acompanhamentos</h2>
-            <a href="#" onclick="showSection('P')">Acompanhamentos P</a>
-            <a href="#" onclick="showSection('M')">Acompanhamentos M</a>
-            <a href="#" onclick="showSection('G')">Acompanhamentos G</a>
-            <br>
-            <h2>Bebidas</h2>
-            <a href="#" onclick="showSection('300')">300ml</a>
-            <a href="#" onclick="showSection('450')">450ml</a>
-            <a href="#" onclick="showSection('700')">700ml</a>
-        </div>
-
-        <div class="conteúdo">
-        <div class="container2">
-            <div id="Tradicionais" class="section">
-                <div class="cardápio-tradicional">
-                        
-                        <button data-modal="modal1" class="myBtn"><img src="../img's/Encomendar e Retirar (Tradicional)/Hamburguer 2 1.png" alt="Sunset Burguer"></button>
-                    <div id="modal1" class="modal">
-                        <div class="modal-content">
-                            <span class="close">&times;</span>
-                            <h1>Sunset Burguer</h1>
-                            <br>
-                            <ul>
-
-                                <li>Bacon</li>
-                                <br>
-                                <li>Cheddar</li>
-                                <br>
-                                <li>Hamburguer grelhado</li>
-                                <br>
-                                <li>Molho Barbecue</li>
-                                <br>
-                                <li>Pão com gergilim</li>
-                                <br>
-
-                            </ul>
-                            <br>
-                            <p>R$20,00</p>
-                        </div>
-
-                    </div>
-
-                            <button data-modal="modal2" class="myBtn"><img src="../img's/Encomendar e Retirar (Tradicional)/Hamburguer 1 1.png" alt="Hamburguer Praiano"></button>
-                        <div id="modal2" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <h1>Hamburguer Praiano</h1>
-                                <br>
-                                <ul>
-    
-                                    <li>Alface</li>
-                                    <br>
-                                    <li>cebola</li>
-                                    <br>
-                                    <li>Hamburguer grelhado</li>
-                                    <br>
-                                    <li>Pão com gergilim</li>
-                                    <br>
-                                    <li>Picles</li>
-                                    <br>
-                                    <li>Tomate</li>
-    
-                                </ul>
-                                <br>
-                                <p>R$20,00</p>
-                            </div>
-                        </div>
-                                
-                                <button data-modal="modal3" class="myBtn"><img src="../img's/Encomendar e Retirar (Tradicional)/Hamburguer 3 1.png" alt="Snack Praia do Sol"></button>
-                        <div id="modal3" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <h1>Snack Praia do Sol</h1>
-                                    <br>
-                                    <ul>
-        
-                                        <li>alface</li>
-                                        <br>
-                                        <li>Bacon</li>
-                                        <br>
-                                        <li>Cebola roxa</li>
-                                        <br>
-                                        <li>Cheddar</li>
-                                        <br>
-                                        <li>Hamburguer grelhado</li>
-                                        <br>
-                                        <li>Pão com gergilim</li>
-                                        <br>
-                                        <li>Tomate</li>
-        
-                                    </ul>
-                                    <br>
-                                    <p>R$25,00</p>
-                                </div>
-                            </div>
-                            
-                </div>            
+        <!DOCTYPE html>
+        <html lang="pt-br">
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Snack Paradise</title>
+            <link rel="stylesheet" href="style.css" />
+        </head>
+        <body>
+            <div class="modelos">
+                <div class="lanche-item">
+                    <a href="javascript:void(0)">
+                        <div class="lanche-item--img"><img src="" /></div>
+                    </a>
+                    <div class="lanche-item--preco">R$ --</div>
+                    <div class="lanche-item--nome">--</div>
+                    <div class="lanche-item--desc"></div>
+                    <br>
+                    <div class="lanche-item--add">+</div>
                 </div>
-                <div id="Veganos" class="section">
-                <div class="cardápio-vegano">
-                            
-                            <button data-modal="modal4" class="myBtn"><img src="../img's/Encomendar e Retirar (Vegano)/Hamburguer 1 1.png" alt="Palmeira Burguer"></button>
-                        <div id="modal4" class="modal">
-                            <div class="modal-content">
-                                <span class="close">&times;</span>
-                                <h1>Palmeira Burguer</h1>
-                                <br>
-                                <ul>
-    
-                                    <li>Alface</li>
-                                    <br>
-                                    <li>Cebola</li>
-                                    <br>
-                                    <li>Coentro</li>
-                                    <br>
-                                    <li>Molho bechamel vegano</li>
-                                    <br>
-                                    <li>Pão com gergilim</li>
-                                    <br>
-                                    <li>Seitan (Hamburguer Vegano)</li>
-                                    <br>
-                                    <li>Tomate</li>
-    
-                                </ul>
-                                <br>
-                                <p>R$22,00</p>
-                            </div>
-    
-                        </div>
-    
-                                <button data-modal="modal5" class="myBtn"><img src="../img's/Encomendar e Retirar (Vegano)/Hamburguer 2 1.png" alt="Hamburguer Tropical"></button>
-                            <div id="modal5" class="modal">
-                                <div class="modal-content">
-                                    <span class="close">&times;</span>
-                                    <h1>Hamburguer Tropical</h1>
-                                    <br>
-                                    <ul>
-        
-                                        <li>Alface</li>
-                                        <br>
-                                        <li>Cebola</li>
-                                        <br>
-                                        <li>Coentro</li>
-                                        <br>
-                                        <li>Molho bechamel vegano</li>
-                                        <br>
-                                        <li>Pão com gergilim</li>
-                                        <br>
-                                        <li>Salsinha</li>
-                                        <br>
-                                        <li>Seitan (Hamburguer Vegano)</li>
-                                        <br>
-                                        <li>Tomate</li>
-                                    </ul>
-                                    <br>
-                                    <p>R$25,00</p>
-                                </div>
-                            </div>
-                                    
-                                    <button data-modal="modal6" class="myBtn"><img src="../img's/Encomendar e Retirar (Vegano)/Hamburguer3 1.png" alt="Férias Saudáveis"></button>
-                            <div id="modal6" class="modal">
-                                    <div class="modal-content">
-                                        <span class="close">&times;</span>
-                                        <h1>Férias Saudáveis</h1>
-                                        <br>
-                                        <ul>
-                                            <li>Abobrinha</li>
-                                            <br>
-                                            <li>Alface</li>
-                                            <br>
-                                            <li>Cebola</li>
-                                            <br>
-                                            <li>Coentro</li>
-                                            <br>
-                                            <li>Molho bechamel vegano</li>
-                                            <br>
-                                            <li>Pão com gergilim</li>
-                                            <br>
-                                            <li>Salsinha</li>
-                                            <br>
-                                            <li>Seitan (Hamburguer Vegano)</li>
-                                            <br>
-                                            <li>Tomate</li>
-                                        </ul>
-                                        <br>
-                                        <p>R$30,00</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            
-                            <div id="P" class="section"> 
-                                <div class="Acompanhamentos-P">
-                                            
-                                    <button class="myBtn"><img src="../img's/Acompanhamentos/Batata P Porção.jpeg" alt="Porção P"></button>
-                    
-                                    <button class="myBtn"><img src="../img's/Acompanhamentos/Batata P Embalagem.jpeg" alt="Embalagem P"></button>
-                                        
-                            </div>            
-                            </div>
-                    
-                                <div id="M" class="section">
-                                <div class="Acompanhamentos-M">
-                                        
-                                    <button class="myBtn"><img src="../img's/Acompanhamentos/Batata M.jpeg" alt="Porção M"></button>
-                    
-                                    <button class="myBtn"><img src="../img's/Acompanhamentos/Batata M Embalagem.jpeg" alt="Embalagem M"></button>
-                    
-                                </div>
-                            </div>
-                    
-                                <div id="G" class="section"> 
-                                <div class="Acompanhamentos-G">
-                                            
-                                    <button class="myBtn"><img src="../img's/Acompanhamentos/Batata G.jpeg" alt="Porção G"></button>
-                    
-                                    <button class="myBtn"><img src="../img's/Acompanhamentos/Batata G Embalagem.jpeg" alt="Embalagem G"></button>
-                                                    
-                                    <button class="myBtn"><img src="../img's/Acompanhamentos/Batata G Balde.jpeg" alt="Baldão G"></button>
-                    
-                                </div>
-                            </div>    
-                        </div>
-                    </div>
-
+            </div>
+    <div class="itens">
+                <br>
+                <h2>Lanches</h2>
+                <div class="area-lanches"></div>
+                <br>
+                <h2>Acompanhamentos</h2>
+                <div class="area-acompanhamentos"></div>
+                <br>
+                <h2>Bebidas</h2>
+                <div class="area-bebidas"></div>
+    </div>
     </main><!--main-->
+
+    <aside>
+        <div class="area-carrinho">
+            <div class="menu-fechar">❌</div>
+            <h1>Seu Carrinho</h1>
+            <div class="carrinho"></div>
+            <div class="detalhes-carrinho">
+                <div class="total-carrinho total grande">
+                    <span>Total</span>
+                    <span>R$ 0.00</span>
+                </div>
+                <div class="finalizar-compra"><a href="../Checkout/index.html" target="_self" rel="noopener noreferrer">Finalizar a compra</a></div>
+            </div>
+        </div>
+    </aside>
+
     <footer>
         <div class="footer-container">
             <div class="footer-links">
@@ -293,6 +79,17 @@
             </div>
         </div>
     </footer>
+
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
     <script src="menu.js"></script>
 </body>
 </html>
