@@ -71,8 +71,16 @@ header {
 }
 
 .lanche-item--add {
-    color: #FF3131;
+    background-color: #C62828;
+    color: #FFf;
     font-size: 2rem;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.lanche-item--add:hover {
+    background-color: #FF3131;
 }
 
 @keyframes aparecer {
@@ -119,13 +127,32 @@ header {
     font-weight: bold;
 }
 
+.remove-btn {
+    cursor: pointer;
+    background-color: #C62828;
+    color: #fff;
+    padding: 10px;
+    font-size: 0.8rem;
+    border-radius: 50px;
+    transition: 0.3s ease-in-out;
+}
+
+.remove-btn:hover{
+    background-color: #FF3131;
+}
+
 .finalizar-compra {
     text-decoration: none;
     margin-top: 20px;
     padding: 10px;
-    background: #28a745;
+    background: #C62828;
     text-align: center;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.finalizar-compra:hover{
+    background-color: #FF3131;
 }
 
 .finalizar-compra a{

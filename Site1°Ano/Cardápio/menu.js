@@ -13,12 +13,12 @@ document.querySelectorAll("a").forEach(link => {
 });
 
 let lanches = [
-    {id: 1, nome: 'Sunset Burguer', img: 'Assets/Encomendar e Retirar (Tradicional)/Hamburguer 2 1.png', preco: 25.00, descricao: 'Bacon, cheddar, Hamburguer grelhado, Molho Barbecue, Pão com gergelim'},
+    {id: 1, nome: 'Sunset Burguer', img: 'Assets/Encomendar e Retirar (Tradicional)/Hamburguer 2 1.png', preco: 28.00, descricao: 'Bacon, cheddar, Hamburguer grelhado, Molho Barbecue, Pão com gergelim'},
     {id: 2, nome: 'Hamburguer Praiano', img: 'Assets/Encomendar e Retirar (Tradicional)/Hamburguer 1 1.png', preco: 27.00, descricao: 'Alface, cebola, hamburguer grelhado, pão com gergelim, picles, tomate'},
-    {id: 3, nome: 'Snack Praia do Sol', img: 'Assets/Encomendar e Retirar (Tradicional)/Hamburguer 3 1.png', preco: 25.00, descricao: 'Alface, bacon, cebola roxa, cheddar, hamburguer grelhado, pão com gergilim, tomate'},
-    {id: 4, nome: 'Palmeira Burguer', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer 1 1.png', preco: 27.00, descricao: 'Alface, cebola, coentro, molho bechamel vegano, pão com gergilim, seitan (hamburguer vegano), tomate'},
-    {id: 5, nome: 'Hamburguer Tropical', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer 2 1.png', preco: 25.00, descricao: 'Bacon, cheddar, Hamburguer grelhado, Molho Barbecue, Pão com gergelim'},
-    {id: 6, nome: 'Férias Saudaveis', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer3 1.png', preco: 27.00, descricao: 'Alface, cebola, hamburguer grelhado, pão com gergelim, picles, tomate'}
+    {id: 3, nome: 'Snack Praia do Sol', img: 'Assets/Encomendar e Retirar (Tradicional)/Hamburguer 3 1.png', preco: 26.00, descricao: 'Alface, bacon, cebola roxa, cheddar, hamburguer grelhado, pão com gergilim, tomate'},
+    {id: 4, nome: 'Palmeira Burguer', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer 1 1.png', preco: 28.00, descricao: 'Alface, cebola, coentro, molho bechamel vegano, pão com gergilim, seitan (hamburguer vegano), tomate'},
+    {id: 5, nome: 'Hamburguer Tropical', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer 2 1.png', preco: 26.00, descricao: 'Bacon, cheddar, Hamburguer grelhado, Molho Barbecue, Pão com gergelim'},
+    {id: 6, nome: 'Férias Saudaveis', img: 'Assets/Encomendar e Retirar (Vegano)/Hamburguer3 1.png', preco: 26.50, descricao: 'Alface, cebola, hamburguer grelhado, pão com gergelim, picles, tomate'}
 ];
 
 let acompanhamentos = [
@@ -28,12 +28,11 @@ let acompanhamentos = [
 ];
 
 let bebidas = [
-    {id: 10, nome: 'Coca-cola', img: 'Assets/Bebidas/Coca-cola.png', preco: 5.50},
-    {id: 11, nome: 'Pepsi', img: 'Assets/Bebidas/Pepsi.png', preco: 5.50},
-    {id: 12, nome: 'Guarana', img: 'Assets/Bebidas/Guarana.png', preco: 4.50},
-    {id: 13, nome: 'Sprite', img: 'Assets/Bebidas/Sprite.png', preco: 4.50},
-    {id: 14, nome: 'Fanta Laranja', img: 'Assets/Bebidas/Fanta-Laranja.jpg', preco: 4.20},
-    {id: 15, nome: 'Fanta Uva', img: 'Assets/Bebidas/Fanta-Uva.jpg', preco: 4.00},
+    {id: 10, nome: 'Coca-cola', img: 'Assets/Bebidas/file (12).png', preco: 5.50},
+    {id: 11, nome: 'Pepsi', img: 'Assets/Bebidas/file (11).png', preco: 5.50},
+    {id: 12, nome: 'Guarana', img: 'Assets/Bebidas/file (13).png', preco: 4.50},
+    {id: 13, nome: 'Fanta Laranja', img: 'Assets/Bebidas/file (14).png', preco: 4.20},
+    {id: 14, nome: 'Fanta Uva', img: 'Assets/Bebidas/file (15).png', preco: 4.00},
 ];
 
 let carrinho = [];
@@ -110,8 +109,9 @@ function atualizarCarrinho() {
         itemCarrinho.innerHTML = `
             <div>${item.nome} (x${item.qt})</div>
             <div>R$ ${(item.preco * item.qt).toFixed(2)}</div>
+            <button class="remove-btn" data-id="${item.id}">Remover</button>
         `;
-
+        
         areaCarrinho.append(itemCarrinho);
     });
 
@@ -119,6 +119,26 @@ function atualizarCarrinho() {
     document.querySelector('.menu-aberto span').innerHTML = carrinho.length;
 
     document.querySelector('.area-carrinho').style.display = 'block';
+
+    
+document.querySelectorAll('.remove-btn').forEach(button => {
+    button.addEventListener('click', function() {
+        let itemId = parseInt(this.getAttribute('data-id'));
+        removerDoCarrinho(itemId);
+    });
+});
+
+function removerDoCarrinho(id) {
+    let itemCarrinho = carrinho.find(item => item.id === id);
+    if (itemCarrinho) {
+        itemCarrinho.qt--;
+        if (itemCarrinho.qt <= 0) {
+            carrinho = carrinho.filter(item => item.id !== id);
+        }
+    }
+    atualizarCarrinho();
+}
+
 }
 
 document.querySelector('.menu-aberto').addEventListener('click', () => {
