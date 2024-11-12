@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,9 +32,10 @@
     </header>
     <main class="main">
         <div class="janelas">
-            <div class="itens">
-                <h1>Itens Selecionados</h1>
+            <div class="itens">  
+                <br>
                 <table>    
+                    <h1>Itens Selecionados</h1>
                     <tr>
                         <td><img class="col1" src="../img's/Encomendar e Retirar (Tradicional)/Hamburguer 2 1.png" /></td>
                         <td class="col2"><ul>
@@ -44,7 +45,7 @@
                         </ul></td>
                     </tr>
                     <tr>
-                        <td><img class="col3" src="../img's/Acompanhamentos/Batata G.jpeg" /></td>
+                        <td><img class="col1" src="../img's/Acompanhamentos/Batata G.jpeg" /></td>
                         <td class="col2">
                         <ul>
                             <li>Batata tam.G</li>
@@ -53,9 +54,20 @@
                         </ul>
                         </td>
                     </tr>
+                    <tr>
+                        <td><img class="col1" src="../img's/Bebidas/file (12).png" /></td>
+                        <td class="col2">
+                            <ul>
+                                <li>Coca-Cola</li>
+                                <li>Quantidade(s): 1</li>
+                                <li>Total: R$5.50</li>
+                            </ul>
+                        </td>
+                    </tr>
                 </table>
             </div>
             <div class="pagamento">
+                <br>
                 <h1>Pagamento</h1>
                 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -66,7 +78,7 @@
     <style>
         .qrcode {
             margin-top: 20px;
-            display: none; /* Esconder inicialmente */
+            display: none; 
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
@@ -97,7 +109,7 @@
         <input type="text" id="info" name="info" placeholder="Insira uma informação adicional (opcional)"><br />
         <input type="submit" value="Confirmar Pedido" class="btn btn-danger confirmar">
     </div>
-    <!-- Spinner e mensagem de confirmação -->
+
     <div class="text-center" id="spinner-container" style="display: none;">
         <div class="spinner-border" role="status">
             <span class="visually-hidden">Carregando...</span>

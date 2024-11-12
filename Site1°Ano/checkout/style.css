@@ -121,92 +121,6 @@ header ul li a{
     height: 130px;
 }
 
-.texto-slider{
-    text-align: center;
-    font-size: 2.1rem;
-    margin-top: 20px;
-    color: #FFF;
-}
-
-section.slider {
-    width: 80%;
-    height: 80%;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-    background: #fff;
-    margin-top: 10%;
-    border: solid #000 15px;
-}
-
-.slider-content {
-    width: 400%;
-    height: 100%;
-    display: flex;
-}
-
-.slider-content input {
-    display: none;
-}
-
-.slide-box {
-    width: 25%;
-    height: 100%;
-    position: relative;
-    transition: 1s;
-}
-
-.slide-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.nav-manual,
-.nav-auto {
-    position: absolute;
-    width: 100%;
-    bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.nav-manual .manual-btn,
-.nav-auto div {
-    border: 2px solid #000;
-    border-radius: 50%;
-    padding: 15px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.nav-manual .manual-btn:not(:last-child),
-.nav-auto div:not(:last-child) {
-    margin-right: 10px;
-}
-
-.nav-manual .manual-btn:hover {
-    background-color: #FF3131;
-}
-
-#imagem1:checked ~ .nav-auto .auto-btn1,
-#imagem2:checked ~ .nav-auto .auto-btn2,
-#imagem3:checked ~ .nav-auto .auto-btn3 {
-    background-color: whitesmoke;
-}
-
-#imagem1:checked ~ .slide-box:first-of-type {
-    margin-left: 0%;
-}
-
-#imagem2:checked ~ .slide-box:first-of-type {
-    margin-left: -25%;
-}
-
-#imagem3:checked ~ .slide-box:first-of-type {
-    margin-left: -50%;
-}
-
 .btn-conta a{
     color: #000;
     text-decoration: none;
@@ -251,7 +165,7 @@ main .janelas{
     padding-top: 100px;
 }
 main .itens, .pagamento{
-    background-color: #FF3131;
+    background-color: #C62828;
     color: #FFF;
     width: 400px;
     height: 500px;
@@ -268,32 +182,21 @@ main .itens tr{
     flex-direction: row;
     height: 150px;
 }
-main .itens h1{
-    margin-bottom: 70px;
-}
 
 .col1{
     width: 100px;
     height: 100px;
-    border: solid #fff 5px;
-}
-
-.col3{
-    width: 100px;
-    height: 100px;
-    border: solid #fff 5px;
+    border: solid #FF3131 5px;
+    background-color: #FFF;
 }
 
 .col2{
     text-align: center;
     width: 200px;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 main .itens ul{
     list-style-type: none;
-}
-main .pagamento h1{
-    margin-bottom: 70px;
 }
 .form1{
     height: 100px;
@@ -308,16 +211,11 @@ main .pagamento h1{
 .pagamento li{
     text-align: left;
 }
-.verde{
-    color: #13660C;
-}
+
 .pagamento li .forma{
-    background-color: #FF3131;
-    color: #FFF;
+    background-color: #fff;
+    color: #000;
     border: 1px solid black;
-}
-.pagamento li .forma:hover{
-    background-color: #FF1111;
 }
 .form2 input{
     width: 300px;
@@ -359,7 +257,7 @@ main .pagamento h1{
         transform: translateX(0);
     }
 }
-/*footer*/
+
 footer {
     background-color: #FF3131;
     color: #fff;
@@ -404,10 +302,19 @@ footer {
 
     header{
         padding-top: 0;
-        font-size: 1rem;
+        font-size: 1.4rem;
     }
+
     header ul li{
         padding-left: 60px;
+    }
+
+    .container{
+        position: relative;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        width: 100%;
     }
 
     .btn-opcoes{
@@ -497,13 +404,37 @@ footer {
 }
 }
 
+@media screen and (max-width: 700px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    .btn-conta button{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 666px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    header ul li{
+        padding: 0;
+    }
+    .btn-conta button{
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 508px) {
+    header ul li a{
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 478px) {
     header{
         text-align: center;
         font-size: 0.7rem;
-    }
-    .fundovermelho{
-        height: 20%;
     }
 }
 @media (max-width: 526px) {
@@ -516,6 +447,14 @@ footer {
         font-size: 0.7rem;
     }
 }
+
+.btn-danger {
+    color: #000;
+    background-color: #fff;
+    transition: 0.3s ease-in-out;
+}
+
 .btn-danger:hover {
-    color: black;
+    transform: scale(1.1);
+    color: #FF3131
 }
