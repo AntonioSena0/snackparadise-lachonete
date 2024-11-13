@@ -348,7 +348,7 @@ main .pagamento h1 {
 }
 
 .modal {
-    display: none; /* Inicialmente oculto */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -357,7 +357,10 @@ main .pagamento h1 {
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-    z-index: 1000; /* Para garantir que fique acima de outros elementos */
+    z-index: 1000; 
+}
+.qrcode{
+    margin-bottom: 2%;
 }
 
 .card {
@@ -367,15 +370,18 @@ main .pagamento h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
     width: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .loading,
 .confirmation {
-    display: none; /* Inicialmente oculto */
+    display: none;
 }
 
 .loading {
-    display: block; /* Mostrar apenas durante o carregamento */
+    display: block;
 }
 
 .spinner {
@@ -396,11 +402,24 @@ main .pagamento h1 {
     }
 }
 
-.close-btn {
+.close-btn{
     margin-top: 20px;
     cursor: pointer;
     color: #FF3131;
     font-weight: bold;
+}
+.confirm-pix{
+    margin-top: 10px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: #FF3131;
+    font-weight: bold;
+}
+.confirm-pix:hover{
+    transform: scale(1.1);
+    transition-timing-function: ease-in;
+    transition-duration: 50ms;
 }
 
 /*footer*/

@@ -75,7 +75,6 @@ function fechaModal(modal) {
     location.reload();
 }
 
-// Fecha os modais ao clicar no botão de fechar
 document.querySelectorAll('.close-btn').forEach(btn => {
     btn.addEventListener('click', function() {
         const modal = document.querySelector('.modal');
@@ -83,29 +82,24 @@ document.querySelectorAll('.close-btn').forEach(btn => {
     });
 });
 
-// Fechamento ao clicar fora do modal
 document.querySelector('.modal').addEventListener('click', function(event) {
     if (event.target === this) {
         fechaModal(this);
     }
 });
 
-// Gerenciamento dos modais de QR Code e confirmação
 const modalConfirmacao = document.getElementById('modal-confirmacao');
 const modalQRCode = document.getElementById('modal-qrcode');
 
-// Confirmar pagamento com Pix
 document.querySelector('.confirm-pix').addEventListener('click', function() {
     modalQRCode.style.display = 'none';
     modalConfirmacao.style.display = 'flex';
 
-    // Recarrega a página após um pequeno atraso
     setTimeout(() => {
         location.reload();
-    }, 1000); // 1 segundo de atraso antes de recarregar
+    }, 1000);
 });
 
-// Fechar modais ao clicar fora deles
 modalConfirmacao.addEventListener('click', function(event) {
     if (event.target === this) {
         fechaModal(this);
