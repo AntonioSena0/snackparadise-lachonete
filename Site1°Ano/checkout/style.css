@@ -9,6 +9,7 @@
 a {
     text-decoration: none;
 }
+
 body {
     background-color: #fff;
     transition: opacity 0.5s ease-in-out;
@@ -121,92 +122,6 @@ header ul li a {
     height: 130px;
 }
 
-.texto-slider {
-    text-align: center;
-    font-size: 2.1rem;
-    margin-top: 20px;
-    color: #FFF;
-}
-
-section.slider {
-    width: 80%;
-    height: 80%;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-    background: #fff;
-    margin-top: 10%;
-    border: solid #000 15px;
-}
-
-.slider-content {
-    width: 400%;
-    height: 100%;
-    display: flex;
-}
-
-.slider-content input {
-    display: none;
-}
-
-.slide-box {
-    width: 25%;
-    height: 100%;
-    position: relative;
-    transition: 1s;
-}
-
-.slide-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.nav-manual,
-.nav-auto {
-    position: absolute;
-    width: 100%;
-    bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.nav-manual .manual-btn,
-.nav-auto div {
-    border: 2px solid #000;
-    border-radius: 50%;
-    padding: 15px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.nav-manual .manual-btn:not(:last-child),
-.nav-auto div:not(:last-child) {
-    margin-right: 10px;
-}
-
-.nav-manual .manual-btn:hover {
-    background-color: #FF3131;
-}
-
-#imagem1:checked ~ .nav-auto .auto-btn1,
-#imagem2:checked ~ .nav-auto .auto-btn2,
-#imagem3:checked ~ .nav-auto .auto-btn3 {
-    background-color: whitesmoke;
-}
-
-#imagem1:checked ~ .slide-box:first-of-type {
-    margin-left: 0%;
-}
-
-#imagem2:checked ~ .slide-box:first-of-type {
-    margin-left: -25%;
-}
-
-#imagem3:checked ~ .slide-box:first-of-type {
-    margin-left: -50%;
-}
-
 .btn-conta a {
     color: #000;
     text-decoration: none;
@@ -245,29 +160,20 @@ main .itens,
 main .itens tr {
     display: flex;
     flex-direction: row;
-    height: 150px;
-}
-
-main .itens h1 {
-    margin-bottom: 70px;
 }
 
 .col1 {
     width: 100px;
     height: 100px;
-    border: solid #fff 5px;
-}
-
-.col3 {
-    width: 120px;
-    height: 100px;
-    border: solid #fff 5px;
+    border: solid #C62828 5px;
+    background-color: #fff;
+    margin-bottom: 10%;
 }
 
 .col2 {
     text-align: center;
-    width: 200px;
-    font-size: 1.4rem;
+    width: 150px;
+    font-size: 1em;
 }
 
 main .itens ul {
@@ -280,6 +186,7 @@ main .pagamento h1 {
 
 .form1 {
     height: 100px;
+    font-size: 1rem;
 }
 
 .form2 {
@@ -295,18 +202,20 @@ main .pagamento h1 {
     text-align: left;
 }
 
-.verde {
-    color: #13660C;
+.fundo {
+    color: #fff;
 }
 
 .pagamento li .forma {
-    background-color: #E32C2C;
-    color: #FFF;
-    border: 1px solid black;
+    background-color: #fff;
+    color: #ff3131;
+    border: 2px solid #fff;
+    transition: 0.2s ease-in-out;
 }
 
 .pagamento li .forma:hover {
-    background-color: #ec4444;
+    background-color: #ff3131;
+    color: #fff;
 }
 
 .form2 input {
@@ -348,7 +257,7 @@ main .pagamento h1 {
 }
 
 .modal {
-    display: none;
+    display: none; /* Inicialmente oculto */
     position: fixed;
     top: 0;
     left: 0;
@@ -357,10 +266,7 @@ main .pagamento h1 {
     background-color: rgba(0, 0, 0, 0.5);
     justify-content: center;
     align-items: center;
-    z-index: 1000; 
-}
-.qrcode{
-    margin-bottom: 2%;
+    z-index: 1000; /* Para garantir que fique acima de outros elementos */
 }
 
 .card {
@@ -370,18 +276,15 @@ main .pagamento h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     background-color: #ffffff;
     width: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .loading,
 .confirmation {
-    display: none;
+    display: none; /* Inicialmente oculto */
 }
 
 .loading {
-    display: block;
+    display: block; /* Mostrar apenas durante o carregamento */
 }
 
 .spinner {
@@ -402,24 +305,11 @@ main .pagamento h1 {
     }
 }
 
-.close-btn{
+.close-btn {
     margin-top: 20px;
     cursor: pointer;
     color: #FF3131;
     font-weight: bold;
-}
-.confirm-pix{
-    margin-top: 10px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    color: #FF3131;
-    font-weight: bold;
-}
-.confirm-pix:hover{
-    transform: scale(1.1);
-    transition-timing-function: ease-in;
-    transition-duration: 50ms;
 }
 
 /*footer*/
@@ -465,6 +355,10 @@ footer {
         height: 20px;
     }
 
+    .form1 {
+        font-size: 1.5rem;
+    }
+
     header {
         padding-top: 0;
         font-size: 1rem;
@@ -472,13 +366,6 @@ footer {
 
     header ul li {
         padding-left: 60px;
-    }
-
-    .btn-opcoes {
-        align-items: center;
-        text-align: center;
-        padding-top: 30%;
-        padding-bottom: 25.5%;
     }
 
     .btn-conta i {
@@ -504,7 +391,7 @@ footer {
     h1 {
         padding: 0px;
         margin: 0px;
-        font-size: 15px;
+        font-size: 1.4rem;
     }
 
     .pagamento h1 {
@@ -536,11 +423,6 @@ footer {
 
     .pagamento li {
         font-size: 60%;
-    }
-
-    .form1,
-    .form2 {
-        height: 50%;
     }
 
     .form2 {

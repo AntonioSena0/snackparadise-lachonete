@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,9 +19,9 @@
                 <nav>
                     <ul>
                         <li class="list-menu1"><a href="../Menu/index.html">Menu</a></li>
-                        <li class="list-menu1"><a href="../Cardápio/index.html">Cardápio</a></li>
-                        <li class="list-menu1"><a href="#">Promoções</a></li>
-                        <li class="list-menu1"><a href="../Auxílio Preferencial/auxilio.html">Outros</a></li>
+                        <li class="list-menu1"><a href="#">Cardápio</a></li>
+                        <li class="list-menu1"><a href="#">Cupons</a></li>
+                        <li class="list-menu1"><a href="#">Outros</a></li>
                     </ul>
                 </nav>
                 <div class="btn-conta">
@@ -33,23 +33,34 @@
     <main class="main">
         <div class="janelas">
             <div class="itens">
-                <h1>Itens Selecionados</h1>
                 <table>    
+                <h1>Itens Selecionados</h1>
                     <tr>
                         <td><img class="col1" src="../img's/Encomendar e Retirar (Tradicional)/Hamburguer 2 1.png" /></td>
                         <td class="col2"><ul>
                             <li>Sunset Burguer</li>
                             <li>Unidade(s): 1</li>
-                            <li>Total: R$20,00</li>
+                            <li>Total: R$28,00</li>
                         </ul></td>
                     </tr>
                     <tr>
-                        <td><img class="col3" src="../img's/Acompanhamentos/Batata G.jpeg" /></td>
+                        <td><img class="col1" src="../img's/Acompanhamentos/Batata G.jpeg" /></td>
                         <td class="col2">
                         <ul>
-                            <li>Adicional: Batata Frita e Refrigerante</li>
+                            <li>Batata Frita</li>
                             <li>Unidade(s): 1</li>
-                            <li>Total: R$10,00</li>
+                            <li>Total: R$8,99</li>
+                        </ul>
+                        </td>
+                        </tr>
+                        <br>
+
+                        <td><img class="col1" src="../img's/Bebidas/file (12).png" /></td>
+                        <td class="col2">
+                        <ul>
+                            <li>Refrigerante</li>
+                            <li>Unidade(s): 1</li>
+                            <li>Total: R$5,50</li>
                         </ul>
                         </td>
                     </tr>
@@ -58,10 +69,10 @@
             <div class="pagamento">
                 <h1>Pagamento</h1>
                 <div class="form1">
-                    <ul>
+                    <ul class="info">
                         <li>Checkout:</li>
-                        <li>Total: R$30,00</li>
-                        <li>Descontos: <span class="verde">-R$0,00</span></li>
+                        <li>Total: R$42,49</li>
+                        <li>Descontos: <span class="fundo">-R$0,00</span></li>
                         <li>
                             <form id="payment-form">
                                 <label for="forma">Forma de Pagamento</label>
@@ -101,6 +112,7 @@
         <div class="card">
             <div id="qrcode" class="qrcode"></div>
             <button class="confirm-pix">Confirmar pagamento por Pix</button>
+            <div class="close-btn">Fechar</div>
         </div>
     </div>    
 
@@ -117,18 +129,6 @@
             </div>
         </div>
     </footer>
-
-    <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
-    </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
-    
     
     <script src="menu.js"></script>
 </body>
