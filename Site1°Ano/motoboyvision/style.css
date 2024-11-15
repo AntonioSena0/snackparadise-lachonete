@@ -41,13 +41,23 @@ body.loaded {
     margin: 0 auto;
 }
 
-.tabela-card {
+.tabela-card1, .tabela-card2, .tabela-card3 {
     background-color: white;
     border: 3px solid #000;
     border-radius: 25px;
 }
 
-.img1, .img2{
+.tabela-card2, .tabela-card3{
+    padding: 60px;
+}
+
+.tabela-card2{
+    font-size: 2rem;
+}
+
+.img1{
+margin: 5%;
+border-radius: 30px;
 width: 150px;
 filter: drop-shadow(0 0 0.75rem black);
 }
@@ -57,12 +67,12 @@ filter: drop-shadow(0 0 0.75rem black);
     flex-direction: column;
     background-color: #FF3131;
     border-radius: 20px;
-    width: 80%;
+    width: 100%;
     padding: 20px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
 }
 
-.tabela-container {
+.tabela-container1 {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -70,7 +80,19 @@ filter: drop-shadow(0 0 0.75rem black);
     height: 100%;
 }
 
-.coluna {
+.tabela-container2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tabela-container2 p{
+    color: #fff;
+}
+
+.coluna1 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -78,6 +100,31 @@ filter: drop-shadow(0 0 0.75rem black);
     flex: 1;
     margin: 0 10px;
     height: 100%;
+}
+
+.coluna2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    height: 100%;
+}
+
+.coluna3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    height: 100%;
+    color: #000;
+}
+
+.coluna .tabela-card {
+    padding: 20px;
 }
 
 h2 {
@@ -99,11 +146,6 @@ h2 {
 
 .img2 {
     width: 50px;
-}
-
-p {
-    font-size: 16px;
-    color: #333;
 }
 
 .btn {
@@ -211,105 +253,6 @@ header ul li a{
     border: solid #fff;
 }   
 
-.main-part{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.fundo-txt{
-    background-color: #FF3131;
-    width: 100%;
-    height: 130px;
-}
-
-.texto-slider{
-    text-align: center;
-    font-size: 2.1rem;
-    margin-top: 20px;
-    color: #FFF;
-}
-
-section.slider {
-    width: 80%;
-    height: 80%;
-    padding: 0;
-    overflow: hidden;
-    position: relative;
-    background: #fff;
-    margin-top: 10%;
-    border: solid #000 15px;
-}
-
-.slider-content {
-    width: 400%;
-    height: 100%;
-    display: flex;
-}
-
-.slider-content input {
-    display: none;
-}
-
-.slide-box {
-    width: 25%;
-    height: 100%;
-    position: relative;
-    transition: 1s;
-}
-
-.slide-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.nav-manual,
-.nav-auto {
-    position: absolute;
-    width: 100%;
-    bottom: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.nav-manual .manual-btn,
-.nav-auto div {
-    border: 2px solid #000;
-    border-radius: 50%;
-    padding: 15px;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.nav-manual .manual-btn:not(:last-child),
-.nav-auto div:not(:last-child) {
-    margin-right: 10px;
-}
-
-.nav-manual .manual-btn:hover {
-    background-color: #FF3131;
-}
-
-#imagem1:checked ~ .nav-auto .auto-btn1,
-#imagem2:checked ~ .nav-auto .auto-btn2,
-#imagem3:checked ~ .nav-auto .auto-btn3 {
-    background-color: whitesmoke;
-}
-
-#imagem1:checked ~ .slide-box:first-of-type {
-    margin-left: 0%;
-}
-
-#imagem2:checked ~ .slide-box:first-of-type {
-    margin-left: -25%;
-}
-
-#imagem3:checked ~ .slide-box:first-of-type {
-    margin-left: -50%;
-}
-
 .btn-conta a{
     color: #000;
     text-decoration: none;
@@ -379,7 +322,26 @@ footer {
 .footer-container .footer-bottom {
     font-size: 1rem;
     color: #fff;
-}   
+}
+
+@media screen and (max-width: 768px){
+    .tabela-container1, .tabela-container2{
+        flex-direction: column;
+    }
+
+    .coluna1, .coluna2, .coluna3{
+        width: 100%;
+        margin-top: 20px;
+}
+
+    .tabela-card2, .tabela-card3{
+        padding: 30px;
+    }
+
+    .coluna3{
+        margin-bottom: 40px;
+    }
+}
 
 @media screen and (max-width: 700px){
     header ul li a{
