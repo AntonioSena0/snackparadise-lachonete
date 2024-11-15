@@ -18,75 +18,74 @@ body {
 body.loaded {
     opacity: 1; /* Corrigido para 1 */
 }
-/*header*/
-.logo {
+
+.logo{
     width: 80px;
-    height: 80px;
+    height: 80px
 }
 
-.container {
+.container{
     max-width: 1280px;
     max-height: 720px;
     margin: auto;
 }
 
-.flex {
+.flex{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-header {
+header{
     width: 100%;
-    padding: 20px 4%;
     position: relative;
     z-index: 1;
-    height: 125px;
+    height: 200px;
     top: 0;
     left: 0;
     box-shadow: 2px 2px 20px #000;
     transition: 500ms;
 }
 
-header.scroll {
+header.scroll{
     background-color: #FF3131;
     position: fixed;
 }
 
-header.scroll a {
+header.scroll a{
     color: #fff;
 }
 
-header i {
+header i{
     font-size: 30px;
     color: #fff;
 }
 
-header ul {
+header ul{
     list-style-type: none;
 }
 
-header ul li {
+header ul li{
     display: inline-block;
     margin: 0 80px;
 }
 
-header ul li a {
+header ul li a{
     color: red;
     text-decoration: none;
     font-size: 1.5rem;
 }
 
-.list-menu1 {
+.list-menu1{
     transition: 500ms;
 }
 
-.list-menu1:hover {
+.list-menu1:hover{
     transform: scale(1.3);
     color: #FF3131;
 }
 
-.btn-conta button {
+.btn-conta button{
     background: none;
     border: none;
     cursor: pointer;
@@ -95,40 +94,19 @@ header ul li a {
     padding: 5px;
     transition: 500ms;
     font-size: 1.5rem;
-}
+}   
 
-.btn-conta button:hover {
+.btn-conta button:hover{
     background-color: #FF3131;
     color: #fff;
     border: solid #fff;
     transform: scale(1.3);
 }
 
-.conta.scroll {
+.conta.scroll{
     color: #fff;
     border: solid #fff;
-}
-
-.main-part {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.fundo-txt {
-    background-color: #FF3131;
-    width: 100%;
-    height: 130px;
-}
-
-.btn-conta a {
-    color: #000;
-    text-decoration: none;
-    font-size: 20px;
-    display: flex;
-    line-height: 40px;
-}
+} 
 
 .btn-danger:hover {
     color: black;
@@ -349,7 +327,40 @@ footer {
     color: #fff;
 }
 
+@media screen and (max-width: 666px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    header ul li{
+        padding: 0;
+    }
+    .btn-conta button{
+        font-size: 0.7rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
+
+    .flex{
+        flex-direction: column;
+    }
+    .container{
+        position: relative;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    header{
+        padding-top: 0;
+        font-size: 1.4rem;
+    }
+
+    header ul li{
+        padding-left: 60px;
+    }
+
     .logo {
         width: 20px;
         height: 20px;
@@ -357,19 +368,6 @@ footer {
 
     .form1 {
         font-size: 1.5rem;
-    }
-
-    header {
-        padding-top: 0;
-        font-size: 1rem;
-    }
-
-    header ul li {
-        padding-left: 60px;
-    }
-
-    .btn-conta i {
-        font-size: 20px;
     }
 
     .flex {
@@ -455,25 +453,40 @@ footer {
     }
 }
 
+
+@media screen and (max-width: 700px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    .btn-conta button{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 508px) {
+    header ul li a{
+        font-size: 1rem;
+    }
+    .texto-slider{
+        font-size: 1.2rem;
+    }
+}
+
 @media (max-width: 478px) {
-    header {
+    header{
         text-align: center;
         font-size: 0.7rem;
-    }
-
-    .fundovermelho {
-        height: 20%;
     }
 }
 
 @media (max-width: 526px) {
-    header {
+    header{
         font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
-    header {
+    header{
         font-size: 0.7rem;
     }
 }
