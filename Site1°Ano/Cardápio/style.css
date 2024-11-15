@@ -64,10 +64,12 @@ header {
     display: inline-block;
     text-align: center;
     font-family: 'biko', sans-serif;
+    width: calc(32.33% - 10px);
+    box-sizing: border-box;
 }
 
 .lanche-item img {
-    width: 250px;
+    width: 30%;
 }
 
 .lanche-item--add {
@@ -191,6 +193,12 @@ footer {
 
 .footer-container .footer-bottom {
     font-size: 1rem;
+}
+
+@media screen and (max-width: 1280px){
+    .lanche-item img{
+        width: 80%;
+    }
 }
 
 @media screen and (max-width: 768px){
