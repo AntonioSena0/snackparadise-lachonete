@@ -1,7 +1,5 @@
 # Snack-Paradise
 
-:![logo](https://files.fm/u/xgn23qcabk):
-
 
 Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
 <hr>
