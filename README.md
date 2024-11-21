@@ -1,6 +1,6 @@
 # Snack-Paradise
 
-:![logo](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white):
+:![logo](https://files.fm/u/xgn23qcabk):
 
 
 Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
