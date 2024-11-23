@@ -15,8 +15,6 @@ Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
 ## Participações:
 
 ### Antonio Bernardino de Sena Neto:
-@HakkaiDP
-
 * Responsável pela revisão, reconstrução de telas junto do integrante João. E também realizou a montagem das telas: home, login e cardápio.
 
 ### Cesar Moreno Fernandes:
