@@ -35,3 +35,17 @@ https://github.com/GiT0rres
 ### João Victor de Paiva Carvalho:
 https://github.com/joao-the-carvalho
 * Responsável pela codificação da tela Landing Page e auxílio na codificação das telas "Motoboy Vision", "Checkout" e "Sobre Nós"; Auxiliar na reconstrução de telas junto a Antonio.
+
+## páginas
+
+* Landing Page
+* Menu
+* Cardápio 
+* Carrinho
+* Login
+* Checkout 
+* Auxílio Preferêncial 
+* Motoboy Vision
+* Quem Somos
+* Contato 
+* Promoções 
