@@ -12,6 +12,12 @@ Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 <hr>
 
+## Frameworks
+
+![Figma](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4O1LBrgtf0j7Zgi3hJZ2WhUXnoN5BDVfe3KMWrvcbq6MKx9K8y8G8lNw&s=10)
+
+---
+
 ## Participações:
 
 ### Antonio Bernardino de Sena Neto:
@@ -35,6 +41,8 @@ https://github.com/GiT0rres
 ### João Victor de Paiva Carvalho:
 https://github.com/joao-the-carvalho
 * Responsável pela codificação da tela Landing Page e auxílio na codificação das telas "Motoboy Vision", "Checkout" e "Sobre Nós"; Auxiliar na reconstrução de telas junto a Antonio.
+
+---
 
 ## páginas
 
