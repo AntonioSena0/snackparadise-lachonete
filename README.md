@@ -1,6 +1,6 @@
  [![IMG-20241116-WA0006-removebg-preview-1.png](https://i.postimg.cc/tCQMnfPh/IMG-20241116-WA0006-removebg-preview-1.png)](https://postimg.cc/Th09Zttw)
 
-# : Snack-Paradise : 
+# Snack-Paradise 
 
 
 Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
