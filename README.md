@@ -23,6 +23,8 @@ https://github.com/HakkaiDP
 * Realizou a tela de checkout.
 
 ### Eduardo Cavalcante:
+https://github.com/MrEddie7
+
 * Responsável pela codificação do arquivo "auxílio preferêncial"
 
 ### Giovanna Alves Martins Torres:
