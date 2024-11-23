@@ -12,11 +12,6 @@ Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 <hr>
 
-## Frameworks
-
-![Figma](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSW-NO0O0XJfpAnRmIuMJOonqI5k0Mus-Ldg&s)
----
-
 ## Participações:
 
 ### Antonio Bernardino de Sena Neto:
