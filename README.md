@@ -14,8 +14,7 @@ Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
 
 ## Frameworks
 
-![Figma](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWn-AUnwoAy5l0f5ilsOsfYmfBtt_FWJ9kOENB9QwqUe1aBiblvT-9ph9p&s=10)
-
+![Figma](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSW-NO0O0XJfpAnRmIuMJOonqI5k0Mus-Ldg&s)
 ---
 
 ## Participações:
