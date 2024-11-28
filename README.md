@@ -1,3 +1,5 @@
+<div align="center">
+ 
  [![IMG-20241116-WA0006-removebg-preview-1.png](https://i.postimg.cc/tCQMnfPh/IMG-20241116-WA0006-removebg-preview-1.png)](https://postimg.cc/Th09Zttw)
 
 # Snack-Paradise 
@@ -50,4 +52,6 @@ https://github.com/joao-the-carvalho
 * Motoboy Vision
 * Quem Somos
 * Contato 
-* Promoções 
+* Promoções
+
+</div>
