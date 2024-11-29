@@ -8,6 +8,10 @@
 Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
 <hr>
 
+## Link versão 1.0: https://joao-the-carvalho.github.io/Snack-Paradise-Site/Landing%20Page/
+
+---
+
 ## Linguagens Utilizadas
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
