@@ -5,7 +5,7 @@
 # Snack-Paradise 
 
 
-Projeto realizado no 1º ano do curso a fim de ser entregue para a empresa IBM.
+Projeto realizado no 2º ano do curso a fim de ser entregue para a empresa IBM.
 <hr>
 
 ### Link versão 1.0: https://joao-the-carvalho.github.io/Snack-Paradise-Site/Landing%20Page/
