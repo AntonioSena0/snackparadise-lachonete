@@ -5,66 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Snack Paradise</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="../img's/Logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
 </head>
 <body>
     <header id="header">
-        <a href="../Menu/index.html"><button class="retornar">Voltar</button></a>
-        <h1>Snack Paradise</h1>
-        <div class="menu-aberto"><span>0</span> 🛒</div>
+
+        <div class="container">
+
+            <div class="flex">
+
+                <nav>
+                    <ul>
+                        <li class="list-menu2">
+                            <button class="btn-ativação" id="btn-ativação">☰</button>
+                            <div class="barralateral" id="barralateral">
+                                <a href="../Menu/index.html" target="_self">Início</a>
+                                <a href="#" target="_self">Perfil</a>
+                                <a href="#" target="_self">Pontos</a>
+                                <a href="#" target="_self">Seja Parceiro</a>
+                                <a href="#" target="_self">Avaliações</a>
+                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
+                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
+                            </div>
+                        </li>
+                        <li class="list-menu1">
+                            <button id="btn-cardapio">&darr;Cardápio</button>
+                            <div class="submenu" id="submenu">
+                                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
+                                <hr>
+                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
+                                <hr>
+                                <a href="#" target="_self"><button>Bebidas</button></a>
+                            </div>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">Promoções</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">Pedidos</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">App SP</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="btn-conta">
+
+                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Conta</button></a>
+
+                </div><!--btn-conta-->
+
+            </div><!--Flex-->
+
+        </div><!--container-->
 
     </header><!--header-->
 
     <main class="main">
-        
-        <!DOCTYPE html>
-        <html lang="pt-br">
-        <head>
-            <meta charset="utf-8" />
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Snack Paradise</title>
-            <link rel="stylesheet" href="style.css" />
-        </head>
-        <body>
             <div class="modelos">
                 <div class="lanche-item">
-                    <a href="javascript:void(0)">
-                        <div class="lanche-item--img"><img src="" /></div>
-                    </a>
-                    <div class="lanche-item--preco">R$ --</div>
-                    <div class="lanche-item--nome">--</div>
+                    <div class="lanche-item--img"><img src="" /></div>
+                    <div class="lanche-item-info">
+                    <strong>
+                    <div class="lanche-item--preco"></div>
+                    <div class="lanche-item--nome"></div>
+                    </strong>
                     <div class="lanche-item--desc"></div>
-                    <br>
-                    <div class="lanche-item--add">+</div>
+                    </div>
                 </div>
             </div>
+            
     <div class="itens">
-                <br>
                 <h2>Lanches</h2>
                 <div class="area-lanches"></div>
-                <br>
                 <h2>Acompanhamentos</h2>
                 <div class="area-acompanhamentos"></div>
-                <br>
                 <h2>Bebidas</h2>
                 <div class="area-bebidas"></div>
     </div>
     </main><!--main-->
-
-    <aside>
-        <div class="area-carrinho">
-            <div class="menu-fechar">❌</div>
-            <h1>Seu Carrinho</h1>
-            <div class="carrinho"></div>
-            <div class="detalhes-carrinho">
-                <div class="total-carrinho total grande">
-                    <span>Total</span>
-                    <span>R$ 0.00</span>
-                </div>
-                <div class="finalizar-compra"><a href="../Checkout/index.html" target="_self" rel="noopener noreferrer">Finalizar a compra</a></div>
-            </div>
-        </div>
-    </aside>
 
     <footer>
         <div class="footer-container">
@@ -91,5 +111,6 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
     <script src="menu.js"></script>
+    <script src="main.json"></script>
 </body>
 </html>
