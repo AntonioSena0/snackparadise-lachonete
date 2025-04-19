@@ -1,0 +1,492 @@
+@import url('https://fonts.cdnfonts.com/css/biko');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Biko", sans-serif;
+}
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #fff;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0;
+}
+body.loaded {
+    opacity: 1; /* Corrigido para 1 */
+}
+
+.logo{
+    width: 80px;
+    height: 80px
+}
+
+.container{
+    max-width: 1280px;
+    max-height: 720px;
+    margin: auto;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header{
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    height: 200px;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 20px #000;
+    transition: 500ms;
+}
+
+header.scroll{
+    background-color: #FF3131;
+    position: fixed;
+}
+
+header.scroll a{
+    color: #fff;
+}
+
+header i{
+    font-size: 30px;
+    color: #fff;
+}
+
+header ul{
+    list-style-type: none;
+}
+
+header ul li{
+    display: inline-block;
+    margin: 0 80px;
+}
+
+header ul li a{
+    color: red;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.list-menu1{
+    transition: 500ms;
+}
+
+.list-menu1:hover{
+    transform: scale(1.3);
+    color: #FF3131;
+}
+
+.btn-conta button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FF3131;
+    border: solid #FF3131;
+    padding: 5px;
+    transition: 500ms;
+    font-size: 1.5rem;
+}   
+
+.btn-conta button:hover{
+    background-color: #FF3131;
+    color: #fff;
+    border: solid #fff;
+    transform: scale(1.3);
+}
+
+.conta.scroll{
+    color: #fff;
+    border: solid #fff;
+} 
+
+.btn-danger:hover {
+    color: black;
+}
+
+main .janelas {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    gap: 200px;
+    padding-top: 100px;
+}
+
+main .itens,
+.pagamento {
+    background-color: #FF3131;
+    color: #FFF;
+    width: 400px;
+    height: 500px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 10px black;
+}
+
+main .itens tr {
+    display: flex;
+    flex-direction: row;
+}
+
+.col1 {
+    width: 100px;
+    height: 100px;
+    border: solid #C62828 5px;
+    background-color: #fff;
+    margin-bottom: 10%;
+}
+
+.col2 {
+    text-align: center;
+    width: 150px;
+    font-size: 1em;
+}
+
+main .itens ul {
+    list-style-type: none;
+}
+
+main .pagamento h1 {
+    margin-bottom: 70px;
+}
+
+.form1 {
+    height: 100px;
+    font-size: 1rem;
+}
+
+.form2 {
+    height: 200px;
+    margin-top: 30px;
+}
+
+.pagamento ul {
+    list-style-type: none;
+}
+
+.pagamento li {
+    text-align: left;
+}
+
+.fundo {
+    color: #fff;
+}
+
+.pagamento li .forma {
+    background-color: #fff;
+    color: #ff3131;
+    border: 2px solid #fff;
+    transition: 0.2s ease-in-out;
+}
+
+.pagamento li .forma:hover {
+    background-color: #ff3131;
+    color: #fff;
+}
+
+.form2 input {
+    width: 300px;
+    height: 35px;
+    margin-bottom: 5px;
+}
+
+.form2 .confirmar {
+    margin-top: 30px;
+    width: 150px;
+    border-radius: 25px;
+}
+
+.form2 .confirmar:hover {
+    background-color: white;
+}
+
+.qrcode {
+    margin-top: 20px;
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.form2 {
+    margin-top: 20px;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal {
+    display: none; /* Inicialmente oculto */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Para garantir que fique acima de outros elementos */
+}
+
+.card {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    width: 300px;
+}
+
+.loading,
+.confirmation {
+    display: none; /* Inicialmente oculto */
+}
+
+.loading {
+    display: block; /* Mostrar apenas durante o carregamento */
+}
+
+.spinner {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.close-btn {
+    margin-top: 20px;
+    cursor: pointer;
+    color: #FF3131;
+    font-weight: bold;
+}
+
+/*footer*/
+footer {
+    background-color: #FF3131;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 2.3%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container .footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-container .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+.footer-container .footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-container .footer-bottom {
+    font-size: 1rem;
+    color: #fff;
+}
+
+@media screen and (max-width: 666px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    header ul li{
+        padding: 0;
+    }
+    .btn-conta button{
+        font-size: 0.7rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .flex{
+        flex-direction: column;
+    }
+    .container{
+        position: relative;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    header{
+        padding-top: 0;
+        font-size: 1.4rem;
+    }
+
+    header ul li{
+        padding-left: 60px;
+    }
+
+    .logo {
+        width: 20px;
+        height: 20px;
+    }
+
+    .form1 {
+        font-size: 1.5rem;
+    }
+
+    .flex {
+        flex-direction: column;
+    }
+
+    .janelas {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding-top: 50vh;
+    }
+
+    .itens {
+        height: 50%;
+        width: 50%;
+    }
+
+    h1 {
+        padding: 0px;
+        margin: 0px;
+        font-size: 1.4rem;
+    }
+
+    .pagamento h1 {
+        margin-top: 25px;
+    }
+
+    .col1 {
+        width: 200px;
+        height: 120px;
+    }
+
+    .col2 {
+        width: 50%;
+        font-size: 2rem;
+    }
+
+    tr {
+        height: 50%;
+    }
+
+    .itens img {
+        width: 100%;
+        margin-left: 0.5rem;
+    }
+
+    .itens li {
+        font-size: 50%;
+    }
+
+    .pagamento li {
+        font-size: 60%;
+    }
+
+    .form2 {
+        margin-bottom: 50px;
+    }
+
+    footer {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+        margin-top: 100px;
+    }
+
+    .btn-conta i {
+        font-size: 20px;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-container .footer-links {
+        margin-bottom: 10px;
+    }
+
+    .footer-container .footer-links a {
+        display: block;
+        margin: 5px 0;
+    }
+}
+
+
+@media screen and (max-width: 700px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    .btn-conta button{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 508px) {
+    header ul li a{
+        font-size: 1rem;
+    }
+    .texto-slider{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 478px) {
+    header{
+        text-align: center;
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 526px) {
+    header{
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header{
+        font-size: 0.7rem;
+    }
+}

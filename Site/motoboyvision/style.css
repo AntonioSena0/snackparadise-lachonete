@@ -1,0 +1,407 @@
+@import url('https://fonts.cdnfonts.com/css/biko');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Biko", sans-serif;
+}
+
+html{
+    height: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-x: hidden;
+    opacity: 0;
+    transition: 0.5s ease-in-out;
+    background-color: #fff;
+}
+
+body.loaded {
+    opacity: 2;
+}
+
+.tabela{
+    background-color: #FF3131;
+    border-radius: 20px;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.tabela-card1, .tabela-card2, .tabela-card3 {
+    background-color: white;
+    border: 3px solid #000;
+    border-radius: 25px;
+}
+
+.tabela-card2, .tabela-card3{
+    padding: 60px;
+}
+
+.tabela-card2{
+    font-size: 2rem;
+}
+
+.img1{
+margin: 5%;
+border-radius: 30px;
+width: 150px;
+filter: drop-shadow(0 0 0.75rem black);
+}
+
+.tabela {
+    display: flex;
+    flex-direction: column;
+    background-color: #FF3131;
+    border-radius: 20px;
+    width: 100%;
+    padding: 20px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+.tabela-container1 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tabela-container2 {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tabela-container2 p{
+    color: #fff;
+}
+
+.coluna1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    height: 100%;
+}
+
+.coluna2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    height: 100%;
+}
+
+.coluna3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+    height: 100%;
+    color: #000;
+}
+
+.coluna .tabela-card {
+    padding: 20px;
+}
+
+h2 {
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.pedido {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img1 {
+    width: 100px;
+    margin-bottom: 10px;
+}
+
+.img2 {
+    width: 50px;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #222;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #555;
+}
+
+.logo{
+    width: 80px;
+    height: 80px
+}
+
+.container{
+    max-width: 1280px;
+    max-height: 720px;
+    margin: auto;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header{
+    width: 100%;
+    padding: 20px 4%;
+    position: relative;
+    z-index: 1;
+    height: 125px;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 20px #000;
+    transition: 500ms;
+}
+
+header.scroll{
+    background-color: #FF3131;
+    position: fixed;
+}
+
+header.scroll a{
+    color: #fff;
+}
+
+header i{
+    font-size: 30px;
+    color: #fff;
+}
+
+header ul{
+    list-style-type: none;
+}
+
+header ul li{
+    display: inline-block;
+    margin: 0 80px;
+}
+
+header ul li a{
+    color: red;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+
+.list-menu1{
+    transition: 500ms;
+}
+
+.list-menu1:hover{
+    transform: scale(1.3);
+    color: #FF3131;
+}
+
+.btn-conta button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FF3131;
+    border: solid #FF3131;
+    padding: 5px;
+    transition: 500ms;
+    font-size: 1.5rem;
+}   
+
+.btn-conta button:hover{
+    background-color: #FF3131;
+    color: #fff;
+    border: solid #fff;
+    transform: scale(1.3);
+}
+
+.conta.scroll{
+    color: #fff;
+    border: solid #fff;
+}   
+
+.btn-conta a{
+    color: #000;
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    line-height: 40px;
+}
+
+.btn-conta button{
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #FF3131;
+    border: solid #FF3131;
+    padding: 5px;
+    transition: 500ms;
+}   
+
+.btn-conta button:hover{
+    background-color: #FF3131;
+    color: #fff;
+    border: solid #fff;
+    transform: scale(1.3);
+}
+
+.conta.scroll{
+    color: #fff;
+    border: solid #fff;
+}   
+
+.conta.scroll:hover{
+    background-color: #fff;
+    color: #FF3131;
+    border: solid #fff;
+}
+
+footer {
+    background-color: #FF3131;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container .footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-container .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+.footer-container .footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-container .footer-bottom {
+    font-size: 1rem;
+    color: #fff;
+}
+
+@media screen and (max-width: 768px){
+    .tabela-container1, .tabela-container2{
+        flex-direction: column;
+    }
+
+    .coluna1, .coluna2, .coluna3{
+        width: 100%;
+        margin-top: 20px;
+}
+
+    .tabela-card2, .tabela-card3{
+        padding: 30px;
+    }
+
+    .coluna3{
+        margin-bottom: 40px;
+    }
+}
+
+@media screen and (max-width: 700px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    .btn-conta button{
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 669px){
+    .texto-slider{
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 666px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    header ul li{
+        padding: 0;
+    }
+    .btn-conta button{
+        font-size: 0.7rem;
+    }
+}
+
+@media (max-width: 508px) {
+    header ul li a{
+        font-size: 1rem;
+    }
+    .texto-slider{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .botão1{
+        height: 150px;
+        width: 185px;
+    }
+    .botão2{
+        height: 150px;
+        width: 185px;
+    }
+}
+@media (max-width: 478px) {
+    header{
+        text-align: center;
+        font-size: 0.7rem;
+    }
+}
+@media (max-width: 526px) {
+    header{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 480px) {
+    header{
+        font-size: 0.7rem;
+    }
+}
