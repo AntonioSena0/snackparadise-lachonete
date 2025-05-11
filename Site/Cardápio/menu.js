@@ -137,4 +137,77 @@ document.addEventListener('click', (event) => {
 
 menu.addEventListener('click', (event) => {
     event.stopPropagation();
-}); 
+});
+
+let carrinho = [];
+let total = 0;
+
+// Função para adicionar itens ao carrinho
+function adicionarAoCarrinho(nome, preco) {
+    // Recupera o carrinho do localStorage ou inicializa um novo array
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    // Adiciona o item ao carrinho
+    const item = { nome, preco };
+    carrinho.push(item);
+
+    // Salva o carrinho atualizado no localStorage
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+    // Exibe uma mensagem de confirmação
+    alert(`${nome} foi adicionado ao carrinho!`);
+    atualizarCarrinho();
+}
+
+// Função para atualizar o carrinho na interface
+function atualizarCarrinho() {
+    const itensCarrinho = document.getElementById('itensCarrinho');
+    const totalCarrinho = document.getElementById('totalCarrinho');
+
+    // Recupera o carrinho do localStorage
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    // Limpa o carrinho antes de atualizar
+    itensCarrinho.innerHTML = '';
+    let total = 0;
+
+    // Adiciona os itens ao carrinho na interface
+    carrinho.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        const btnRemover = document.createElement('button');
+        btnRemover.textContent = 'Remover';
+        btnRemover.onclick = () => removerDoCarrinho(index);
+        li.appendChild(btnRemover);
+        itensCarrinho.appendChild(li);
+        total += item.preco;
+    });
+
+    // Atualiza o total
+    totalCarrinho.textContent = total.toFixed(2);
+}
+
+// Função para remover itens do carrinho
+function removerDoCarrinho(index) {
+    // Recupera o carrinho do localStorage
+    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    // Remove o item do carrinho
+    carrinho.splice(index, 1);
+
+    // Salva o carrinho atualizado no localStorage
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+
+    // Atualiza o carrinho na interface
+    atualizarCarrinho();
+}
+
+// Atualiza o carrinho ao carregar a página
+document.addEventListener('DOMContentLoaded', atualizarCarrinho);
+
+// Redirecionar para o checkout
+document.getElementById('finalizarCompra').addEventListener('click', () => {
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+    localStorage.setItem('total', total.toFixed(2));
+    window.location.href = '../checkout/index.html';
+});

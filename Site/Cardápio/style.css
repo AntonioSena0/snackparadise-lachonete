@@ -286,6 +286,13 @@ hr{
     font-family: 'biko', sans-serif;
     box-sizing: border-box;
     justify-content: space-between;
+    cursor: pointer;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lanche-item:hover {
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais intensa */
 }
 
 .lanche-item img {
@@ -378,28 +385,137 @@ footer {
     font-size: 1rem;
 }
 
-@media screen and (max-width: 1280px){
-    .lanche-item img{
+.carrinho {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    z-index: 1000;
+}
+
+.carrinho h2 {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #a20908;
+}
+
+.carrinho ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.carrinho ul li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.carrinho .btn {
+    background-color: #a20908;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.carrinho .btn:hover {
+    background-color: #FF3131;
+}
+
+/* Responsividade para telas grandes */
+@media screen and (max-width: 1280px) {
+    .lanche-item img {
         width: 80%;
     }
 }
 
-@media screen and (max-width: 768px){
+/* Responsividade para tablets */
+@media screen and (max-width: 768px) {
+    .lanche-item {
+        width: 90%; /* Ajusta a largura dos cards para ocupar quase toda a tela */
+        margin: 10px auto; /* Centraliza os cards */
+        flex-direction: column; /* Alinha os elementos verticalmente */
+        height: auto; /* Ajusta a altura automaticamente */
+    }
 
-    footer{
+    .lanche-item img {
+        width: 100%; /* Imagem ocupa toda a largura do card */
+        height: auto; /* Mantém a proporção da imagem */
+        padding: 0; /* Remove o padding extra */
+    }
+
+    .lanche-item--info {
+        padding: 10px;
+    }
+
+    .btn-comprar {
+        padding: 8px 16px;
+        font-size: 1rem;
+    }
+
+    footer {
         margin-top: 18%;
     }
 
     .footer-container {
         flex-direction: column;
     }
-    
+
     .footer-container .footer-links {
         margin-bottom: 10px;
     }
-    
+
     .footer-container .footer-links a {
         display: block;
         margin: 5px 0;
+    }
+}
+
+/* Responsividade para smartphones */
+@media screen and (max-width: 480px) {
+    .lanche-item {
+        width: 100%; /* Cards ocupam toda a largura da tela */
+        padding: 10px; /* Reduz o padding */
+    }
+
+    .lanche-item img {
+        width: 100%; /* Imagem ocupa toda a largura do card */
+        height: auto; /* Mantém a proporção da imagem */
+    }
+
+    .lanche-item--preco {
+        font-size: 2rem; /* Reduz o tamanho da fonte do preço */
+    }
+
+    .lanche-item--nome {
+        font-size: 1.8rem; /* Reduz o tamanho da fonte do nome */
+    }
+
+    .lanche-item--desc {
+        font-size: 1.2rem; /* Reduz o tamanho da fonte da descrição */
+    }
+
+    .btn-comprar {
+        padding: 6px 12px;
+        font-size: 0.9rem; /* Reduz o tamanho do botão */
+    }
+
+    footer {
+        margin-top: 20%;
+    }
+
+    .footer-container .footer-links a {
+        font-size: 0.9rem; /* Reduz o tamanho da fonte dos links no rodapé */
     }
 }
