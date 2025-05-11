@@ -119,3 +119,74 @@ document.addEventListener('click', (event) => {
 menu.addEventListener('click', (event) => {
     event.stopPropagation();
 });
+
+// sql
+
+ const registerForm = document.getElementById('registerForm');
+    const loginForm = document.getElementById('loginForm');
+
+    registerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        const response = await fetch('http://localhost:3000/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await response.json();
+        alert(data.message);
+    });
+
+    loginForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const email = document.getElementById('loginEmail').value;
+        const password = document.getElementById('loginPassword').value;
+
+        const response = await fetch('http://localhost:3000/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, password })
+        });
+
+        const data = await response.json();
+        if (data.token) {
+            localStorage.setItem('token', data.token);
+            alert('Login realizado com sucesso!');
+            window.location.href = 'perfil.html';
+        } else {
+            alert(data.message);
+        }
+    });
+
+    // cadastro
+    document.getElementById('registerButton').addEventListener('click', async (e) => {
+    e.preventDefault(); // Impede o envio padrão do formulário
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+        const response = await fetch('http://localhost:3000/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, email, password })
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = '../Perfil/index.html'; // Redireciona para a página de perfil
+        } else {
+            alert(data.message || 'Erro ao cadastrar. Tente novamente.');
+        }
+    } catch (error) {
+        console.error('Erro:', error);
+        alert('Erro ao conectar ao servidor. Tente novamente mais tarde.');
+    }
+});

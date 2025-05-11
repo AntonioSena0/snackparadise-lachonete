@@ -22,7 +22,7 @@
                             <button class="btn-ativação" id="btn-ativação">☰</button>
                             <div class="barralateral" id="barralateral">
                                 <a href="../Menu/index.html" target="_self">Início</a>
-                                <a href="#" target="_self">Perfil</a>
+                                <a href="../Perfil/index.html" target="_self">Perfil</a>
                                 <a href="#" target="_self">Pontos</a>
                                 <a href="#" target="_self">Seja Parceiro</a>
                                 <a href="#" target="_self">Avaliações</a>
@@ -76,7 +76,7 @@
                             <h4>SnackParadise</h4>
                         </div>
 
-                        <div class="txt-inicial">
+                        <div id="loginForm" class="txt-inicial">
                             <h2>Bem Vindo de Volta</h2>
                             <h6>Ainda não possui uma conta?</h6>
                             <div class="toggle">Cadastrar-se</div>
@@ -86,14 +86,14 @@
 
                             <div class="input-wrap">
 
-                                <input type="email" minlength="4" class="input-field" autocomplete="off" required/>
+                                <input type="email" minlength="4" class="input-field" autocomplete="off" id="loginEmail" required/>
                                 <label>Email</label>
 
                             </div>
 
                             <div class="input-wrap">
 
-                                <input type="password" minlength="4" class="input-field" autocomplete="off" required/>
+                                <input type="password" minlength="4" class="input-field" autocomplete="off"  id="loginPassword" required/>
                                 <label>Senha</label>
 
                             </div>
@@ -120,30 +120,32 @@
                             <div class="toggle">Entrar</div>
                         </div>
 
-                        <div class="form-atual">
+                        <div id="registerForm" class="form-atual">
 
                             <div class="input-wrap">
 
-                                <input type="text" minlength="4" class="input-field" autocomplete="off" required/>
+                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" required/>
                                 <label>Nome</label>
 
                             </div>
 
                             <div class="input-wrap">
 
-                                <input type="email" class="input-field" autocomplete="off" required/>
+                                <input type="email" class="input-field" id="email" autocomplete="off" id="email" required/>
                                 <label>Email</label>
 
                             </div>
 
                             <div class="input-wrap">
 
-                                <input type="password" minlength="4" class="input-field" autocomplete="off" required/>
+                                <input type="password" minlength="4" class="input-field" id="password" autocomplete="off" id="password" required/>
                                 <label>Senha</label>
 
                             </div>
 
-                            <a href="../Menu/index.html"><input type="submit" value="Cadastrar-se" class="botao-login"></a>
+                          <form id="loginForm">
+                            <button type="submit" class="botao-login" id="registerButton">Cadastrar-se</button>
+                          </form>
 
                             <p class="txt">
                                 Cadastrando esta conta, você concorda com os

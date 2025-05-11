@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil - Snack Paradise</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="flex">
+                <div class="logo">
+                    <a href="../Menu/index.html">
+                        <img src="../imgs/Logo.png" alt="Snack Paradise Logo">
+                    </a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../Menu/index.html">Início</a></li>
+                        <li><a href="#">Perfil</a></li>
+                        <li><a href="#">Pontos</a></li>
+                        <li><a href="#">Seja Parceiro</a></li>
+                        <li><a href="#">Avaliações</a></li>
+                        <li><a href="../Quem somos/index.html">Sobre nós</a></li>
+                        <li><a href="../Auxílio Preferencial/auxilio.html">Ajuda</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <!-- Formulário de Login -->
+            <div id="loginForm" class="form-container">
+                <h2>Login</h2>
+                <form id="login">
+                    <div class="input-wrap">
+                        <input type="email" id="loginEmail" placeholder="Email" required>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="password" id="loginPassword" placeholder="Senha" required>
+                    </div>
+                    <button type="submit" class="btn">Entrar</button>
+                </form>
+            </div>
+
+            <!-- Formulário de Cadastro -->
+            <div id="registerForm" class="form-container">
+                <h2>Cadastro</h2>
+                <form id="register">
+                    <div class="input-wrap">
+                        <input type="text" id="username" placeholder="Nome" required>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="input-wrap">
+                        <input type="password" id="password" placeholder="Senha" required>
+                    </div>
+                    <button type="submit" class="btn">Cadastrar</button>
+                </form>
+            </div>
+
+            <!-- Seção de Perfil -->
+            <div id="profile" class="profile-section" style="display: none;">
+                <h1>Bem-vindo, <span id="usernameDisplay"></span></h1>
+                <p>Email: <span id="emailDisplay"></span></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

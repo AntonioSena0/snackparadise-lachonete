@@ -23,9 +23,9 @@ body.loaded {
     opacity: 2;
 }
 
-.container{
-    max-width: 1500px;
-    max-height: 720px;
+.container {
+    max-width: 100%;
+    padding: 0 20px;
     margin: auto;
 }
 
@@ -33,6 +33,8 @@ body.loaded {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 header{
@@ -46,6 +48,42 @@ header{
     left: 0;
     box-shadow: 2px 2px 20px #000;
     transition: 500ms ease-in-out;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Ajuste para centralizar o texto no header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 125px; /* Altura do header */
+    padding: 0; /* Remove padding extra */
+}
+
+/* Ajuste para os itens do menu no header */
+header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    margin: 10px; /* Espaçamento entre os itens */
+}
+
+header ul li a {
+    font-size: 1.5rem; /* Tamanho padrão */
+    transition: font-size 0.3s ease;
 }
 
 #header.scroll{
@@ -69,11 +107,22 @@ header i{
 
 header ul{
     list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
 }
 
 header ul li{
     display: inline-block;
-    margin: 0 80px;
+    margin: 10px; /* Espaçamento entre os itens */
+}
+
+header ul li a {
+    font-size: 1.5rem;
+    transition: font-size 0.3s ease;
 }
 
 header .list-menu1 a, #btn-cardapio{
@@ -666,6 +715,157 @@ footer {
 .footer-container .footer-bottom {
     font-size: 1rem;
 }   
+
+/* Ajustes gerais */
+.container {
+    max-width: 100%;
+    padding: 0 20px;
+    margin: auto;
+}
+
+.flex {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+header ul li {
+    margin: 0 10px;
+}
+
+/* Ajustes para botões */
+.botão1, .botão2 {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    font-size: 2rem;
+    padding: 20px;
+}
+
+.botão1:hover, .botão2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px #FF3131;
+    border: yellow solid 3px;
+}
+
+/* Ajustes para imagens */
+.img1, .img2 {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: auto;
+}
+
+/* Ajustes para formulários */
+form {
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Ajustes gerais para o header */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 125px; /* Altura do header */
+    padding: 0; /* Remove padding extra */
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: 0;
+}
+
+header ul li {
+    margin: 10px; /* Espaçamento entre os itens */
+}
+
+header ul li a {
+    font-size: 1.5rem; /* Tamanho padrão */
+    transition: font-size 0.3s ease;
+}
+
+/* Ajuste para o header */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Distribui os itens: esquerda, centro e direita */
+    text-align: center;
+    height: 125px;
+    padding: 0 1cm; /* Espaçamento interno */
+}
+
+/* Botão de submenu à extrema esquerda */
+header .submenu-button {
+    margin-right: auto; /* Empurra o botão para a extrema esquerda */
+}
+
+/* Texto centralizado */
+header .header-text {
+    flex-grow: 1; /* Permite que o texto ocupe o espaço central */
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+/* Botão à extrema direita */
+header .right-button {
+    margin-left: auto; /* Empurra o botão para a extrema direita */
+}
+
+/* Media queries para telas menores */
+@media screen and (max-width: 1024px) {
+    header ul li a {
+        font-size: 1.3rem; /* Reduz o tamanho do texto em telas médias */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        flex-direction: row;
+        height: auto;
+        padding: 80px;
+    }
+
+    header .header-text {
+        font-size: 1.2rem; /* Ajusta o tamanho do texto */
+    }
+
+    header .submenu-button,
+    header .right-button {
+        font-size: 1rem; /* Ajusta o tamanho dos botões */
+    }
+}
+
+@media screen and (max-width: 530px) {
+    header{
+        text-align: center;
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        flex-direction: column; /* Empilha os itens em telas muito pequenas */
+        align-items: center;
+    }
+
+    header .submenu-button,
+    header .right-button {
+        margin: 5px 0; /* Ajusta o espaçamento dos botões */
+    }
+
+    header .header-text {
+        font-size: 1rem; /* Reduz o tamanho do texto */
+    }
+}
 
 @media screen and (max-width: 850px){
     .main-container{
