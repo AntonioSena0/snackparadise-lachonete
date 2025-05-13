@@ -13,8 +13,8 @@
     <header id="header">
         <div class="container">
             <div class="flex">
-                <a href="#">
-                    <img src="../img's/Logo.png" class="logo">
+                <a href="../Quem somos/index.html">
+                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
                 </a>
                 <nav>
                     <ul>
@@ -33,65 +33,22 @@
     <main class="main">
         <div class="janelas">
             <div class="itens">
-                <table>    
                 <h1>Itens Selecionados</h1>
-                    <tr>
-                        <td><img class="col1" src="../img's/Encomendar e Retirar (Tradicional)/Hamburguer 2 1.png" /></td>
-                        <td class="col2"><ul>
-                            <li>Sunset Burguer</li>
-                            <li>Unidade(s): 1</li>
-                            <li>Total: R$28,00</li>
-                        </ul></td>
-                    </tr>
-                    <tr>
-                        <td><img class="col1" src="../img's/Acompanhamentos/Batata G.jpeg" /></td>
-                        <td class="col2">
-                        <ul>
-                            <li>Batata Frita</li>
-                            <li>Unidade(s): 1</li>
-                            <li>Total: R$8,99</li>
-                        </ul>
-                        </td>
-                        </tr>
-                        <br>
-
-                        <td><img class="col1" src="../img's/Bebidas/file (12).png" /></td>
-                        <td class="col2">
-                        <ul>
-                            <li>Refrigerante</li>
-                            <li>Unidade(s): 1</li>
-                            <li>Total: R$5,50</li>
-                        </ul>
-                        </td>
-                    </tr>
-                </table>
+                <ul id="itensCheckout"></ul>
+                <p>Total: R$ <span id="totalCheckout">0.00</span></p>
             </div>
             <div class="pagamento">
                 <h1>Pagamento</h1>
-                <div class="form1">
-                    <ul class="info">
-                        <li>Checkout:</li>
-                        <li>Total: R$42,49</li>
-                        <li>Descontos: <span class="fundo">-R$0,00</span></li>
-                        <li>
-                            <form id="payment-form">
-                                <label for="forma">Forma de Pagamento</label>
-                                <select id="forma" name="forma" class="forma">
-                                    <option value="debito">Débito</option>
-                                    <option value="credito">Crédito</option>
-                                    <option value="cedula">Cédula</option>
-                                    <option value="pix">Pix</option>
-                                </select>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-                <div class="form2">
-                    <input type="text" id="endereco" name="endereco" placeholder="Insira seu endereço" required><br />
-                    <input type="text" id="CEP" name="CEP" maxlength="9" placeholder="Insira seu CEP" required><br />
-                    <input type="text" id="info" name="info" placeholder="Insira uma informação adicional (opcional)"><br />
-                    <input type="submit" value="Confirmar Pedido" class="btn btn-danger confirmar">
-                </div>
+                <form id="payment-form">
+                    <label for="forma">Forma de Pagamento</label>
+                    <select id="forma" name="forma" class="forma">
+                        <option value="debito">Débito</option>
+                        <option value="credito">Crédito</option>
+                        <option value="cedula">Cédula</option>
+                        <option value="pix">Pix</option>
+                    </select>
+                    <button type="submit" class="btn">Confirmar Pedido</button>
+                </form>
             </div>
         </div>
     </main>
@@ -119,7 +76,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-links">
-                <a href="../../Menu/index.html">Início</a>
+                <a href="../Menu/index.html">Início</a>
                 <a href="../Quem somos/index.html">Sobre</a>
                 <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
                 <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>

@@ -433,6 +433,27 @@ footer {
     background-color: #FF3131;
 }
 
+.btn-comprar {
+    background-color: #a20908;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-comprar:hover {
+    background-color: #FF3131;
+    transform: scale(1.05); /* Leve aumento ao passar o mouse */
+}
+
+.btn-comprar:active {
+    transform: scale(0.95); /* Leve redução ao clicar */
+}
+
 /* Responsividade para telas grandes */
 @media screen and (max-width: 1280px) {
     .lanche-item img {

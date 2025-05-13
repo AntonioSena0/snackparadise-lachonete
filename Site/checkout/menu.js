@@ -117,3 +117,32 @@ modalQRCode.addEventListener('click', function(event) {
         this.style.display = 'none';
     }
 });
+
+// Função para carregar os itens do carrinho no checkout
+function carregarCarrinhoNoCheckout() {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const itensCheckout = document.getElementById('itensCheckout');
+    const totalCheckout = document.getElementById('totalCheckout');
+
+    // Limpa os itens do checkout antes de atualizar
+    itensCheckout.innerHTML = '';
+    let total = 0;
+
+    // Adiciona os itens ao checkout
+    carrinho.forEach((item) => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        itensCheckout.appendChild(li);
+        total += item.preco;
+    });
+
+    // Atualiza o total no checkout
+    totalCheckout.textContent = total.toFixed(2);
+}
+
+// Chama a função ao carregar a página de checkout
+document.addEventListener('DOMContentLoaded', () => {
+    if (window.location.pathname.includes('checkout')) {
+        carregarCarrinhoNoCheckout();
+    }
+});

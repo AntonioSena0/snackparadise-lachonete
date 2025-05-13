@@ -147,9 +147,15 @@ function adicionarAoCarrinho(nome, preco) {
     // Recupera o carrinho do localStorage ou inicializa um novo array
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
-    // Adiciona o item ao carrinho
-    const item = { nome, preco };
-    carrinho.push(item);
+    // Verifica se o item já existe no carrinho
+    const itemExistente = carrinho.find(item => item.nome === nome);
+    if (itemExistente) {
+        // Incrementa a quantidade se o item já existir
+        itemExistente.quantidade += 1;
+    } else {
+        // Adiciona um novo item ao carrinho
+        carrinho.push({ nome, preco, quantidade: 1 });
+    }
 
     // Salva o carrinho atualizado no localStorage
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
@@ -174,13 +180,13 @@ function atualizarCarrinho() {
     // Adiciona os itens ao carrinho na interface
     carrinho.forEach((item, index) => {
         const li = document.createElement('li');
-        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        li.textContent = `${item.nome} (x${item.quantidade}) - R$ ${(item.preco * item.quantidade).toFixed(2)}`;
         const btnRemover = document.createElement('button');
         btnRemover.textContent = 'Remover';
         btnRemover.onclick = () => removerDoCarrinho(index);
         li.appendChild(btnRemover);
         itensCarrinho.appendChild(li);
-        total += item.preco;
+        total += item.preco * item.quantidade;
     });
 
     // Atualiza o total
