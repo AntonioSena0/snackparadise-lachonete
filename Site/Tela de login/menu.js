@@ -156,37 +156,10 @@ menu.addEventListener('click', (event) => {
         if (data.token) {
             localStorage.setItem('token', data.token);
             alert('Login realizado com sucesso!');
-            window.location.href = 'perfil.html';
+            window.location.href = '../back/perfil/Conta.php';
+        } else if (data.error) {
+            alert(data.error);
         } else {
             alert(data.message);
         }
     });
-
-    // cadastro
-    document.getElementById('registerButton').addEventListener('click', async (e) => {
-    e.preventDefault(); // Impede o envio padrão do formulário
-
-    const username = document.getElementById('username').value;
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    try {
-        const response = await fetch('http://localhost:3000/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ username, email, password })
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            alert('Cadastro realizado com sucesso!');
-            window.location.href = '../Perfil/index.html'; // Redireciona para a página de perfil
-        } else {
-            alert(data.message || 'Erro ao cadastrar. Tente novamente.');
-        }
-    } catch (error) {
-        console.error('Erro:', error);
-        alert('Erro ao conectar ao servidor. Tente novamente mais tarde.');
-    }
-});

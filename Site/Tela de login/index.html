@@ -86,14 +86,14 @@
 
                             <div class="input-wrap">
 
-                                <input type="email" minlength="4" class="input-field" autocomplete="off" id="loginEmail" required/>
+                                <input type="email" minlength="4" class="input-field" autocomplete="off" id="loginEmail" name="email" required/>
                                 <label>Email</label>
 
                             </div>
 
                             <div class="input-wrap">
 
-                                <input type="password" minlength="4" class="input-field" autocomplete="off"  id="loginPassword" required/>
+                                <input type="password" minlength="4" class="input-field" autocomplete="off"  id="loginPassword" name="password" required/>
                                 <label>Senha</label>
 
                             </div>
@@ -124,26 +124,26 @@
 
                             <div class="input-wrap">
 
-                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" required/>
+                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" name="username" required/>
                                 <label>Nome</label>
 
                             </div>
 
                             <div class="input-wrap">
 
-                                <input type="email" class="input-field" id="email" autocomplete="off" id="email" required/>
+                                <input type="email" class="input-field" id="email" autocomplete="off" id="email" name="email" required/>
                                 <label>Email</label>
 
                             </div>
 
                             <div class="input-wrap">
 
-                                <input type="password" minlength="4" class="input-field" id="password" autocomplete="off" id="password" required/>
+                                <input type="password" minlength="4" class="input-field" id="password" autocomplete="off" id="password" name="password" required/>
                                 <label>Senha</label>
 
                             </div>
 
-                          <form id="loginForm">
+                          <form id="registerForm" method="POST" action="../back/perfil/registro_processo.php">
                             <button type="submit" class="botao-login" id="registerButton">Cadastrar-se</button>
                           </form>
 
