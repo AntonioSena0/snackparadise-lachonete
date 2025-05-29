@@ -417,6 +417,26 @@ footer {
     font-size: 1rem;
 }
 
+.carrinho ul li button {
+    background-color: #FF3131;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carrinho ul li button:hover {
+    background-color: #a20908;
+    transform: scale(1.1);
+}
+
+.carrinho ul li button:active {
+    transform: scale(0.95);
+}
+
 .carrinho .btn {
     background-color: #a20908;
     color: #fff;

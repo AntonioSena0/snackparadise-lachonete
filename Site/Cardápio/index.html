@@ -72,6 +72,10 @@
                         <div class="lanche-item--nome"></div>
                     </strong>
                     <div class="lanche-item--desc"></div>
+                    <button class="btn-comprar" onclick="adicionarAoCarrinho(
+                        this.parentElement.querySelector('.lanche-item--nome').innerText, 
+                        parseFloat(this.parentElement.querySelector('.lanche-item--preco').innerText.replace('R$', '').trim())
+                    )">Adicionar ao Carrinho</button>
                 </div>
             </div>
         </div>

@@ -144,24 +144,14 @@ let total = 0;
 
 // Função para adicionar itens ao carrinho
 function adicionarAoCarrinho(nome, preco) {
-    // Recupera o carrinho do localStorage ou inicializa um novo array
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-
-    // Verifica se o item já existe no carrinho
     const itemExistente = carrinho.find(item => item.nome === nome);
     if (itemExistente) {
-        // Incrementa a quantidade se o item já existir
         itemExistente.quantidade += 1;
     } else {
-        // Adiciona um novo item ao carrinho
         carrinho.push({ nome, preco, quantidade: 1 });
     }
-
-    // Salva o carrinho atualizado no localStorage
     localStorage.setItem('carrinho', JSON.stringify(carrinho));
-
-    // Exibe uma mensagem de confirmação
-    alert(`${nome} foi adicionado ao carrinho!`);
     atualizarCarrinho();
 }
 
@@ -195,7 +185,6 @@ function atualizarCarrinho() {
 
 // Função para remover itens do carrinho
 function removerDoCarrinho(index) {
-    // Recupera o carrinho do localStorage
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
     // Remove o item do carrinho
