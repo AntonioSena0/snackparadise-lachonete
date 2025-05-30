@@ -16,14 +16,29 @@ document.querySelectorAll("a").forEach(link => {
 // Formulário de pagamento
 document.getElementById('payment-form').addEventListener('submit', function(event) {
     event.preventDefault();
-    const confirmarButton = document.querySelector('.confirmar');
-    confirmarButton.disabled = true;
 
-    // Simula um carregamento e exibe uma mensagem após 3 segundos
-    setTimeout(function() {
-        const modalQRCode = document.getElementById('modal-qrcode');
-        modalQRCode.style.display = 'flex'; // Exibe o modal QR Code
-    }, 3000);
+    // Captura os dados do formulário
+    const nome = document.getElementById('nome').value;
+    const rua = document.getElementById('rua').value;
+    const numero = document.getElementById('numero').value;
+    const complemento = document.getElementById('complemento').value;
+    const formaPagamento = document.getElementById('forma').value;
+
+    // Captura os itens do carrinho
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    // Cria um objeto com os dados do checkout
+    const checkoutData = {
+        endereco: `Nome: ${nome}<br>Rua: ${rua}<br>Número: ${numero}<br>Complemento: ${complemento}`,
+        pagamento: formaPagamento,
+        pedidos: carrinho
+    };
+
+    // Armazena os dados no localStorage
+    localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+
+    // Redireciona para a página "Motoboy Vision"
+    window.location.href = '../motoboyvision/index.html';
 });
 
 // Formato do CEP

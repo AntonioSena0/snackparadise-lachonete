@@ -11,16 +11,18 @@ a{
     text-decoration: none;
 }
 
-body{
-    background-color: #fdfdfd;
+body {
+    background-image: url('../img/background.jpg'); /* Certifique-se de que o caminho está correto */
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
     transition: 0.5s ease-in-out;
     opacity: 0;
     overflow-x: hidden;
 }
 
 body.loaded {
-    opacity: 2;
+    opacity: 1; /* Ajuste para garantir que o fundo seja visível */
 }
 
 .container{
@@ -278,12 +280,13 @@ main{
 footer {
     background-color: #000;
     color: #fff;
-    padding: 30px;
+    padding: 50px; /* Reduz o espaçamento interno */
     text-align: center;
 }
 
 .footer-container {
     max-width: 1200px;
+
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -298,7 +301,7 @@ footer {
     color: #fff;
     text-decoration: none;
     margin: 0 10px;
-    font-size: 1rem;
+    font-size: 0.9rem; /* Reduz o tamanho da fonte dos links */
 }
 
 .footer-container .footer-links a:hover {
@@ -306,7 +309,79 @@ footer {
 }
 
 .footer-container .footer-bottom {
-    font-size: 1rem;
+    font-size: 0.9rem; /* Reduz o tamanho da fonte do texto inferior */
+}
+
+.auxilio-section {
+    padding: 70px 10%;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.auxilio-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.auxilio-content {
+    flex: 1;
+    max-width: 1900px; /* Aumenta a largura máxima do box de texto */
+    text-align: center;
+    padding: 20px; /* Adiciona espaçamento interno */
+    margin-right: auto; /* Faz o box ocupar mais espaço à direita */
+}
+
+.auxilio-title {
+    font-size: 3rem;
+    color: #a20908;
+    margin-bottom: 20px;
+}
+
+.auxilio-text {
+    font-size: 1.5rem;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    
+    padding: 0 20px; /* Adiciona espaçamento lateral */
+}
+
+.auxilio-button {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    color: #fff;
+    background-color: #a20908;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.auxilio-button:hover {
+    background-color: #d62b2b;
+}
+
+.auxilio-images {
+    flex: 1;
+    max-width: 600px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.auxilio-img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 @media screen and (max-width: 768px){

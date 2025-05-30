@@ -62,4 +62,4 @@ document.addEventListener('click', (event) => {
 
 menu.addEventListener('click', (event) => {
     event.stopPropagation();
-}); 
+});

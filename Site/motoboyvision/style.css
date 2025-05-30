@@ -31,7 +31,7 @@ body.loaded {
 }
 
 .tabela{
-    background-color: #FF3131;
+    background-color: #a20908;
     border-radius: 20px;
     width: fit-content;
     display: flex;
@@ -65,7 +65,8 @@ filter: drop-shadow(0 0 0.75rem black);
 .tabela {
     display: flex;
     flex-direction: column;
-    background-color: #FF3131;
+    gap: 30px;
+    background-color: #a20908;
     border-radius: 20px;
     width: 100%;
     padding: 20px;
@@ -74,78 +75,39 @@ filter: drop-shadow(0 0 0.75rem black);
 
 .tabela-container1 {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
+    justify-content: space-between;
+    gap: 20px;
 }
 
 .tabela-container2 {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-}
-
-.tabela-container2 p{
-    color: #fff;
-}
-
-.coluna1 {
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-items: center; /* Centraliza o botão horizontalmente */
+    justify-content: center; /* Centraliza o botão verticalmente */
     text-align: center;
-    flex: 1;
-    margin: 0 10px;
-    height: 100%;
+    gap: 20px; /* Adiciona espaçamento entre os elementos */
 }
 
-.coluna2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
-    flex: 1;
-    margin: 0 10px;
-    height: 100%;
+.tabela-container2 p {
+    color: #fff; /* Define a cor do texto como branco */
+    font-size: 1.2rem; /* Ajusta o tamanho da fonte para melhor visibilidade */
+    text-align: center; /* Centraliza o texto */
 }
 
-.coluna3 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+.coluna1, .coluna2, .coluna3 {
     flex: 1;
-    margin: 0 10px;
-    height: 100%;
-    color: #000;
-}
-
-.coluna .tabela-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
+    text-align: center;
 }
 
 h2 {
-    color: white;
+    color: #fff;
+    background-color: #a20908;
     border-radius: 10px;
     padding: 15px;
-}
-
-.pedido {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.img1 {
-    width: 100px;
-    margin-bottom: 10px;
-}
-
-.img2 {
-    width: 50px;
 }
 
 .btn {
@@ -157,6 +119,7 @@ h2 {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .btn:hover {
@@ -193,7 +156,7 @@ header{
 }
 
 header.scroll{
-    background-color: #FF3131;
+    background-color: #a20908;
     position: fixed;
 }
 
@@ -216,7 +179,7 @@ header ul li{
 }
 
 header ul li a{
-    color: red;
+    color: #a20908;
     text-decoration: none;
     font-size: 1.5rem;
 }
@@ -227,22 +190,22 @@ header ul li a{
 
 .list-menu1:hover{
     transform: scale(1.3);
-    color: #FF3131;
+    color: #a20908;
 }
 
 .btn-conta button{
     background: none;
     border: none;
     cursor: pointer;
-    color: #FF3131;
-    border: solid #FF3131;
+    color: #a20908;
+    border: solid #a20908;
     padding: 5px;
     transition: 500ms;
     font-size: 1.5rem;
 }   
 
 .btn-conta button:hover{
-    background-color: #FF3131;
+    background-color: #a20908;
     color: #fff;
     border: solid #fff;
     transform: scale(1.3);
@@ -265,14 +228,14 @@ header ul li a{
     background: none;
     border: none;
     cursor: pointer;
-    color: #FF3131;
-    border: solid #FF3131;
+    color: #a20908;
+    border: solid #a20908;
     padding: 5px;
     transition: 500ms;
 }   
 
 .btn-conta button:hover{
-    background-color: #FF3131;
+    background-color: #a20908;
     color: #fff;
     border: solid #fff;
     transform: scale(1.3);
@@ -285,12 +248,12 @@ header ul li a{
 
 .conta.scroll:hover{
     background-color: #fff;
-    color: #FF3131;
+    color: #a20908;
     border: solid #fff;
 }
 
 footer {
-    background-color: #FF3131;
+    background-color: #000000;
     color: #fff;
     padding: 20px;
     text-align: center;
@@ -322,6 +285,25 @@ footer {
 .footer-container .footer-bottom {
     font-size: 1rem;
     color: #fff;
+}
+
+.area-restrita-section {
+    padding: 50px 10%;
+    background-color: #f9f9f9;
+}
+
+#checkout-pedidos img {
+    width: 100px;
+    margin: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#checkout-endereco, #checkout-pagamento {
+    font-size: 1.2rem;
+    color: #333;
+    text-align: left;
+    padding: 10px;
 }
 
 @media screen and (max-width: 768px){

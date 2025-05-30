@@ -73,7 +73,7 @@ header ul li a {
 }
 
 header ul li a:hover {
-    color: red;
+    color: #a20908;
 }
 
 header i{
@@ -91,7 +91,7 @@ header ul li{
 }
 
 header ul li a{
-    color: red;
+    color: #a20908;
     text-decoration: none;
     font-size: 1.5rem;
 }
@@ -102,22 +102,22 @@ header ul li a{
 
 .list-menu1:hover{
     transform: scale(1.3);
-    color: #FF3131;
+    color: #a20908;
 }
 
 .btn-conta button{
     background: none;
     border: none;
     cursor: pointer;
-    color: #FF3131;
-    border: solid #FF3131;
+    color: #a20908;
+    border: solid #a20908;
     padding: 5px;
     transition: 500ms;
     font-size: 1.5rem;
 }   
 
 .btn-conta button:hover{
-    background-color: #FF3131;
+    background-color: #a20908;
     color: #fff;
     border: solid #fff;
     transform: scale(1.3);
@@ -142,17 +142,17 @@ main .janelas {
 
 main .itens,
 .pagamento {
-    background-color: #FF3131;
-    color: #FFF;
+    background-color: #a20908; /* Fundo vermelho para destacar */
+    color: #FFF; /* Texto branco para contraste */
     width: 400px;
     height: auto;
     text-align: center;
     justify-content: center;
     align-items: center;
-    border-radius: 10px;
+    border-radius: 15px; /* Bordas arredondadas */
     display: flex;
     flex-direction: column;
-    box-shadow: 1px 1px 10px black;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
     padding: 20px;
     margin-bottom: 50px; /* Adiciona espaçamento entre a aba de pagamento e o footer */
 }
@@ -165,7 +165,7 @@ main .itens tr {
 .col1 {
     width: 100px;
     height: 100px;
-    border: solid #C62828 5px;
+    border: solid #a20908 5px;
     background-color: #fff;
     margin-bottom: 10%;
 }
@@ -187,44 +187,52 @@ main .itens ul li {
     margin-bottom: 10px;
 }
 
-.pagamento {
-    background-color: #FF3131;
+.pagamento h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
     color: #FFF;
-    width: 400px;
-    height: auto;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: 1px 1px 10px black;
-    padding: 20px;
-    margin-bottom: 50px; /* Adiciona espaçamento entre a aba de pagamento e o footer */
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto */
 }
 
+.pagamento label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    display: block;
+    color: #FFF;
+}
+
+.pagamento input,
 .pagamento select {
-    margin: 10px 0;
+    width: 90%;
     padding: 10px;
-    border-radius: 5px;
+    margin-bottom: 15px;
     border: none;
+    border-radius: 5px;
     font-size: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona sombra aos campos */
+}
+
+.pagamento input:focus,
+.pagamento select:focus {
+    outline: none;
+    box-shadow: 0px 0px 10px rgba(255, 49, 49, 0.8); /* Destaque ao focar */
 }
 
 .pagamento .btn {
     background-color: #FFF;
-    color: #FF3131;
+    color: #a20908;
     border: none;
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .pagamento .btn:hover {
-    background-color: #FF3131;
+    background-color: #a20908;
     color: #FFF;
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
 }
 
 main .pagamento h1 {
@@ -255,13 +263,13 @@ main .pagamento h1 {
 
 .pagamento li .forma {
     background-color: #fff;
-    color: #ff3131;
+    color: #a20908;
     border: 2px solid #fff;
     transition: 0.2s ease-in-out;
 }
 
 .pagamento li .forma:hover {
-    background-color: #ff3131;
+    background-color: #a20908;
     color: #fff;
 }
 
