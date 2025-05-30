@@ -11,6 +11,8 @@ a {
 }
 
 body {
+    background-image: url('../imgs/Background.jpeg');
+    background-size: cover;
     background-color: #fff;
     transition: opacity 0.5s ease-in-out;
     opacity: 0;

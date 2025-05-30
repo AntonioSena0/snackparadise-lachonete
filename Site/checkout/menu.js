@@ -22,6 +22,7 @@ document.getElementById('payment-form').addEventListener('submit', function(even
     const rua = document.getElementById('rua').value;
     const numero = document.getElementById('numero').value;
     const complemento = document.getElementById('complemento').value;
+    const preferencial = document.getElementById('preferencial').value;
     const formaPagamento = document.getElementById('forma').value;
 
     // Captura os itens do carrinho
@@ -29,7 +30,7 @@ document.getElementById('payment-form').addEventListener('submit', function(even
 
     // Cria um objeto com os dados do checkout
     const checkoutData = {
-        endereco: `Nome: ${nome}<br>Rua: ${rua}<br>Número: ${numero}<br>Complemento: ${complemento}`,
+        endereco: `Nome: ${nome}<br>Rua: ${rua}<br>Número: ${numero}<br>Complemento: ${complemento}<br>Atendimento Preferencial: ${preferencial}`,
         pagamento: formaPagamento,
         pedidos: carrinho
     };

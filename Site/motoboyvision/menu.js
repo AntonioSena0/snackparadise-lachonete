@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pedidosContainer.appendChild(li);
         });
 
-        // Exibe o endereço
+        // Exibe o endereço e atendimento preferencial
         const enderecoContainer = document.getElementById('checkout-endereco');
         enderecoContainer.innerHTML = checkoutData.endereco;
 
