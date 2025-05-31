@@ -70,7 +70,7 @@
         <div class="main-container">
             <div class="box">
                 <div class="forms">
-                    <form action="index.html" autocomplete="off" class="Entrar-Form">
+                    <form autocomplete="off" class="Entrar-Form" method="POST" action="../back/perfil/login_processo.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>
@@ -97,8 +97,7 @@
                                 <label>Senha</label>
 
                             </div>
-
-                            <a href="../Menu/index.html"><input type="submit" value="Entrar" class="botao-login"></a>
+                            <input type="submit" value="Entrar" class="botao-login" />
 
                             <p class="txt">
                                 Esqueceu a senha?
@@ -108,7 +107,7 @@
                         </div>
                     </form>
 
-                    <form action="index.html" autocomplete="off" class="Cadastrar-se-Form">
+                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/perfil/registro_processo.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>
@@ -120,39 +119,29 @@
                             <div class="toggle">Entrar</div>
                         </div>
 
-                        <div id="registerForm" class="form-atual">
-
+                        <div class="form-atual">
                             <div class="input-wrap">
-
-                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" name="username" required/>
+                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" name="username" required />
                                 <label>Nome</label>
-
                             </div>
 
                             <div class="input-wrap">
-
-                                <input type="email" class="input-field" id="email" autocomplete="off" id="email" name="email" required/>
+                                <input type="email" class="input-field" id="email" autocomplete="off" name="email" required />
                                 <label>Email</label>
-
                             </div>
 
                             <div class="input-wrap">
-
-                                <input type="password" minlength="4" class="input-field" id="password" autocomplete="off" id="password" name="senha" required/>
+                                <input type="password" minlength="4" class="input-field" id="password" autocomplete="off" name="senha" required />
                                 <label>Senha</label>
-
                             </div>
 
-                          <form id="registerForm" method="POST" action="../back/perfil/registro_processo.php">
                             <button type="submit" class="botao-login" id="registerButton">Cadastrar-se</button>
-                          </form>
 
                             <p class="txt">
                                 Cadastrando esta conta, você concorda com os
                                 <a href="#">Termos de Serviços</a> e
                                 <a href="#">Política de Privacidade</a>
                             </p>
-
                         </div>
                     </form>
                 </div>
@@ -197,7 +186,6 @@
   <script>
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
-    <script src="http://ajax.googleapis.com/ajax/libs/j"></script>
     <script src="menu.js"></script>
 </body>
 </html>

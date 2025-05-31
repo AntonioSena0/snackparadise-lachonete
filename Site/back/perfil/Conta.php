@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: ../Tela de login/index.html"); // Redireciona para a página de login se não estiver autenticado
+    header("Location: ../../Tela de login/index.html"); // agora ta redirecionando certo, antes tava procurando a pasta 'Tela de login' dentro da pasta 'back', que dava um erro
     exit();
 }
 
