@@ -12,6 +12,12 @@ a{
 }
 
 body {
+    display: flex; /* Define o layout flexível */
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o conteúdo ocupe toda a altura da tela */
+    margin: 0; /* Remove margens padrão */
     background-image: url('../img/background.jpg'); /* Certifique-se de que o caminho está correto */
     background-size: cover;
     background-repeat: no-repeat;
@@ -243,12 +249,13 @@ hr{
     border: solid #fff 2px;
 }
 
-main{
-    align-items: center;
-    justify-content: space-between;
+main {
     display: flex;
-    margin-top: 5%;
-    margin-bottom: 3.5%;
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    width: 100%; /* Ocupa toda a largura disponível */
+    text-align: center; /* Centraliza o texto */
 }
 
 .title{
@@ -278,10 +285,16 @@ main{
 }
 
 footer {
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    text-align: center; /* Centraliza o texto */
+    width: 100%;
+    margin-top: 30px;
     background-color: #000;
     color: #fff;
     padding: 50px; /* Reduz o espaçamento interno */
-    text-align: center;
 }
 
 .footer-container {
@@ -331,57 +344,122 @@ footer {
 }
 
 .auxilio-content {
-    flex: 1;
-    max-width: 1900px; /* Aumenta a largura máxima do box de texto */
-    text-align: center;
-    padding: 20px; /* Adiciona espaçamento interno */
-    margin-right: auto; /* Faz o box ocupar mais espaço à direita */
+    display: flex;
+    flex-direction: column; /* Organiza os textos em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    text-align: center; /* Centraliza o texto dentro do container */
+    margin: 30px auto; /* Adiciona espaçamento ao redor dos textos */
+    width: 100%; /* Ocupa toda a largura disponível */
 }
 
 .auxilio-title {
-    font-size: 3rem;
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 33.7pt;
+    font-weight: bold;
     color: #a20908;
-    margin-bottom: 20px;
+    text-align: center; /* Centraliza o título */
+    margin: 20px auto; /* Reduz o espaçamento ao redor do título */
 }
 
 .auxilio-text {
-    font-size: 1.5rem;
-    color: #333;
+    font-family: "Lato", sans-serif;
+    font-size: 22pt;
+    color: #000000;
     line-height: 1.6;
-    margin-bottom: 30px;
-    
-    padding: 0 20px; /* Adiciona espaçamento lateral */
+    max-width: 800px; /* Limita a largura do texto para melhor legibilidade */
+    text-align: center; /* Centraliza o texto */
+    margin: 10px auto; /* Reduz o espaçamento ao redor do texto */
 }
 
-.auxilio-button {
-    display: inline-block;
-    padding: 15px 30px;
-    font-size: 1.2rem;
-    color: #fff;
-    background-color: #a20908;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+.auxilio-box {
+    border: 3px solid #FFD700; /* Bordas amarelas */
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px;
+    background-color: #FFF;
 }
 
-.auxilio-button:hover {
-    background-color: #d62b2b;
-}
 
-.auxilio-images {
-    flex: 1;
-    max-width: 600px;
+.auxilio-boxes {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap; /* Permite que os boxes se ajustem em telas menores */
+    justify-content: center; /* Centraliza os boxes horizontalmente */
+    gap: 20px; /* Espaçamento entre os boxes */
+    margin-top: 30px;
+}
+
+.box-title {
+    font-family: "Merriweather Sans", sans-serif;
+    font-size: 22.9pt;
+    font-weight: bold;
+    font-style: italic;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+    background-color: #a20908; /* Fundo vermelho */
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.box-content {
+    display: flex;
+    flex-direction: column;
     gap: 20px;
 }
 
-.auxilio-img {
-    width: 100%;
-    max-width: 250px;
+.box-item {
+    display: flex;
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    text-align: center; /* Centraliza o texto */
+    width: calc(50% - 20px); /* Cada box ocupa 50% da largura menos o espaçamento */
+    border: 2px solid #FFD700; /* Bordas amarelas */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    background-color: #FFF;
+}
+
+.box-item h3 {
+    font-family: "Roboto Condensed", sans-serif;
+    font-size: 30pt;
+    font-weight: bold;
+    color: #a20908;
+    text-align: center; /* Centraliza o título dos boxes */
+    margin-bottom: 10px;
+}
+
+.box-item p {
+    font-family: "Lato", sans-serif;
+    font-size: 21pt;
+    color: #000000;
+    line-height: 1.6;
+    text-align: center; /* Alinha o texto de forma centralizada */
+}
+
+.box-img {
+    width: 150px; /* Aumenta a largura do ícone */
+    height: auto; /* Mantém a proporção da altura */
+    margin: 10px 0; /* Adiciona espaçamento ao redor da imagem */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+}
+
+.lampada-img {
+    width: 80px; /* Define a largura menor */
+    height: auto; /* Mantém a proporção da altura */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+    margin: 10px 0; /* Adiciona espaçamento ao redor da imagem */
+}
+
+.box-letter {
+    font-size: 100px; /* Define o tamanho da letra */
+    font-weight: bold; /* Deixa a letra em negrito */
+    color: #a20908; /* Cor vermelha para combinar com o tema */
+    text-align: center; /* Centraliza a letra */
+    margin: 10px 0; /* Adiciona espaçamento ao redor da letra */
 }
 
 @media screen and (max-width: 768px){
