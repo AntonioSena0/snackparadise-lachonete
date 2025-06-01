@@ -344,13 +344,20 @@ footer {
 }
 
 .auxilio-content {
-    display: flex;
-    flex-direction: column; /* Organiza os textos em coluna */
-    align-items: center; /* Centraliza horizontalmente */
-    justify-content: center; /* Centraliza verticalmente */
-    text-align: center; /* Centraliza o texto dentro do container */
-    margin: 30px auto; /* Adiciona espaçamento ao redor dos textos */
-    width: 100%; /* Ocupa toda a largura disponível */
+    flex: 1;
+    padding: 20px;
+    max-width: 600px; /* Limita a largura do conteúdo */
+    margin: 20px; /* Adiciona espaçamento ao redor do conteúdo */
+    background-color: #fff; /* Fundo branco para o conteúdo */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra ao conteúdo */
+    display: flex; /* Organiza o texto e a imagem lado a lado */
+    align-items: center; /* Centraliza verticalmente o texto e a imagem */
+    justify-content: space-between; /* Posiciona os elementos com espaço entre eles */
+    gap: 20px; /* Espaçamento entre o texto e a imagem */
+    margin: 30px auto; /* Adiciona espaçamento ao redor do conteúdo */
+    max-width: 800px; /* Limita a largura do container */
+    
 }
 
 .auxilio-title {

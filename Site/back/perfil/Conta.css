@@ -1,0 +1,88 @@
+@import url('https://fonts.cdnfonts.com/css/biko');
+
+body {
+    font-family: 'Biko', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+}
+
+.container h1 {
+    font-size: 2rem;
+    color: #a20908;
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.container .status {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.container .profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #a20908;
+    margin-bottom: 20px;
+}
+
+.container .btn-voltar {
+    display: inline-block;
+    background-color: #a20908;
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.container .btn-voltar:hover {
+    background-color: #FF3131;
+    transform: scale(1.05);
+}
+
+.container .upload-section {
+    margin-top: 20px;
+}
+
+.container .upload-section input[type="file"] {
+    display: none;
+}
+
+.container .upload-section label {
+    display: inline-block;
+    background-color: #a20908;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.container .upload-section label:hover {
+    background-color: #FF3131;
+    transform: scale(1.05);
+}
