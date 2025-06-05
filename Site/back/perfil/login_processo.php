@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         $conn = Conectar::getInstance();
-        $sql = $conn->prepare("SELECT * FROM users WHERE email = :email");
+        $sql = $conn->prepare("SELECT * FROM users WHERE email LIKE :email");
         $sql->bindParam(':email', $email);
         $sql->execute();
         $user = $sql->fetch(PDO::FETCH_ASSOC);
