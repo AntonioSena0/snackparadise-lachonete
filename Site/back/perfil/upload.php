@@ -8,7 +8,12 @@ if (!isset($_SESSION['user'])) {
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profilePicture'])) {
     $targetDir = "uploads/";
-    $targetFile = $targetDir . basename($_FILES['profilePicture']['name']);
+    if (!is_dir($targetDir)) {
+        mkdir($targetDir, 0777, true); // Ensure the uploads directory exists
+    }
+
+    $fileName = uniqid() . "_" . basename($_FILES['profilePicture']['name']); // Prevent overwriting files
+    $targetFile = $targetDir . $fileName;
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 
@@ -21,11 +26,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profilePicture'])) {
         $uploadOk = 0;
     }
 
-    // Verifica o tamanho do arquivo
-    if ($_FILES['profilePicture']['size'] > 500000) {
-        echo "O arquivo é muito grande.";
-        $uploadOk = 0;
-    }
 
     // Permite apenas certos formatos de arquivo
     if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg") {

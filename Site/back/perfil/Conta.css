@@ -45,6 +45,10 @@ body {
     object-fit: cover;
     border: 3px solid #a20908;
     margin-bottom: 20px;
+    display: block; /* Ensure the image is treated as a block element */
+    overflow: hidden; /* Prevent any overflow outside the circle */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
 }
 
 .container .btn-voltar {

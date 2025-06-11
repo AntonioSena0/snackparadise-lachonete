@@ -17,7 +17,7 @@ $user = $_SESSION['user'];
 </head>
 <body>
     <div class="container">
-        <img src="<?php echo isset($user['profile_picture']) ? $user['profile_picture'] : 'default-profile.png'; ?>" alt="Foto de Perfil" class="profile-picture">
+        <img src="<?php echo isset($user['profile_picture']) && file_exists($user['profile_picture']) ? $user['profile_picture'] : 'default-profile.png'; ?>" alt="Foto de Perfil" class="profile-picture">
         <h1>Bem-vindo, <?php echo htmlspecialchars($user['username']); ?>!</h1>
         <p><strong>E-mail:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
         <p class="status"><strong>Status:</strong> <?php echo isset($user['partner']) && $user['partner'] ? 'Parceiro' : 'Não é parceiro'; ?></p>
