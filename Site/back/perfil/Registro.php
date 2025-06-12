@@ -104,5 +104,22 @@ class Registro
         } catch (PDOException $exc) {
             echo "Erro ao executar consulta: " . $exc->getMessage();
         }
+
+        function logar()
+        {
+            try {
+                $this-> conn = new Conectar; // Conectar método getConnection()
+                $sql = $this->conn->prepare("SELECT * FROM users WHERE email = LIKE ? and pasword = :?");
+                @$sql->bindValue(1, $this->getEmail());
+                @$sql->bindValue(2, $this->getPasword());
+                $sql->execute();
+                return $sql->fetchAll();
+                $this->conn = null; // Fechar conexão
+            } catch (PDOException $exc) {
+               echo "<span class='text-green-200'>Erro ao executar consulta: <span> " . $exc->getMessage();
+                
+            }
+        }
     }
 }
+?>

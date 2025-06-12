@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snack Paradise</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="../img's/Logo.png" type="image/x-icon">
+</head>
+<body>
+
+    <header id="header">
+
+        <div class="container">
+
+            <div class="flex">
+
+                <nav>
+                    <ul>
+                        <li class="list-menu2">
+                            <button class="btn-ativação" id="btn-ativação">☰</button>
+                            <div class="barralateral" id="barralateral">
+                                <a href="../Menu/index.html" target="_self">Início</a>
+                                <a href="../Perfil/index.html" target="_self">Perfil</a>
+                                <a href="#" target="_self">Pontos</a>
+                                <a href="#" target="_self">Seja Parceiro</a>
+                                <a href="#" target="_self">Avaliações</a>
+                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
+                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
+                            </div>
+                        </li>
+                        <li class="list-menu1">
+                            <button id="btn-cardapio">&darr;Cardápio</button>
+                            <div class="submenu" id="submenu">
+                                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
+                                <hr>
+                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
+                                <hr>
+                                <a href="#" target="_self"><button>Bebidas</button></a>
+                            </div>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">Promoções</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">Pedidos</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">App SP</a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div class="btn-conta">
+
+                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Conta</button></a>
+
+                </div><!--btn-conta-->
+
+            </div><!--Flex-->
+
+        </div><!--container-->
+
+    </header><!--header-->
+
+
+    <main>
+
+        <div class="main-container">
+            <div class="box">
+                <div class="forms">
+                    <form autocomplete="off" class="Entrar-Form" method="POST" action="../back/perfil/login_processo.php">
+                        <div class="logo2">
+                            <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
+                            <h4>SnackParadise</h4>
+                        </div>
+
+                        <div id="loginForm" class="txt-inicial">
+                            <h2>Bem Vindo de Volta</h2>
+                            <h6>Ainda não possui uma conta?</h6>
+                            <div class="toggle">Cadastrar-se</div>
+                            <h6>Quer ser Motoboy?</h6><br>
+                         <a href="cadastrar_motoboy.php" class="toggle">Clique aqui</a>
+                        </div>
+                        
+                
+                        <div class="form-atual">
+
+                            <div class="input-wrap">
+
+                                <input type="email" minlength="4" class="input-field" autocomplete="off" id="loginEmail" name="email" required/>
+                                <label>Email</label>
+
+                            </div>
+
+                            <div class="input-wrap">
+
+                                <input type="password" minlength="4" class="input-field" autocomplete="off"  id="loginPassword" name="password" required/>
+                                <label>Senha</label>
+
+                            </div>
+
+                            <div class="error-message" style="color: red; text-align: center;">
+                                <?php
+                                session_start();
+                                if (isset($_SESSION['login_error'])) {
+                                    echo htmlspecialchars($_SESSION['login_error']);
+                                    unset($_SESSION['login_error']);
+                                }
+                                ?>
+                            </div>
+
+                            <input type="submit" value="Entrar" class="botao-login" />
+
+                            <p class="txt">
+                                Esqueceu a senha?
+                                <a href="#">Obter ajuda</a> para iniciar sessão
+                            </p>
+
+                        </div>
+                    </form>
+
+                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/perfil/registro_processo.php">
+                        <div class="logo2">
+                            <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
+                            <h4>SnackParadise</h4>
+                        </div>
+
+                        <div class="txt-inicial">
+                            <h2>Seja Bem Vindo</h2>
+                            <h6>Já tem uma conta?</h6>
+                            <div class="toggle">Entrar</div>
+                        </div>
+
+                        <div class="form-atual">
+                            <div class="input-wrap">
+                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" name="username" required />
+                                <label>Nome</label>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input type="email" class="input-field" id="email" autocomplete="off" name="email" required />
+                                <label>Email</label>
+                            </div>
+
+                            <div class="input-wrap">
+                                <input type="password" minlength="4" class="input-field" id="password" autocomplete="off" name="senha" required />
+                                <label>Senha</label>
+                            </div>
+
+                            <button type="submit" class="botao-login" id="registerButton">Cadastrar-se</button>
+
+                            <p class="txt">
+                                Cadastrando esta conta, você concorda com os
+                                <a href="#">Termos de Serviços</a> e
+                                <a href="#">Política de Privacidade</a>
+                            </p>
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="carrossel">
+                    <div class="imagens">
+                        <img src="../imgs/Slider-Login/1.png" class="imagem img-1 mostrar" alt="Sobre nós">
+                        <img src="../imgs/Slider-Login/2.png" class="imagem img-2" alt="Junte se a nós">
+                        <img src="../imgs/Slider-Login/3.png" class="imagem img-3" alt="Tenha a melhor experiência">
+                        <div class="bullets">
+                            <span class="active" data-value="1"></span>
+                            <span data-value="2"></span>
+                            <span data-value="3"></span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </main>
+        
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../Menu/index.html">Início</a>
+                <a href="../Quem somos/index.html">Sobre</a>
+                <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
+                <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SnackParadise. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+    <script src="menu.js"></script>
+    <script>
+        const loginForm = document.querySelector('.Entrar-Form');
+        loginForm.addEventListener('submit', function (event) {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            if (!email || !password) {
+                event.preventDefault();
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+    </script>
+    <style>
+        .motoboy-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-motoboy {
+            display: inline-block;
+            background-color: #a20908;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-motoboy:hover {
+            background-color: #FF3131;
+            transform: scale(1.05);
+        }
+    </style>
+</body>
+</html>
