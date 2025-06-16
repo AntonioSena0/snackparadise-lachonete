@@ -8,3 +8,13 @@ CREATE TABLE users (
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(25) NOT NULL
 );
+
+CREATE TABLE motoboys (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    vehicle_type VARCHAR(50) NOT NULL,
+    license_plate VARCHAR(20) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
