@@ -118,10 +118,10 @@ header .list-menu1 a:hover, #btn-cardapio:hover{
 }
 
 .submenu button{
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     background-color: #a20908;
     color: #fff;
-    width: 30vh;
+    width: 15vw;
     height: 10vh;
     align-items: center;
     justify-content: center;   
@@ -337,6 +337,15 @@ footer {
     font-size: 1rem;
 }
 
+@media (max-width: 1489px){
+    .flex{      
+        text-align: center;
+    }
+    .submenu button{
+        font-size: 1rem;
+        width: 20vw;
+    }
+}
 @media screen and (max-width: 950px){
     header{
         height: 200px;
@@ -348,7 +357,6 @@ footer {
         padding: 20px;
     }
     .flex{      
-        text-align: center;
         margin-left: 30vw;
         margin-right: 30vw;
     }
@@ -373,6 +381,9 @@ footer {
         margin: 0;
         padding: 0;
         border: 0;
+    }
+    .submenu button{
+        width: 25vw;
     }
 }
 @media screen and (max-width: 850px){
@@ -443,6 +454,9 @@ footer {
     }
     .btn-conta button{
         font-size: 1rem;
+    }
+    .submenu button{
+        width: 34vw;
     }
 }
 
