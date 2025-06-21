@@ -38,6 +38,7 @@ header{
     background-color: #fff;
     width: 100%;
     padding: 20px 4%;
+    padding-top: 40px;
     position: relative;
     z-index: 1;
     height: 125px;
@@ -51,6 +52,7 @@ header{
     position: fixed;
     height: 100px;
     background-color: #a20908;
+    padding-top: 30px;
 }
 
 #header.scroll .list-menu1 a{
@@ -119,7 +121,7 @@ header .list-menu1 a:hover, #btn-cardapio:hover{
     font-size: 1.5rem;
     background-color: #a20908;
     color: #fff;
-    width: 25vh;
+    width: 30vh;
     height: 10vh;
     align-items: center;
     justify-content: center;   
@@ -143,7 +145,7 @@ hr{
 }
 
 #barralateral {
-    margin-top: 20px;
+    margin-top: 54px;
     height: 100%;
     width: 200px;
     position: fixed;
@@ -151,6 +153,7 @@ hr{
     background-color: #fff;
     transition: left 0.3s ease-in-out; 
     z-index: 1;
+    transition: 500ms ease-in-out;
 }
 
 #barralateral a{
@@ -169,6 +172,8 @@ hr{
 
 #barralateral.scroll{
     background-color: #a20908;
+    margin-top: 29px;
+    
 }
 
 #barralateral.scroll a{
@@ -332,12 +337,51 @@ footer {
     font-size: 1rem;
 }
 
+@media screen and (max-width: 950px){
+    header{
+        height: 200px;
+        position: absolute;
+    }
+    #header.scroll{
+        height: 250px;
+        position: absolute;
+        padding: 20px;
+    }
+    .flex{      
+        text-align: center;
+        margin-left: 30vw;
+        margin-right: 30vw;
+    }
+    main{
+        padding-top: 200px;
+    }
+    #barralateral{
+        margin-top: 125px;
+    }
+    #barralateral.scroll{
+        margin-top: -32px;
+        height: 101vh;
+    }
+    #btn-ativação.scroll{
+        position: fixed;
+        left: 10px;
+        height: 50px;
+    }
+    .img1{
+        height: 0;
+        width: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+}
 @media screen and (max-width: 850px){
     .botão1, .botão2 {
         height: 200px;
         width: 250px;
         font-size: 2rem;
     }
+    
 }
 
 @media screen and (max-width: 768px){
@@ -389,7 +433,7 @@ footer {
         display: flex;
         flex-direction: column;
     }
-
+    
 }
 
 
@@ -418,6 +462,7 @@ footer {
     .btn-conta button{
         font-size: 0.7rem;
     }
+    
 }
 
 @media (max-width: 508px) {
