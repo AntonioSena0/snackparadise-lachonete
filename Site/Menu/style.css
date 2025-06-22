@@ -54,7 +54,6 @@ header{
     background-color: #a20908;
     padding-top: 30px;
 }
-
 #header.scroll .list-menu1 a{
     color: #fff;
 }
@@ -300,6 +299,9 @@ hr{
 .img1{
     border-radius: 10px;
     border: solid yellow 3px;
+    width: 40vw;
+    margin-right: 10vw;
+    margin-left: 5vw;
 }
 
 footer {
@@ -350,9 +352,10 @@ footer {
     header{
         height: 200px;
         position: absolute;
+        padding: 20px;
     }
     #header.scroll{
-        height: 250px;
+        height: 200px;
         position: absolute;
         padding: 20px;
     }
@@ -367,8 +370,9 @@ footer {
         margin-top: 125px;
     }
     #barralateral.scroll{
-        margin-top: -32px;
-        height: 101vh;
+        position: fixed;
+        height: 110vh;
+        margin-top: -43px;
     }
     #btn-ativação.scroll{
         position: fixed;
@@ -444,7 +448,12 @@ footer {
         display: flex;
         flex-direction: column;
     }
-    
+    .btn-conta button{
+        font-size: 0.7rem;
+    }
+    #header.scroll{
+        height: 230px;
+    }
 }
 
 
@@ -473,9 +482,7 @@ footer {
     header ul li{
         padding: 0;
     }
-    .btn-conta button{
-        font-size: 0.7rem;
-    }
+    
     
 }
 
