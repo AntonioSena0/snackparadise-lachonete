@@ -114,7 +114,7 @@
                         </div>
                     </form>
 
-                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/perfil/registro_processo.php">
+                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/perfil/registro_motoboy.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>
@@ -142,11 +142,15 @@
                                 <label>Senha</label>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" name="username" required />
-                                <label>Tipo de Veiculo</label>
+                                <select class="input-field" id="tipovel" name="tipovel" required>
+                                    <option value="" disabled selected> </option>
+                                    <option value="carro">Carro</option>
+                                    <option value="moto">Moto</option>
+                                </select>
+                                <label>Tipo de Veículo</label>
                             </div>
                             <div class="input-wrap">
-                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" name="username" required />
+                                <input type="text" minlength="7" maxlength="7" class="input-field" autocomplete="off" id="placa" name="placa" required />
                                 <label>Numero de Placa</label>
                             </div>
 
@@ -204,6 +208,26 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
     <script src="menu.js"></script>
+    <script>
+    document.getElementById("placa").addEventListener("input", function (e) {
+    this.value = this.value.toUpperCase();
+    this.value = this.value.replace(/[^A-Z0-9]/g, '');
+    if (this.value.length > 7) {
+        this.value = this.value.slice(0, 7);
+     }
+});
+document.getElementById("registerForm").addEventListener("submit", function (e) {
+  const placa = document.getElementById("placa").value.toUpperCase();
+  const regexAntiga = /^[A-Z]{3}[0-9]{4}$/;
+  const regexMercosul = /^[A-Z]{3}[0-9][A-Z][0-9]{2}$/;
+
+  if (!regexAntiga.test(placa) && !regexMercosul.test(placa)) {
+    e.preventDefault(); // impede o envio
+    alert("Placa inválida! Use o formato AAA1234 ou ABC1D23.");
+  }
+});
+</script>
+
     <script>
         const loginForm = document.querySelector('.Entrar-Form');
         loginForm.addEventListener('submit', function (event) {
