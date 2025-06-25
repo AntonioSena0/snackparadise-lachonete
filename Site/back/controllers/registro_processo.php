@@ -1,5 +1,5 @@
 <?php
-include_once 'Conexao.php';
+include_once __DIR__ . '/../config/Conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['senha'])) {
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             session_start();
             $_SESSION['user'] = ['username' => $username, 'email' => $email];
-            header("Location: Conta.php");
+            header("Location: ../views/Conta.php");
             exit();
         } catch (PDOException $e) {
             echo "Erro ao cadastrar: " . $e->getMessage();
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql->execute();
 
             echo "Motoboy cadastrado com sucesso!";
-            header("Location: Conta.php");
+            header("Location: ../views/Conta.php");
             exit();
         } catch (PDOException $e) {
             echo "Erro ao cadastrar motoboy: " . $e->getMessage();

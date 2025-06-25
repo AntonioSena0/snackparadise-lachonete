@@ -1,5 +1,5 @@
 <?php
-include_once 'Conexao.php';
+include_once __DIR__ . '/../config/Conexao.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = filter_var($_POST['username'], FILTER_SANITIZE_STRING);

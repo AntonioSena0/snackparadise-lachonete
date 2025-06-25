@@ -13,7 +13,7 @@ $user = $_SESSION['user'];
 <head>
     <meta charset="UTF-8">
     <title>Conta do Usuário</title>
-    <link rel="stylesheet" href="Conta.css">
+    <link rel="stylesheet" href="../public/Conta.css">
 </head>
 <body>
     <div class="container">

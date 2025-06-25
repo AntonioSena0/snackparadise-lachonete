@@ -1,6 +1,6 @@
 <?php
 
-include_once 'Conexao.php'; 
+include_once __DIR__ . '/../config/Conexao.php'; 
 
 // Classe Produto
 class Registro

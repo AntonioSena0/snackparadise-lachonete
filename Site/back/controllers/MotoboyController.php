@@ -1,0 +1,3 @@
+<?php
+// ...existing code from registro_processo.php e registro_motoboy.php...
+?>

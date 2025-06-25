@@ -1,5 +1,5 @@
 <?php
-include_once 'Conexao.php';
+include_once __DIR__ . '/../config/Conexao.php';
 
 session_start(); // iniciar sessão no começo do arquivo
 
@@ -30,17 +30,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'partner' => $user['partner'] ?? false
             ]; // Store only necessary user data in the session
 
-            header("Location: Conta.php");
+            header("Location: ../views/Conta.php");
             exit();
         } else {
             $_SESSION['login_error'] = "E-mail ou senha inválidos.";
-            header("Location: Conta.php");
+            header("Location: ../views/Conta.php");
             exit();
         }
     } catch (Exception $e) {
         error_log("Erro ao conectar ou autenticar: " . $e->getMessage()); // Log the error
         $_SESSION['login_error'] = "Não foi possível processar sua solicitação no momento. Tente novamente mais tarde.";
-        header("Location: Conta.php");
+        header("Location: ../views/Conta.php");
         exit();
     }
 }
