@@ -14,7 +14,7 @@ document.querySelectorAll("a").forEach(link => {
 });
 
 // Formulário de pagamento
-document.getElementById('payment-form').addEventListener('submit', function(event) {
+document.getElementById('payment-form').addEventListener('submit', async function(event) {
     event.preventDefault();
 
     // Captura os dados do formulário
@@ -35,8 +35,24 @@ document.getElementById('payment-form').addEventListener('submit', function(even
         pedidos: carrinho
     };
 
-    // Armazena os dados no localStorage
+    // Salva no localStorage para a tela do motoboy
     localStorage.setItem('checkoutData', JSON.stringify(checkoutData));
+
+    // Envia para o backend (AJAX)
+    try {
+        await fetch('../back/controllers/criar_pedido.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                email: localStorage.getItem('userEmail') || nome, // ou outro identificador
+                pedidos: carrinho,
+                endereco: checkoutData.endereco,
+                pagamento: formaPagamento
+            })
+        });
+    } catch (e) {
+        alert('Erro ao registrar pedido no servidor!');
+    }
 
     // Redireciona para a página "Motoboy Vision"
     window.location.href = '../motoboyvision/index.html';
@@ -147,9 +163,9 @@ function carregarCarrinhoNoCheckout() {
     // Adiciona os itens ao checkout
     carrinho.forEach((item) => {
         const li = document.createElement('li');
-        li.textContent = `${item.nome} - R$ ${item.preco.toFixed(2)}`;
+        li.textContent = `${item.nome} (x${item.quantidade}) - R$ ${(item.preco * item.quantidade).toFixed(2)}`;
         itensCheckout.appendChild(li);
-        total += item.preco;
+        total += item.preco * item.quantidade;
     });
 
     // Atualiza o total no checkout
