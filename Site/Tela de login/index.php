@@ -121,7 +121,7 @@
                         </div>
                     </form>
 
-                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/perfil/registro_processo.php">
+                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/controllers/registro_processo.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>
