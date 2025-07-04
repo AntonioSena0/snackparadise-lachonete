@@ -6,7 +6,7 @@ CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    senha VARCHAR(25) NOT NULL
+    senha VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE motoboys (
