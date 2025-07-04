@@ -12,31 +12,41 @@ document.querySelectorAll("a").forEach(link => {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Recupera os dados do checkout armazenados no localStorage
-    const checkoutData = JSON.parse(localStorage.getItem('checkoutData'));
+document.addEventListener('DOMContentLoaded', async function() {
+    const pedidosContainer = document.getElementById('checkout-pedidos');
+    pedidosContainer.innerHTML = 'Carregando pedidos...';
 
-    if (checkoutData) {
-        // Exibe os pedidos
-        const pedidosContainer = document.getElementById('checkout-pedidos');
-        pedidosContainer.innerHTML = ''; // Limpa o container
-        checkoutData.pedidos.forEach(pedido => {
+    try {
+        const response = await fetch('../back/controllers/listar_pedidos.php');
+        const pedidos = await response.json();
+
+        pedidosContainer.innerHTML = '';
+        pedidos.forEach(pedido => {
             const li = document.createElement('li');
-            li.textContent = `${pedido.nome} - R$ ${pedido.preco.toFixed(2)}`;
+            li.innerHTML = `
+                <strong>ID:</strong> ${pedido.id}<br>
+                <strong>Email:</strong> ${pedido.usuario_email}<br>
+                <strong>Itens:</strong> ${JSON.parse(pedido.itens).map(item => `${item.nome} (x${item.quantidade})`).join(', ')}<br>
+                <strong>Endereço:</strong> ${pedido.endereco}<br>
+                <strong>Pagamento:</strong> ${pedido.pagamento}<br>
+                <strong>Data:</strong> ${pedido.criado_em}
+                <hr>
+            `;
             pedidosContainer.appendChild(li);
         });
-
-        // Exibe o endereço e atendimento preferencial
-        const enderecoContainer = document.getElementById('checkout-endereco');
-        enderecoContainer.innerHTML = checkoutData.endereco;
-
-        // Exibe a forma de pagamento
-        const pagamentoContainer = document.getElementById('checkout-pagamento');
-        pagamentoContainer.textContent = checkoutData.pagamento;
-    } else {
-        // Caso não haja dados, exibe uma mensagem
-        document.getElementById('checkout-pedidos').textContent = 'Nenhum pedido encontrado.';
-        document.getElementById('checkout-endereco').textContent = 'Endereço não informado.';
-        document.getElementById('checkout-pagamento').textContent = 'Forma de pagamento não informada.';
+    } catch (e) {
+        pedidosContainer.innerHTML = 'Erro ao carregar pedidos!';
     }
 });
+
+// Exemplo de função para aceitar pedido
+async function aceitarPedido(pedidoId) {
+    const resposta = await fetch('../back/controllers/aceitar_pedido.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pedido_id: pedidoId })
+    });
+    const texto = await resposta.text();
+    alert(texto);
+    // Atualize a lista de pedidos ou mova o pedido para a área de entregas
+}

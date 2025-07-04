@@ -28,9 +28,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'email' => $user['email'],
                 'profile_picture' => $user['profile_picture'] ?? null,
                 'partner' => $user['partner'] ?? false
-            ]; // Store only necessary user data in the session
-
-            header("Location: ../views/Conta.php");
+            ]; 
+            // Exemplo de código após validação do login
+            $_SESSION['usuario_id'] = $user['id'];
+            $_SESSION['usuario_nome'] = $user['username'];
+            $_SESSION['usuario_email'] = $user['email'];
+            // Redirecione para a página principal ou conta
+            header("Location: ../../Cardápio/index.html");
             exit();
         } else {
             $_SESSION['login_error'] = "E-mail ou senha inválidos.";

@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -70,7 +73,7 @@
         <div class="main-container">
             <div class="box">
                 <div class="forms">
-                    <form autocomplete="off" class="Entrar-Form" method="POST" action="../back/perfil/login_processo.php">
+                    <form autocomplete="off" class="Entrar-Form" method="POST" action="../back/controllers/login_processo.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>
@@ -121,7 +124,7 @@
                         </div>
                     </form>
 
-                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/perfil/registro_processo.php">
+                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/controllers/registro_processo.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>
