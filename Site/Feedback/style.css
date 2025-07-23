@@ -1,0 +1,540 @@
+@import url('https://fonts.cdnfonts.com/css/biko');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Biko", sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    overflow-x: hidden;
+}
+
+body.loaded {
+    opacity: 2;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    flex: 1;
+}
+.container{
+    max-width: 1500px;
+    max-height: 720px;
+    margin: auto;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header{
+    background-color: #fff;
+    width: 100%;
+    padding: 20px 4%;
+    padding-top: 40px;
+    position: relative;
+    z-index: 1;
+    height: 125px;
+    top: 0;
+    left: 0;
+    box-shadow: 2px 2px 20px #000;
+    transition: 500ms ease-in-out;
+}
+
+#header.scroll{
+    position: fixed;
+    height: 100px;
+    background-color: #a20908;
+    padding-top: 30px;
+}
+#header.scroll .list-menu1 a{
+    color: #fff;
+}
+
+#header.scroll .list-menu1 button{
+    color: #fff;
+}
+
+header i{
+    font-size: 30px;
+    color: #fff;
+}
+
+header ul{
+    list-style-type: none;
+}
+
+header ul li{
+    display: inline-block;
+    margin: 0 80px;
+}
+
+header .list-menu1 a, #btn-cardapio{
+    color: #a20908;
+    text-decoration: none;
+    font-size: 1.8rem;
+    transition: 500ms ease-in-out   ;
+}
+
+header .list-menu1 a:hover, #btn-cardapio:hover{
+    color: red;
+}
+
+#btn-cardapio{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.submenu{
+    border: solid yellow 2px;
+    flex-direction: column;
+    background:none;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    color: #fff; 
+    z-index: 1;
+    animation: aparecer 0.5s;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.submenu button{
+    font-size: 1.45rem;
+    background-color: #a20908;
+    color: #fff;
+    width: 15vw;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;   
+    transition: 0.3s ease-in-out; 
+}
+
+hr{
+    height: 3px;
+    border: solid 2px yellow;
+}
+
+.submenu button:hover{
+    transform: translateY(-3px);
+    background-color: #d62b2b;
+    cursor: pointer;
+}
+
+.submenu button:active{
+    transform: translateY(2px);
+    background-color: #ff1c1c;
+}
+
+#barralateral {
+    margin-top: 54px;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    left: -200px;
+    background-color: #fff;
+    transition: left 0.3s ease-in-out; 
+    z-index: 1;
+    transition: 500ms ease-in-out;
+}
+
+#barralateral a{
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #000;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+#barralateral a:hover{
+    background-color: #a20908;
+    color: #fff;
+}
+
+#barralateral.scroll{
+    background-color: #a20908;
+    margin-top: 29px;
+    
+}
+
+#barralateral.scroll a{
+    color: #fff;
+}
+
+#barralateral.scroll a:hover{
+    background-color: #fff;
+    color: #a20908;
+}
+
+.btn-ativação{
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 2;
+    font-size: 18px;
+}
+
+.btn-ativação.active {
+    background-color: #a20908;
+    border-radius: 10px; 
+}
+
+#btn-ativação.scroll{
+    border: solid #fff 3px;
+}
+
+.btn-conta button{
+    font-size: 1.7rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #a20908;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 500ms;
+}   
+
+.btn-conta button:hover{
+    background-color: #FF3131;
+    transform: scale(1.2);
+}
+
+.btn-conta a{
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    line-height: 40px;
+}
+
+#btn-conta.scroll{
+    background-color: #fff;
+    color: #a20908;
+}
+
+#btn-conta.scroll:hover{
+    background-color: #a20908;
+    color: #fff;
+    border: solid #fff 2px;
+}
+
+.main-part{
+    display: inline-flex;
+    justify-content: space-between;
+    gap: 100px;
+    margin-left: 20%;
+}
+
+.texto{ 
+    text-align: center;
+    font-size: 2.1rem;
+    margin-bottom: 20px;
+    color: #FFF;
+    margin: 50px;
+    font-weight: bold;
+}
+
+.line{
+    margin: auto;
+    border: solid yellow 3px;
+    width: 70%;
+}
+
+.btn-opcoes{
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.botão1, .botão2 {
+    cursor: pointer;
+    height: 250px;
+    width: 400px;
+    transition: 0.3s ease-in-out;
+    border-radius: 25px;
+    background-color: #fff;
+    background-color: #a20908;
+    color: #fff;
+    font-size: 4rem;
+}
+
+.botão1:hover, .botão2:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px #FF3131;
+    border: yellow solid 3px;
+}
+
+.botão1:active, .botão2:active {
+    transform: translateY(2px);
+    background-color: red;
+}
+
+.img1{
+    border-radius: 10px;
+    border: solid yellow 3px;
+    width: 40vw;
+    margin-right: 10vw;
+    margin-left: 5vw;
+}
+
+footer {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-container .footer-links {
+    margin-bottom: 20px;
+}
+
+.footer-container .footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1rem;
+}
+
+.footer-container .footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-container .footer-bottom {
+    font-size: 1rem;
+}
+.centralizar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 5%;
+}
+
+@media (max-width: 1489px){
+    .flex{      
+        text-align: center;
+    }
+    .submenu button{
+        font-size: 1rem;
+        width: 20vw;
+    }
+}
+@media screen and (max-width: 950px){
+    header{
+        height: 200px;
+        position: absolute;
+        padding: 20px;
+    }
+    #header.scroll{
+        height: 200px;
+        position: absolute;
+        padding: 20px;
+    }
+    .flex{      
+        margin-left: 30vw;
+        margin-right: 30vw;
+    }
+    main{
+        padding-top: 200px;
+    }
+    #barralateral{
+        margin-top: 125px;
+    }
+    #barralateral.scroll{
+        position: fixed;
+        height: 110vh;
+        margin-top: -43px;
+    }
+    #btn-ativação.scroll{
+        position: fixed;
+        left: 10px;
+        height: 50px;
+    }
+    .img1{
+        height: 0;
+        width: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+    .submenu button{
+        width: 25vw;
+    }
+}
+@media screen and (max-width: 850px){
+    .botão1, .botão2 {
+        height: 200px;
+        width: 250px;
+        font-size: 2rem;
+    }
+    
+}
+
+@media screen and (max-width: 768px){
+
+    .flex{
+        flex-direction: column;
+    }
+    .container{
+        position: relative;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    footer{
+        margin-top: 18%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+    
+    .footer-container .footer-links {
+        margin-bottom: 10px;
+    }
+    
+    .footer-container .footer-links a {
+        display: block;
+        margin: 5px 0;
+    }
+    .logo{
+        width: 20px;
+        height: 20px;
+    }
+    header{
+        padding-top: 0;
+        font-size: 1.4rem;
+    }
+
+    header ul li{
+        padding-left: 60px;
+    }
+
+    .btn-opcoes{
+        align-items: center;
+        text-align: center;
+        padding-top: 10%;
+        display: flex;
+        flex-direction: column;
+    }
+    .btn-conta button{
+        font-size: 0.7rem;
+    }
+    #header.scroll{
+        height: 230px;
+    }
+}
+
+
+@media screen and (max-width: 700px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    .btn-conta button{
+        font-size: 1rem;
+    }
+    .submenu button{
+        width: 34vw;
+    }
+}
+
+@media screen and (max-width: 669px){
+    .texto-slider{
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 666px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    header ul li{
+        padding: 0;
+    }
+    
+    
+}
+
+@media (max-width: 508px) {
+    header ul li a{
+        font-size: 1rem;
+    }
+    .texto-slider{
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .botão1{
+        height: 150px;
+        width: 185px;
+    }
+    .botão2{
+        height: 150px;
+        width: 185px;
+    }
+}
+@media (max-width: 478px) {
+    header{
+        text-align: center;
+        font-size: 0.7rem;
+    }
+}
+@media (max-width: 526px) {
+    header{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 480px) {
+    header{
+        font-size: 0.7rem;
+    }
+}
