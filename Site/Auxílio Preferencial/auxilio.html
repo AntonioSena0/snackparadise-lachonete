@@ -8,52 +8,55 @@
     <title>Auxílio Preferencial</title>
 </head>
 <body>
+   
     <header id="header">
-        <div class="container">
-            <div class="flex">
-                <a href="../Quem somos/index.html">
-            <div class="flex">
+  <div class="container">
+    <div class="flex">
+      <a href="../Menu/index.html">
+        <div class="flex">
+          <div class="logo-container">
+            <img src="Logo.png" alt="Logo da Lanchonete" class="logo" />
+          </div>
+        </div>
+      </a>
 
-                <nav>
-                    <ul>
-                        <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
-                            <div class="barralateral" id="barralateral">
-                                <a href="../Menu/index.html" target="_self">Início</a>
-                                <a href="#" target="_self">Perfil</a>
-                                <a href="#" target="_self">Pontos</a>
-                                <a href="#" target="_self">Seja Parceiro</a>
-                                <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
-                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <button id="btn-cardapio">&darr;Cardápio</button>
-                            <div class="submenu" id="submenu">
-                                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Bebidas</button></a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Promoções</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Pedidos</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">App SP</a>
-                        </li>
-                    </ul>
-                </nav>
+      <button class="btn-ativação" id="btn-ativação">☰</button>
 
-                <div class="btn-conta">
+      <div class="header-right">
+        <nav>
+          <ul>
+            <li class="list-menu2">
+              <div class="barralateral" id="barralateral">
+                <a href="../Menu/index.html" target="_self">Início</a>
+                <a href="#" target="_self">Perfil</a>
+                <a href="#" target="_self">Pontos</a>
+                <a href="#" target="_self">Seja Parceiro</a>
+                <a href="#" target="_self">Avaliações</a>
+                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
+                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
+              </div>
+            </li>
+            <li class="list-menu1">
+              <button id="btn-cardapio">&darr;Cardápio</button>
+              <div class="submenu" id="submenu">
+                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
+                <hr>
+                <a href="#" target="_self"><button>Acompanhamentos</button></a>
+                <hr>
+                <a href="#" target="_self"><button>Bebidas</button></a>
+              </div>
+            </li>
+            <li class="list-menu1"><a href="#">Promoções</a></li>
+            <li class="list-menu1"><a href="#">Pedidos</a></li>
+            <li class="list-menu1"><a href="#">App SP</a></li>
+          </ul>
+        </nav>
 
-                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Conta</button></a>
-
+        <div class="btn-conta">
+          <a href="../Tela de login/index.html">
+            <button id="btn-conta" class="conta">Conta</button>
+          </a>
+        </div>
                 </div><!--btn-conta-->
 
             </div><!--Flex-->
@@ -63,24 +66,30 @@
     </header><!--header-->
 
     <main>
-    <section class="auxilio-section">
-        <div class="auxilio-container">
+    <section class="inclusao-section">
+  <h2 class="inclusao-title">
+    Nosso compromisso com a inclusão
+<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADcAAAA3CAYAAACo29JGAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEG0lEQVR4nO2aS4hcRRSGTxLnnv/cnh6J8bHwtRANQQiCiCKKC0UUQeIDQQKKKPiCJCK6GhnBjQvdaCRMNOaeuibgGF/gQogQISoBs9EEQbLwFSFEszGCY3TScnq6w2Qyt+dW3bqdaewfiqaruefUd+vU61QTDTXUUEMNNdRQQ/1vpElylQPWq/BLTjh34A+cYLcDv2/f2/XA+h1JciUNgnKRGxzwhgMfdoJW2aLgXxTY7ESup6WkFtEyFbnXgff7ABUW8NdOZJ3ZPatgWWNkrRP+IgrUGYX3mv2+Q7WIluWSbHSCE/WAdcJV8I8KvzhBtLwvYFNEosDHAQ097oBvVPCn97PgD81vvWAr6VwLF8/GTTtJNkwRrei8nBUqsmm23i9Mc6KxesCIkvZU7v3W8exC9hzwfEDv79lOhOhwKrwzZMwUhZO9rHao+k80eVSwTPjxsEmBf+r9wnAoyC7zo1HAFLgsZBLolBkbpwvZfYuo6QR/hdhVwfFc5JLKcJ1tUwhYt/deWdCu8KsV7U5VAsvS9NpqDZjtPQe89ubY2HlmU5vNVQq8roKTVeyq4OT2NL0mGE7BuyLAdRvzrwMfa8NGs8nvBoG5RuPCuncgEcqJHaOj53vDdbZXraVf+Gn/ngM+XSTE9ncW9XrLrJ/CUFbgEy+wSaKRogXWBnLGfDv1US7lO3pMQH/sITqntDFNkjWhC3NdcsI/F7UpT5LVHoZkXc9B3OfUgKUsbCtXCCfJ3eWNCT/VcxCDf3fAVhV+eX5xwLjNtD6N39loXKTACwX2tnaWkML2qPATpZ2F7NjnOfvSB84Jf1XJH/CcD9x4xSl6xg+u4sIOjHs4k2cqwrU84Sr5yiXZWN4Z8yODBKfAw6Wd5cDNgwTngBtLO9s2OnrBIMFps7mKPB1+HxsuY76iBrjvvMDaDoEtMeEykfut3j5jwimw2RsuZ741JpwlVzvjYyIy3C3ecJbltX1kLLhTkQBsiQj3Q3A22nKO0Xqum6UGPooFpyKbgsDaTokaDnw0Dhzvmw0j3hcDTsFHJolSqqI85ceihOWpI8uZR6baF+5Fxt7eKnB2KzTnbmB6/t2bPxx/Hu3+7m3g0vYxJxDOFtm5v3XTfEFw4GPvAJdTTFlqwScbdtqzjZGr5/5m30PgVPC3LVFUh+yCvuzxxFIV3edsfJz+9vFQEXiPMpMDD1KdyoEHytytKfCtE7nPLi0U/Nu80Dpq9bZbUeBACbDphXY2tchODQr+NWSW8y7gwwrcRP3UNjs5VL4kWaz3eVdQRjmW8jS5ywEH40LhQJYmd9JS0ATRcvsvigo+q5APsed2ZyL3nPX/oPRcE4WfdOD3bDdSlCm2ehX+0e7ZLDWXiVxMg6ZJotSWhVzkOmW+rf2ZJGsq7wtL6D9cm1H9JOK6LwAAAABJRU5ErkJggg==" alt="accessibility2"> 
+ <p class="inclusao-subtitle">Acessibilidade é Sabor para Todos.</p>
+  <p class="inclusao-text">
+    Na SnackParadise todos são bem-vindos! Nosso site foi pensado para que todas as pessoas tenham uma experiência completa, segura e acolhedora.
+  </p>
             <div class="auxilio-content">
-                <h1 class="auxilio-title">Nosso compromisso com a inclusão</h1>
-            </div>
-            <p class="auxilio-text">
-                Na SnackParadise todos são bem-vindos! Nosso site foi pensado para que todas as pessoas tenham uma experiência completa, segura e acolhedora.
-        </p>
-            <div class="auxilio-content">
-                <h1 class="auxilio-title">O que nos torna diferentes?</h1>
-                <img src="../imgs/preferencial/leitor.jpg" alt="Lâmpada" class="lampada-img">
+<div class="diferenciais-header">
+  <img
+    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAADvklEQVR4nO1ZTYhcRRAunapZVlGReDFeDF6CXgQhyAY8+HsJiIhJ0CSGEH8QD0bBgAcNnowkQUlEVz2EIAku+KreJuTnELwsQkQ9KCoevHhQkICCWXaqHtrS7u5YeftmnPdm9s2M5IO+7PSr/r7u6uqvewGu4H+K8BpcrQltU6EnQoCrYNygTNtNKMQWRcC4QZn2tQUw7YNxgw5bQJiBhgo9pUw7Yz7XLSB8CmiMz0UOVcaPBHYvEzDBD8sG6UdAiOQFP25/n9C28gKEdv0roLyIOKgT8HhV8rYoYHNpAZGsMR6tKiKWzlh9Ivley2goIs/0buUy3FHEKtT1MGjy3UQo0xYYMIzxmYGT7ySiJc1HOvYVuK6VNh82xheU6U0Vet1SfN4E74mVrdN3yrRzVch7ETGfVWhrUXBjussYU2VqXZ5yblaFLqrQO+ETuLlwzyS0ucXNR2u1HmEWromro0x/dSK+QgjTJRPcA8PGvEyuNcYvCwj+YownVOjAUiq9ZYLfrRDDeDRMAw2FfDgH1xrjVzlSX2RJ48FOpdYYp1Tos1xavVc/+0UyH+Vm/VC3TerLpTK9nROxC+qEJbjB57wyHSwdQ2jaCfg1nIbroS6o0FmfNr3MfB7hNEyY4I9uP+xdHbb5gU/BjcqULQ8cc75qLE3pST8Rg2XaaVChrW7pf65kdd2hp0vnRkzJovOh9B02LqVv+TutMb7ilv0E9AkVutCOl+LGsnwK77AFJ2j7TqtMR9zfD/QrwBiTdry0+VhZPoX+veBgavt5ZTrsAu3vV4AynSryWL3yWenfhd64rOX8vAm+6qz18X4FmOA37XgJbijLpzSypLHJCfipn2DzMrlWhf5cmtUsVjhYbYQZuEGZFtplNG08UDWWumurMp2HumCCx9zAn1c5yCIybjzk9tMOqAstad6uQuZEbK8ayxinsrRxL9SNaN7c7J2FcUNrtrnerUAWZuEmGDcY47dDs8SDQO717Uyv382fnLxFme6EYUNTusOtgIUE1vzXNws8casK/bF0jjwLw4Y/SaNP6tY3lltjFNf/MAwbxvR0zqfMRZNXYAEOmeDXfuO3Zpvrh81/0fYKnez1ScVZ8ZdhVBBmoBkftUoImIYRr0hzBSk0N9L/cjLGl7rNsAl+4FzsizBqyKRxvyupvy2kE+uWf1tIJm5Tod+dg63f+/T4vv+DF/HP2w/j+568MX4f+8IowlLc2PV1Ot4jUrwbRhnGOOVXws/8yJNfRkyRxT2Be2LLuHFf1UvPFcCI42/eorxhrHP23QAAAABJRU5ErkJggg=="
+    alt="Lâmpada"
+    class="icone-diferencial"
+  />
+  <h2 class="titulo-diferencial">O que nos torna diferentes?</h2>
+</div>
             </p>
             </div>
             <div class="auxilio-boxes">
                 <div class="box-item">
                     <h3>Treinamento em LIBRAS</h3>
                     <img src="../imgs/preferencial/mão.jpg" alt="Treinamento em LIBRAS" class="box-img">
-                    <p>Motoboys e atendentes recebem treinamento básico em LIBRAS para tornar o atendimento presencial mais inclusivo.</p>
+                    <p>A equipe recebe um treinamento básico em LIBRAS para tornar o atendimento presencial mais inclusivo.</p>
                 </div>
                 <div class="box-item">
                     <h3>Navegação Simplificada e Ajuste de fonte</h3>
@@ -89,7 +98,7 @@
                 </div>
                 <div class="box-item">
                     <h3>Integração com VLibras</h3>
-                    <img src="../imgs/preferencial/libras.jpg" alt="Integração com VLibras" class="box-img">
+                    <img src="../imgs/preferencial/libras.jpg" alt="Integração com VLibras" class="box-imgSLA">
                     <p>Nosso site conta com a API VLibras, que traduz textos para a Língua Brasileira de Sinais.</p>
                 </div>
                 <div class="box-item">
@@ -98,13 +107,19 @@
                     <p>Conteúdo compatível com leitores de tela e opção de Alto Contraste para pessoas com baixa visão.</p>
                 </div>
             </div>
-            <div class="auxilio-content">
-                <h1 class="auxilio-title">O que nos torna diferentes?</h1>
+            <div class="inclusao-frase">
+  <h2 class="inclusao-slogan">
+    <em>SnackParadise: Um Sabor que Todos Podem Sentir</em>
+</h2>
+<div class="linha-amarela"></div>
+  <p class="inclusao-texto-destaque">
+    Acreditamos que comida de verdade é feita com empatia.<br>
+    Por isso, a inclusão é o nosso ingrediente principal!
+  </p>
+</div>
         </div>
-        <div class="auxilio-content">
-            <p class="auxilio-text">
-Acreditamos que comida de verdade é feita com empatia. Por isso, a inclusão é o nosso ingrediente principal!            </p>
-    </section>
+    </div>  
+</section> 
 </main>
     <footer>
         <div class="footer-container">

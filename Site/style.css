@@ -1,8 +1,4 @@
 @import url('https://fonts.cdnfonts.com/css/biko');
-@import url('https://fonts.cdnfonts.com/css/Merriweather Sans');
-@import url('https://fonts.cdnfonts.com/css/Lato');
-@import url('https://fonts.cdnfonts.com/css/Roboto Condensed');
-@import url('https://fonts.cdnfonts.com/css/Arapey');
 
 *{
     margin: 0;
@@ -352,6 +348,9 @@ footer {
     padding: 20px;
     max-width: 600px; /* Limita a largura do conteúdo */
     margin: 20px; /* Adiciona espaçamento ao redor do conteúdo */
+    background-color: #fff; /* Fundo branco para o conteúdo */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra ao conteúdo */
     display: flex; /* Organiza o texto e a imagem lado a lado */
     align-items: center; /* Centraliza verticalmente o texto e a imagem */
     justify-content: space-between; /* Posiciona os elementos com espaço entre eles */
@@ -361,39 +360,13 @@ footer {
     
 }
 
-.diferenciais-header {
-  max-width: 800px;
-  margin: 0 auto 30px;
-  text-align: center;
-    display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin: 30px auto;
-}
-
-.icone-diferencial {
-  width: 40px;
-  height: auto;
-  vertical-align: middle;
-}
-
-.titulo-diferencial {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #a20908;
-  font-family: "Biko", sans-serif;
-}
-
-
 .auxilio-title {
     font-family: "Merriweather Sans", sans-serif;
-    font-size: 32pt;
+    font-size: 33.7pt;
     font-weight: bold;
     color: #a20908;
     text-align: center; /* Centraliza o título */
-    margin: 15px auto; /* Reduz o espaçamento ao redor do título */
+    margin: 20px auto; /* Reduz o espaçamento ao redor do título */
 }
 
 .auxilio-text {
@@ -407,7 +380,7 @@ footer {
 }
 
 .auxilio-box {
-    border: 3px solid #fabb18; /* Bordas amarelas */
+    border: 3px solid #FFD700; /* Bordas amarelas */
     border-radius: 10px;
     padding: 20px;
     margin-top: 30px;
@@ -444,23 +417,16 @@ footer {
 
 .box-item {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    width: calc(45% - 10px); /* Aumenta a largura de ~50% para 45% */
-    min-height: 420px; /* Adiciona altura mínima maior */
-    border: 9px solid #fabb18; /* Bordas amarelas mais destacadas */
-    border-radius: 20px;
-    padding: 30px; /* Mais espaço interno */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombras mais visíveis */
-    transition: transform 0.3s ease;
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    text-align: center; /* Centraliza o texto */
+    width: calc(50% - 20px); /* Cada box ocupa 50% da largura menos o espaçamento */
+    border: 2px solid #FFD700; /* Bordas amarelas */
+    border-radius: 10px;
+    padding: 15px;
+    background-color: #FFF;
 }
-
-.box-item:hover {
-    transform: scale(1.02); /* Efeito sutil ao passar o mouse */
-}
-
 
 .box-item h3 {
     font-family: "Roboto Condensed", sans-serif;
@@ -468,7 +434,7 @@ footer {
     font-weight: bold;
     color: #a20908;
     text-align: center; /* Centraliza o título dos boxes */
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .box-item p {
@@ -479,62 +445,28 @@ footer {
     text-align: center; /* Alinha o texto de forma centralizada */
 }
 
-.box-imgSLA {
-    width: 195px; /* Aumenta a largura do ícone */
-    height: auto; /* Mantém a proporção da altura */
-    margin: 12px; /* Adiciona espaçamento ao redor da imagem */
-    border-radius: 10px; /* Bordas arredondadas */
-
-}   
-
 .box-img {
-    width: 100px; /* Aumenta a largura do ícone */
+    width: 150px; /* Aumenta a largura do ícone */
     height: auto; /* Mantém a proporção da altura */
-    margin: 10px; /* Adiciona espaçamento ao redor da imagem */
+    margin: 10px 0; /* Adiciona espaçamento ao redor da imagem */
     border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
 }
 
-.diferenciais-box {
-  padding: 30px;
-  border-radius: 15px;
-  max-width: 800px;
-  margin: 40px auto;
-  text-align: center;
-}
-
-.diferenciais-titulo {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #a20908; /* vermelho do tema */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  font-family: "Roboto Condensed", sans-serif;
+.lampada-img {
+    width: 80px; /* Define a largura menor */
+    height: auto; /* Mantém a proporção da altura */
+    border-radius: 10px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adiciona sombra */
+    margin: 10px 0; /* Adiciona espaçamento ao redor da imagem */
 }
 
 .box-letter {
-    font-family: "Arapey", sans-serif;
     font-size: 100px; /* Define o tamanho da letra */
     font-weight: bold; /* Deixa a letra em negrito */
     color: #a20908; /* Cor vermelha para combinar com o tema */
     text-align: center; /* Centraliza a letra */
-    margin: 10px; /* Adiciona espaçamento ao redor da letra */
-}
-
-@media screen and (max-width: 768px) {
-  .inclusao-title {
-    font-size: 2.2rem;
-  }
-
-  .inclusao-subtitle {
-    font-size: 1.3rem;
-  }
-
-  .inclusao-text {
-    font-size: 1.1rem;
-  }
+    margin: 10px 0; /* Adiciona espaçamento ao redor da letra */
 }
 
 @media screen and (max-width: 768px){
@@ -623,196 +555,3 @@ footer {
         font-size: 0.7rem;
     }
 }
-
-@media (max-width: 768px) {
-  .box-item {
-    width: 100%;
-  }
-}
-
-
-.diferenciais-titulo {
-  font-size: 1.5rem;
-  flex-direction: column;
-}
-
-.inclusao-section {
-  padding: 60px 10%;
-  background-color: #fdfdfd;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.inclusao-title {
-  font-size: 3.3rem;
-  color: #a20908;
-  font-weight: bold;
-  margin-bottom: 20px;
-  font-family: "Merriweather Sans", sans-serif;
-}
-
-
-.icone-acessibilidade {
-  font-size: 4rem;
-  vertical-align: middle;
-  margin-left: 8px;
-}
-
-.inclusao-subtitle {
-  font-size: 2rem;
-  font-weight: bold;
-  font-style: italic;
-  color: #000;
-  font-family: "Biko", sans-serif;
-  margin-bottom: 23px;
-}
-
-.inclusao-text {
-  font-size: 1.5rem;
-  color: #2f3335;
-  line-height: 1.9;
-  max-width: 800px;
-  font-family: "Lato", sans-serif;
-  text-align: center;
-  max-width:none;
-}
-.inclusao-frase {
-  text-align: center;
-  margin: 40px auto;
-  padding: 10px 20px;
-  max-width: 800px;
-}
-
-/* Agrupamento novo para alinhamento flexível */
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-/* Estilos Mobile */
-@media screen and (max-width: 768px) {
-  .flex {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  header ul {
-    display: none; /* Esconde a nav normal */
-  }
-
-  .btn-ativação {
-    position: static;
-    margin-left: 10px;
-    font-size: 1.5rem;
-  }
-
-  .logo-container {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-  }
-
-  .logo {
-    width: 50px;
-    height: auto;
-  }
-
-  .header-right {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
-
-  .btn-conta button {
-    font-size: 1.2rem;
-    padding: 6px 12px;
-  }
-
-  #barralateral {
-    position: fixed;
-    left: -200px;
-    top: 0;
-    height: 100vh;
-    width: 200px;
-    background-color: #fff;
-    z-index: 9999;
-    transition: 0.3s ease;
-  }
-
-  .submenu {
-    position: static;
-    width: 100%;
-    display: block;
-    background-color: #fff;
-  }
-
-  #btn-cardapio {
-    font-size: 1.3rem;
-  }
-}
-
-.inclusao-slogan {
-  font-size: 2.8rem;
-  font-weight: bold;
-  font-style: italic;
-  color: #a20908;
-  padding-bottom: 9px;
-  margin: 20px auto 20px;
-  font-family: "Merriweather Sans", sans-serif;
-  text-align: center;
-  margin-top: 55px; /* espaçamento padrão para desktop */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-}
-
-.linha-amarela {
-  width: 700px;
-  margin: 12px auto;
-  height: 4px;
-  background-color: #fabb18;
-  border-radius: 100px;
-}
- @media screen and (max-width: 768px) {
-  .linha-amarela {
-    width: 90%;
-  }
-}
-
-
-
-
-.inclusao-texto-destaque {
-    font-size: 1.8rem;
-  color: #191c1d;
-  line-height: 1.5;
-  max-width: 800px; 
-  font-family: "Lato", sans-serif;
- text-align: center;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@media screen and (max-width: 768px) {
-  .inclusao-frase {
-    margin-top: 75px; /* espaço maior no mobile */
-  }
-
-  .inclusao-slogan {
-    font-size: 2.6rem; /* fonte menor se quiser ajustar ao espaço */
-    margin: 30px auto 20px;
-  }
-
-  .inclusao-texto-destaque {
-    font-size: 1.6rem;
-    padding: 0 10px;
-  }
-}
-
