@@ -36,6 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['profilePicture'])) {
     // Tenta fazer o upload do arquivo
     if ($uploadOk == 1) {
         if (move_uploaded_file($_FILES['profilePicture']['tmp_name'], $targetFile)) {
+            // Após upload bem-sucedido
+            $conn = Conectar::getInstance();
+            $sql = $conn->prepare("UPDATE users SET profile_picture = :profile_picture WHERE id = :id");
+            $sql->bindParam(':profile_picture', $targetFile);
+            $sql->bindParam(':id', $_SESSION['user']['id']);
+            $sql->execute();
             $_SESSION['user']['profile_picture'] = $targetFile;
             header("Location: Conta.php");
             exit();
