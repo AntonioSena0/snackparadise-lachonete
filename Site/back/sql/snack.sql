@@ -52,7 +52,7 @@ CREATE TABLE registro (
     motoboy_id INT,
     itens TEXT NOT NULL,
     endereco TEXT NOT NULL,
-    pagamento VARCHAR(50) NOT NULL,
+    pagamento VARCHAR(10) NOT NULL,
     confirmar BOOLEAN DEFAULT FALSE,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (pedido_id) REFERENCES pedidos(id),
