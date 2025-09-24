@@ -10,6 +10,13 @@ if (!$data) {
     exit();
 }
 
+$usuario_id = $_SESSION['user']['id'] ?? null;
+if (!$usuario_id) {
+    http_response_code(401);
+    echo "Usuário não autenticado.";
+    exit();
+}
+
 $email = $data['email'] ?? 'visitante';
 $itens = json_encode($data['pedidos'] ?? []);
 $endereco = $data['endereco'] ?? '';
@@ -17,8 +24,8 @@ $pagamento = $data['pagamento'] ?? '';
 
 try {
     $conn = Conectar::getInstance();
-    $sql = $conn->prepare("INSERT INTO pedidos (usuario_email, itens, endereco, pagamento) VALUES (:email, :itens, :endereco, :pagamento)");
-    $sql->bindParam(':email', $email);
+    $sql = $conn->prepare("INSERT INTO pedidos (usuario_id, itens, endereco, pagamento) VALUES (:usuario_id, :itens, :endereco, :pagamento)");
+    $sql->bindParam(':usuario_id', $usuario_id);
     $sql->bindParam(':itens', $itens);
     $sql->bindParam(':endereco', $endereco);
     $sql->bindParam(':pagamento', $pagamento);
