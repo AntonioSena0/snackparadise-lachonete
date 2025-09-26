@@ -11,6 +11,115 @@ body {
     height: 100vh;
 }
 
+.container2{
+    max-width: 1500px;
+    max-height: 720px;
+    margin: auto;
+}
+
+.flex{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header {
+    background-color: #fff;
+    width: 100%;
+    padding: 15px 4%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+header i{
+    font-size: 30px;
+    color: #fff;
+}
+
+header ul{
+    list-style-type: none;
+}
+
+header ul li{
+    display: inline-block;
+    margin: 0 80px;
+}
+
+header .list-menu1 a, #btn-cardapio{
+    color: #a20908;
+    text-decoration: none;
+    font-size: 1.8rem;
+    transition: 500ms ease-in-out   ;
+}
+
+header .list-menu1 a:hover, #btn-cardapio:hover{
+    color: red;
+}
+
+#btn-cardapio{
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.submenu{
+    border: solid #a20908 2px;
+    flex-direction: column;
+    background:none;
+    opacity: 0;
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    color: #fff; 
+    z-index: 1;
+    animation: aparecer 0.5s;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.submenu button{
+    font-size: 1.5rem;
+    background-color: #fff;
+    color: #a20908;
+    width: 25vh;
+    height: 10vh;
+    align-items: center;
+    justify-content: center;   
+    transition: 0.3s ease-in-out; 
+}
+
+hr{
+    height: 3px;
+    border: solid 2px #a20908;
+}
+
+.submenu button:hover{
+    transform: translateY(-3px);
+    background-color: #d62b2b;
+    color: #fff;
+    cursor: pointer;
+}
+
+.submenu button:active{
+    transform: translateY(2px);
+    background-color: #ff1c1c;
+}
+
 .container {
     background-color: #fff;
     border-radius: 15px;
