@@ -39,7 +39,7 @@ header{
     width: 100%;
     padding: 20px 4%;
     padding-top: 40px;
-    position: relative;
+    position: fixed;
     z-index: 1;
     height: 125px;
     top: 0;
@@ -247,10 +247,11 @@ hr{
 
 .main{
     display: flex;
+    margin-top: 125px;
 }
 
-#main.scroll{
-    margin-top: 125px;
+#main.scroll img{
+    margin-top: -25px;
 }
 
 .texto{ 
