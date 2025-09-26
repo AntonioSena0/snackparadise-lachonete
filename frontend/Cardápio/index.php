@@ -116,7 +116,7 @@ if (isset($_SESSION['user'])) {
     </div>
 </div>
         <div class="itens">
-            <h2 class="subheaderh2" id="subheaderh2">Lanches</h2>
+            <h2>Lanches</h2>
             <div class="area-lanches"></div>
             <h2>Acompanhamentos</h2>
             <div class="area-acompanhamentos"></div>

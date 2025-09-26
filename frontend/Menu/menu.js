@@ -4,20 +4,17 @@ function MudarOHeader() {
     let barralateral = document.getElementById('barralateral');
     let conta = document.getElementById('btn-conta');
     const btn = document.getElementById('btn-ativação');
-    const main = document.getElementById('main');
     if (scrollY > 0) {
         header.classList.add('scroll');
         barralateral.classList.add('scroll');
         conta.classList.add('scroll');
         btn.classList.add('scroll');
-        main.classList.add('scroll');
     }
     else {
         header.classList.remove('scroll');
         barralateral.classList.remove('scroll');
         conta.classList.remove('scroll');
         btn.classList.remove('scroll');
-        main.classList.remove('scroll');
     }
 };
 
