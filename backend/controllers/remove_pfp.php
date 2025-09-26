@@ -6,7 +6,7 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-include_once '/../config/Conexao.php';
+include_once '../config/Conexao.php';
 
 $userId = $_SESSION['user']['id'];
 
@@ -24,7 +24,7 @@ try {
     // atualiza na sessão
     $_SESSION['user']['profile_picture'] = $defaultPfp;
 
-    header("Location: Conta.php");
+    header("Location: ../views/Conta.php");
     exit();
 } catch (Exception $e) {
     error_log("Erro ao remover foto: " . $e->getMessage());
