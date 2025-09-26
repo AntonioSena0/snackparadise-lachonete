@@ -28,14 +28,7 @@ $user = $_SESSION['user'];
         <nav>
         <ul>
         <li class="list-menu1">
-            <button id="btn-cardapio">&darr;Cardápio</button>
-            <div class="submenu" id="submenu">
-                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
-                <hr>
-                <a href="#" target="_self"><button>Acompanhamentos</button></a>
-                <hr>
-                <a href="#" target="_self"><button>Bebidas</button></a>
-            </div>
+            <a href="../../frontend/Cardápio/index.html">Cardápio</a>
         </li>
                 <li class="list-menu1"><a href="#">Promoções</a></li>
                 <li class="list-menu1"><a href="#">Pedidos</a></li>
@@ -43,12 +36,6 @@ $user = $_SESSION['user'];
         </ul>
         </nav>
 
-        <div class="btn-conta">
-          <a href="Conta.php">
-            <button id="btn-conta" class="conta">Conta</button>
-          </a>
-        </div>
-                </div><!--btn-conta-->
 
             </div><!--Flex-->
 
@@ -56,7 +43,7 @@ $user = $_SESSION['user'];
 
 </header><!--header-->
     <div class="container">
-        <img src="<?php echo isset($user['profile_picture']) && file_exists($user['profile_picture']) ? $user['profile_picture'] : 'default-profile.png'; ?>" alt="Foto de Perfil" class="profile-picture">
+        <img src="<?php echo isset($user['profile_picture']) && file_exists($user['profile_picture']) ? $user['profile_picture'] : 'uploads/Default_pfp.png'; ?>" alt="Foto de Perfil" class="profile-picture">
         <h1>Bem-vindo, <?php echo htmlspecialchars($user['username']); ?>!</h1>
         <p><strong>E-mail:</strong> <?php echo htmlspecialchars($user['email']); ?></p>
         <p class="status"><strong>Status:</strong> <?php echo isset($user['partner']) && $user['partner'] ? 'Parceiro' : 'Não é parceiro'; ?></p>   

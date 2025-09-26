@@ -199,3 +199,12 @@ hr{
     background-color: #FF3131;
     transform: scale(1.05);
 }
+
+@media(max-width: 750px){
+    header{
+        height: 200px;
+    }
+    .container{
+        margin-top: 20%;
+    }
+}
