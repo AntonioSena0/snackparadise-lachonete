@@ -2,6 +2,9 @@ function atualizarCarrinho() {
     const itensCarrinho = document.getElementById('itensCarrinho');
     const totalCarrinho = document.getElementById('totalCarrinho');
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+    if (!itensCarrinho || !totalCarrinho) return;
+    
     itensCarrinho.innerHTML = '';
     let total = 0;
     carrinho.forEach((item, index) => {
