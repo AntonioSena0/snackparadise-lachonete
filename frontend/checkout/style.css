@@ -134,34 +134,34 @@ header ul li a{
     color: black;
 }
 
+main{
+    display: flex;
+}
+
 main .janelas {
     justify-content: center;
     align-items: center;
     display: flex;
-    gap: 200px;
-    padding-top: 100px;
+    background-color: #A20803;
+    margin: auto;
+    margin-top: 5%;
+    width: 90vw;
+    border-radius: 30px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    
 }
 
 main .itens,
 .pagamento {
-    background-color: #a20908; /* Fundo vermelho para destacar */
     color: #FFF; /* Texto branco para contraste */
-    width: 400px;
-    height: auto;
+    width: 50%;
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    border-radius: 15px; /* Bordas arredondadas */
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Adiciona sombra */
-    padding: 20px;
-    margin-bottom: 50px; /* Adiciona espaçamento entre a aba de pagamento e o footer */
+    padding: 10px;
 }
 
-main .itens tr {
-    display: flex;
-    flex-direction: row;
+.cima{
+    text-align: left;
+    margin-left: 5%;
 }
 
 .col1 {
@@ -189,22 +189,7 @@ main .itens ul li {
     margin-bottom: 10px;
 }
 
-.pagamento h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #FFF;
-    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto */
-}
-
-.pagamento label {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
-    display: block;
-    color: #FFF;
-}
-
-.pagamento input,
-.pagamento select {
+.pagamento input{
     width: 90%;
     padding: 10px;
     margin-bottom: 15px;
@@ -212,6 +197,24 @@ main .itens ul li {
     border-radius: 5px;
     font-size: 1rem;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona sombra aos campos */
+}
+.pagamento select {
+    width: 100px;
+    height: 20px;
+    padding-left: 2px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Adiciona sombra aos campos */
+    background-color: #A20803;
+    color: white;
+    border-color: #000;
+    border-style: solid;
+    border-width: 1px;
+}
+.pagamento select:hover{
+    cursor: pointer;
 }
 
 .pagamento input:focus,
@@ -376,6 +379,10 @@ footer {
     padding: 20px;
     text-align: center;
     margin-top: 50px; /* Garante que o footer tenha um espaçamento superior */
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .footer-container {
@@ -406,23 +413,8 @@ footer {
     color: #fff;
 }
 
-/* Responsividade */
-@media screen and (max-width: 1280px) {
-    .container {
-        max-width: 90%;
-    }
-
-    .flex {
-        flex-wrap: wrap;
-    }
-
-    .janelas {
-        gap: 100px; /* Reduz o espaçamento entre os elementos */
-    }
-}
-
 /* Ajuste para tablets */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1250px) {
     header {
         flex-direction: column;
         height: auto;
@@ -462,6 +454,7 @@ footer {
     footer {
         margin-top: 30px; /* Reduz o espaçamento superior em tablets */
         text-align: center;
+        position: relative;
     }
 
     .footer-container {
