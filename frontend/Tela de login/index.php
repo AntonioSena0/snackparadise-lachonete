@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['id'])) {
+    echo "<h1> Olá, " . $_SESSION['name']."</h1>";
+} else {
+    echo "Você não está logado";
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -73,7 +78,7 @@ session_start();
         <div class="main-container">
             <div class="box">
                 <div class="forms">
-                    <form autocomplete="off" class="Entrar-Form" method="POST" action="../back/controllers/login_processo.php">
+                    <form autocomplete="off" class="Entrar-Form" method="POST" action="../../backend/controllers/login_processo.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>

@@ -1,3 +1,23 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user'])) {
+    $logged = true;
+    $user = $_SESSION['user'];
+} elseif (isset($_SESSION['motoboy'])) {
+    $logged = true;
+    $user = $_SESSION['motoboy'];
+} else {
+    $logged = false;
+    $user = null;
+}
+?>
+<?php if ($logged): ?>
+    <h1>Olá, <?php echo htmlspecialchars($user['username'] ?? $user['name']); ?></h1>
+<?php else: ?>
+    <h1>Você não está logado</h1>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -48,7 +68,10 @@
                     </ul>
                 </nav>
                 <div class="btn-conta">
-                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Conta</button></a>
+                    <a href="<?php echo $logged ? '../../backend/views/Conta.php' : '../Tela de Login/index.html'; ?>">
+    <button id="btn-conta" class="conta">Conta</button>
+</a>
+
                 </div>
             </div>
         </div>
