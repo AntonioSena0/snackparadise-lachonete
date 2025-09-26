@@ -53,6 +53,9 @@ $user = $_SESSION['user'];
                 <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg">
                 <label for="profilePicture">Alterar Foto</label>
                 <button type="submit" class="btn-voltar">Salvar</button>
+                <form method="POST" action="../controllers/remove_pfp.php">
+                    <button type="submit" class="btn-remover">Remover</button>
+                </form>
             </form>
         </div>
     </div>
