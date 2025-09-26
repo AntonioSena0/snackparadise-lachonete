@@ -4,9 +4,10 @@ function atualizarCarrinho() {
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
 
     if (!itensCarrinho || !totalCarrinho) return;
-    
+
     itensCarrinho.innerHTML = '';
     let total = 0;
+    
     carrinho.forEach((item, index) => {
         const li = document.createElement('li');
         li.textContent = `${item.nome} (x${item.quantidade}) - R$ ${(item.preco * item.quantidade).toFixed(2)}`;

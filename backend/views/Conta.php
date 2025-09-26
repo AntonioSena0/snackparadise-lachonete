@@ -17,32 +17,16 @@ $user = $_SESSION['user'];
 </head>
 <body>
 <header id="header">
-  <div class="container">
+  <div class="container2">
     <div class="flex">
       <a href="../Menu/index.html">
         <div class="flex">
-        <div class="logo-container">
-            <img src="Logo.png" alt="Logo da Lanchonete" class="logo" />
-        </div>
         </div>
       </a>
-
-    <button class="btn-ativação" id="btn-ativação">☰</button>
 
     <div class="header-right">
         <nav>
         <ul>
-        <li class="list-menu2">
-            <div class="barralateral" id="barralateral">
-                <a href="../Menu/index.html" target="_self">Início</a>
-                <a href="#" target="_self">Perfil</a>
-                <a href="#" target="_self">Pontos</a>
-                <a href="#" target="_self">Seja Parceiro</a>
-                <a href="#" target="_self">Avaliações</a>
-                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
-                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
-            </div>
-        </li>
         <li class="list-menu1">
             <button id="btn-cardapio">&darr;Cardápio</button>
             <div class="submenu" id="submenu">
