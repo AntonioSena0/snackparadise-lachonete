@@ -24,7 +24,7 @@ $user = $_SESSION['user'];
         <a href="logout.php" class="btn-voltar">Sair</a>
         <div class="upload-section">
             <form method="POST" action="upload.php" enctype="multipart/form-data">
-                <input type="file" id="profilePicture" name="profilePicture">
+                <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg">
                 <label for="profilePicture">Alterar Foto</label>
                 <button type="submit" class="btn-voltar">Salvar</button>
             </form>
