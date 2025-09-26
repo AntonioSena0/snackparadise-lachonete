@@ -32,52 +32,53 @@
     </header>
     <main class="main">
         <div class="janelas">
-            <div class="itens">
+            <div class="itens-2">
                 <h1>Itens Selecionados</h1>
-            <table class="table">
-                <thead>
-                <tr>
-                <th>Item</th>
-                <th>Qtd</th>
-                <th>Preço Unit.</th>
-                <th>Subtotal</th>
-                </tr>
-                </thead>
-                <tbody id="itensCheckout"></tbody>
-            </table>
-<p>Total: R$ <span id="totalCheckout">0.00</span></p>
-
+                <ul id="itensCheckout"></ul>
                 <p>Total: R$ <span id="totalCheckout">0.00</span></p>
             </div>
             <div class="pagamento">
+                <h1>Pagamento</h1>
                 <form id="payment-form">
-                    <div class="cima">
-                        <h2>Pagamento:</h2>
-                        Checkout:<br>
-                        Total:<br>
-                        Descontos:<br><br>
-                        Atendimento Preferencial: <select id="preferencial" name="preferencial" class="preferencial">
-                                                <option value="Sim">Sim</option>
-                                                <option value="Não">Não</option>
-                                            </select><br>
-                        Forma de Pagamento: <select id="forma" name="forma" class="forma">
-                                                <option value="debito">Débito</option>
-                                                <option value="credito">Crédito</option>
-                                                <option value="cedula">Cédula</option>
-                                                <option value="pix">Pix</option>
-                                            </select>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nome">Nome</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="rua">Endereço</label>
+                            <input type="text" id="rua" name="rua" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="numero">Número</label>
+                            <input type="text" id="numero" name="numero" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" id="complemento" name="complemento">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferencial">Atendimento Preferencial</label>
+                            <select id="preferencial" name="preferencial">
+                                <option value="Sim">Sim</option>
+                                <option value="Não">Não</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="forma">Forma de Pagamento</label>
+                            <select id="forma" name="forma" class="forma">
+                                <option value="debito">Débito</option>
+                                <option value="credito">Crédito</option>
+                                <option value="cedula">Cédula</option>
+                                <option value="pix">Pix</option>
+                            </select>
+                        </div>
                     </div>
-                    <input type="text" id="nome" name="nome" placeholder="Insira seu Nome" required>
-
-                    <input type="text" id="rua" name="rua" placeholder="Insira seu Endereço" required>
-
-                    <input type="text" id="numero" name="numero" placeholder="Insira seu Número de Telefone" required>
-
-                    <input type="text" id="complemento" name="complemento" placeholder="Insira um complemento (opicional)">
-
-                    
-
-                    
                     <button type="submit" class="btn">Confirmar Pedido</button>
                 </form>
             </div>

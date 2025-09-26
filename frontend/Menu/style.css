@@ -39,7 +39,7 @@ header{
     width: 100%;
     padding: 20px 4%;
     padding-top: 40px;
-    position: fixed;
+    position: relative;
     z-index: 1;
     height: 125px;
     top: 0;
@@ -53,9 +53,7 @@ header{
     height: 100px;
     background-color: #a20908;
     padding-top: 30px;
-    
 }
-
 #header.scroll .list-menu1 a{
     color: #fff;
 }
@@ -245,33 +243,26 @@ hr{
     border: solid #fff 2px;
 }
 
-.main{
-    display: flex;
-    margin-top: 125px;
-}
-
-#main.scroll img{
-    margin-top: -25px;
+.main-part{
+    display: inline-flex;
+    justify-content: space-between;
+    gap: 100px;
+    margin-left: 20%;
 }
 
 .texto{ 
     text-align: center;
     font-size: 2.1rem;
+    margin-bottom: 20px;
     color: #FFF;
+    margin: 50px;
     font-weight: bold;
-    width: 50vw;
-}
-
-.texto h1{
-    margin-top: 5%;
-    margin-bottom: 2%;
 }
 
 .line{
     margin: auto;
     border: solid yellow 3px;
     width: 70%;
-    margin-bottom: 5%;
 }
 
 .btn-opcoes{
@@ -305,9 +296,12 @@ hr{
     background-color: red;
 }
 
-.imagem{
-    width: 50vw;
-    margin-bottom: -5px;
+.img1{
+    border-radius: 10px;
+    border: solid yellow 3px;
+    width: 40vw;
+    margin-right: 10vw;
+    margin-left: 5vw;
 }
 
 footer {
@@ -315,6 +309,7 @@ footer {
     color: #fff;
     padding: 20px;
     text-align: center;
+    margin-top: 5%;
 }
 
 .footer-container {
@@ -364,9 +359,6 @@ footer {
         position: absolute;
         padding: 20px;
     }
-    #main.scroll{
-        margin-top: 0;
-    }
     .flex{      
         margin-left: 30vw;
         margin-right: 30vw;
@@ -396,13 +388,6 @@ footer {
     }
     .submenu button{
         width: 25vw;
-    }
-    main{
-        display: inline-block;
-    }
-    .texto{
-        width: 100%;
-        padding-left: 25vw;
     }
 }
 @media screen and (max-width: 850px){
@@ -481,12 +466,6 @@ footer {
     }
     .submenu button{
         width: 34vw;
-    }
-    main{
-        margin-top: 10%;
-    }
-    #main.scroll{
-        margin-top: 10%;
     }
 }
 

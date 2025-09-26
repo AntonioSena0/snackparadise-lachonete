@@ -537,6 +537,17 @@ footer {
   }
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+
 @media screen and (max-width: 768px){
 
     .flex{
@@ -587,6 +598,19 @@ footer {
         font-size: 1.4rem;
     }
 }
+
+header {
+    background-color: #fdfdfd;
+    width: 100%;
+    padding: 16px 4%;
+    min-height: 100px;
+    position: relative;
+    z-index: 10;
+    box-shadow: 2px 2px 20px #000;
+    transition: all 0.4s ease-in-out;
+}
+
+
 @media (max-width: 612px) {
     .btn-opcoes{
         flex-direction: column;
@@ -704,11 +728,32 @@ footer {
     display: none; /* Esconde a nav normal */
   }
 
-  .btn-ativação {
-    position: static;
-    margin-left: 10px;
-    font-size: 1.5rem;
-  }
+.submenu {
+    transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+    display: none;
+}
+.submenu.active {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+
+#barralateral {
+    transition: left 0.3s ease-in-out;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 999;
+}
+
+
+ .btn-ativação {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
 
   .logo-container {
     display: flex;
@@ -783,9 +828,6 @@ footer {
     width: 90%;
   }
 }
-
-
-
 
 .inclusao-texto-destaque {
     font-size: 1.8rem;
