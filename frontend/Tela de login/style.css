@@ -41,7 +41,7 @@ header{
     background-color: #fff;
     width: 100%;
     padding: 20px 4%;
-    position: relative;
+    position: fixed;
     z-index: 1;
     height: 125px;
     top: 0;
@@ -431,6 +431,7 @@ main{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 5%;
 }
 
 .main-container{
@@ -842,6 +843,7 @@ header .right-button {
     header .right-button {
         font-size: 1rem; /* Ajusta o tamanho dos botões */
     }
+    
 }
 
 @media screen and (max-width: 530px) {
@@ -917,6 +919,9 @@ header .right-button {
         padding: 3rem 2rem;
         display: flex;
     }
+    main{
+        margin-top: 15%;
+    }
 }
 
 @media screen and (max-width: 768px){
@@ -950,15 +955,25 @@ header .right-button {
     header{
         padding-top: 0;
         font-size: 1.4rem;
+        position: relative;
+        
     }
     header ul li{
         padding-left: 60px;
+    }
+    #header.scroll{
+        position: relative;
+        height: auto;
     }
 }
 @media (max-width: 530px) {
     header{
         text-align: center;
         font-size: 1rem;
+        margin-bottom: -50%;
+    }
+    main{
+        margin-top: 90%;
     }
 }
 @media (max-width: 480px) {
