@@ -82,11 +82,6 @@ if (isset($_SESSION['user'])) {
     </div>
 
     <main class="main">
-        <?php if ($logged): ?>
-    <h1>Olá, <?php echo htmlspecialchars($user['username'] ?? $user['name']); ?></h1>
-<?php else: ?>
-    <h1>Você não está logado</h1>
-<?php endif; ?>
         <div class="modelos">
             <div class="lanche-item">
                 <div class="lanche-item--img"><img src="" /></div>
