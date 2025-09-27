@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
+    <title>Acumule Pontos - SnackParadise</title>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='23' fill='%23a20908'/%3E%3Ctext x='25' y='32' text-anchor='middle' fill='white' font-size='20' font-weight='bold'%3ESP%3C/text%3E%3C/svg%3E" alt="Logo SnackParadise" class="logo">
+            </div>
+        </div>
+
+        <div class="header-center">
+            <a href="../Menu/index.html" class="menu-item">Menu</a>
+            <div class="menu-item cardapio-btn" id="cardapioBtn">
+                Cardápio
+                <div class="submenu" id="submenu">
+                    <a href="../Cardápio/index.html" class="submenu-item">Hambúrgueres</a>
+                    <a href="#" class="submenu-item">Acompanhamentos</a>
+                    <a href="#" class="submenu-item">Bebidas</a>
+                </div>
+            </div>
+            <a href="#" class="menu-item">Promoções</a>
+            <a href="#" class="menu-item">Outros</a>
+        </div>
+
+        <a href="../Tela de login/index.html" class="btn-conta">Conta</a>
+    </header>
+
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Menu/index.html" class="menu-lateral-item">Início</a>
+        <a href="#" class="menu-lateral-item">Perfil</a>
+        <a href="#" class="menu-lateral-item active">Pontos</a>
+        <a href="#" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="#" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem somos/index.html" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.html" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <main>
+        <div class="pontos-container">
+            <h1 class="titulo-principal">Programa de Pontos SnackParadise</h1>
+            <p class="subtitulo">A cada R$1,00 gasto você ganha 1 ponto. Acumule e troque por recompensas!</p>
+
+            <!-- Seção de Pontos do Usuário -->
+            <div class="pontos-usuario">
+                <div class="card-pontos">
+                    <div class="icon-pontos">⭐</div>
+                    <div class="info-pontos">
+                        <h2>Seus Pontos</h2>
+                        <div class="pontos-atuais" id="pontosAtuais">0</div>
+                        <button class="btn-simular" onclick="simularGastos()">Simular Gastos</button>
+                    </div>
+                </div>
+
+                <div class="card-nivel">
+                    <div class="icon-nivel">🏆</div>
+                    <div class="info-nivel">
+                        <h2>Seu Nível</h2>
+                        <div class="nivel-atual" id="nivelAtual">Bronze</div>
+                        <div class="barra-progresso">
+                            <div class="progresso" id="barraProgresso"></div>
+                        </div>
+                        <div class="proximo-nivel" id="proximoNivel">Prata em 250 pontos</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Níveis e Benefícios -->
+            <div class="secao-niveis">
+                <h2 class="titulo-secao">Níveis de Fidelidade</h2>
+                <div class="niveis-grid">
+                    <div class="card-nivel-info bronze">
+                        <div class="nivel-icon">🥉</div>
+                        <h3>Bronze</h3>
+                        <p class="pontos-necessarios">0 - 249 pontos</p>
+                        <ul class="beneficios">
+                            <li>Desconto de 5% em pedidos acima de R$30</li>
+                            <li>1 ponto = R$1 gasto</li>
+                            <li>Ofertas especiais ocasionais</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-nivel-info prata">
+                        <div class="nivel-icon">🥈</div>
+                        <h3>Prata</h3>
+                        <p class="pontos-necessarios">250 - 499 pontos</p>
+                        <ul class="beneficios">
+                            <li>Desconto de 10% em pedidos acima de R$25</li>
+                            <li>Frete grátis em pedidos acima de R$40</li>
+                            <li>Ofertas exclusivas semanais</li>
+                            <li>Aniversário: hambúrguer grátis</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-nivel-info ouro">
+                        <div class="nivel-icon">🥇</div>
+                        <h3>Ouro</h3>
+                        <p class="pontos-necessarios">500 - 999 pontos</p>
+                        <ul class="beneficios">
+                            <li>Desconto de 15% em todos os pedidos</li>
+                            <li>Frete grátis sempre</li>
+                            <li>Prioridade no atendimento</li>
+                            <li>Combo especial mensal grátis</li>
+                            <li>Acesso antecipado a novos produtos</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-nivel-info diamante">
+                        <div class="nivel-icon">💎</div>
+                        <h3>Diamante</h3>
+                        <p class="pontos-necessarios">1000+ pontos</p>
+                        <ul class="beneficios">
+                            <li>Desconto de 20% em todos os pedidos</li>
+                            <li>Cardápio VIP exclusivo</li>
+                            <li>Suporte premium 24/7</li>
+                            <li>Evento especial anual</li>
+                            <li>Personalização de pedidos</li>
+                            <li>Cashback de 2% em pontos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recompensas Disponíveis -->
+            <div class="secao-recompensas">
+                <h2 class="titulo-secao">Troque Seus Pontos</h2>
+                <div class="recompensas-grid">
+                    <div class="card-recompensa">
+                        <div class="recompensa-img">🍔</div>
+                        <h3>Hambúrguer Clássico</h3>
+                        <p class="custo-pontos">150 pontos</p>
+                        <button class="btn-trocar" onclick="trocarRecompensa('Hambúrguer Clássico', 150)">Trocar</button>
+                    </div>
+
+                    <div class="card-recompensa">
+                        <div class="recompensa-img">🍟</div>
+                        <h3>Batata Frita Grande</h3>
+                        <p class="custo-pontos">80 pontos</p>
+                        <button class="btn-trocar" onclick="trocarRecompensa('Batata Frita Grande', 80)">Trocar</button>
+                    </div>
+
+                    <div class="card-recompensa">
+                        <div class="recompensa-img">🥤</div>
+                        <h3>Refrigerante 500ml</h3>
+                        <p class="custo-pontos">60 pontos</p>
+                        <button class="btn-trocar" onclick="trocarRecompensa('Refrigerante 500ml', 60)">Trocar</button>
+                    </div>
+
+                    <div class="card-recompensa">
+                        <div class="recompensa-img">🍕</div>
+                        <h3>Pizza Individual</h3>
+                        <p class="custo-pontos">200 pontos</p>
+                        <button class="btn-trocar" onclick="trocarRecompensa('Pizza Individual', 200)">Trocar</button>
+                    </div>
+
+                    <div class="card-recompensa">
+                        <div class="recompensa-img">🍰</div>
+                        <h3>Sobremesa Especial</h3>
+                        <p class="custo-pontos">120 pontos</p>
+                        <button class="btn-trocar" onclick="trocarRecompensa('Sobremesa Especial', 120)">Trocar</button>
+                    </div>
+
+                    <div class="card-recompensa premium">
+                        <div class="recompensa-img">🎁</div>
+                        <h3>Combo Família</h3>
+                        <p class="custo-pontos">500 pontos</p>
+                        <button class="btn-trocar" onclick="trocarRecompensa('Combo Família', 500)">Trocar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Histórico de Pontos -->
+            <div class="secao-historico">
+                <h2 class="titulo-secao">Histórico de Pontos</h2>
+                <div class="historico-container">
+                    <div class="historico-header">
+                        <span>Data</span>
+                        <span>Descrição</span>
+                        <span>Pontos</span>
+                        <span>Saldo</span>
+                    </div>
+                    <div class="historico-lista" id="historicoLista">
+                        <div class="historico-item">
+                            <span>Hoje</span>
+                            <span>Bem-vindo ao programa!</span>
+                            <span class="pontos-positivo">+0</span>
+                            <span>0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../Menu/index.html">Início</a>
+                <a href="../Quem somos/index.html">Sobre</a>
+                <a href="#">Serviços</a>
+                <a href="#">Contato</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SnackParadise. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="pontos.js"></script>
+</body>
+</html>
