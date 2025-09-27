@@ -40,14 +40,7 @@ $user = $_SESSION['user'];
                             </div>
                         </li>
                         <li class="list-menu1">
-                            <button id="btn-cardapio">&darr;Cardápio</button>
-                            <div class="submenu" id="submenu">
-                                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Bebidas</button></a>
-                            </div>
+                            <a href="../../frontend/Cardápio/index.php" target="_self">Cardápio</a>
                         </li>
                         <li class="list-menu1">
                             <a href="#" target="_self">Promoções</a>
