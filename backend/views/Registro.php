@@ -7,8 +7,8 @@ class Registro
 {
     private int $id;
     private string $nome;
-    private int $pasword;
-    private int $email;
+    private string $pasword;
+    private string $email;
     private ?PDO $conn = null;
 
     // Getters e Setters
@@ -28,19 +28,19 @@ class Registro
     {
         $this->nome = $nome;
     }
-    public function getPasword(): int
+    public function getPasword(): string
     {
         return $this->pasword;
     }
-    public function setPasword(int $pasword): void
+    public function setPasword(string $pasword): void
     {
         $this->pasword = $pasword;
     }
-    public function getEmail(): int
+    public function getEmail(): string
     {
         return $this->email;
     }
-    public function setEmail(int $email): void
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
@@ -70,6 +70,21 @@ class Registro
             $sql->bindValue(':nome', $this->getNome());
             $sql->bindValue(':pasword', $this->getPasword());
             $sql->bindValue(':email', $this->getEmail());
+            $sql->execute();
+            $this->conn = null; // Fechar conexão
+        } catch (PDOException $exc) {
+            echo "Erro ao executar consulta: " . $exc->getMessage();
+        }
+    }
+
+    //metodo so pra alterar o email porraaaaaa
+    public function editaremail()
+    {
+        try {
+            $this->conn = new Conectar; // Conectar método getConnection()
+            $sql = $this->conn->prepare("UPDATE users SET Email = :email WHERE id = :id");
+            @$sql->bindValue(':id', $this->getId());
+            @$sql->bindValue(':email', $this->getEmail());
             $sql->execute();
             $this->conn = null; // Fechar conexão
         } catch (PDOException $exc) {

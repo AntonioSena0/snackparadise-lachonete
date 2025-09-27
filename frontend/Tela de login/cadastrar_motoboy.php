@@ -39,7 +39,7 @@
         <div class="main-container">
             <div class="box">
                 <div class="forms">
-                    <form autocomplete="off" class="Cadastrar-Motoboy-Form" method="POST" action="../back/perfil/registro_processo.php">
+                    <form autocomplete="off" class="Cadastrar-Motoboy-Form" method="POST" action="../../backend/controllers/registro_motoboy.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>
@@ -86,7 +86,7 @@
             <p>&copy; 2023 Snack Paradise. Todos os direitos reservados.</p>
         </div>
     </footer>
-    <script src="script.js"></script>
+    <script src="menu.js"></script>
 </body>
 </html>
 <script>

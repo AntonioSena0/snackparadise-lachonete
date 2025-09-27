@@ -77,6 +77,31 @@ $user = $_SESSION['user'];
                 </form>
         </div>
     </div>
+    <div class="container">
+        <h1>aqui ficao as coisas qo usuario interage tipo</h1><br>
+        <label for="email">Email</label>
+        <form method="POST" action="">
+        <input type="text" name="emaildaora" value=<?php echo $user['email'] ?>></input>
+        <button type="submit" name="altemail">Alterar Email</input>
+        </form>
+    </div>
     <script src="../public/Conta.js"></script>
+
+    <?php
+    extract($_POST, EXTR_OVERWRITE);
+    if(isset($altemail)) {
+    require_once 'Registro.php';
+    $userObj = new Registro();
+    $userObj->setId($_SESSION['user']['id']);
+    $userObj->setEmail($_POST['emaildaora']);
+    $userObj->editaremail();
+
+    // atualizar a sessão
+    $_SESSION['user']['email'] = $_POST['emaildaora'];
+
+    header("Location: Conta.php");
+    exit;
+}
+    ?>
 </body>
 </html>

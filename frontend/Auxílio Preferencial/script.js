@@ -94,109 +94,59 @@ function inicializarMenuLateral() {
 
 // ============= SUBMENU DO CARDÁPIO =============
 function inicializarSubmenu() {
-    console.log('🍽️ Configurando submenu do cardápio...');
-    
     const cardapioBtn = document.getElementById('cardapioBtn');
     const submenu = document.getElementById('submenu');
-    
+
     if (!cardapioBtn || !submenu) {
         console.warn('⚠️ Elementos do submenu não encontrados');
-        console.warn('cardapioBtn:', !!cardapioBtn, 'submenu:', !!submenu);
         return;
     }
-    
-    console.log('✅ Submenu encontrado e configurado');
-    
-    let timeoutSubmenu = null;
-    
-    // Evento de clique principal
-    cardapioBtn.addEventListener('click', function(e) {
+
+    // Toggle ao clicar no botão
+    /*cardapioBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        e.stopPropagation();
-        
-        console.log('🖱️ Clique no cardápio detectado');
-        
+        e.stopPropagation(); // importante pra não fechar imediatamente no document click
+
         const isAtivo = submenu.classList.contains('ativo');
-        
+
         if (isAtivo) {
             fecharSubmenu();
         } else {
             abrirSubmenu();
         }
-    });
-    
-    // Hover para desktop (largura > 768px)
-    if (window.innerWidth > 768) {
-        console.log('🖥️ Configurando hover para desktop');
-        
-        cardapioBtn.addEventListener('mouseenter', function() {
-            clearTimeout(timeoutSubmenu);
-            abrirSubmenu();
-        });
-        
-        cardapioBtn.addEventListener('mouseleave', function() {
-            timeoutSubmenu = setTimeout(() => {
-                if (!submenu.matches(':hover')) {
-                    fecharSubmenu();
-                }
-            }, 300);
-        });
-        
-        submenu.addEventListener('mouseenter', function() {
-            clearTimeout(timeoutSubmenu);
-        });
-        
-        submenu.addEventListener('mouseleave', function() {
-            timeoutSubmenu = setTimeout(() => {
-                fecharSubmenu();
-            }, 300);
-        });
-    }
-    
-    // Fechar ao clicar fora
+    });*/
+
+    // Fechar submenu clicando fora
     document.addEventListener('click', function(e) {
-        if (!cardapioBtn.contains(e.target)) {
+        if (!cardapioBtn.contains(e.target) && !submenu.contains(e.target)) {
             fecharSubmenu();
         }
     });
-    
-    // Funções internas do submenu
+
+    // Hover no desktop (apenas > 768px)
+    if (window.innerWidth > 768) {
+        cardapioBtn.addEventListener('mouseenter', abrirSubmenu);
+        cardapioBtn.addEventListener('mouseleave', fecharSubmenu);
+        submenu.addEventListener('mouseenter', abrirSubmenu);
+        submenu.addEventListener('mouseleave', fecharSubmenu);
+    }
+
     function abrirSubmenu() {
-        console.log('📋 Abrindo submenu');
-        
-        // Fechar outros submenus se existirem
-        document.querySelectorAll('.submenu.ativo').forEach(sub => {
-            if (sub !== submenu) {
-                sub.classList.remove('ativo');
-            }
-        });
-        
         submenu.classList.add('ativo');
         cardapioBtn.classList.add('active');
-        
-        // Acessibilidade
         cardapioBtn.setAttribute('aria-expanded', 'true');
-        
-        console.log('✅ Submenu aberto, classes:', submenu.className);
     }
-    
+
     function fecharSubmenu() {
-        console.log('❌ Fechando submenu');
-        
         submenu.classList.remove('ativo');
         cardapioBtn.classList.remove('active');
-        
-        // Acessibilidade
         cardapioBtn.setAttribute('aria-expanded', 'false');
-        
-        console.log('✅ Submenu fechado, classes:', submenu.className);
     }
-    
-    // Expor funções globalmente
+
+    // expor globalmente se precisar
     window.abrirSubmenu = abrirSubmenu;
     window.fecharSubmenu = fecharSubmenu;
 }
-
 // ============= ACESSIBILIDADE =============
 function configurarAcessibilidade() {
     console.log('♿ Configurando acessibilidade...');
