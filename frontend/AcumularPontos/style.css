@@ -7,6 +7,7 @@
     font-family: 'Inter', sans-serif;
 }
 
+/* ====== HEADER ====== */
 :root {
     --cor-primaria: #a20908;
     --cor-secundaria: #f40919;
@@ -28,7 +29,7 @@ body {
     color: var(--cor-cinza-escuro);
 }
 
-/* ====== HEADER ====== */
+
 header {
     background: var(--cor-branco);
     width: 100%;
@@ -147,14 +148,10 @@ header {
     box-shadow: 0 4px 12px rgba(162, 9, 8, 0.3);
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 /* ==== FIM DO HEADER ==== */
 
-=======
->>>>>>> 3e119d82eb6fdd58018f9bcae678f492baa2f58a
-=======
->>>>>>> 3e119d82eb6fdd58018f9bcae678f492baa2f58a
+/* ==== Começo DO MENU LATERAL ==== */
+
 /* Menu Lateral */
 .menu-lateral {
     position: fixed;
@@ -254,6 +251,8 @@ header {
     opacity: 1;
     visibility: visible;
 }
+
+/* ==== FIM DO MENU LATERAL ==== */
 
 /* ====== MAIN CONTENT ====== */
 main {
