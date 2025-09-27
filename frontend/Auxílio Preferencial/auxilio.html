@@ -9,60 +9,43 @@
 </head>
 <body>
    
-    <header id="header">
-  <div class="container">
-    <div class="flex">
-      <a href="../Menu/index.html">
-        <div class="flex">
-          <div class="logo-container">
-            <img src="Logo.png" alt="Logo da Lanchonete" class="logo" />
-          </div>
+      <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+            <a href="../Menu/index.html" class="logo">
+                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
+                </a>           
+             </div>
         </div>
-      </a>
 
-      <button class="btn-ativação" id="btn-ativação">☰</button>
-
-      <div class="header-right">
-        <nav>
-          <ul>
-            <li class="list-menu2">
-              <div class="barralateral" id="barralateral">
-                <a href="../Menu/index.html" target="_self">Início</a>
-                <a href="#" target="_self">Perfil</a>
-                <a href="#" target="_self">Pontos</a>
-                <a href="#" target="_self">Seja Parceiro</a>
-                <a href="#" target="_self">Avaliações</a>
-                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
-                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
-              </div>
-            </li>
-            <li class="list-menu1">
-              <button id="btn-cardapio">&darr;Cardápio</button>
-              <div class="submenu" id="submenu">
-                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
-                <hr>
-                <a href="#" target="_self"><button>Acompanhamentos</button></a>
-                <hr>
-                <a href="#" target="_self"><button>Bebidas</button></a>
-              </div>
-            </li>
-            <li class="list-menu1"><a href="#">Promoções</a></li>
-            <li class="list-menu1"><a href="#">Pedidos</a></li>
-            <li class="list-menu1"><a href="#">App SP</a></li>
-          </ul>
-        </nav>
-
-        <div class="btn-conta">
-          <a href="../Tela de login/index.html">
-            <button id="btn-conta" class="conta">Conta</button>
-          </a>
+        <div class="header-center">
+            <a href="../Menu/index.html" class="menu-item">Menu</a>
+            <div class="menu-item cardapio-btn" id="cardapioBtn">
+                Cardápio
+                <div class="submenu" id="submenu">
+                    <a href="../Cardápio/index.html" class="submenu-item">Hambúrgueres</a>
+                    <a href="#" class="submenu-item">Acompanhamentos</a>
+                    <a href="#" class="submenu-item">Bebidas</a>
+                </div>
+            </div>
+            <a href="#" class="menu-item">Promoções</a>
+            <a href="../Quem somos/index.html" class="menu-item">Sobre Nós</a>
         </div>
-                </div><!--btn-conta-->
 
-            </div><!--Flex-->
+        <a href="../Tela de login/index.html" class="btn-conta">Conta</a>
+    </header>
 
-        </div><!--container-->
-
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Menu/index.html" class="menu-lateral-item">Início</a>
+        <a href="#" class="menu-lateral-item">Perfil</a>
+        <a href="#" class="menu-lateral-item active">Pontos</a>
+        <a href="#" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="#" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem somos/index.html" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.html" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
     </header><!--header-->
 
     <main>
