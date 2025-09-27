@@ -91,7 +91,6 @@ header .list-menu1 a:hover, #btn-cardapio:hover{
     border: none;
     cursor: pointer;
 }
-
 .submenu{
     border: solid yellow 2px;
     flex-direction: column;
@@ -250,8 +249,7 @@ main{
 .text{
     background-color: #7c1210;
     color: #fff;
-    font-size: 1.8rem;
-    width: 70%;
+    font-size: 1.6rem;
     font-weight: 700;
     letter-spacing: 0.05mm;
     padding-left: 5%;
@@ -263,7 +261,7 @@ main{
   
   .logo2{
       width: 523px;
-      height: 523px;
+      height: auto;
       filter: drop-shadow(0px 4px 4px rgb(251, 255, 0));
   }
 
