@@ -6,6 +6,7 @@
     <title>Snack Paradise</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
@@ -27,6 +28,9 @@
                                 <a href="#" target="_self">Avaliações</a>
                                 <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
                                 <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
+                                <div class="container text-center mt-5">
+                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tutorialModal">Assistir tutorial</button>
+                                </div>
                             </div>
                         </li>
                         <li class="list-menu1">
@@ -63,7 +67,25 @@
 
     </header><!--header-->
 
-    <main class="main">    
+    <main class="main">   
+        
+    <!--modal do video-->    
+<div class="modal fade" id="tutorialModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Bem-vindo ao site!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO" title="Tutorial" allowfullscreen></iframe>
+                </div>
+            </div>
+         </div>
+    </div>
+</div>
+  <!--cabou o modal do video-->
             <div class="texto">
                 <h1>Como Você Gostaria Do Seu Pedido Hoje?</h1>
                 <hr class="line">
@@ -114,5 +136,16 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
     <script src="menu.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // checa se o popup já foi mostrado
+      if (!localStorage.getItem("popupShown")) {
+        var tutorialModal = new bootstrap.Modal(document.getElementById('tutorialModal'));
+        tutorialModal.show();
+        localStorage.setItem("popupShown", "true");
+      }
+    });
+  </script>
 </body>
 </html>

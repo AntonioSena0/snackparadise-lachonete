@@ -70,7 +70,7 @@ header .list-menu1 a:hover, #btn-cardapio:hover{
 }
 
 .submenu{
-    border: solid #a20908 2px;
+    border: solid yellow 2px;
     flex-direction: column;
     background:none;
     opacity: 0;
@@ -93,10 +93,10 @@ header .list-menu1 a:hover, #btn-cardapio:hover{
 }
 
 .submenu button{
-    font-size: 1.5rem;
-    background-color: #fff;
-    color: #a20908;
-    width: 25vh;
+    font-size: 1.45rem;
+    background-color: #a20908;
+    color: #fff;
+    width: 15vw;
     height: 10vh;
     align-items: center;
     justify-content: center;   
@@ -105,13 +105,12 @@ header .list-menu1 a:hover, #btn-cardapio:hover{
 
 hr{
     height: 3px;
-    border: solid 2px #a20908;
+    border: solid 2px yellow;
 }
 
 .submenu button:hover{
     transform: translateY(-3px);
     background-color: #d62b2b;
-    color: #fff;
     cursor: pointer;
 }
 
@@ -119,6 +118,106 @@ hr{
     transform: translateY(2px);
     background-color: #ff1c1c;
 }
+
+#barralateral {
+    margin-top: 54px;
+    height: 100%;
+    width: 200px;
+    position: fixed;
+    left: -200px;
+    background-color: #fff;
+    transition: left 0.3s ease-in-out; 
+    z-index: 1;
+    transition: 500ms ease-in-out;
+}
+
+#barralateral a{
+    padding: 15px;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #000;
+    display: block;
+    transition: background-color 0.3s;
+}
+
+#barralateral a:hover{
+    background-color: #a20908;
+    color: #fff;
+}
+
+#barralateral.scroll{
+    background-color: #a20908;
+    margin-top: 29px;
+}
+
+#barralateral.scroll a{
+    color: #fff;
+}
+
+#barralateral.scroll a:hover{
+    background-color: #fff;
+    color: #a20908;
+}
+
+.btn-ativação{
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #000;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    z-index: 2;
+    font-size: 18px;
+}
+
+.btn-ativação.active {
+    background-color: #a20908;
+    border-radius: 10px; 
+}
+
+#btn-ativação.scroll{
+    border: solid #fff 3px;
+}
+
+.btn-conta button{
+    font-size: 1.7rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    background-color: #a20908;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 500ms;
+}   
+
+.btn-conta button:hover{
+    background-color: #FF3131;
+    transform: scale(1.2);
+}
+
+.btn-conta a{
+    text-decoration: none;
+    font-size: 20px;
+    display: flex;
+    line-height: 40px;
+}
+
+#btn-conta.scroll{
+    background-color: #fff;
+    color: #a20908;
+}
+
+#btn-conta.scroll:hover{
+    background-color: #a20908;
+    color: #fff;
+    border: solid #fff 2px;
+}
+
 
 .container {
     background-color: #fff;
