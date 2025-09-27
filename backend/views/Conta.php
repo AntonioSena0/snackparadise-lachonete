@@ -26,15 +26,40 @@ $user = $_SESSION['user'];
 
     <div class="header-right">
         <nav>
-        <ul>
-        <li class="list-menu1">
-            <a href="../../frontend/Cardápio/index.html">Cardápio</a>
-        </li>
-                <li class="list-menu1"><a href="#">Promoções</a></li>
-                <li class="list-menu1"><a href="#">Pedidos</a></li>
-                <li class="list-menu1"><a href="#">App SP</a></li>
-        </ul>
-        </nav>
+                    <ul>
+                        <li class="list-menu2">
+                            <button class="btn-ativação" id="btn-ativação">☰</button>
+                            <div class="barralateral" id="barralateral">
+                                <a href="index.html" target="_self">Início</a>
+                                <a href="#" target="_self">Perfil</a>
+                                <a href="#" target="_self">Pontos</a>
+                                <a href="#" target="_self">Seja Parceiro</a>
+                                <a href="#" target="_self">Avaliações</a>
+                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
+                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
+                            </div>
+                        </li>
+                        <li class="list-menu1">
+                            <button id="btn-cardapio">&darr;Cardápio</button>
+                            <div class="submenu" id="submenu">
+                                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
+                                <hr>
+                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
+                                <hr>
+                                <a href="#" target="_self"><button>Bebidas</button></a>
+                            </div>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">Promoções</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">Pedidos</a>
+                        </li>
+                        <li class="list-menu1">
+                            <a href="#" target="_self">App SP</a>
+                        </li>
+                    </ul>
+                </nav>
 
 
             </div><!--Flex-->
@@ -59,5 +84,6 @@ $user = $_SESSION['user'];
                 </form>
         </div>
     </div>
+    <script src="../public/Conta.js"></script>
 </body>
 </html>

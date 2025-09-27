@@ -1,10 +1,8 @@
 <?php
-session_start();
-if (isset($_SESSION['id'])) {
-    echo "<h1> Olá, " . $_SESSION['name']."</h1>";
-} else {
-    echo "Você não está logado";
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -111,7 +109,6 @@ if (isset($_SESSION['id'])) {
 
                             <div class="error-message" style="color: red; text-align: center;">
                                 <?php
-                                session_start();
                                 if (isset($_SESSION['login_error'])) {
                                     echo htmlspecialchars($_SESSION['login_error']);
                                     unset($_SESSION['login_error']);
