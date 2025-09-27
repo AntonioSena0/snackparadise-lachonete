@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = password_hash($_POST['senha'], PASSWORD_DEFAULT);
+        $passw = $_POST['senha'];
 
         try {
             $conn = Conectar::getInstance();
@@ -15,9 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql->bindParam(':email', $email);
             $sql->bindParam(':senha', $password);
             $sql->execute();
-
+            $userId = $conn->lastInsertId();
+            $conn->commit();
+            
             session_start();
-            $_SESSION['user'] = ['username' => $username, 'email' => $email];
+            session_regenerate_id(true); // basicamente, isso aqui serve pra armazenar o id do usuario toda vez q a sessao é regenerada, pa ai poder fazer a bosta la do alterar, pq tem q ter o id do usuario pa isso, PORRA
+            $_SESSION['user'] = ['id' => (int)$userId, 'username' => $username, 'email' => $email];
             header("Location: ../views/Conta.php");
             exit();
         } catch (PDOException $e) {
