@@ -18,15 +18,7 @@ body{
     opacity: 0;
     overflow-x: hidden;
 }
-html, body {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-}
-main {
-    flex: 1; /* Faz o main ocupar todo o espaço restante */
-}
+
 body.loaded {
     opacity: 2;
 }
@@ -47,7 +39,8 @@ header{
     background-color: #fff;
     width: 100%;
     padding: 20px 4%;
-    position: relative;
+    padding-top: 40px;
+    position: fixed;
     z-index: 1;
     height: 125px;
     top: 0;
@@ -60,8 +53,8 @@ header{
     position: fixed;
     height: 100px;
     background-color: #a20908;
+    padding-top: 30px;
 }
-
 #header.scroll .list-menu1 a{
     color: #fff;
 }
@@ -125,10 +118,10 @@ header .list-menu1 a:hover, #btn-cardapio:hover{
 }
 
 .submenu button{
-    font-size: 1.5rem;
+    font-size: 1.45rem;
     background-color: #a20908;
     color: #fff;
-    width: 25vh;
+    width: 15vw;
     height: 10vh;
     align-items: center;
     justify-content: center;   
@@ -152,7 +145,7 @@ hr{
 }
 
 #barralateral {
-    margin-top: 20px;
+    margin-top: 54px;
     height: 100%;
     width: 200px;
     position: fixed;
@@ -160,6 +153,7 @@ hr{
     background-color: #fff;
     transition: left 0.3s ease-in-out; 
     z-index: 1;
+    transition: 500ms ease-in-out;
 }
 
 #barralateral a{
@@ -178,6 +172,8 @@ hr{
 
 #barralateral.scroll{
     background-color: #a20908;
+    margin-top: 29px;
+    
 }
 
 #barralateral.scroll a{
@@ -248,6 +244,10 @@ hr{
     border: solid #fff 2px;
 }
 
+main{
+    margin-top: 12%;
+}
+
 .modelos {
     display: none;
 }
@@ -305,11 +305,9 @@ hr{
 
 .lanche-item img {
     border-radius: 8px;
-    width: 27vh;
-    height: 100%;
-    padding: 10px;
-    padding-right: 50px;
-    padding-left: 50px;
+    width: 300px;
+    height: 300px;
+    padding: 5px;
     background-color: #870606;
 }
 
@@ -482,15 +480,26 @@ footer {
     transform: scale(0.95); /* Leve redução ao clicar */
 }
 
+@media (max-width: 1489px){
+    .flex{      
+        text-align: center;
+    }
+    .submenu button{
+        font-size: 1rem;
+        width: 20vw;
+    }
+}
+
 /* Responsividade para telas grandes */
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1350px) {
     .lanche-item img {
-        width: 80%;
+        width: 200px;
+        height: 200px;
     }
 }
 
 /* Responsividade para tablets */
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1150px) {
     .lanche-item {
         width: 90%; /* Ajusta a largura dos cards para ocupar quase toda a tela */
         margin: 10px auto; /* Centraliza os cards */
@@ -531,6 +540,144 @@ footer {
     }
 }
 
+@media screen and (max-width: 950px){
+    header{
+        height: 200px;
+        position: absolute;
+        padding: 20px;
+    }
+    #header.scroll{
+        height: 200px;
+        position: absolute;
+        padding: 20px;
+    }
+    .flex{      
+        margin-left: 30vw;
+        margin-right: 30vw;
+    }
+    main{
+        padding-top: 200px;
+    }
+    #barralateral{
+        margin-top: 125px;
+    }
+    #barralateral.scroll{
+        position: fixed;
+        height: 110vh;
+        margin-top: -43px;
+    }
+    #btn-ativação.scroll{
+        position: fixed;
+        left: 10px;
+        height: 50px;
+    }
+    .submenu button{
+        width: 25vw;
+    }
+    .carrinho{
+        top: 100px;
+        left: 25px;
+    }
+}
+
+@media screen and (max-width: 768px){
+
+    .flex{
+        flex-direction: column;
+    }
+    .container{
+        position: relative;
+        display: flex;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    footer{
+        margin-top: 18%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+    
+    .footer-container .footer-links {
+        margin-bottom: 10px;
+    }
+    
+    .footer-container .footer-links a {
+        display: block;
+        margin: 5px 0;
+    }
+    .logo{
+        width: 20px;
+        height: 20px;
+    }
+    header{
+        padding-top: 0;
+        font-size: 1.4rem;
+    }
+
+    header ul li{
+        padding-left: 60px;
+    }
+
+    .btn-opcoes{
+        align-items: center;
+        text-align: center;
+        padding-top: 10%;
+        display: flex;
+        flex-direction: column;
+    }
+    .btn-conta button{
+        font-size: 0.7rem;
+    }
+    #header.scroll{
+        height: 230px;
+    }
+    
+}
+
+@media screen and (max-width: 700px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    .btn-conta button{
+        font-size: 1rem;
+    }
+    .submenu button{
+        width: 34vw;
+    }
+}
+
+@media screen and (max-width: 669px){
+    .texto-slider{
+        font-size: 1.6rem;
+    }
+}
+
+@media screen and (max-width: 666px){
+    header ul li a{
+        font-size: 1.2rem;
+    }
+    header ul li{
+        padding: 0;
+    }
+    .carrinho{
+        width: 45%;
+    }
+    
+}
+
+@media (max-width: 508px) {
+    header ul li a{
+        font-size: 1rem;
+    }
+    .texto-slider{
+        font-size: 1.2rem;
+    }
+}
+
 /* Responsividade para smartphones */
 @media screen and (max-width: 480px) {
     .lanche-item {
@@ -566,5 +713,22 @@ footer {
 
     .footer-container .footer-links a {
         font-size: 0.9rem; /* Reduz o tamanho da fonte dos links no rodapé */
+    }
+}
+
+@media (max-width: 478px) {
+    header{
+        text-align: center;
+        font-size: 0.7rem;
+    }
+}
+@media (max-width: 526px) {
+    header{
+        font-size: 1rem;
+    }
+}
+@media (max-width: 480px) {
+    header{
+        font-size: 0.7rem;
     }
 }

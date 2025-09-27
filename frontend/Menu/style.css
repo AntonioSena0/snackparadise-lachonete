@@ -39,7 +39,7 @@ header{
     width: 100%;
     padding: 20px 4%;
     padding-top: 40px;
-    position: relative;
+    position: fixed;
     z-index: 1;
     height: 125px;
     top: 0;
@@ -241,6 +241,10 @@ hr{
     background-color: #a20908;
     color: #fff;
     border: solid #fff 2px;
+}
+
+main{
+    margin-top: 12%;
 }
 
 .main-part{
