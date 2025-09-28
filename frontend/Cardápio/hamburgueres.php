@@ -12,7 +12,7 @@
                 <nav>
                     <ul>
                         <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
+                            <button class="btn-ativação" id="btn-ativacao">☰</button>
                             <div class="barralateral" id="barralateral">
                                 <a href="../Menu/index.html" target="_self">Início</a>
                                 <a href="#" target="_self">Perfil</a>
@@ -87,7 +87,7 @@
             </div>
 
             <!-- Área onde os hambúrgueres do JSON serão inseridos -->
-            <div class="area-hamburgueres"></div>
+            <div class="area-lanches"></div>
         </div>
     </main>
 <script>

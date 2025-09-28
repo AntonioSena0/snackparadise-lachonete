@@ -3,7 +3,7 @@ function MudarOHeader() {
     let header = document.querySelector('header');
     let barralateral = document.getElementById('barralateral');
     let conta = document.getElementById('btn-conta');
-    const btn = document.getElementById('btn-ativação');
+    const btn = document.getElementById('btn-ativacao');
     if (scrollY > 0) {
         header.classList.add('scroll');
         barralateral.classList.add('scroll');

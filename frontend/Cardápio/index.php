@@ -30,7 +30,7 @@ if (isset($_SESSION['user'])) {
                 <nav>
                     <ul>
                         <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
+                            <button class="btn-ativação" id="btn-ativacao">☰</button>
                             <div class="barralateral" id="barralateral">
                                 <a href="../Menu/index.html" target="_self">Início</a>
                                 <a href="#" target="_self">Perfil</a>
