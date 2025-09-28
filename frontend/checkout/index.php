@@ -118,7 +118,127 @@
             </div>
         </div>
     </footer>
-    
+<script>
+(function () {
+  // Roda após DOM pronto
+  document.addEventListener('DOMContentLoaded', () => {
+    safePopulateCheckout();
+  });
+
+  function safePopulateCheckout() {
+    const ul = document.getElementById('itensCheckout');
+    const totalSpan = document.getElementById('totalCheckout');
+
+    if (!ul) {
+      console.error('Elemento #itensCheckout NÃO encontrado no DOM.');
+      return;
+    }
+    if (!totalSpan) {
+      console.error('Elemento #totalCheckout NÃO encontrado no DOM.');
+      return;
+    }
+
+    // Tenta obter o carrinho de forma robusta
+    const cart = findCartInLocalStorage();
+    console.log('DEBUG: cart encontrado =', cart);
+
+    if (!cart || !Array.isArray(cart) || cart.length === 0) {
+      ul.innerHTML = '<li>Seu carrinho está vazio.</li>';
+      totalSpan.textContent = '0.00';
+      return;
+    }
+
+    // Preenche a lista e calcula total
+    ul.innerHTML = '';
+    let total = 0;
+    cart.forEach(item => {
+      // normalize keys (pt/en)
+      const nome = item.nome ?? item.name ?? 'Sem nome';
+      const quantidade = item.quantidade ?? item.qty ?? item.qtd ?? 1;
+      const preco = Number(item.preco ?? item.price ?? 0) || 0;
+
+      const li = document.createElement('li');
+      li.textContent = `${nome} (x${quantidade}) - R$ ${(preco * quantidade).toFixed(2)}`;
+      ul.appendChild(li);
+
+      total += preco * quantidade;
+    });
+
+    totalSpan.textContent = total.toFixed(2);
+  }
+
+  // Procura possíveis chaves de carrinho no localStorage e retorna o array (ou null)
+  function findCartInLocalStorage() {
+    const triedKeys = [];
+    // 1) tenta chaves óbvias
+    const possibleKeys = ['carrinho', 'cart', 'carrinhoUsuario', 'shoppingCart', 'cartItems', 'itensCarrinho'];
+
+    for (const k of possibleKeys) {
+      triedKeys.push(k);
+      const raw = localStorage.getItem(k);
+      if (!raw) continue;
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed;
+        // se for objeto com array interno
+        if (parsed && typeof parsed === 'object') {
+          // procura um campo que seja array de itens
+          for (const f of Object.keys(parsed)) {
+            if (Array.isArray(parsed[f]) && parsed[f].length && isCartArrayLike(parsed[f])) {
+              return parsed[f];
+            }
+          }
+        }
+      } catch (e) {
+        // não JSON -> ignora
+      }
+    }
+
+    // 2) varre todo o localStorage e tenta achar um array de objetos parecido com carrinho
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (possibleKeys.includes(key)) continue; // já tentado
+      triedKeys.push(key);
+      const raw = localStorage.getItem(key);
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length && isCartArrayLike(parsed)) {
+          console.warn('Detectei carrinho na key localStorage:', key);
+          return parsed;
+        }
+        // se for objeto com campo array
+        if (parsed && typeof parsed === 'object') {
+          for (const f of Object.keys(parsed)) {
+            if (Array.isArray(parsed[f]) && parsed[f].length && isCartArrayLike(parsed[f])) {
+              console.warn('Detectei carrinho dentro do objeto na key:', key, 'campo:', f);
+              return parsed[f];
+            }
+          }
+        }
+      } catch (e) { /* ignore parse errors */ }
+    }
+
+    console.log('Tentei keys:', triedKeys);
+    return null;
+  }
+
+  // Heurística: checa se um array parece ser um carrinho (itens com nome/preco)
+  function isCartArrayLike(arr) {
+    if (!Array.isArray(arr) || arr.length === 0) return false;
+    // aceita se pelo menos metade dos itens tiverem "nome" ou "name" e "preco" ou "price"
+    let match = 0;
+    arr.slice(0, 10).forEach(it => {
+      if (!it || typeof it !== 'object') return;
+      const hasName = ('nome' in it) || ('name' in it);
+      const hasPrice = ('preco' in it) || ('price' in it);
+      if (hasName && hasPrice) match++;
+    });
+    return match >= Math.max(1, Math.floor(arr.length / 2));
+  }
+
+})();
+</script>
+
     <script src="menu.js"></script>
 </body>
 </html>
