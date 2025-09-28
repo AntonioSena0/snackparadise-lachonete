@@ -110,7 +110,7 @@
                         <div class="video-play-content">
                             <i class="fas fa-play-circle"></i>
                             <p>Vídeo Institucional</p>
-                            <span>Clique para assistir</span>
+                            <span>Clique para assistir!</span>
                         </div>
                     </div>
                 </div>
@@ -121,4 +121,4 @@
     <script src="menu.js"></script>
     <script src="script.js"></script>
 </body>
-</html>
+</html> 
