@@ -37,7 +37,7 @@ https://github.com/MrEddie7
 
 ### Giovanna Alves Martins Torres:
 https://github.com/GiT0rres
-* Responsável pela codificação da tela "Motoboy Vision".
+* Responsável pela codificação de todo o Front-end do site e pelo wireframe.
 
 ### João Victor de Paiva Carvalho:
 https://github.com/joao-the-carvalho
