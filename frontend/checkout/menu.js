@@ -1,18 +1,114 @@
-document.addEventListener('DOMContentLoaded', () => {
-window.addEventListener("load", function() {
-    document.body.classList.add("loaded");
+// Sistema de Feedback SnackParadise
+console.log('🍔 Iniciando sistema de feedback SnackParadise...');
+
+// Aguardar o DOM estar carregado
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('✅ DOM carregado, iniciando funcionalidades...');
+    
+    inicializarPagina();
+    inicializarMenuLateral();
+    inicializarSubmenu();
+    inicializarFormularioFeedback();
+    carregarAvaliacoesRecentes();
+    configurarAcessibilidade();
+    
+    console.log('🚀 Sistema de feedback inicializado com sucesso!');
 });
 
-// Previne o comportamento padrão de links e gerencia a transição
-document.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", function(event) {
-        event.preventDefault();
-        document.body.classList.remove("loaded");
-        setTimeout(() => {
-            window.location.href = this.href;
-        }, 500);
+// ============= INICIALIZAÇÃO DA PÁGINA =============
+function inicializarPagina() {
+    console.log('⚙️ Inicializando página...');
+    
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 100);
+    
+    configurarAnimacoesOnScroll();
+}
+
+// ============= MENU LATERAL =============
+function inicializarMenuLateral() {
+    const btnMenuLateral = document.getElementById('btnMenuLateral');
+    const menuLateral = document.getElementById('menuLateral');
+    const overlay = document.getElementById('overlay');
+    
+    if (!btnMenuLateral || !menuLateral || !overlay) {
+        console.warn('⚠️ Elementos do menu lateral não encontrados');
+        return;
+    }
+    
+    btnMenuLateral.addEventListener('click', function(e) {
+        e.preventDefault();
+        const isAtivo = menuLateral.classList.contains('ativo');
+        
+        if (isAtivo) {
+            fecharMenuLateral();
+        } else {
+            abrirMenuLateral();
+        }
     });
-});
+    
+    overlay.addEventListener('click', fecharMenuLateral);
+    
+    function abrirMenuLateral() {
+        menuLateral.classList.add('ativo');
+        overlay.classList.add('ativo');
+        btnMenuLateral.classList.add('active');
+        btnMenuLateral.innerHTML = '✕';
+        document.body.style.overflow = 'hidden';
+        btnMenuLateral.setAttribute('aria-expanded', 'true');
+    }
+    
+    function fecharMenuLateral() {
+        menuLateral.classList.remove('ativo');
+        overlay.classList.remove('ativo');
+        btnMenuLateral.classList.remove('active');
+        btnMenuLateral.innerHTML = '☰';
+        document.body.style.overflow = 'auto';
+        btnMenuLateral.setAttribute('aria-expanded', 'false');
+    }
+    
+    window.fecharMenuLateral = fecharMenuLateral;
+}
+
+// ============= SUBMENU =============
+function inicializarSubmenu() {
+    const cardapioBtn = document.getElementById('cardapioBtn');
+    const submenu = document.getElementById('submenu');
+
+    if (!cardapioBtn || !submenu) {
+        console.warn('⚠️ Elementos do submenu não encontrados');
+        return;
+    }
+
+    document.addEventListener('click', function(e) {
+        if (!cardapioBtn.contains(e.target) && !submenu.contains(e.target)) {
+            fecharSubmenu();
+        }
+    });
+
+    if (window.innerWidth > 768) {
+        cardapioBtn.addEventListener('mouseenter', abrirSubmenu);
+        cardapioBtn.addEventListener('mouseleave', fecharSubmenu);
+        submenu.addEventListener('mouseenter', abrirSubmenu);
+        submenu.addEventListener('mouseleave', fecharSubmenu);
+    }
+
+    function abrirSubmenu() {
+        submenu.classList.add('ativo');
+        cardapioBtn.classList.add('active');
+        cardapioBtn.setAttribute('aria-expanded', 'true');
+    }
+
+    function fecharSubmenu() {
+        submenu.classList.remove('ativo');
+        cardapioBtn.classList.remove('active');
+        cardapioBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    window.abrirSubmenu = abrirSubmenu;
+    window.fecharSubmenu = fecharSubmenu;
+}
 
 // Formulário de pagamento
 document.getElementById('payment-form').addEventListener('submit', async function(event) {
@@ -175,5 +271,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.includes('checkout')) {
         carregarCarrinhoNoCheckout();
     }
-});
 });
