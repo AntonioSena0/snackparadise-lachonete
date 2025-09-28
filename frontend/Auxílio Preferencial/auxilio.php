@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user'])) {
+    $logged = true;
+    $user = $_SESSION['user'];
+} elseif (isset($_SESSION['motoboy'])) {
+    $logged = true;
+    $user = $_SESSION['motoboy'];
+} else {
+    $logged = false;
+    $user = null;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -39,15 +54,16 @@
     <!-- Menu Lateral -->
     <nav class="menu-lateral" id="menuLateral">
         <a href="../Menu/index.html" class="menu-lateral-item">Início</a>
-        <a href="#" class="menu-lateral-item">Perfil</a>
-        <a href="#" class="menu-lateral-item active">Pontos</a>
-        <a href="#" class="menu-lateral-item">Seja Parceiro</a>
-        <a href="#" class="menu-lateral-item">Avaliações</a>
+        <a href="<?php echo $logged ? '../../backend/views/Conta.php' : '../Tela de Login/index.html'; ?>" class="menu-lateral-item">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item">Pontos</a>
+        <a href="../SejaParceiro/index.html" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="../Feedback/index.html" class="menu-lateral-item">Avaliações</a>
         <a href="../Quem somos/index.html" class="menu-lateral-item">Sobre nós</a>
-        <a href="../Auxílio Preferencial/auxilio.html" class="menu-lateral-item">Auxílio Preferencial</a>
+        <a href="../Auxílio Preferencial/auxilio.html" class="menu-lateral-item active">Auxílio Preferencial</a>
     </nav>
-    </header><!--header-->
 
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
     <main>
     <section class="inclusao-section">
   <h2 class="inclusao-title">
@@ -129,9 +145,6 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
     
-    <script src="menu.js"></script>
-
-<!-- Overlay para menus -->
-<div class="overlay" id="overlay"></div>
+    <script src="script.js" defer></script>
 </body>
 </html>

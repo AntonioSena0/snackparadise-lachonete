@@ -1,157 +1,62 @@
-// Script completo e funcional para SnackParadise
-console.log('🍔 Iniciando SnackParadise...');
+// Script geral para funcionalidades comuns do SnackParadise
 
-// Aguardar o DOM estar completamente carregado
+// Inicialização da página
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('✅ DOM carregado, iniciando funcionalidades...');
-    
-    // Inicializar todas as funcionalidades
     inicializarPagina();
-    inicializarMenuLateral();
-    inicializarSubmenu();
+    configurarTransicoesPagina();
     configurarAcessibilidade();
     configurarPerformance();
-    
-    console.log('🚀 SnackParadise inicializado com sucesso!');
 });
 
-// ============= INICIALIZAÇÃO DA PÁGINA =============
+// Função principal de inicialização
 function inicializarPagina() {
-    console.log('⚙️ Inicializando página...');
-    
-    // Mostrar o body gradualmente
+    // Adicionar classe loaded para animações
     setTimeout(() => {
         document.body.classList.add('loaded');
-        document.body.style.opacity = '1';
     }, 100);
     
-    // Configurar funcionalidades extras
-    configurarLazyLoading();
-    configurarSmoothScroll();
+    // Configurar tooltips
     configurarTooltips();
-    inicializarSubmenu();
+    
+    // Configurar lazy loading para imagens
+    configurarLazyLoading();
+    
+    // Configurar smooth scroll
+    configurarSmoothScroll();
 }
 
-// ============= MENU LATERAL =============
-function inicializarMenuLateral() {
-    console.log('📱 Configurando menu lateral...');
-    
-    const btnMenuLateral = document.getElementById('btnMenuLateral');
-    const menuLateral = document.getElementById('menuLateral');
-    const overlay = document.getElementById('overlay');
-    
-    if (!btnMenuLateral || !menuLateral || !overlay) {
-        console.warn('⚠️ Elementos do menu lateral não encontrados');
-        return;
-    }
-    
-    // Evento principal do botão
-    btnMenuLateral.addEventListener('click', function(e) {
-        e.preventDefault();
-        console.log('🖱️ Clique no botão do menu lateral');
-        
-        const isAtivo = menuLateral.classList.contains('ativo');
-        
-        if (isAtivo) {
-            fecharMenuLateral();
-        } else {
-            abrirMenuLateral();
-        }
+// Configurar transições entre páginas
+function configurarTransicoesPagina() {
+    // Selecionar todos os links que não são âncoras
+    document.querySelectorAll('a[href]:not([href^="#"])').forEach(link => {
+        link.addEventListener('click', function(event) {
+            // Verificar se é um link externo
+            if (this.hostname && this.hostname !== window.location.hostname) {
+                return; // Permitir comportamento padrão para links externos
+            }
+            
+            // Verificar se não é um link com target="_blank"
+            if (this.target === '_blank') {
+                return;
+            }
+            
+            event.preventDefault();
+            
+            const destino = this.href;
+            
+            // Animação de saída
+            document.body.style.transition = 'opacity 0.3s ease-in-out';
+            document.body.style.opacity = '0';
+            
+            setTimeout(() => {
+                window.location.href = destino;
+            }, 300);
+        });
     });
-    
-    // Fechar ao clicar no overlay
-    overlay.addEventListener('click', function() {
-        fecharMenuLateral();
-    });
-    
-    // Funções internas do menu lateral
-    function abrirMenuLateral() {
-        console.log('📂 Abrindo menu lateral');
-        menuLateral.classList.add('ativo');
-        overlay.classList.add('ativo');
-        btnMenuLateral.classList.add('active');
-        btnMenuLateral.innerHTML = '✕';
-        document.body.style.overflow = 'hidden';
-        
-        // Acessibilidade
-        btnMenuLateral.setAttribute('aria-expanded', 'true');
-    }
-    
-    function fecharMenuLateral() {
-        console.log('📁 Fechando menu lateral');
-        menuLateral.classList.remove('ativo');
-        overlay.classList.remove('ativo');
-        btnMenuLateral.classList.remove('active');
-        btnMenuLateral.innerHTML = '☰';
-        document.body.style.overflow = 'auto';
-        
-        // Acessibilidade
-        btnMenuLateral.setAttribute('aria-expanded', 'false');
-    }
-    
-    // Expor função globalmente
-    window.fecharMenuLateral = fecharMenuLateral;
 }
 
-// ============= SUBMENU DO CARDÁPIO =============
-function inicializarSubmenu() {
-    const cardapioBtn = document.getElementById('cardapioBtn');
-    const submenu = document.getElementById('submenu');
-
-    if (!cardapioBtn || !submenu) {
-        console.warn('⚠️ Elementos do submenu não encontrados');
-        return;
-    }
-
-    // Toggle ao clicar no botão - REMOVA OS COMENTÁRIOS
-    cardapioBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const isAtivo = submenu.classList.contains('ativo');
-
-        if (isAtivo) {
-            fecharSubmenu();
-        } else {
-            abrirSubmenu();
-        }
-    });
-
-    // Fechar submenu clicando fora
-    document.addEventListener('click', function(e) {
-        if (!cardapioBtn.contains(e.target) && !submenu.contains(e.target)) {
-            fecharSubmenu();
-        }
-    });
-
-    // Hover no desktop (apenas > 768px)
-    if (window.innerWidth > 768) {
-        cardapioBtn.addEventListener('mouseenter', abrirSubmenu);
-        cardapioBtn.addEventListener('mouseleave', fecharSubmenu);
-        submenu.addEventListener('mouseenter', abrirSubmenu);
-        submenu.addEventListener('mouseleave', fecharSubmenu);
-    }
-
-    function abrirSubmenu() {
-        submenu.classList.add('ativo');
-        cardapioBtn.classList.add('active');
-        cardapioBtn.setAttribute('aria-expanded', 'true');
-    }
-
-    function fecharSubmenu() {
-        submenu.classList.remove('ativo');
-        cardapioBtn.classList.remove('active');
-        cardapioBtn.setAttribute('aria-expanded', 'false');
-    }
-
-    // expor globalmente se precisar
-    window.abrirSubmenu = abrirSubmenu;
-    window.fecharSubmenu = fecharSubmenu;
-}
-// ============= ACESSIBILIDADE =============
+// Configurar acessibilidade
 function configurarAcessibilidade() {
-    console.log('♿ Configurando acessibilidade...');
-    
     // Navegação por teclado
     document.addEventListener('keydown', function(event) {
         // Tab para navegação
@@ -159,87 +64,31 @@ function configurarAcessibilidade() {
             document.body.classList.add('usando-teclado');
         }
         
-        // ESC para fechar menus
+        // Esc para fechar modais/menus
         if (event.key === 'Escape') {
-            console.log('⌨️ ESC pressionado - fechando menus');
-            
-            // Fechar menu lateral
-            if (window.fecharMenuLateral) {
-                window.fecharMenuLateral();
-            }
-            
-            // Fechar submenu
-            if (window.fecharSubmenu) {
-                window.fecharSubmenu();
-            }
+            fecharTodosModais();
         }
         
-        // Enter/Space para ativar elementos
+        // Enter e Space para ativar elementos clicáveis
         if (event.key === 'Enter' || event.key === ' ') {
             const elemento = document.activeElement;
-            if (elemento && (
-                elemento.classList.contains('menu-item') ||
-                elemento.classList.contains('btn-menu-lateral') ||
-                elemento.classList.contains('cardapio-btn') ||
-                elemento.classList.contains('clickable')
-            )) {
+            if (elemento && elemento.classList.contains('clickable')) {
                 event.preventDefault();
                 elemento.click();
             }
         }
     });
     
-    // Remover classe de teclado quando usar mouse
+    // Remover classe quando usar mouse
     document.addEventListener('mousedown', function() {
         document.body.classList.remove('usando-teclado');
     });
     
-    // Configurar atributos ARIA
-    configurarAtributosAria();
+    // Configurar ARIA labels dinâmicos
+    configurarAriaLabels();
 }
 
-function configurarAtributosAria() {
-    // Botão do menu lateral
-    const btnMenuLateral = document.getElementById('btnMenuLateral');
-    if (btnMenuLateral && !btnMenuLateral.getAttribute('aria-label')) {
-        btnMenuLateral.setAttribute('aria-label', 'Abrir menu de navegação lateral');
-        btnMenuLateral.setAttribute('aria-expanded', 'false');
-        btnMenuLateral.setAttribute('aria-controls', 'menuLateral');
-    }
-    
-    // Menu lateral
-    const menuLateral = document.getElementById('menuLateral');
-    if (menuLateral && !menuLateral.getAttribute('role')) {
-        menuLateral.setAttribute('role', 'navigation');
-        menuLateral.setAttribute('aria-label', 'Menu de navegação lateral');
-    }
-    
-    // Botão do cardápio
-    const cardapioBtn = document.getElementById('cardapioBtn');
-    if (cardapioBtn && !cardapioBtn.getAttribute('aria-label')) {
-        cardapioBtn.setAttribute('aria-label', 'Abrir menu do cardápio');
-        cardapioBtn.setAttribute('aria-expanded', 'false');
-        cardapioBtn.setAttribute('aria-controls', 'submenu');
-        cardapioBtn.setAttribute('aria-haspopup', 'true');
-    }
-    
-    // Submenu
-    const submenu = document.getElementById('submenu');
-    if (submenu && !submenu.getAttribute('role')) {
-        submenu.setAttribute('role', 'menu');
-        submenu.setAttribute('aria-label', 'Menu do cardápio');
-    }
-    
-    // Itens do submenu
-    document.querySelectorAll('.submenu-item').forEach((item, index) => {
-        if (!item.getAttribute('role')) {
-            item.setAttribute('role', 'menuitem');
-            item.setAttribute('tabindex', '-1');
-        }
-    });
-}
-
-// ============= TOOLTIPS =============
+// Configurar tooltips
 function configurarTooltips() {
     const elementos = document.querySelectorAll('[data-tooltip]');
     
@@ -257,14 +106,13 @@ function mostrarTooltip(event) {
     
     if (!textoTooltip) return;
     
-    // Remover tooltip existente
-    esconderTooltip();
-    
-    // Criar novo tooltip
+    // Criar tooltip
     const tooltip = document.createElement('div');
-    tooltip.className = 'tooltip-ativo';
+    tooltip.className = 'tooltip';
     tooltip.textContent = textoTooltip;
+    tooltip.id = 'tooltip-ativo';
     
+    // Estilos do tooltip
     Object.assign(tooltip.style, {
         position: 'absolute',
         background: '#333',
@@ -276,28 +124,17 @@ function mostrarTooltip(event) {
         pointerEvents: 'none',
         opacity: '0',
         transition: 'opacity 0.2s ease',
-        whiteSpace: 'nowrap',
-        maxWidth: '200px'
+        whiteSpace: 'nowrap'
     });
     
     document.body.appendChild(tooltip);
     
-    // Posicionamento inteligente
+    // Posicionar tooltip
     const rect = elemento.getBoundingClientRect();
     const tooltipRect = tooltip.getBoundingClientRect();
     
-    let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
-    let top = rect.top - tooltipRect.height - 8;
-    
-    // Ajustar se sair da tela
-    if (left < 0) left = 8;
-    if (left + tooltipRect.width > window.innerWidth) {
-        left = window.innerWidth - tooltipRect.width - 8;
-    }
-    if (top < 0) top = rect.bottom + 8;
-    
-    tooltip.style.left = left + 'px';
-    tooltip.style.top = top + 'px';
+    tooltip.style.left = (rect.left + rect.width / 2 - tooltipRect.width / 2) + 'px';
+    tooltip.style.top = (rect.top - tooltipRect.height - 8) + 'px';
     
     // Animar entrada
     setTimeout(() => {
@@ -306,7 +143,7 @@ function mostrarTooltip(event) {
 }
 
 function esconderTooltip() {
-    const tooltip = document.querySelector('.tooltip-ativo');
+    const tooltip = document.getElementById('tooltip-ativo');
     if (tooltip) {
         tooltip.style.opacity = '0';
         setTimeout(() => {
@@ -317,7 +154,7 @@ function esconderTooltip() {
     }
 }
 
-// ============= LAZY LOADING DE IMAGENS =============
+// Configurar lazy loading para imagens
 function configurarLazyLoading() {
     if ('IntersectionObserver' in window) {
         const imageObserver = new IntersectionObserver((entries) => {
@@ -331,8 +168,6 @@ function configurarLazyLoading() {
                     }
                 }
             });
-        }, {
-            rootMargin: '50px'
         });
         
         document.querySelectorAll('img[data-src]').forEach(img => {
@@ -341,7 +176,7 @@ function configurarLazyLoading() {
     }
 }
 
-// ============= SMOOTH SCROLL =============
+// Configurar smooth scroll
 function configurarSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(event) {
@@ -356,19 +191,72 @@ function configurarSmoothScroll() {
                     block: 'start'
                 });
                 
-                // Atualizar URL
-                if (history.pushState) {
-                    history.pushState(null, null, `#${targetId}`);
-                }
+                // Atualizar URL sem recarregar
+                history.pushState(null, null, `#${targetId}`);
             }
         });
     });
 }
 
-// ============= PERFORMANCE =============
+// Configurar ARIA labels dinâmicos
+function configurarAriaLabels() {
+    // Botões com ícones
+    document.querySelectorAll('button[aria-label=""]').forEach(botao => {
+        if (botao.textContent.trim() === '') {
+            const icone = botao.querySelector('i, svg');
+            if (icone) {
+                botao.setAttribute('aria-label', 'Botão de ação');
+            }
+        }
+    });
+    
+    // Links sem texto
+    document.querySelectorAll('a:not([aria-label])').forEach(link => {
+        if (link.textContent.trim() === '') {
+            const img = link.querySelector('img');
+            if (img && img.alt) {
+                link.setAttribute('aria-label', img.alt);
+            } else {
+                link.setAttribute('aria-label', 'Link');
+            }
+        }
+    });
+}
+
+// Fechar todos os modais/menus
+function fecharTodosModais() {
+    // Fechar menu lateral
+    const menuLateral = document.getElementById('menuLateral');
+    const btnMenuLateral = document.getElementById('btnMenuLateral');
+    const overlay = document.getElementById('overlay');
+    
+    if (menuLateral && menuLateral.classList.contains('ativo')) {
+        menuLateral.classList.remove('ativo');
+        overlay.classList.remove('ativo');
+        btnMenuLateral.classList.remove('active');
+        btnMenuLateral.innerHTML = '☰';
+    }
+    
+    // Fechar submenu
+    const submenu = document.getElementById('submenu');
+    const cardapioBtn = document.getElementById('cardapioBtn');
+    
+    if (submenu && submenu.classList.contains('ativo')) {
+        submenu.classList.remove('ativo');
+        cardapioBtn.classList.remove('active');
+    }
+    
+    // Fechar outros modais
+    document.querySelectorAll('.modal.ativo, .popup.ativo').forEach(modal => {
+        modal.classList.remove('ativo');
+    });
+}
+
+// Configurar performance
 function configurarPerformance() {
-    // Throttle para scroll
-    let scrollTimer;
+    // Throttle para eventos de scroll e resize
+    let scrollTimer, resizeTimer;
+    
     window.addEventListener('scroll', function() {
         if (scrollTimer) clearTimeout(scrollTimer);
         scrollTimer = setTimeout(() => {
@@ -376,20 +264,22 @@ function configurarPerformance() {
         }, 16); // ~60fps
     }, { passive: true });
     
-    // Throttle para resize
-    let resizeTimer;
     window.addEventListener('resize', function() {
         if (resizeTimer) clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
             handleResize();
         }, 100);
     });
+    
+    // Precarregar recursos importantes
+    precarregarRecursos();
 }
 
+// Manipular eventos de scroll
 function handleScroll() {
     const scrollY = window.scrollY;
     
-    // Header com efeito scroll
+    // Header fixo com efeito
     const header = document.querySelector('header');
     if (header) {
         if (scrollY > 100) {
@@ -399,53 +289,192 @@ function handleScroll() {
         }
     }
     
+    // Botão voltar ao topo
+    const botaoTopo = document.getElementById('voltarTopo');
+    if (botaoTopo) {
+        if (scrollY > 500) {
+            botaoTopo.classList.add('visivel');
+        } else {
+            botaoTopo.classList.remove('visivel');
+        }
+    }
+    
     // Animações on scroll
-    const elementos = document.querySelectorAll('.animar-on-scroll:not(.animado)');
+    animarElementosOnScroll();
+}
+
+// Manipular eventos de resize
+function handleResize() {
+    // Ajustar elementos responsivos
+    ajustarElementosResponsivos();
+    
+    // Recalcular posições
+    recalcularPosicoes();
+}
+
+// Animar elementos quando entram na tela
+function animarElementosOnScroll() {
+    const elementos = document.querySelectorAll('.animar-on-scroll');
+    
     elementos.forEach(elemento => {
         const rect = elemento.getBoundingClientRect();
-        if (rect.top < window.innerHeight * 0.8) {
+        const windowHeight = window.innerHeight;
+        
+        if (rect.top < windowHeight * 0.8) {
             elemento.classList.add('animado');
         }
     });
 }
 
-function handleResize() {
+// Precarregar recursos importantes
+function precarregarRecursos() {
+    // Precarregar fontes críticas
+    const fontLinks = [
+        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap'
+    ];
+    
+    fontLinks.forEach(font => {
+        const link = document.createElement('link');
+        link.rel = 'preload';
+        link.href = font;
+        link.as = 'style';
+        link.onload = function() { this.rel = 'stylesheet'; };
+        document.head.appendChild(link);
+    });
+    
+    // Precarregar imagens importantes
+    const imagensImportantes = [
+        'data:image/svg+xml,<svg>...</svg>' // Logo, por exemplo
+    ];
+    
+    imagensImportantes.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+}
+
+// Utilitários
+const Utils = {
+    // Debounce
+    debounce: function(func, wait, immediate) {
+        let timeout;
+        return function executedFunction(...args) {
+            const later = () => {
+                timeout = null;
+                if (!immediate) func(...args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func(...args);
+        };
+    },
+    
+    // Throttle
+    throttle: function(func, limit) {
+        let inThrottle;
+        return function(...args) {
+            if (!inThrottle) {
+                func.apply(this, args);
+                inThrottle = true;
+                setTimeout(() => inThrottle = false, limit);
+            }
+        };
+    },
+    
+    // Detectar dispositivo mobile
+    isMobile: function() {
+        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    },
+    
+    // Detectar se suporta touch
+    isTouch: function() {
+        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    },
+    
+    // Formatar números
+    formatarNumero: function(num) {
+        return num.toLocaleString('pt-BR');
+    },
+    
+    // Formatar moeda
+    formatarMoeda: function(valor) {
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(valor);
+    },
+    
+    // Validar email
+    validarEmail: function(email) {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    },
+    
+    // Sanitizar HTML
+    sanitizarHTML: function(str) {
+        const temp = document.createElement('div');
+        temp.textContent = str;
+        return temp.innerHTML;
+    }
+};
+
+// Configurações globais
+const Config = {
+    animacaoRapida: 200,
+    animacaoMedia: 400,
+    animacaoLenta: 600,
+    breakpoints: {
+        mobile: 480,
+        tablet: 768,
+        desktop: 1024,
+        large: 1400
+    },
+    cores: {
+        primaria: '#a20908',
+        secundaria: '#f40919',
+        amarelo: '#fccc16',
+        dourado: '#fabb18'
+    }
+};
+
+// Ajustar elementos responsivos
+function ajustarElementosResponsivos() {
     const largura = window.innerWidth;
     
-    // Atualizar classes responsivas
-    document.body.classList.toggle('mobile', largura <= 480);
-    document.body.classList.toggle('tablet', largura > 480 && largura <= 768);
-    document.body.classList.toggle('desktop', largura > 768);
-    
-    // Reconfigurar submenu se necessário
-    if (largura <= 768) {
-        // Remover eventos de hover em mobile
-        const cardapioBtn = document.getElementById('cardapioBtn');
-        if (cardapioBtn) {
-            cardapioBtn.replaceWith(cardapioBtn.cloneNode(true));
-            // Reconfigurar apenas o clique
-            inicializarSubmenu();
-        }
+    // Ajustes específicos por breakpoint
+    if (largura <= Config.breakpoints.mobile) {
+        document.body.classList.add('mobile');
+        document.body.classList.remove('tablet', 'desktop');
+    } else if (largura <= Config.breakpoints.tablet) {
+        document.body.classList.add('tablet');
+        document.body.classList.remove('mobile', 'desktop');
+    } else {
+        document.body.classList.add('desktop');
+        document.body.classList.remove('mobile', 'tablet');
     }
 }
 
-// ============= SISTEMA DE NOTIFICAÇÕES =============
+// Recalcular posições
+function recalcularPosicoes() {
+    // Reposicionar elementos fixos se necessário
+    const elementosFixos = document.querySelectorAll('.posicao-fixa');
+    elementosFixos.forEach(elemento => {
+        // Lógica para reposicionar se necessário
+    });
+}
+
+// Sistema de notificações globais
 const Notificacoes = {
     mostrar: function(mensagem, tipo = 'info', duracao = 4000) {
         const notificacao = document.createElement('div');
         notificacao.className = `notificacao-global ${tipo}`;
         notificacao.innerHTML = `
             <span class="notificacao-texto">${mensagem}</span>
-            <button class="notificacao-fechar" onclick="this.parentElement.remove()" aria-label="Fechar notificação">×</button>
+            <button class="notificacao-fechar" onclick="this.parentElement.remove()">×</button>
         `;
         
-        const cores = {
-            sucesso: '#4caf50',
-            erro: '#f44336',
-            aviso: '#ff9800',
-            info: '#2196f3'
-        };
-        
+        // Estilos
         Object.assign(notificacao.style, {
             position: 'fixed',
             top: '20px',
@@ -456,12 +485,20 @@ const Notificacoes = {
             fontWeight: '500',
             zIndex: '10001',
             minWidth: '300px',
-            maxWidth: '400px',
-            background: cores[tipo] || cores.info,
             transform: 'translateX(400px)',
             transition: 'transform 0.3s ease, opacity 0.3s ease',
             boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
         });
+        
+        // Cores por tipo
+        const cores = {
+            sucesso: '#4caf50',
+            erro: '#f44336',
+            aviso: '#ff9800',
+            info: '#2196f3'
+        };
+        
+        notificacao.style.background = cores[tipo] || cores.info;
         
         document.body.appendChild(notificacao);
         
@@ -484,87 +521,82 @@ const Notificacoes = {
     }
 };
 
-// ============= UTILITÁRIOS =============
-const Utils = {
-    isMobile: function() {
-        return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    },
-    
-    isTouch: function() {
-        return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    },
-    
-    formatarMoeda: function(valor) {
-        return new Intl.NumberFormat('pt-BR', {
-            style: 'currency',
-            currency: 'BRL'
-        }).format(valor);
-    },
-    
-    validarEmail: function(email) {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return regex.test(email);
-    },
-    
-    debounce: function(func, wait, immediate) {
-        let timeout;
-        return function executedFunction(...args) {
-            const later = () => {
-                timeout = null;
-                if (!immediate) func(...args);
-            };
-            const callNow = immediate && !timeout;
-            clearTimeout(timeout);
-            timeout = setTimeout(later, wait);
-            if (callNow) func(...args);
-        };
-    },
-    
-    throttle: function(func, limit) {
-        let inThrottle;
-        return function(...args) {
-            if (!inThrottle) {
-                func.apply(this, args);
-                inThrottle = true;
-                setTimeout(() => inThrottle = false, limit);
-            }
-        };
-    }
-};
-
-// ============= FUNÇÃO DE DEBUG =============
-window.debugSnackParadise = function() {
-    console.log('🔍 === DEBUG SNACK PARADISE ===');
-    console.log('Menu lateral:', document.getElementById('menuLateral'));
-    console.log('Botão menu lateral:', document.getElementById('btnMenuLateral'));
-    console.log('Cardápio btn:', document.getElementById('cardapioBtn'));
-    console.log('Submenu:', document.getElementById('submenu'));
-    console.log('Overlay:', document.getElementById('overlay'));
-    
-    const cardapioBtn = document.getElementById('cardapioBtn');
-    const submenu = document.getElementById('submenu');
-    
-    if (cardapioBtn && submenu) {
-        console.log('Classes do cardápio:', cardapioBtn.className);
-        console.log('Classes do submenu:', submenu.className);
-        console.log('Estilos computados do submenu:', window.getComputedStyle(submenu));
-    }
-    
-    console.log('Utils disponíveis:', Object.keys(Utils));
-    console.log('Notificações disponíveis:', Object.keys(Notificacoes));
-};
-
-// ============= EXPOSIÇÃO GLOBAL =============
+// Exposar utilitários globalmente
 window.Utils = Utils;
+window.Config = Config;
 window.Notificacoes = Notificacoes;
 
-// ============= INICIALIZAÇÃO FINAL =============
-console.log('📋 Script SnackParadise carregado completamente!');
-console.log('🛠️ Para debug, use: debugSnackParadise()');
+// Log de inicialização
+console.log('SnackParadise - Sistema carregado com sucesso!');
 
-// Notificar que está tudo pronto
-setTimeout(() => {
-    if (document.body.classList.contains('loaded')) {
-        console.log('🎉 SnackParadise totalmente funcional!');
+// Controle do menu lateral e submenu (reutilizando do arquivo anterior)
+document.addEventListener('DOMContentLoaded', function() {
+    // Menu Lateral
+    const btnMenuLateral = document.getElementById('btnMenuLateral');
+    const menuLateral = document.getElementById('menuLateral');
+    const overlay = document.getElementById('overlay');
+
+    btnMenuLateral.addEventListener('click', function(event) {
+        event.stopPropagation();
+        
+        if (menuLateral.classList.contains('ativo')) {
+            menuLateral.classList.remove('ativo');
+            overlay.classList.remove('ativo');
+            btnMenuLateral.classList.remove('active');
+            btnMenuLateral.innerHTML = '☰';
+        } else {
+            menuLateral.classList.add('ativo');
+            overlay.classList.add('ativo');
+            btnMenuLateral.classList.add('active');
+            btnMenuLateral.innerHTML = '✖';
+        }
+    });
+
+    // Fechar menu lateral ao clicar no overlay
+    overlay.addEventListener('click', function() {
+        menuLateral.classList.remove('ativo');
+        overlay.classList.remove('ativo');
+        btnMenuLateral.classList.remove('active');
+        btnMenuLateral.innerHTML = '☰';
+    });
+
+    // Submenu Cardápio
+    const cardapioBtn = document.getElementById('cardapioBtn');
+    const submenu = document.getElementById('submenu');
+
+    if (cardapioBtn && submenu) {
+        cardapioBtn.addEventListener('click', function(event) {
+            event.stopPropagation();
+            
+            if (submenu.classList.contains('ativo')) {
+                submenu.classList.remove('ativo');
+                cardapioBtn.classList.remove('active');
+            } else {
+                submenu.classList.add('ativo');
+                cardapioBtn.classList.add('active');
+            }
+        });
+
+        // Evitar que cliques no submenu o fechem
+        submenu.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
     }
-}, 500);
+
+    // Fechar menus ao clicar fora
+    document.addEventListener('click', function(event) {
+        if (!menuLateral.contains(event.target) && 
+            !btnMenuLateral.contains(event.target)) {
+            menuLateral.classList.remove('ativo');
+            overlay.classList.remove('ativo');
+            btnMenuLateral.classList.remove('active');
+            btnMenuLateral.innerHTML = '☰';
+        }
+
+        if (submenu && !submenu.contains(event.target) && 
+            !cardapioBtn.contains(event.target)) {
+            submenu.classList.remove('ativo');
+            cardapioBtn.classList.remove('active');
+        }
+    });
+});
