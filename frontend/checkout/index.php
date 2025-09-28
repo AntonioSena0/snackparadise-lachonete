@@ -79,7 +79,7 @@
                             </select>
                         </div>
                     </div>
-                    <button type="submit" class="btn">Confirmar Pedido</button>
+                    <button type="submit" class="btn" name="btnsubm">Confirmar Pedido</button>
                 </form>
             </div>
         </div>
