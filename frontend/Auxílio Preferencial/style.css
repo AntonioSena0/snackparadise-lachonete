@@ -130,9 +130,9 @@ header {
 }
 
 .menu-item.cardapio-btn {
-    display: flex;
-    align-items: center;
-    gap: 5px;
+    position: relative;
+    cursor: pointer;
+    z-index: 1002;
 }
 
 .menu-item.cardapio-btn::after {
@@ -210,7 +210,7 @@ header {
     position: absolute;
     top: 100%;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-10px);
     background: var(--cor-branco);
     border: 2px solid var(--cor-primaria);
     border-radius: 10px;
@@ -220,12 +220,14 @@ header {
     visibility: hidden;
     transition: all 0.3s ease;
     z-index: 1001;
+    pointer-events: none;
 }
 
 .submenu.ativo {
     opacity: 1;
     visibility: visible;
-    transform: translateX(-50%) translateY(10px);
+    transform: translateX(-50%) translateY(5px);
+    pointer-events: auto;
 }
 
 .submenu-item {
@@ -237,6 +239,7 @@ header {
     transition: all 0.3s ease;
     text-align: center;
     display: block;
+    text-decoration: none;
 }
 
 .submenu-item:last-child {
@@ -853,3 +856,43 @@ header {
   }
 }
 
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .submenu {
+        position: fixed;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%) translateY(-20px);
+        width: 90%;
+        max-width: 300px;
+    }
+    
+    .submenu.ativo {
+        transform: translateX(-50%) translateY(0);
+    }
+    
+    .menu-item.cardapio-btn::after {
+        content: "▶";
+    }
+    
+    .menu-item.cardapio-btn.active::after {
+        content: "▼";
+    }
+}

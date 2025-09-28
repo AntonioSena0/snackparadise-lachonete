@@ -29,6 +29,7 @@ function inicializarPagina() {
     configurarLazyLoading();
     configurarSmoothScroll();
     configurarTooltips();
+    inicializarSubmenu();
 }
 
 // ============= MENU LATERAL =============
@@ -102,10 +103,10 @@ function inicializarSubmenu() {
         return;
     }
 
-    // Toggle ao clicar no botão
-    /*cardapioBtn.addEventListener('click', function(e) {
+    // Toggle ao clicar no botão - REMOVA OS COMENTÁRIOS
+    cardapioBtn.addEventListener('click', function(e) {
         e.preventDefault();
-        e.stopPropagation(); // importante pra não fechar imediatamente no document click
+        e.stopPropagation();
 
         const isAtivo = submenu.classList.contains('ativo');
 
@@ -114,7 +115,7 @@ function inicializarSubmenu() {
         } else {
             abrirSubmenu();
         }
-    });*/
+    });
 
     // Fechar submenu clicando fora
     document.addEventListener('click', function(e) {
