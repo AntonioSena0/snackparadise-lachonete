@@ -6,146 +6,161 @@
     <title>Snack Paradise</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loader" id="loader">
+        <div class="spinner"></div>
+    </div>
 
+    <!-- Header -->
     <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">Snack Paradise</a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#" aria-label="Ir para início">Início</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" aria-label="Abrir menu do cardápio">Cardápio <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="../Cardápio/index.php" aria-label="Ver hambúrgueres">Hambúrgueres</a>
+                            <a href="#" aria-label="Ver acompanhamentos">Acompanhamentos</a>
+                            <a href="#" aria-label="Ver bebidas">Bebidas</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="#" aria-label="Ver promoções">Promoções</a></li>
+                    <li class="nav-item"><a href="#" aria-label="Ver meus pedidos">Pedidos</a></li>
+                    <li class="nav-item"><a href="#" aria-label="Baixar aplicativo">App SP</a></li>
+                </ul>
+            </nav>
 
-        <div class="container">
+            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Abrir menu móvel">
+                <i class="fas fa-bars"></i>
+            </button>
 
-            <div class="flex">
+            <a href="../Tela de login/index.html" class="account-btn" aria-label="Acessar minha conta">
+                <i class="fas fa-user"></i> Conta
+            </a>
+        </div>
+    </header>
 
-                <nav>
-                    <ul>
-                        <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
-                            <div class="barralateral" id="barralateral">
-                                <a href="index.html" target="_self">Início</a>
-                                <a href="#" target="_self">Perfil</a>
-                                <a href="#" target="_self">Pontos</a>
-                                <a href="#" target="_self">Seja Parceiro</a>
-                                <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
-                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
-                                <div class="container text-center mt-5">
-                                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#tutorialModal">Assistir tutorial</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <button id="btn-cardapio">&darr;Cardápio</button>
-                            <div class="submenu" id="submenu">
-                                <a href="../Cardápio/index.php" target="_self"><button>Hamburgueres</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Bebidas</button></a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Promoções</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Pedidos</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">App SP</a>
-                        </li>
-                    </ul>
-                </nav>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileClose" aria-label="Fechar menu móvel">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav>
+            <ul class="mobile-nav">
+                <li><a href="index.html" aria-label="Ir para início">Início</a></li>
+                <li><a href="#" aria-label="Ver perfil">Perfil</a></li>
+                <li><a href="#" aria-label="Ver pontos">Pontos</a></li>
+                <li><a href="#" aria-label="Seja parceiro">Seja Parceiro</a></li>
+                <li><a href="#" aria-label="Ver avaliações">Avaliações</a></li>
+                <li><a href="../Quem somos/index.html" aria-label="Sobre nós">Sobre Nós</a></li>
+                <li><a href="../Auxílio Preferencial/auxilio.html" aria-label="Auxílio preferencial">Auxílio Preferencial</a></li>
+                <li><a href="#" aria-label="Ver cardápio">Cardápio</a></li>
+                <li><a href="#" aria-label="Ver promoções">Promoções</a></li>
+                <li><a href="#" aria-label="Ver pedidos">Pedidos</a></li>
+                <li><a href="#" aria-label="Baixar app">App SP</a></li>
+            </ul>
+        </nav>
+    </div>
 
-                <div class="btn-conta">
+    <!-- Main Content -->
+    <main>
+        <section class="hero-section">
+            <h1 class="hero-title">Como Você Gostaria Do Seu Pedido Hoje?</h1>
+            <p class="hero-subtitle">Escolha a melhor opção para receber seus lanches favoritos</p>
+            <div class="divider"></div>
+        </section>
 
-                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Conta</button></a>
+        <div class="cards-container">
+            <!-- Order Options -->
+            <div class="order-options">
+                <div class="option-card" onclick="window.location.href='../Cardápio/index.html'" role="button" tabindex="0" aria-label="Escolher delivery">
+                    <div class="option-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <h2 class="option-title">Delivery</h2>
+                    <p class="option-description">Receba seu pedido no conforto da sua casa com entrega rápida e segura</p>
+                </div>
 
-                </div><!--btn-conta-->
-
-            </div><!--Flex-->
-
-        </div><!--container-->
-
-    </header><!--header-->
-
-    <main class="main">   
-        
-    <!--modal do video-->    
-<div class="modal fade" id="tutorialModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-      <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Bem-vindo ao site!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-            </div>
-            <div class="modal-body">
-                <div class="ratio ratio-16x9">
-                    <iframe src="https://www.youtube.com/embed/SEU_VIDEO" title="Tutorial" allowfullscreen></iframe>
+                <div class="option-card" onclick="window.location.href='../Cardápio/index.html'" role="button" tabindex="0" aria-label="Escolher retirada">
+                    <div class="option-icon">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <h2 class="option-title">Peça e Retire</h2>
+                    <p class="option-description">Faça seu pedido online e retire na loja sem filas ou esperas</p>
                 </div>
             </div>
-         </div>
-    </div>
-</div>
-  <!--cabou o modal do video-->
-            <div class="texto">
-                <h1>Como Você Gostaria Do Seu Pedido Hoje?</h1>
-                <hr class="line">
+
+            <!-- Menu Image -->
+            <div class="menu-card">
+                <img src="../imgs/Menu/H Menu.jpeg" alt="Menu de hambúrgueres deliciosos do Snack Paradise" class="menu-image">
             </div>
-        <div class="main-part">
+        </div>
+    </main>
 
-    <div class="btn-opcoes">
+    <!-- Tutorial Button -->
+    <button class="tutorial-btn" id="tutorialBtn" aria-label="Assistir tutorial do site">
+        <i class="fas fa-play"></i>
+    </button>
 
-            <a href="../Cardápio/index.html" target="_self"><button class="botão1">Delivery
-                <svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" fill="currentColor" class="bi bi-bicycle" viewBox="0 0 16 16">
-                    <path d="M4 4.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1v.5h4.14l.386-1.158A.5.5 0 0 1 11 4h1a.5.5 0 0 1 0 1h-.64l-.311.935.807 1.29a3 3 0 1 1-.848.53l-.508-.812-2.076 3.322A.5.5 0 0 1 8 10.5H5.959a3 3 0 1 1-1.815-3.274L5 5.856V5h-.5a.5.5 0 0 1-.5-.5m1.5 2.443-.508.814c.5.444.85 1.054.967 1.743h1.139zM8 9.057 9.598 6.5H6.402zM4.937 9.5a2 2 0 0 0-.487-.877l-.548.877zM3.603 8.092A2 2 0 1 0 4.937 10.5H3a.5.5 0 0 1-.424-.765zm7.947.53a2 2 0 1 0 .848-.53l1.026 1.643a.5.5 0 1 1-.848.53z"/>
-                  </svg>
-            </button></a>
-            <a href="../Cardápio/index.html" target="_self"><button class="botão2">Peça e Retire
-            <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
-                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10"/>
-                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
-            </svg>
-            </button></a>
+    <!-- Tutorial Modal -->
+    <div class="modal" id="tutorialModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Bem-vindo ao Snack Paradise!</h2>
+                <button class="modal-close" id="modalClose" aria-label="Fechar tutorial">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        title="Tutorial do Snack Paradise - Como fazer seu pedido"
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                <p style="margin-top: 1rem; text-align: center; color: var(--text-dark);">
+                    Assista este breve tutorial para aprender como navegar no site e fazer seus pedidos!
+                </p>
+            </div>
+        </div>
+    </div>
 
-    </div><!--btn-opcoes-->
-    <div>
-        <img class="img1" src="../imgs/Menu/H Menu.jpeg" alt="Logo">
-    </div><!--img1-->
-    </main><!--main-->
-
+    <!-- Footer -->
     <footer>
-        <div class="footer-container">
+        <div class="footer-content">
             <div class="footer-links">
-                <a href="index.html">Início</a>
-                <a href="../Quem somos/index.html">Sobre</a>
-                <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
-                <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>
+                <a href="index.html" aria-label="Ir para início">Início</a>
+                <a href="../Quem somos/index.html" aria-label="Sobre a empresa">Sobre</a>
+                <a href="../Auxílio Preferencial/auxilio.html" aria-label="Nossos serviços">Serviços</a>
+                <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp" aria-label="Seguir no Instagram" target="_blank" rel="noopener">Contato</a>
             </div>
             <div class="footer-bottom">
                 <p>&copy; 2024 SnackParadise. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
+
+    <!-- VLibras Accessibility -->
     <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
     </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
     <script src="menu.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // checa se o popup já foi mostrado
-      if (!localStorage.getItem("popupShown")) {
-        var tutorialModal = new bootstrap.Modal(document.getElementById('tutorialModal'));
-        tutorialModal.show();
-        localStorage.setItem("popupShown", "true");
-      }
-    });
-  </script>
 </body>
 </html>
