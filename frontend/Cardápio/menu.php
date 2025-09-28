@@ -27,14 +27,7 @@
                             </div>
                         </li>
                         <li class="list-menu1">
-                            <button id="btn-cardapio">&darr;Cardápio</button>
-                            <div class="submenu" id="submenu">
-                                <a href="../Cardápio/hamburgueres.html" target="_self"><button>Hamburgueres</button></a>
-                                <hr>
-                                <a href="../Cardápio/acompanhamentos.html" target="_self"><button>Acompanhamentos</button></a>
-                                <hr>
-                                <a href="../Cardápio/bebidas.html" target="_self"><button>Bebidas</button></a>
-                            </div>
+                            <button id="btn-cardapio">Cardápio</button>
                         </li>
                         <li class="list-menu1">
                             <a href="#" target="_self">Promoções</a>
