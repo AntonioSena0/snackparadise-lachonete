@@ -220,8 +220,8 @@
     <footer>
         <div class="footer-container">
             <div class="footer-links">
-                <a href="../Menu/index.html">Início</a>
-                <a href="index.html">Sobre</a>
+                <a href="../Menu/index.php">Início</a>
+                <a href="index.php">Sobre</a>
                 <br><br>
                 <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
                 <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>

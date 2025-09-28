@@ -27,19 +27,19 @@ $user = $_SESSION['user'];
                         <li class="list-menu2">
                             <button class="btn-ativação" id="btn-ativação">☰</button>
                             <div class="barralateral" id="barralateral">
-                                <a href="../Menu/index.html" target="_self">Início</a>
-                                <a href="../Perfil/index.html" target="_self">Perfil</a>
+                                <a href="../Menu/index.php" target="_self">Início</a>
+                                <a href="../PerfilUser/index.php" target="_self">Perfil</a>
                                 <a href="#" target="_self">Pontos</a>
                                 <a href="#" target="_self">Seja Parceiro</a>
                                 <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
-                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
+                                <a href="../Quem somos/index.php" target="_self">Sobre nós</a>
+                                <a href="../Auxílio Preferencial/auxilio.php" target="_self">Auxílio Preferencial</a>
                             </div>
                         </li>
                         <li class="list-menu1">
                             <button id="btn-cardapio">&darr;Cardápio</button>
                             <div class="submenu" id="submenu">
-                                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
+                                <a href="../Cardápio/index.php" target="_self"><button>Hamburgueres</button></a>
                                 <hr>
                                 <a href="#" target="_self"><button>Acompanhamentos</button></a>
                                 <hr>
@@ -59,7 +59,7 @@ $user = $_SESSION['user'];
                 </nav>
 
                 <div class="btn-conta">
-                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Sair</button></a>
+                    <a href="../Tela de login/index.php"><button id="btn-conta" class="conta">Sair</button></a>
                 </div>
             </div>
         </div>
@@ -255,9 +255,9 @@ $user = $_SESSION['user'];
     <footer>
         <div class="footer-container">
             <div class="footer-links">
-                <a href="../Menu/index.html">Início</a>
-                <a href="../Quem somos/index.html">Sobre</a>
-                <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
+                <a href="../Menu/index.php">Início</a>
+                <a href="../Quem somos/index.php">Sobre</a>
+                <a href="../Auxílio Preferencial/auxilio.php">Serviços</a>
                 <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>
             </div>
             <div class="footer-bottom">

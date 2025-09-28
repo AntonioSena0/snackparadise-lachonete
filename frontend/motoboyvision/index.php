@@ -17,10 +17,10 @@
       </a>
       <nav role="navigation" aria-label="Menu principal">
         <ul>
-          <li><a href="../Menu/index.html">Menu</a></li>
-          <li><a href="../Cardápio/index.html">Cardápio</a></li>
+          <li><a href="../Menu/index.php">Menu</a></li>
+          <li><a href="../Cardápio/index.php">Cardápio</a></li>
           <li><a href="#">Promoções</a></li>
-          <li><a href="../Auxílio Preferencial/auxilio.html">Outros</a></li>
+          <li><a href="../Auxílio Preferencial/auxilio.php">Outros</a></li>
         </ul>
       </nav>
       <div class="btn-conta">

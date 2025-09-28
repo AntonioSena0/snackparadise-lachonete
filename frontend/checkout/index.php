@@ -142,9 +142,9 @@ if (isset($_SESSION['user'])) {
     <footer>
         <div class="footer-container">
             <div class="footer-links">
-                <a href="../Menu/index.html">Início</a>
-                <a href="../Quem somos/index.html">Sobre</a>
-                <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
+                <a href="../Menu/index.php">Início</a>
+                <a href="../Quem somos/index.php">Sobre</a>
+                <a href="../Auxílio Preferencial/auxilio.php">Serviços</a>
                 <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>
             </div>
             <div class="footer-bottom">

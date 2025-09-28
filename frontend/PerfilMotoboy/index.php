@@ -17,12 +17,12 @@
                         <li class="list-menu2">
                             <button class="btn-ativação" id="btn-ativação">☰</button>
                             <div class="barralateral" id="barralateral">
-                                <a href="../Menu/index.html" target="_self">Início</a>
-                                <a href="../Perfil/index.html" target="_self">Meu Perfil</a>
+                                <a href="../Menu/index.php" target="_self">Início</a>
+                                <a href="../Perfil/index.php" target="_self">Meu Perfil</a>
                                 <a href="#" target="_self">Entregas</a>
                                 <a href="#" target="_self">Earnings</a>
                                 <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
+                                <a href="../Quem somos/index.php" target="_self">Sobre nós</a>
                                 <a href="#" target="_self">Suporte</a>
                             </div>
                         </li>
@@ -42,7 +42,7 @@
                 </nav>
 
                 <div class="btn-conta">
-                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Sair</button></a>
+                    <a href="../Tela de login/index.php"><button id="btn-conta" class="conta">Sair</button></a>
                 </div>
             </div>
         </div>
@@ -365,8 +365,8 @@
     <footer>
         <div class="footer-container">
             <div class="footer-links">
-                <a href="../Menu/index.html">Início</a>
-                <a href="../Quem somos/index.html">Sobre</a>
+                <a href="../Menu/index.php">Início</a>
+                <a href="../Quem somos/index.php">Sobre</a>
                 <a href="#">Suporte</a>
                 <a href="#">Contato</a>
             </div>

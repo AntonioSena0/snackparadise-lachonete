@@ -212,6 +212,7 @@
     </main>
 
     <!-- <script src="menu.js"></script> script antigo, vê o que ele faz e vê se ele serve pra página-->>
-    <script src="newmenu.js"></script>
+     <script src="carrinho.js"></script>
+   <!--<script src="newmenu.js"></script>-->
 </body>
 </html>
