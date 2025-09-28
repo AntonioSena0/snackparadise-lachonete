@@ -3,164 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Snack Paradise</title>
+    <title>Snack Paradise - Homepage</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loader" id="loader">
-        <div class="spinner"></div>
-    </div>
-
-    <!-- Header -->
-    <header id="header">
-        <div class="nav-container">
-            <a href="#" class="logo">Snack Paradise</a>
-            
-            <nav>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="#" aria-label="Ir para início">Início</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="#" aria-label="Abrir menu do cardápio">Cardápio <i class="fas fa-chevron-down"></i></a>
-                        <div class="dropdown-menu">
-                            <a href="../Cardápio/index.php" aria-label="Ver hambúrgueres">Hambúrgueres</a>
-                            <a href="#" aria-label="Ver acompanhamentos">Acompanhamentos</a>
-                            <a href="#" aria-label="Ver bebidas">Bebidas</a>
-                        </div>
-                    </li>
-                    <li class="nav-item"><a href="#" aria-label="Ver promoções">Promoções</a></li>
-                    <li class="nav-item"><a href="#" aria-label="Ver meus pedidos">Pedidos</a></li>
-                    <li class="nav-item"><a href="#" aria-label="Baixar aplicativo">App SP</a></li>
-                </ul>
-            </nav>
-
-            <button class="mobile-menu-toggle" id="mobileToggle" aria-label="Abrir menu móvel">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <a href="../Tela de login/index.html" class="account-btn" aria-label="Acessar minha conta">
-                <i class="fas fa-user"></i> Conta
-            </a>
-        </div>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <button class="mobile-menu-close" id="mobileClose" aria-label="Fechar menu móvel">
-            <i class="fas fa-times"></i>
-        </button>
-        <nav>
-            <ul class="mobile-nav">
-                <li><a href="index.html" aria-label="Ir para início">Início</a></li>
-                <li><a href="#" aria-label="Ver perfil">Perfil</a></li>
-                <li><a href="#" aria-label="Ver pontos">Pontos</a></li>
-                <li><a href="#" aria-label="Seja parceiro">Seja Parceiro</a></li>
-                <li><a href="#" aria-label="Ver avaliações">Avaliações</a></li>
-                <li><a href="../Quem somos/index.html" aria-label="Sobre nós">Sobre Nós</a></li>
-                <li><a href="../Auxílio Preferencial/auxilio.html" aria-label="Auxílio preferencial">Auxílio Preferencial</a></li>
-                <li><a href="#" aria-label="Ver cardápio">Cardápio</a></li>
-                <li><a href="#" aria-label="Ver promoções">Promoções</a></li>
-                <li><a href="#" aria-label="Ver pedidos">Pedidos</a></li>
-                <li><a href="#" aria-label="Baixar app">App SP</a></li>
-            </ul>
-        </nav>
-    </div>
+   
 
     <!-- Main Content -->
-    <main>
-        <section class="hero-section">
-            <h1 class="hero-title">Como Você Gostaria Do Seu Pedido Hoje?</h1>
-            <p class="hero-subtitle">Escolha a melhor opção para receber seus lanches favoritos</p>
-            <div class="divider"></div>
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+            <div class="hero-content">
+                <h1 class="hero-title">Bem-vindo ao Snack Paradise</h1>
+                <p class="hero-subtitle">
+                    O seu paraíso dos lanches está aqui! Sabores únicos, ingredientes frescos e muito amor em cada mordida.
+                </p>
+                <div class="section-divider"></div>
+            </div>
         </section>
 
-        <div class="cards-container">
-            <!-- Order Options -->
-            <div class="order-options">
-                <div class="option-card" onclick="window.location.href='../Cardápio/index.html'" role="button" tabindex="0" aria-label="Escolher delivery">
-                    <div class="option-icon">
-                        <i class="fas fa-motorcycle"></i>
-                    </div>
-                    <h2 class="option-title">Delivery</h2>
-                    <p class="option-description">Receba seu pedido no conforto da sua casa com entrega rápida e segura</p>
+        <!-- Delivery Section -->
+        <section class="delivery-section" id="delivery">
+            <div class="delivery-content">
+                <div class="section-icon">
+                    <i class="fas fa-motorcycle"></i>
                 </div>
-
-                <div class="option-card" onclick="window.location.href='../Cardápio/index.html'" role="button" tabindex="0" aria-label="Escolher retirada">
-                    <div class="option-icon">
-                        <i class="fas fa-store"></i>
+                <h2 class="section-title">Delivery</h2>
+                <p class="section-description">
+                    Receba seus lanches favoritos no conforto da sua casa! Entrega rápida, segura e sempre quentinha. 
+                    Nossos entregadores são treinados para levar o melhor até você com todo cuidado e agilidade.
+                </p>
+                <div class="section-features">
+                    <div class="feature-item">
+                        <i class="fas fa-clock"></i>
+                        <p><strong>30-45 min</strong><br>Tempo médio</p>
                     </div>
-                    <h2 class="option-title">Peça e Retire</h2>
-                    <p class="option-description">Faça seu pedido online e retire na loja sem filas ou esperas</p>
+                    <div class="feature-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <p><strong>Seguro</strong><br>Entrega protegida</p>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-thermometer-half"></i>
+                        <p><strong>Quentinho</strong><br>Sempre fresco</p>
+                    </div>
+                </div>
+                <a href="menu.html" class="section-btn">
+                    <i class="fas fa-shopping-cart"></i> Pedir Delivery
+                </a>
+            </div>
+        </section>
+
+        <!-- Pickup Section -->
+        <section class="pickup-section" id="pickup">
+            <div class="pickup-content">
+                <div class="pickup-text">
+                    <h3><i class="fas fa-store"></i> Peça & Retire</h3>
+                    <p>
+                        Faça seu pedido online e retire na nossa loja sem filas ou esperas. 
+                        Rápido, prático e sem taxa de entrega!
+                    </p>
+                    
+                    <div class="about-text">
+                        <h4>Sobre o Snack Paradise</h4>
+                        <p>
+                            Fundado em 2020, o Snack Paradise nasceu do sonho de criar o melhor hambúrguer da cidade. 
+                            Nossos ingredientes são selecionados diariamente e nossas receitas são desenvolvidas com muito carinho.
+                        </p>
+                        <p>
+                            Cada lanche é uma experiência única, preparado na hora com técnicas artesanais 
+                            e temperos especiais da casa. Venha conhecer nosso espaço aconchegante!
+                        </p>
+                    </div>
+                    
+                    <a href="menu.html" class="section-btn">
+                        <i class="fas fa-hand-holding"></i> Pedir para Retirar
+                    </a>
+                </div>
+                
+                <div class="pickup-visual">
+                    <div class="pickup-image">
+                        <div class="logo-background">
+                            <p>Snack Paradise</p>
+                            <img src="../imgs/Logo.png" alt="">
+                        </div>
+                        <i class="fas fa-hamburger"></i>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <!-- Menu Image -->
-            <div class="menu-card">
-                <img src="../imgs/Menu/H Menu.jpeg" alt="Menu de hambúrgueres deliciosos do Snack Paradise" class="menu-image">
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="video-content">
+                <div class="section-icon">
+                    <i class="fas fa-play"></i>
+                </div>
+                <h2 class="section-title">Conheça Nossa História</h2>
+                <p class="section-description">
+                    Assista ao vídeo e descubra como fazemos os melhores lanches da cidade. 
+                    Conheça nosso processo artesanal e a paixão por trás de cada receita.
+                </p>
+                
+                <div class="video-container">
+                    <div class="video-placeholder">
+                        <div class="video-play-content">
+                            <i class="fas fa-play-circle"></i>
+                            <p>Vídeo Institucional</p>
+                            <span>Clique para assistir</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
     </main>
 
-    <!-- Tutorial Button -->
-    <button class="tutorial-btn" id="tutorialBtn" aria-label="Assistir tutorial do site">
-        <i class="fas fa-play"></i>
-    </button>
-
-    <!-- Tutorial Modal -->
-    <div class="modal" id="tutorialModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Bem-vindo ao Snack Paradise!</h2>
-                <button class="modal-close" id="modalClose" aria-label="Fechar tutorial">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                        title="Tutorial do Snack Paradise - Como fazer seu pedido"
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                <p style="margin-top: 1rem; text-align: center; color: var(--text-dark);">
-                    Assista este breve tutorial para aprender como navegar no site e fazer seus pedidos!
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="index.html" aria-label="Ir para início">Início</a>
-                <a href="../Quem somos/index.html" aria-label="Sobre a empresa">Sobre</a>
-                <a href="../Auxílio Preferencial/auxilio.html" aria-label="Nossos serviços">Serviços</a>
-                <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp" aria-label="Seguir no Instagram" target="_blank" rel="noopener">Contato</a>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 SnackParadise. Todos os direitos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- VLibras Accessibility -->
-    <div vw class="enabled">
-        <div vw-access-button class="active"></div>
-        <div vw-plugin-wrapper>
-            <div class="vw-plugin-top-wrapper"></div>
-        </div>
-    </div>
-
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-    <script>
-        new window.VLibras.Widget('https://vlibras.gov.br/app');
-    </script>
     <script src="menu.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
