@@ -1,3 +1,4 @@
+document.addEventListener('DOMContentLoaded', () => {
 window.addEventListener("load", function() {
     document.body.classList.add("loaded");
 });
@@ -53,9 +54,6 @@ document.getElementById('payment-form').addEventListener('submit', async functio
     } catch (e) {
         alert('Erro ao registrar pedido no servidor!');
     }
-
-    // Redireciona para a página "Motoboy Vision"
-    window.location.href = '../motoboyvision/index.html';
 });
 
 // Formato do CEP
@@ -177,4 +175,5 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.location.pathname.includes('checkout')) {
         carregarCarrinhoNoCheckout();
     }
+});
 });
