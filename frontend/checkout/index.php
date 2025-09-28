@@ -1,3 +1,17 @@
+<?php
+session_start();
+
+if (isset($_SESSION['user'])) {
+    $logged = true;
+    $user = $_SESSION['user'];
+} elseif (isset($_SESSION['motoboy'])) {
+    $logged = true;
+    $user = $_SESSION['motoboy'];
+} else {
+    $logged = false;
+    $user = null;
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -35,7 +49,7 @@
             <a href="../Quem somos/index.html" class="menu-item">Sobre Nós</a>
         </div>
 
-        <a href="../Tela de login/index.html" class="btn-conta">Conta</a>
+        <a href="<?php echo $logged ? '../../backend/views/Conta.php' : '../Tela de Login/index.html'; ?>" class="btn-conta">Conta</a>
     </header>
 
     <!-- Menu Lateral -->
@@ -52,11 +66,7 @@
     <!-- Overlay -->
     <div class="overlay" id="overlay"></div>
 
-    <?php if (isset($_SESSION['user'])): ?>
-    <h1>Olá, <?php echo htmlspecialchars($user['username'] ?? $user['name']); ?></h1>
-        <?php else: ?>
-        <h1>Você não está logado</h1>
-    <?php endif; ?>
+    
     <main class="main">
         <div class="janelas">
             <div class="itens-2">

@@ -48,7 +48,7 @@
                         <p><strong>Quentinho</strong><br>Sempre fresco</p>
                     </div>
                 </div>
-                <a href="menu.html" class="section-btn">
+                <a href="../Cardápio/index.php" class="section-btn">
                     <i class="fas fa-shopping-cart"></i> Pedir Delivery
                 </a>
             </div>
@@ -76,7 +76,7 @@
                         </p>
                     </div>
                     
-                    <a href="menu.html" class="section-btn">
+                    <a href="../Cardápio/index.php" class="section-btn">
                         <i class="fas fa-hand-holding"></i> Pedir para Retirar
                     </a>
                 </div>
