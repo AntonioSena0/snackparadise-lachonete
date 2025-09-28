@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
 </head>
 <body>
     <header id="header">
@@ -35,7 +36,7 @@
             <div class="itens-2">
                 <h1>Itens Selecionados</h1>
                 <ul id="itensCheckout"></ul>
-                <p>Total: R$ <span id="totalCheckout">0.00</span></p>
+                <p><ul id="itensCheckout"></ul><span id="totalCheckout">0.00</span></p>
             </div>
             <div class="pagamento">
                 <h1>Pagamento</h1>
@@ -83,27 +84,24 @@
                 </form>
             </div>
         </div>
-    </main>
-    <div class="modal" id="modal-loading">
-        <div class="card">
-            <div class="loading">
-                <div class="spinner"></div>
-                <p>Carregando...</p>
-            </div>
-            <div class="confirmation" style="display: none;">
-                <i class="bi bi-check-circle" style="font-size: 40px; color: green;"></i>
-                <p>Pedido confirmado!</p>
-                <div class="close-btn">Fechar</div>
-            </div>
-        </div>
+    </main> 
+    <div class="modal" tabindex="-1" id="modal-qrcode">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Pagamento via Pix</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div id="qrcode" class="qrcode"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirmar pagamento por Pix</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+      </div>
     </div>
-    <div class="modal" id="modal-qrcode">
-        <div class="card">
-            <div id="qrcode" class="qrcode"></div>
-            <button class="confirm-pix">Confirmar pagamento por Pix</button>
-            <div class="close-btn">Fechar</div>
-        </div>
-    </div>    
+  </div>
+</div>
 
     <footer>
         <div class="footer-container">
@@ -114,7 +112,7 @@
                 <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 SnackParadise. Todos os direitos reservados.</p>
+                <p>&copy; 2025 SnackParadise. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -221,8 +219,6 @@
     console.log('Tentei keys:', triedKeys);
     return null;
   }
-
-  // Heurística: checa se um array parece ser um carrinho (itens com nome/preco)
   function isCartArrayLike(arr) {
     if (!Array.isArray(arr) || arr.length === 0) return false;
     // aceita se pelo menos metade dos itens tiverem "nome" ou "name" e "preco" ou "price"
@@ -239,6 +235,7 @@
 })();
 </script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="menu.js"></script>
-</body>
+    </body>
 </html>

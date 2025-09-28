@@ -271,7 +271,7 @@ main .itens ul li {
 .pagamento input:hover{
 transform: scale(1.05);
 }
-.pagamento .btn {
+.pagamento .btn .confirm-pix {
     background-color: #a20908;
     color: #fff;
     border: none;
