@@ -20,11 +20,11 @@
                 </p>
                 <div class="section-divider"></div>
                 <div class="hero-buttons">
-                    <a href="menu.html" class="hero-btn primary">
+                    <a href="menu.php" class="hero-btn primary">
                         <i class="fas fa-utensils"></i>
                         Ver Menu Completo
                     </a>
-                    <a href="#delivery" class="hero-btn secondary">
+                    <a href="menu.php" class="hero-btn secondary">
                         <i class="fas fa-motorcycle"></i>
                         Fazer Pedido
                     </a>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
                     
-                    <a href="menu.html" class="service-btn">
+                    <a href="menu.php" class="service-btn">
                         <i class="fas fa-shopping-cart"></i>
                         Pedir Delivery
                     </a>
@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                             
-                            <a href="menu.html" class="service-btn">
+                            <a href="menu.php" class="service-btn">
                                 <i class="fas fa-hand-holding"></i>
                                 Pedir para Retirar
                             </a>
