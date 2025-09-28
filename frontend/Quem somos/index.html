@@ -1,80 +1,227 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nós - SnackParadise</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="../img's/Logo.png" type="image/x-icon">
-    <title>Sobre nós</title>
+    <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
 </head>
 <body>
-    <header id="header">
+    <header>
+        <div class="nav-container">
+            <div class="header-left">
+                <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+                <div class="logo-container">
+                    <a href="../Menu/index.html" class="logo">
+                        <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
+                    </a>           
+                </div>
+            </div>
 
-        <div class="container">
+            <div class="header-center">
+                <a href="../Menu/index.html" class="menu-item">Menu</a>
+                <div class="menu-item cardapio-btn" id="cardapioBtn">
+                    Cardápio
+                    <div class="submenu" id="submenu">
+                        <a href="../Cardápio/index.html" class="submenu-item">Hambúrgueres</a>
+                        <a href="#" class="submenu-item">Acompanhamentos</a>
+                        <a href="#" class="submenu-item">Bebidas</a>
+                    </div>
+                </div>
+                <a href="#" class="menu-item">Promoções</a>
+                <a href="../Quem somos/index.html" class="menu-item">Sobre Nós</a>
+            </div>
 
-            <div class="flex">
+            <a href="../Tela de login/index.html" class="btn-conta">Conta</a>
+        </div>
+    </header>
 
-                <nav>
-                    <ul>
-                        <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
-                            <div class="barralateral" id="barralateral">
-                                <a href="../Menu/index.html" target="_self">Início</a>
-                                <a href="#" target="_self">Perfil</a>
-                                <a href="#" target="_self">Pontos</a>
-                                <a href="#" target="_self">Seja Parceiro</a>
-                                <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
-                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <button id="btn-cardapio">&darr;Cardápio</button>
-                            <div class="submenu" id="submenu">
-                                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Bebidas</button></a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Promoções</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Pedidos</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">App SP</a>
-                        </li>
-                    </ul>
-                </nav>
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Menu/index.html" class="menu-lateral-item">Início</a>
+        <a href="#" class="menu-lateral-item">Perfil</a>
+        <a href="#" class="menu-lateral-item">Pontos</a>
+        <a href="#" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="#" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem somos/index.html" class="menu-lateral-item active">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.html" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
 
-                <div class="btn-conta">
-
-                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Conta</button></a>
-
-                </div><!--btn-conta-->
-
-            </div><!--Flex-->
-
-        </div><!--container-->
-
-    </header><!--header-->
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
 
     <main>
-    <img class="logo2" alt="SnackParadiseLogo" src="../imgs/Logo.png" />     
-    <P class="text">Somos a Snack Paradise ou SP, somos um restaurante que busca primariamente o sabor, o fácil acesso e a memorabilidade
-        em nossas receitas! Sendo oficialmente fundada em 2024, nosso projeto originalmente nasceu de um trabalho do curso de Desenvolvimento
-        de Sistemas, onde planejamos o conceito original e a estética de nosso restaurante.
-        Atualmente, trabalhamos apenas virtualmente, por conta de desafios financeiros e também por conta dos integrantes serem todos menores de idade.
-        Nossos maiores valores são: a integridade com nossos consumidores, o respeito com os funcionários e demais, a inovação, por sermos um ambiente inclusivo e feito de fácil acesso para todos desfrutarem de nossos serviços.</P>    
+        <div class="sobre-container">
+            <div class="hero-section">
+                <div class="hero-content">
+                    <h1 class="titulo-principal">Conheça a SnackParadise</h1>
+                    <p class="subtitulo">Sabor, qualidade e inovação desde 2024</p>
+                </div>
+                <div class="hero-logo">
+                    <img src="../imgs/Logo.png" alt="SnackParadise Logo" class="logo-principal">
+                </div>
+            </div>
+
+            <!-- Nossa História -->
+            <section class="secao-historia">
+                <div class="container-historia">
+                    <div class="historia-conteudo">
+                        <h2 class="titulo-secao">Nossa História</h2>
+                        <div class="historia-texto">
+                            <p>
+                                Somos a <strong>Snack Paradise</strong> ou <strong>SP</strong>, um restaurante que busca primariamente o sabor, o fácil acesso e a memorabilidade em nossas receitas! 
+                            </p>
+                            <p>
+                                Sendo oficialmente fundada em <strong>2024</strong>, nosso projeto originalmente nasceu de um trabalho do curso de Desenvolvimento de Sistemas, onde planejamos o conceito original e a estética de nosso restaurante.
+                            </p>
+                            <p>
+                                Atualmente, trabalhamos apenas virtualmente, por conta de desafios financeiros e também por conta dos integrantes serem todos menores de idade.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="historia-visual">
+                        <div class="card-timeline">
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🎓</div>
+                                <div class="timeline-content">
+                                    <h3>2024</h3>
+                                    <p>Nascimento do projeto durante o curso de Desenvolvimento de Sistemas</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">🚀</div>
+                                <div class="timeline-content">
+                                    <h3>Fundação</h3>
+                                    <p>Criação oficial da SnackParadise com foco em inovação gastronômica</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <div class="timeline-icon">💻</div>
+                                <div class="timeline-content">
+                                    <h3>Presente</h3>
+                                    <p>Operação virtual com visão de expansão física</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Valores -->
+            <section class="secao-valores">
+                <h2 class="titulo-secao">Nossos Valores</h2>
+                <div class="valores-grid">
+                    <div class="card-valor">
+                        <div class="valor-icon">🤝</div>
+                        <h3>Integridade</h3>
+                        <p>Transparência e honestidade com nossos consumidores em cada interação</p>
+                    </div>
+
+                    <div class="card-valor">
+                        <div class="valor-icon">❤️</div>
+                        <h3>Respeito</h3>
+                        <p>Valorização de funcionários, clientes e todos os envolvidos em nossa jornada</p>
+                    </div>
+
+                    <div class="card-valor">
+                        <div class="valor-icon">💡</div>
+                        <h3>Inovação</h3>
+                        <p>Constante busca por novas soluções e experiências gastronômicas únicas</p>
+                    </div>
+
+                    <div class="card-valor">
+                        <div class="valor-icon">🌟</div>
+                        <h3>Inclusividade</h3>
+                        <p>Ambiente acolhedor e acessível para todos desfrutarem de nossos serviços</p>
+                    </div>
+
+                    <div class="card-valor">
+                        <div class="valor-icon">🎯</div>
+                        <h3>Qualidade</h3>
+                        <p>Compromisso com a excelência em cada produto e serviço oferecido</p>
+                    </div>
+
+                    <div class="card-valor">
+                        <div class="valor-icon">🌱</div>
+                        <h3>Crescimento</h3>
+                        <p>Evolução contínua com responsabilidade social e ambiental</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Missão, Visão e Valores -->
+            <section class="secao-mvv">
+                <div class="mvv-grid">
+                    <div class="card-mvv missao">
+                        <div class="mvv-header">
+                            <div class="mvv-icon">🎯</div>
+                            <h3>Missão</h3>
+                        </div>
+                        <p>Proporcionar experiências gastronômicas memoráveis através de sabores únicos, serviço de qualidade e tecnologia inovadora, tornando momentos especiais ainda mais saborosos.</p>
+                    </div>
+
+                    <div class="card-mvv visao">
+                        <div class="mvv-header">
+                            <div class="mvv-icon">🔮</div>
+                            <h3>Visão</h3>
+                        </div>
+                        <p>Ser reconhecida como a principal referência em fast food gourmet no Brasil, expandindo para estabelecimentos físicos e criando uma rede nacional de sabor e qualidade.</p>
+                    </div>
+
+                    <div class="card-mvv valores">
+                        <div class="mvv-header">
+                            <div class="mvv-icon">💎</div>
+                            <h3>Compromisso</h3>
+                        </div>
+                        <p>Manter sempre o foco no cliente, investir em nossos colaboradores e contribuir positivamente para as comunidades onde atuamos, crescendo de forma sustentável e responsável.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Estatísticas -->
+            <section class="secao-stats">
+                <h2 class="titulo-secao">SnackParadise em Números</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-numero" data-target="2024">2024</div>
+                        <div class="stat-label">Ano de Fundação</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-numero" data-target="100">100</div>
+                        <div class="stat-label">% Satisfação</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-numero" data-target="24">6</div>
+                        <div class="stat-label">Horas de Atendimento</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-numero" data-target="5">5</div>
+                        <div class="stat-label">Estrelas Avaliação</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="secao-cta">
+                <div class="cta-content">
+                    <h2>Faça Parte da Nossa História</h2>
+                    <p>Junte-se a nós nessa jornada de sabores e descubra por que a SnackParadise é mais que um restaurante - é uma experiência!</p>
+                    <div class="cta-buttons">
+                        <a href="../Menu/index.html" class="btn-cta primario">Ver Cardápio</a>
+                        <a href="#" class="btn-cta secundario">Fazer Pedido</a>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
+
     <footer>
         <div class="footer-container">
             <div class="footer-links">
                 <a href="../Menu/index.html">Início</a>
                 <a href="index.html">Sobre</a>
+                <br><br>
                 <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
                 <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>
             </div>
@@ -84,17 +231,18 @@
         </div>
     </footer>
 
-
+    <!-- VLibras -->
     <div vw class="enabled">
-    <div vw-access-button class="active"></div>
-    <div vw-plugin-wrapper>
-      <div class="vw-plugin-top-wrapper"></div>
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
     </div>
-  </div>
-  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
-  <script>
-    new window.VLibras.Widget('https://vlibras.gov.br/app');
-  </script>
-    <script src="menu.js"></script> 
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
