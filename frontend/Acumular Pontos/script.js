@@ -528,16 +528,3 @@ window.Notificacoes = Notificacoes;
 
 // Log de inicialização
 console.log('SnackParadise - Sistema carregado com sucesso!');
-
-// Service Worker para cache (opcional)
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(registration => {
-                console.log('SW registrado com sucesso:', registration);
-            })
-            .catch(registrationError => {
-                console.log('SW falhou:', registrationError);
-            });
-    });
-}
