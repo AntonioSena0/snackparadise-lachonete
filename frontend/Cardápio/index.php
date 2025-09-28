@@ -211,7 +211,7 @@
         </section>
     </main>
 
-   
-    <script src="script.js"></script>
+    <!-- <script src="menu.js"></script> script antigo, vê o que ele faz e vê se ele serve pra página-->>
+    <script src="newmenu.js"></script>
 </body>
 </html>
