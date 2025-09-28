@@ -154,18 +154,21 @@ document.getElementById('payment-form').addEventListener('submit', async functio
 
 // Gera QR Code ao selecionar a forma de pagamento
 document.getElementById('forma').addEventListener('change', function() {
-    const modalQRCode = new bootstrap.Modal(document.getElementById('modal-qrcode'));
-    modalQRCode.style.display = 'flex';
+    const qrcodeContainer = document.getElementById('qrcode');
+    qrcodeContainer.innerHTML = '';
+
     if (this.value === 'pix') {
-        const qrcodeContainer = document.getElementById('qrcode');
-        qrcodeContainer.innerHTML = '';
+        const qrContent = "Pix: R$30,00";
         const qrcode = new QRCode(qrcodeContainer, {
-            text: totalCheckout,
+            text: qrContent,
             width: 128,
             height: 128,
         });
         qrcodeContainer.style.display = 'block';
-    modalQRCode.show();
+
+        // Exibe o modal QR Code após gerar o QR
+        const modalQRCode = document.getElementById('modal-qrcode');
+        modalQRCode.style.display = 'flex';
     } else {
         qrcodeContainer.style.display = 'none';
     }
