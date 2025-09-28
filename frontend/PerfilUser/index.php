@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+if (!isset($_SESSION['user'])) {
+    header("Location: ../../Tela de login/index.html");
+    exit();
+}
+
+$user = $_SESSION['user'];
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -69,11 +79,14 @@
                 <div class="profile-content">
                     <div class="profile-avatar">
                         <div class="avatar-circle">
-                            <i class='bx bx-user'></i>
+                            <img src="<?php echo isset($user['profile_picture']) && file_exists($user['profile_picture']) ? $user['profile_picture'] : '../../backend/views/uploads/Default_pfp.png'; ?>" alt="Foto de Perfil" class="bx bx-user" width="150">
                         </div>
-                        <button class="btn-change-photo" onclick="changePhoto()">
-                            <i class='bx bx-camera'></i>
-                            Alterar Foto
+                        <button class="btn-change-photo">Alterar Foto</button>
+                        <form method="POST" action="../../backend/views/upload2.php" enctype="multipart/form-data">
+                            <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg" alt="Alterar Foto">
+                            <button type="submit" class="btn-voltar">Salvar</button>
+                        </form>
+                        <i class='bx bx-camera'></i>
                         </button>
                     </div>
 
@@ -88,23 +101,12 @@
                             <form class="profile-form" id="personal-form">
                                 <div class="form-row">
                                     <div class="input-wrap">
-                                        <input type="text" class="input-field" id="nome" name="nome" value="João Silva" readonly />
-                                        <label>Nome Completo</label>
+                                        <input type="text" class="input-field" id="nome" name="nome" value="<?php echo htmlspecialchars($user['username']); ?>" readonly />
+                                        <label>Username</label>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="email" class="input-field" id="email" name="email" value="joao.silva@email.com" readonly />
+                                        <input type="email" class="input-field" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" readonly />
                                         <label>E-mail</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="input-wrap">
-                                        <input type="tel" class="input-field" id="telefone" name="telefone" value="(11) 99999-9999" readonly />
-                                        <label>Telefone</label>
-                                    </div>
-                                    <div class="input-wrap">
-                                        <input type="date" class="input-field" id="nascimento" name="nascimento" value="1990-01-15" readonly />
-                                        <label>Data de Nascimento</label>
                                     </div>
                                 </div>
 

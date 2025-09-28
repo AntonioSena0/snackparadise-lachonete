@@ -18,16 +18,19 @@ function atualizarCarrinho() {
 }
 
 function adicionarAoCarrinho(nome, preco) {
-    let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
-    const itemExistente = carrinho.find(item => item.nome === nome);
-    if (itemExistente) {
-        itemExistente.quantidade += 1;
-    } else {
-        carrinho.push({ nome, preco, quantidade: 1 });
-    }
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-    atualizarCarrinho();
+  let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+
+  const existente = carrinho.find(item => item.nome === nome);
+  if (existente) {
+    existente.quantidade += 1;
+  } else {
+    carrinho.push({ nome, preco, quantidade: 1 });
+  }
+
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  atualizarCarrinho();
 }
+
 
 function removerDoCarrinho(index) {
     let carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];

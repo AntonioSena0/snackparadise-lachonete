@@ -152,16 +152,6 @@ document.getElementById('payment-form').addEventListener('submit', async functio
     }
 });
 
-// Formato do CEP
-document.getElementById('CEP').addEventListener('input', function(event) {
-    const input = event.target.value.replace(/\D/g, '');
-    if (input.length <= 5) {
-        event.target.value = input;
-    } else {
-        event.target.value = input.slice(0, 5) + '-' + input.slice(5, 8);
-    }
-});
-
 // Gera QR Code ao selecionar a forma de pagamento
 document.getElementById('forma').addEventListener('change', function() {
     const qrcodeContainer = document.getElementById('qrcode');

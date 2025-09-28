@@ -1,23 +1,27 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const itensCheckout = document.getElementById("itensCheckout");
-    const totalCheckout = document.getElementById("totalCheckout");
+    carregarCarrinhoNoCheckout();
+});
 
-    let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-    itensCheckout.innerHTML = "";
+function carregarCarrinhoNoCheckout() {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    const ul = document.getElementById('itensCheckout');
+    const totalSpan = document.getElementById('totalCheckout');
+
+    ul.innerHTML = '';
     let total = 0;
 
+    if (carrinho.length === 0) {
+        ul.innerHTML = '<li>Carrinho vazio.</li>';
+        totalSpan.textContent = '0.00';
+        return;
+    }
+
     carrinho.forEach(item => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-        <td>${item.nome}</td>
-        <td>${item.quantidade}</td>
-        <td>R$ ${item.preco.toFixed(2)}</td>
-        <td>R$ ${(item.preco * item.quantidade).toFixed(2)}</td>
-    `;
-    itensCheckout.appendChild(tr);
-    total += item.preco * item.quantidade;
-});
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} (x${item.quantidade}) - R$ ${(item.preco * item.quantidade).toFixed(2)}`;
+        ul.appendChild(li);
+        total += item.preco * item.quantidade;
+    });
 
-
-    totalCheckout.textContent = total.toFixed(2);
-});
+    totalSpan.textContent = total.toFixed(2);
+}
