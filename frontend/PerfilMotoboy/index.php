@@ -1,3 +1,34 @@
+    <?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Verificar se é motoboy
+if (!isset($_SESSION['motoboy'])) {
+    header('Location: ../Tela de Login/cadastrar_motoboy.php');
+    exit();
+}
+
+// Incluir as classes
+include_once '../../backend/config/Conexao.php';
+include_once '../../backend/config/DatabaseManager.php';
+
+try {
+    $db = new DatabaseManager();
+    $motoboyId = $_SESSION['motoboy']['id'];
+    $motoboyData = $db->getMotoboyById($motoboyId);
+    
+    if (!$motoboyData) {
+        throw new Exception("Motoboy não encontrado no banco de dados");
+    }
+    
+    $stats = $db->getMotoboyStats($motoboyId);
+    $recentDeliveries = $db->getRecentDeliveries($motoboyId, 3);
+    
+} catch (Exception $e) {
+    die("Erro ao carregar dados: " . $e->getMessage());
+}
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,44 +40,43 @@
     <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
 </head>
 <body>
-    <header id="header">
-        <div class="container">
-            <div class="flex">
-                <nav>
-                    <ul>
-                        <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
-                            <div class="barralateral" id="barralateral">
-                                <a href="../Menu/index.php" target="_self">Início</a>
-                                <a href="../Perfil/index.php" target="_self">Meu Perfil</a>
-                                <a href="#" target="_self">Entregas</a>
-                                <a href="#" target="_self">Earnings</a>
-                                <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.php" target="_self">Sobre nós</a>
-                                <a href="#" target="_self">Suporte</a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Painel</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Entregas</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Relatórios</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">App Motoboy</a>
-                        </li>
-                    </ul>
-                </nav>
+        <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+                <a href="../Cardápio/index.php" class="logo">
+                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
+                </a>           
+             </div>
+        </div>
 
-                <div class="btn-conta">
-                    <a href="../Tela de login/index.php"><button id="btn-conta" class="conta">Sair</button></a>
+        <div class="header-center">
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
+            <div class="menu-item cardapio-btn" id="cardapioBtn">
+                Cardápio
+                <div class="submenu" id="submenu">
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
+            <a href="#" class="menu-item">Promoções</a>
+            <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
+
+        <a href="../../backend/controllers/logout.php" class="btn-conta">Sair</a>
     </header>
+
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
+        <a href="../PerfilMotoboy/index.php" class="menu-lateral-item active">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item">Pontos</a>
+        <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
 
     <main>
         <div class="main-container">
@@ -62,15 +92,21 @@
                 <div class="profile-content">
                     <div class="profile-avatar">
                         <div class="avatar-circle">
-                            <i class='bx bxs-user'></i>
+                            <?php if (!empty($motoboyData['profile_picture'])): ?>
+                                <img src="../../backend/uploads/profiles/<?php echo htmlspecialchars($motoboyData['profile_picture']); ?>?t=<?php echo time(); ?>" 
+                                    alt="Foto do perfil" 
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            <?php else: ?>
+                                <i class='bx bxs-user'></i>
+                            <?php endif; ?>
                         </div>
                         <button class="btn-change-photo" onclick="changePhoto()">
                             <i class='bx bx-camera'></i>
                             Alterar Foto
                         </button>
-                        <div class="rider-status online">
+                        <div class="rider-status <?php echo $motoboyData['status'] ?? 'offline'; ?>" id="riderStatus">
                             <i class='bx bx-circle'></i>
-                            <span>Online</span>
+                            <span><?php echo ucfirst($motoboyData['status'] ?? 'offline'); ?></span>
                         </div>
                         <div class="rating-display">
                             <div class="stars">
@@ -92,26 +128,18 @@
                                 Informações Pessoais
                             </h3>
                             
-                            <form class="profile-form" id="personal-form">
+                            <form class="profile-form" id="personal-form" method="POST" action="../../backend/controllers/AccountController.php">
+                                <input type="hidden" name="action" value="update_personal_info">
                                 <div class="form-row">
                                     <div class="input-wrap">
-                                        <input type="text" class="input-field" id="nome" name="nome" value="Carlos Alberto Santos" readonly />
+                                        <input type="text" class="input-field" id="name" name="name" 
+                                               value="<?php echo htmlspecialchars($motoboyData['name']); ?>" readonly />
                                         <label>Nome Completo</label>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="email" class="input-field" id="email" name="email" value="carlos.motoboy@email.com" readonly />
+                                        <input type="email" class="input-field" id="email" name="email" 
+                                               value="<?php echo htmlspecialchars($motoboyData['email']); ?>" readonly />
                                         <label>E-mail</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="input-wrap">
-                                        <input type="tel" class="input-field" id="telefone" name="telefone" value="(11) 98765-4321" readonly />
-                                        <label>Telefone</label>
-                                    </div>
-                                    <div class="input-wrap">
-                                        <input type="date" class="input-field" id="nascimento" name="nascimento" value="1985-03-20" readonly />
-                                        <label>Data de Nascimento</label>
                                     </div>
                                 </div>
 
@@ -139,30 +167,21 @@
                                 Informações do Veículo
                             </h3>
                             
-                            <form class="profile-form" id="vehicle-form">
+                            <form class="profile-form" id="vehicle-form" method="POST" action="../../backend/controllers/AccountController.php">
+                                <input type="hidden" name="action" value="update_vehicle_info">
                                 <div class="form-row">
                                     <div class="input-wrap">
-                                        <select class="input-field" id="tipo-veiculo" name="tipo-veiculo" disabled>
-                                            <option value="motocicleta" selected>Motocicleta</option>
-                                            <option value="bicicleta">Bicicleta</option>
-                                            <option value="carro">Carro</option>
+                                        <select class="input-field" id="vehicle_type" name="vehicle_type" disabled>
+                                            <option value="motocicleta" <?php echo ($motoboyData['vehicle_type'] ?? 'motocicleta') === 'motocicleta' ? 'selected' : ''; ?>>Motocicleta</option>
+                                            <option value="bicicleta" <?php echo ($motoboyData['vehicle_type'] ?? '') === 'bicicleta' ? 'selected' : ''; ?>>Bicicleta</option>
+                                            <option value="carro" <?php echo ($motoboyData['vehicle_type'] ?? '') === 'carro' ? 'selected' : ''; ?>>Carro</option>
                                         </select>
                                         <label>Tipo de Veículo</label>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="text" class="input-field" id="placa" name="placa" value="ABC-1234" readonly />
+                                        <input type="text" class="input-field" id="license_plate" name="license_plate" 
+                                               value="<?php echo htmlspecialchars($motoboyData['license_plate'] ?? ''); ?>" readonly />
                                         <label>Placa do Veículo</label>
-                                    </div>
-                                </div>
-
-                                <div class="form-row">
-                                    <div class="input-wrap">
-                                        <input type="text" class="input-field" id="modelo" name="modelo" value="Honda CG 160" readonly />
-                                        <label>Modelo</label>
-                                    </div>
-                                    <div class="input-wrap">
-                                        <input type="text" class="input-field" id="cor" name="cor" value="Vermelha" readonly />
-                                        <label>Cor</label>
                                     </div>
                                 </div>
 
@@ -183,56 +202,7 @@
                             </form>
                         </div>
 
-                        <!-- Documentação -->
-                        <div class="profile-section">
-                            <h3 class="section-title">
-                                <i class='bx bx-id-card'></i>
-                                Documentação
-                            </h3>
-                            
-                            <div class="documents-grid">
-                                <div class="document-item">
-                                    <div class="document-header">
-                                        <i class='bx bx-user'></i>
-                                        <span>CNH</span>
-                                        <span class="status-valid">✓ Válida</span>
-                                    </div>
-                                    <p>Válida até: 15/08/2027</p>
-                                    <button class="btn-update-doc" onclick="updateDocument('cnh')">
-                                        <i class='bx bx-upload'></i>
-                                        Atualizar
-                                    </button>
-                                </div>
-
-                                <div class="document-item">
-                                    <div class="document-header">
-                                        <i class='bx bx-car'></i>
-                                        <span>CRLV</span>
-                                        <span class="status-valid">✓ Válido</span>
-                                    </div>
-                                    <p>Válido até: 30/12/2025</p>
-                                    <button class="btn-update-doc" onclick="updateDocument('crlv')">
-                                        <i class='bx bx-upload'></i>
-                                        Atualizar
-                                    </button>
-                                </div>
-
-                                <div class="document-item">
-                                    <div class="document-header">
-                                        <i class='bx bx-shield'></i>
-                                        <span>Seguro</span>
-                                        <span class="status-expired">⚠ Vencendo</span>
-                                    </div>
-                                    <p>Válido até: 05/01/2025</p>
-                                    <button class="btn-update-doc urgent" onclick="updateDocument('seguro')">
-                                        <i class='bx bx-upload'></i>
-                                        Urgente - Atualizar
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Estatísticas -->
+                        <!-- Estatísticas REAIS -->
                         <div class="profile-section">
                             <h3 class="section-title">
                                 <i class='bx bx-bar-chart-alt-2'></i>
@@ -241,7 +211,7 @@
                             
                             <div class="stats-grid">
                                 <div class="stat-item">
-                                    <div class="stat-number">247</div>
+                                    <div class="stat-number"><?php echo $stats['total_entregas'] ?? '0'; ?></div>
                                     <div class="stat-label">Entregas Realizadas</div>
                                 </div>
                                 <div class="stat-item">
@@ -249,17 +219,17 @@
                                     <div class="stat-label">Avaliação Média</div>
                                 </div>
                                 <div class="stat-item">
-                                    <div class="stat-number">98%</div>
+                                    <div class="stat-number"><?php echo $stats['taxa_sucesso'] ?? '0'; ?>%</div>
                                     <div class="stat-label">Taxa de Sucesso</div>
                                 </div>
                                 <div class="stat-item">
-                                    <div class="stat-number">R$ 2.847</div>
-                                    <div class="stat-label">Ganhos Este Mês</div>
+                                    <div class="stat-number">R$ <?php echo number_format($stats['ganhos_totais'] ?? 0, 2, ',', '.'); ?></div>
+                                    <div class="stat-label">Ganhos Totais</div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Histórico de Entregas -->
+                        <!-- Histórico de Entregas REAIS -->
                         <div class="profile-section">
                             <h3 class="section-title">
                                 <i class='bx bx-history'></i>
@@ -267,59 +237,40 @@
                             </h3>
                             
                             <div class="deliveries-container" id="deliveries-container">
-                                <div class="delivery-item">
-                                    <div class="delivery-header">
-                                        <span class="delivery-number">#DEL-001</span>
-                                        <span class="delivery-date">28/09/2025 14:30</span>
-                                        <span class="delivery-status status-completed">Entregue</span>
+                                <?php if (!empty($recentDeliveries)): ?>
+                                    <?php foreach ($recentDeliveries as $delivery): ?>
+                                        <div class="delivery-item">
+                                            <div class="delivery-header">
+                                                <span class="delivery-number">#DEL-<?php echo str_pad($delivery['id'], 3, '0', STR_PAD_LEFT); ?></span>
+                                                <span class="delivery-date"><?php echo date('d/m/Y H:i', strtotime($delivery['criado_em'])); ?></span>
+                                                <span class="delivery-status <?php echo $delivery['confirmar'] ? 'status-completed' : 'status-pending'; ?>">
+                                                    <?php echo $delivery['confirmar'] ? 'Entregue' : 'Pendente'; ?>
+                                                </span>
+                                            </div>
+                                            <div class="delivery-info">
+                                                <p><strong>Itens:</strong> <?php echo htmlspecialchars(substr($delivery['itens'], 0, 50)) . '...'; ?></p>
+                                                <p><strong>Endereço:</strong> <?php echo htmlspecialchars($delivery['endereco']); ?></p>
+                                            </div>
+                                            <div class="delivery-earnings">
+                                                <strong>Status: <?php echo $delivery['pagamento']; ?></strong>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <div class="delivery-item">
+                                        <div class="delivery-info">
+                                            <p>Nenhuma entrega realizada ainda.</p>
+                                        </div>
                                     </div>
-                                    <div class="delivery-info">
-                                        <p><strong>De:</strong> SnackParadise Centro</p>
-                                        <p><strong>Para:</strong> Rua Augusta, 1200 - Consolação</p>
-                                        <p><strong>Distância:</strong> 2.3 km</p>
-                                    </div>
-                                    <div class="delivery-earnings">
-                                        <strong>Ganho: R$ 8,50</strong>
-                                    </div>
-                                </div>
-
-                                <div class="delivery-item">
-                                    <div class="delivery-header">
-                                        <span class="delivery-number">#DEL-002</span>
-                                        <span class="delivery-date">28/09/2025 13:15</span>
-                                        <span class="delivery-status status-completed">Entregue</span>
-                                    </div>
-                                    <div class="delivery-info">
-                                        <p><strong>De:</strong> SnackParadise Vila Madalena</p>
-                                        <p><strong>Para:</strong> Av. Paulista, 900 - Bela Vista</p>
-                                        <p><strong>Distância:</strong> 4.1 km</p>
-                                    </div>
-                                    <div class="delivery-earnings">
-                                        <strong>Ganho: R$ 12,30</strong>
-                                    </div>
-                                </div>
-
-                                <div class="delivery-item">
-                                    <div class="delivery-header">
-                                        <span class="delivery-number">#DEL-003</span>
-                                        <span class="delivery-date">28/09/2025 11:45</span>
-                                        <span class="delivery-status status-completed">Entregue</span>
-                                    </div>
-                                    <div class="delivery-info">
-                                        <p><strong>De:</strong> SnackParadise Moema</p>
-                                        <p><strong>Para:</strong> Rua dos Pinheiros, 456 - Pinheiros</p>
-                                        <p><strong>Distância:</strong> 3.7 km</p>
-                                    </div>
-                                    <div class="delivery-earnings">
-                                        <strong>Ganho: R$ 10,80</strong>
-                                    </div>
-                                </div>
+                                <?php endif; ?>
                             </div>
 
-                            <button class="btn-load-more" onclick="loadMoreDeliveries()">
-                                <i class='bx bx-plus'></i>
-                                Ver Mais Entregas
-                            </button>
+                            <?php if (!empty($recentDeliveries)): ?>
+                                <button class="btn-load-more" onclick="loadMoreDeliveries()">
+                                    <i class='bx bx-plus'></i>
+                                    Ver Mais Entregas
+                                </button>
+                            <?php endif; ?>
                         </div>
 
                         <!-- Alterar Senha -->
@@ -329,21 +280,22 @@
                                 Segurança
                             </h3>
                             
-                            <form class="profile-form" id="password-form">
+                            <form class="profile-form" id="password-form" method="POST" action="../../backend/controllers/AccountController.php">
+                                <input type="hidden" name="action" value="change_password">
                                 <div class="form-row">
                                     <div class="input-wrap">
-                                        <input type="password" class="input-field" id="senha-atual" name="senha-atual" />
+                                        <input type="password" class="input-field" id="current_password" name="current_password" required />
                                         <label>Senha Atual</label>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="input-wrap">
-                                        <input type="password" class="input-field" id="nova-senha" name="nova-senha" />
+                                        <input type="password" class="input-field" id="new_password" name="new_password" required />
                                         <label>Nova Senha</label>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="password" class="input-field" id="confirmar-senha" name="confirmar-senha" />
+                                        <input type="password" class="input-field" id="confirm_password" name="confirm_password" required />
                                         <label>Confirmar Nova Senha</label>
                                     </div>
                                 </div>
@@ -365,7 +317,7 @@
     <footer>
         <div class="footer-container">
             <div class="footer-links">
-                <a href="../Menu/index.php">Início</a>
+                <a href="../Cardápio/index.php">Início</a>
                 <a href="../Quem somos/index.php">Sobre</a>
                 <a href="#">Suporte</a>
                 <a href="#">Contato</a>
@@ -383,11 +335,11 @@
             <div class="vw-plugin-top-wrapper"></div>
         </div>
     </div>
+    
+    <script src="script.js"></script>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
-
-    <script src="script.js"></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['motoboy'])) {
-    header("Location: ../../Tela de login/index.html");
+    header("Location: ../../frontend/Tela de login/cadastrar_motoboy.php");
     exit();
 }
 

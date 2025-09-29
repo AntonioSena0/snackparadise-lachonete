@@ -32,31 +32,28 @@ body {
     line-height: 1.6;
 }
 
-/* ===== HEADER ===== */
-#header {
+/* ====== HEADER ====== */
+header {
     background: var(--cor-branco);
     width: 100%;
     padding: 15px 30px;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 20px rgba(162, 9, 8, 0.3);
-    min-height: 80px;
-}
-
-.container {
-    max-width: 1500px;
-    margin: auto;
-}
-
-.flex {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-height: 80px;
 }
 
-/* Menu Lateral Button */
-.btn-ativação {
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn-menu-lateral {
     background: none;
     border: none;
     font-size: 1.8rem;
@@ -72,39 +69,91 @@ body {
     justify-content: center;
 }
 
-.btn-ativação:hover {
+.btn-menu-lateral:hover {
     background-color: #f0f0f0;
     transform: scale(1.1);
 }
 
-/* Botão Fechar Menu Lateral */
-.btn-fechar-menu {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    font-size: 2rem;
-    color: var(--cor-primaria);
-    cursor: pointer;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    z-index: 1002;
-}
-
-.btn-fechar-menu:hover {
+.btn-menu-lateral.active {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
     transform: rotate(90deg);
 }
 
-/* Barra Lateral */
-.barralateral {
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 60%;
+    object-fit: cover;
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.menu-item {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menu-item:hover {
+    background-color: #f8f0f0;
+    transform: translateY(-2px);
+}
+
+.menu-item.cardapio-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.menu-item.cardapio-btn::after {
+    content: "▼";
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.menu-item.cardapio-btn.active::after {
+    transform: rotate(180deg);
+}
+
+.btn-conta {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: 12px 25px;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-conta:hover {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(162, 9, 8, 0.3);
+}
+
+/* ==== FIM DO HEADER ==== */
+
+/* Menu Lateral */
+.menu-lateral {
     position: fixed;
     top: 0;
     left: -280px;
@@ -116,15 +165,15 @@ body {
     flex-direction: column;
     padding: 80px 0 30px 0;
     transition: left 0.3s ease;
-    z-index: 1001;
+    z-index: 999;
     overflow-y: auto;
 }
 
-.barralateral.active {
+.menu-lateral.ativo {
     left: 0;
 }
 
-.barralateral a {
+.menu-lateral-item {
     padding: 18px 30px;
     font-size: 1.3rem;
     color: var(--cor-cinza-escuro);
@@ -132,99 +181,56 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     display: block;
-    font-weight: 500;
 }
 
-.barralateral a:hover {
+.menu-lateral-item:hover,
+.menu-lateral-item.active {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
     padding-left: 40px;
 }
 
-/* Navigation Menu */
-nav ul {
-    display: flex;
-    list-style: none;
-    gap: 2rem;
-    align-items: center;
-}
-
-.list-menu1, .list-menu2 {
-    position: relative;
-}
-
-/* Estilização do Botão Cardápio */
-#btn-cardapio {
-    background: none;
-    border: none;
-    color: var(--cor-primaria);
-    font-size: 1.3rem;
-    font-weight: 600;
-    cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 8px;
+/* Submenu */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cor-branco);
+    border: 2px solid var(--cor-primaria);
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    min-width: 220px;
+    opacity: 0;
+    visibility: hidden;
     transition: all 0.3s ease;
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: 'Inter', sans-serif;
+    z-index: 1001;
 }
 
-#btn-cardapio:hover {
-    background-color: #f8f0f0;
-    transform: translateY(-2px);
+.submenu.ativo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px);
+}
+
+.submenu-item {
+    padding: 15px 20px;
+    font-size: 1.1rem;
     color: var(--cor-primaria);
-}
-
-#btn-cardapio::after {
-    content: "▼";
-    font-size: 0.8rem;
-    margin-left: 5px;
-    transition: transform 0.3s ease;
-}
-
-#btn-cardapio.active::after {
-    transform: rotate(180deg);
-}
-
-.list-menu1 a {
-    color: var(--cor-primaria);
-    text-decoration: none;
-    font-size: 1.3rem;
-    font-weight: 600;
+    border-bottom: 1px solid #f0f0f0;
     cursor: pointer;
-    padding: 10px 15px;
-    border-radius: 8px;
     transition: all 0.3s ease;
-    position: relative;
+    text-align: center;
+    display: block;
 }
 
-.list-menu1 a:hover {
-    background-color: #f8f0f0;
-    transform: translateY(-2px);
-    color: var(--cor-primaria);
+.submenu-item:last-child {
+    border-bottom: none;
 }
 
-/* Botão Conta */
-.btn-conta .conta {
+.submenu-item:hover {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
-    padding: 12px 25px;
-    border: 2px solid var(--cor-primaria);
-    border-radius: 8px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-}
-
-.btn-conta .conta:hover {
-    background-color: var(--cor-branco);
-    color: var(--cor-primaria);
-    transform: translateY(-2px);
 }
 
 /* Overlay */
@@ -277,6 +283,108 @@ nav ul {
     gap: 2rem;
     margin-bottom: 3rem;
 }
+
+        .modelos {
+            display: none !important;
+        }
+        
+.carrinho {
+    position: fixed;
+    top: 100px;
+    right: 20px;
+    background: white;
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    min-width: 250px;
+    max-width: 300px;
+}
+
+.carrinho h2 {
+    margin-top: 0;
+    color: #007bff;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.carrinho ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.carrinho li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carrinho p {
+    margin: 10px 0;
+    font-weight: bold;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+        .btn-remover {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .btn-comprar {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            width: 100%;
+        }
+        
+        #finalizarCompra {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 10px;
+        }
+        
+        .lanche-item {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: none;
+        }
+        
+        .area-lanches,
+        .area-acompanhamentos,
+        .area-bebidas {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
 
 /* Container Individual do Lanche */
 .lanche-item {

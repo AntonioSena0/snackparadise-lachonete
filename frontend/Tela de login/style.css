@@ -11,6 +11,17 @@ a{
     text-decoration: none;
 }
 
+:root {
+    --cor-primaria: #a20908;
+    --cor-secundaria: #f40919;
+    --cor-amarelo: #fccc16;
+    --cor-dourado: #fabb18;
+    --cor-branco: #ffffff;
+    --cor-preto: #000000;
+    --cor-cinza: #f5f5f5;
+    --cor-cinza-escuro: #333333;
+}
+
 body{
     height: 100%;
     background-image: url('../imgs/Background.jpeg');
@@ -37,257 +48,225 @@ body.loaded {
     gap: 20px;
 }
 
-header{
-    background-color: #fff;
-    width: 100%;
-    padding: 20px 4%;
-    position: fixed;
-    z-index: 1;
-    height: 125px;
-    top: 0;
-    left: 0;
-    box-shadow: 2px 2px 20px #000;
-    transition: 500ms ease-in-out;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-/* Ajuste para centralizar o texto no header */
 header {
+    background: var(--cor-branco);
+    width: 100%;
+    padding: 15px 30px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 125px; /* Altura do header */
-    padding: 0; /* Remove padding extra */
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    min-height: 80px;
 }
 
-/* Ajuste para os itens do menu no header */
-header ul {
+.header-left {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
+    gap: 20px;
 }
 
-header ul li {
-    margin: 10px; /* Espaçamento entre os itens */
-}
-
-header ul li a {
-    font-size: 1.5rem; /* Tamanho padrão */
-    transition: font-size 0.3s ease;
-}
-
-#header.scroll{
-    position: fixed;
-    height: 100px;
-    background-color: #a20908;
-}
-
-#header.scroll .list-menu1 a{
-    color: #fff;
-}
-
-#header.scroll .list-menu1 button{
-    color: #fff;
-}
-
-header i{
-    font-size: 30px;
-    color: #fff;
-}
-
-header ul{
-    list-style-type: none;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-}
-
-header ul li{
-    display: inline-block;
-    margin: 10px; /* Espaçamento entre os itens */
-}
-
-header ul li a {
-    font-size: 1.5rem;
-    transition: font-size 0.3s ease;
-}
-
-header .list-menu1 a, #btn-cardapio{
-    color: #a20908;
-    text-decoration: none;
-    font-size: 1.8rem;
-    transition: 500ms ease-in-out   ;
-}
-
-header .list-menu1 a:hover, #btn-cardapio:hover{
-    color: red;
-}
-
-#btn-cardapio{
+.btn-menu-lateral {
     background: none;
     border: none;
+    font-size: 1.8rem;
     cursor: pointer;
+    color: var(--cor-primaria);
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.submenu{
-    border: solid yellow 2px;
+.btn-menu-lateral:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.btn-menu-lateral.active {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    transform: rotate(90deg);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 60%;
+    object-fit: cover;
+}
+
+.header-center {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.menu-item {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--cor-primaria);
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.menu-item:hover {
+    background-color: #f8f0f0;
+    transform: translateY(-2px);
+}
+
+.menu-item.cardapio-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.menu-item.cardapio-btn::after {
+    content: "▼";
+    font-size: 0.9rem;
+    transition: transform 0.3s ease;
+}
+
+.menu-item.cardapio-btn.active::after {
+    transform: rotate(180deg);
+}
+
+.btn-conta {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: 12px 25px;
+    border: 2px solid var(--cor-primaria);
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn-conta:hover {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(162, 9, 8, 0.3);
+}
+
+/* ==== FIM DO HEADER ==== */
+
+/* Menu Lateral */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 260px;
+    height: 100vh;
+    background: var(--cor-branco);
+    box-shadow: 4px 0 20px rgba(0,0,0,0.15);
+    display: flex;
     flex-direction: column;
-    background:none;
+    padding: 80px 0 30px 0;
+    transition: left 0.3s ease;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.menu-lateral.ativo {
+    left: 0;
+}
+
+.menu-lateral-item {
+    padding: 18px 30px;
+    font-size: 1.3rem;
+    color: var(--cor-cinza-escuro);
+    border-bottom: 1px solid #f0f0f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+.menu-lateral-item:hover,
+.menu-lateral-item.active {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding-left: 40px;
+}
+
+/* Submenu */
+.submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--cor-branco);
+    border: 2px solid var(--cor-primaria);
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    min-width: 220px;
     opacity: 0;
     visibility: hidden;
-    display: none;
-    position: absolute;
-    color: #fff; 
-    z-index: 1;
-    animation: aparecer 0.5s;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    transition: all 0.3s ease;
+    z-index: 1001;
 }
 
-@keyframes aparecer {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+.submenu.ativo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(10px);
 }
 
-.submenu button{
-    font-size: 1.5rem;
-    background-color: #a20908;
-    color: #fff;
-    width: 25vh;
-    height: 10vh;
-    align-items: center;
-    justify-content: center;   
-    transition: 0.3s ease-in-out; 
-}
-
-hr{
-    height: 3px;
-    border: solid 2px yellow;
-}
-
-.submenu button:hover{
-    transform: translateY(-3px);
-    background-color: #d62b2b;
+.submenu-item {
+    padding: 15px 20px;
+    font-size: 1.1rem;
+    color: var(--cor-primaria);
+    border-bottom: 1px solid #f0f0f0;
     cursor: pointer;
-}
-
-.submenu button:active{
-    transform: translateY(2px);
-    background-color: #ff1c1c;
-}
-
-#barralateral {
-    margin-top: 20px;
-    height: 100%;
-    width: 200px;
-    position: fixed;
-    left: -200px;
-    background-color: #fff;
-    transition: left 0.3s ease-in-out; 
-    z-index: 1;
-}
-
-#barralateral a{
-    padding: 15px;
-    text-decoration: none;
-    font-size: 1.5rem;
-    color: #000;
+    transition: all 0.3s ease;
+    text-align: center;
     display: block;
-    transition: background-color 0.3s;
 }
 
-#barralateral a:hover{
-    background-color: #a20908;
-    color: #fff;
+.submenu-item:last-child {
+    border-bottom: none;
 }
 
-#barralateral.scroll{
-    background-color: #a20908;
+.submenu-item:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
 }
 
-#barralateral.scroll a{
-    color: #fff;
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
 }
 
-#barralateral.scroll a:hover{
-    background-color: #fff;
-    color: #a20908;
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
 }
 
-.btn-ativação{
-    border-radius: 10px;
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: #000;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    z-index: 2;
-    font-size: 18px;
-}
-
-.btn-ativação.active {
-    background-color: #a20908;
-    border-radius: 10px; 
-}
-
-#btn-ativação.scroll{
-    border: solid #fff 3px;
-}
-
-.btn-conta button{
-    font-size: 1.7rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    background-color: #a20908;
-    padding: 5px;
-    border-radius: 10px;
-    transition: 500ms;
-}   
-
-.btn-conta button:hover{
-    background-color: #FF3131;
-    transform: scale(1.2);
-}
-
-.btn-conta a{
-    text-decoration: none;
-    font-size: 20px;
-    display: flex;
-    line-height: 40px;
-}
-
-#btn-conta.scroll{
-    background-color: #fff;
-    color: #a20908;
-}
-
-#btn-conta.scroll:hover{
-    background-color: #a20908;
-    color: #fff;
-    border: solid #fff 2px;
-} 
 .main-part{
     display: flex;
     flex-direction: column;
@@ -762,63 +741,6 @@ form {
     max-width: 400px;
     margin: auto;
     padding: 20px;
-}
-
-/* Ajustes gerais para o header */
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    height: 125px; /* Altura do header */
-    padding: 0; /* Remove padding extra */
-}
-
-header ul {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-}
-
-header ul li {
-    margin: 10px; /* Espaçamento entre os itens */
-}
-
-header ul li a {
-    font-size: 1.5rem; /* Tamanho padrão */
-    transition: font-size 0.3s ease;
-}
-
-/* Ajuste para o header */
-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* Distribui os itens: esquerda, centro e direita */
-    text-align: center;
-    height: 125px;
-    padding: 0 1cm; /* Espaçamento interno */
-}
-
-/* Botão de submenu à extrema esquerda */
-header .submenu-button {
-    margin-right: auto; /* Empurra o botão para a extrema esquerda */
-}
-
-/* Texto centralizado */
-header .header-text {
-    flex-grow: 1; /* Permite que o texto ocupe o espaço central */
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-/* Botão à extrema direita */
-header .right-button {
-    margin-left: auto; /* Empurra o botão para a extrema direita */
 }
 
 /* Media queries para telas menores */

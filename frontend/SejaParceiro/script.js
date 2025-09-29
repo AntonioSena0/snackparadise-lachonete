@@ -1,69 +1,61 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Menu lateral functionality
+    // Menu Lateral
     const btnMenuLateral = document.getElementById('btnMenuLateral');
     const menuLateral = document.getElementById('menuLateral');
-    const overlay = document.getElementById('overlay');
 
-    // Toggle menu lateral
-    if (btnMenuLateral && menuLateral && overlay) {
-        btnMenuLateral.addEventListener('click', function() {
-            menuLateral.classList.toggle('active');
-            overlay.classList.toggle('active');
-        });
-
-        // Close menu when clicking overlay
-        overlay.addEventListener('click', function() {
-            menuLateral.classList.remove('active');
-            overlay.classList.remove('active');
-        });
-
-        // Close menu when pressing ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                menuLateral.classList.remove('active');
-                overlay.classList.remove('active');
-            }
-        });
-    }
-
-    // Cardápio dropdown functionality
-    const cardapioBtn = document.getElementById('cardapioBtn');
-    if (cardapioBtn) {
-        const submenu = cardapioBtn.querySelector('.submenu');
+    btnMenuLateral.addEventListener('click', function(event) {
+        event.stopPropagation();
         
-        cardapioBtn.addEventListener('mouseenter', function() {
-            if (submenu) {
-                submenu.style.opacity = '1';
-                submenu.style.visibility = 'visible';
-                submenu.style.transform = 'translateY(0)';
-            }
-        });
-
-        cardapioBtn.addEventListener('mouseleave', function() {
-            if (submenu) {
-                setTimeout(() => {
-                    submenu.style.opacity = '0';
-                    submenu.style.visibility = 'hidden';
-                    submenu.style.transform = 'translateY(-10px)';
-                }, 100);
-            }
-        });
-
-        // Keep submenu open when hovering over it
-        if (submenu) {
-            submenu.addEventListener('mouseenter', function() {
-                this.style.opacity = '1';
-                this.style.visibility = 'visible';
-                this.style.transform = 'translateY(0)';
-            });
-
-            submenu.addEventListener('mouseleave', function() {
-                this.style.opacity = '0';
-                this.style.visibility = 'hidden';
-                this.style.transform = 'translateY(-10px)';
-            });
+        if (menuLateral.classList.contains('ativo')) {
+            menuLateral.classList.remove('ativo');
+            btnMenuLateral.classList.remove('active');
+            btnMenuLateral.innerHTML = '☰';
+        } else {
+            menuLateral.classList.add('ativo');
+            btnMenuLateral.classList.add('active');
+            btnMenuLateral.innerHTML = '✖';
         }
+    });
+
+    // Submenu Cardápio
+    const cardapioBtn = document.getElementById('cardapioBtn');
+    const submenu = document.getElementById('submenu');
+
+    if (cardapioBtn && submenu) {
+        cardapioBtn.addEventListener('click', function(event) {
+            event.stopPropagation();
+            
+            if (submenu.classList.contains('ativo')) {
+                submenu.classList.remove('ativo');
+                cardapioBtn.classList.remove('active');
+            } else {
+                submenu.classList.add('ativo');
+                cardapioBtn.classList.add('active');
+            }
+        });
+
+        // Evitar que cliques no submenu o fechem
+        submenu.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
     }
+
+    // Fechar menus ao clicar fora
+    document.addEventListener('click', function(event) {
+        if (!menuLateral.contains(event.target) && 
+            !btnMenuLateral.contains(event.target)) {
+            menuLateral.classList.remove('ativo');
+            btnMenuLateral.classList.remove('active');
+            btnMenuLateral.innerHTML = '☰';
+        }
+
+        if (submenu && !submenu.contains(event.target) && 
+            !cardapioBtn.contains(event.target)) {
+            submenu.classList.remove('ativo');
+            cardapioBtn.classList.remove('active');
+        }
+    });
+});
 
     // Form validation and submission
     const form = document.getElementById('partnerForm');
@@ -265,7 +257,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     }
-});
 
 // Add floating animation to decorative elements
 function addFloatingAnimation() {

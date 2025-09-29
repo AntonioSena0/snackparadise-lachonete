@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: ../../Tela de login/index.html");
+    header("Location: ../../frontend/Tela de login/index.php");
     exit();
 }
 

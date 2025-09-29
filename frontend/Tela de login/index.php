@@ -16,59 +16,43 @@ if (session_status() === PHP_SESSION_NONE) {
 </head>
 <body>
 
-    <header id="header">
+    <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+            <a href="../Cardápio/index.php" class="logo">
+                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
+                </a>           
+             </div>
+        </div>
 
-        <div class="container">
+        <div class="header-center">
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
+            <div class="menu-item cardapio-btn" id="cardapioBtn">
+                Cardápio
+                <div class="submenu" id="submenu">
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
+                </div>
+            </div>
+            <a href="#" class="menu-item">Promoções</a>
+            <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
+        </div>
 
-            <div class="flex">
+        <a href="../Tela de Login/index.php" class="btn-conta">Sair</a>
+    </header>
 
-                <nav>
-                    <ul>
-                        <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
-                            <div class="barralateral" id="barralateral">
-                                <a href="../Menu/index.html" target="_self">Início</a>
-                                <a href="../Perfil/index.html" target="_self">Perfil</a>
-                                <a href="#" target="_self">Pontos</a>
-                                <a href="#" target="_self">Seja Parceiro</a>
-                                <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
-                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <button id="btn-cardapio">&darr;Cardápio</button>
-                            <div class="submenu" id="submenu">
-                                <a href="../Cardápio/index.html" target="_self"><button>Hamburgueres</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Bebidas</button></a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Promoções</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Pedidos</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">App SP</a>
-                        </li>
-                    </ul>
-                </nav>
-
-                <div class="btn-conta">
-
-                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Conta</button></a>
-
-                </div><!--btn-conta-->
-
-            </div><!--Flex-->
-
-        </div><!--container-->
-
-    </header><!--header-->
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
+        <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
+        <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
 
 
     <main>
@@ -126,7 +110,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         </div>
                     </form>
 
-                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../back/controllers/registro_processo.php">
+                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../../backend/controllers/registro_processo.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>

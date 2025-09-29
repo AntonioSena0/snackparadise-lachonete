@@ -3,156 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Motoboy - Snack Paradise</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Snack Paradise</title>
+    <link rel="stylesheet" href="style2.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="shortcut icon" href="../img's/Logo.png" type="image/x-icon">
 </head>
 <body>
-    <header id="header">
-        <div class="container">
-            <div class="flex">
-                <nav>
-                    <ul>
-                        <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
-                            <div class="barralateral" id="barralateral">
-                                <a href="../Menu/index.html" target="_self">Início</a>
-                                <a href="../Perfil/index.html" target="_self">Perfil</a>
-                                <a href="#" target="_self">Pontos</a>
-                                <a href="#" target="_self">Seja Parceiro</a>
-                                <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.html" target="_self">Sobre nós</a>
-                                <a href="../Auxílio Preferencial/auxilio.html" target="_self">Auxílio Preferencial</a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
-                <div class="btn-conta">
-                    <a href="../Tela de login/index.html"><button id="btn-conta" class="conta">Conta</button></a>
+
+    <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+            <a href="../Cardápio/index.php" class="logo">
+                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
+                </a>           
+             </div>
+        </div>
+
+        <div class="header-center">
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
+            <div class="menu-item cardapio-btn" id="cardapioBtn">
+                Cardápio
+                <div class="submenu" id="submenu">
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
+            <a href="#" class="menu-item">Promoções</a>
+            <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
+
+        <a href="../Tela de Login/index.php" class="btn-conta">Sair</a>
     </header>
 
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
+        <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
+        <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
+
+
     <main>
+
         <div class="main-container">
             <div class="box">
                 <div class="forms">
-                    <form autocomplete="off" class="Cadastrar-Motoboy-Form" method="POST" action="../../backend/controllers/registro_motoboy.php">
+                    <form autocomplete="off" class="Entrar-Form" method="POST" action="../../backend/perfil/login_processo.php">
                         <div class="logo2">
                             <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
                             <h4>SnackParadise</h4>
                         </div>
-                        <div class="txt-inicial">
-                            <h2>Cadastro de Motoboy</h2>
-                            <h6>Já tem uma conta?</h6>
-                            <a href="index.php" class="toggle">Entrar</a>
+
+                        <div id="loginForm" class="txt-inicial">
+                            <h2>Bem Vindo de Volta</h2>
+                            <h6>Ainda não possui uma conta?</h6>
+                            <div class="toggle">Cadastrar-se</div>
+                            <h6>Entrou na aba errada? Volte a area do usuario</h6><br>
+                            <a href="../Tela de login/index.php" class="toggle">Clique aqui</a>
                         </div>
+                        
+                
                         <div class="form-atual">
-                            <div class="input-wrapper">
-                                <input type="text" name="motoboy_name" id="motoboy_name" required>
-                                <label for="motoboy_name">Nome do Motoboy</label>
+
+                            <div class="input-wrap">
+
+                                <input type="email" minlength="4" class="input-field" autocomplete="off" id="loginEmail" name="email" required/>
+                                <label>Email</label>
+
                             </div>
-                            <div class="input-wrapper">
-                                <input type="email" name="email" id="email" required>
-                                <label for="email">E-mail</label>
+
+                            <div class="input-wrap">
+
+                                <input type="password" minlength="4" class="input-field" autocomplete="off"  id="loginPassword" name="password" required/>
+                                <label>Senha</label>
+
                             </div>
-                            <div class="input-wrapper">
-                                <input type="password" name="senha" id="senha" required>
-                                <label for="senha">Senha</label>
+
+                            <div class="error-message" style="color: red; text-align: center;">
                             </div>
-                            <div class="input-wrapper">
-                                <input type="text" name="vehicle_type" id="vehicle_type" required>
-                                <label for="vehicle_type">Tipo de Veículo</label>
+
+                            <input type="submit" value="Entrar" class="botao-login" />
+
+                            <p class="txt">
+                                Esqueceu a senha?
+                                <a href="#">Obter ajuda</a> para iniciar sessão
+                            </p>
+
+                        </div>
+                    </form>
+
+                    <form autocomplete="off" class="Cadastrar-se-Form" id="registerForm" method="POST" action="../../backend/controllers/registro_motoboy.php">
+                        <div class="logo2">
+                            <img src="../imgs/Logo.png" alt="SnackParadiseLogo">
+                            <h4>SnackParadise</h4>
+                        </div>
+
+                        <div class="txt-inicial">
+                            <h2>Seja Bem Vindo a Area de Motoboy</h2>
+                            <h6>Já tem uma conta?</h6>
+                            <div class="toggle">Entrar</div>
+                        </div>
+
+                        <div class="form-atual">
+                            <div class="input-wrap">
+                                <input type="text" minlength="4" class="input-field" autocomplete="off" id="username" name="username" required />
+                                <label>Nome</label>
                             </div>
-                            <div class="input-wrapper">
-                                <input type="text" name="license_plate" id="license_plate" required>
-                                <label for="license_plate">Placa do Veículo</label>
+
+                            <div class="input-wrap">
+                                <input type="email" class="input-field" id="email" autocomplete="off" name="email" required />
+                                <label>Email</label>
                             </div>
-                            <button type="submit" class="btn-submit">Cadastrar</button>
-                            <p class="toggle-text">Já tem uma conta? <a href="index.php" class="toggle">Entrar</a></p>
+
+                            <div class="input-wrap">
+                                <input type="password" minlength="4" class="input-field" id="password" autocomplete="off" name="senha" required />
+                                <label>Senha</label>
+                            </div>
+                            <div class="input-wrap">
+                                <select class="input-field" id="tipovel" name="tipovel" required>
+                                    <option value="" disabled selected> </option>
+                                    <option value="carro">Carro</option>
+                                    <option value="moto">Moto</option>
+                                </select>
+                                <label>Tipo de Veículo</label>
+                            </div>
+                            <div class="input-wrap">
+                                <input type="text" minlength="7" maxlength="7" class="input-field" autocomplete="off" id="placa" name="placa" required />
+                                <label>Numero de Placa</label>
+                            </div>
+
+
+                            <button type="submit" class="botao-login" id="registerButton">Cadastrar-se</button>
+
+                            <p class="txt">
+                                Cadastrando esta conta, você concorda com os
+                                <a href="#">Termos de Serviços</a> e
+                                <a href="#">Política de Privacidade</a>
+                            </p>
                         </div>
                     </form>
                 </div>
-                <div class="img-container">
-                    <img src="../imgs/motoboy.png" alt="Motoboy Image">
+
+
+                <div class="carrossel">
+                    <div class="imagens">
+                        <img src="../imgs/Slider-Login/1.png" class="imagem img-1 mostrar" alt="Sobre nós">
+                        <img src="../imgs/Slider-Login/2.png" class="imagem img-2" alt="Junte se a nós">
+                        <img src="../imgs/Slider-Login/3.png" class="imagem img-3" alt="Tenha a melhor experiência">
+                        <div class="bullets">
+                            <span class="active" data-value="1"></span>
+                            <span data-value="2"></span>
+                            <span data-value="3"></span>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>
     </main>
+        
     <footer>
         <div class="footer-container">
-            <p>&copy; 2023 Snack Paradise. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="../Menu/index.html">Início</a>
+                <a href="../Quem somos/index.html">Sobre</a>
+                <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
+                <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SnackParadise. Todos os direitos reservados.</p>
+            </div>
         </div>
     </footer>
+
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
     <script src="menu.js"></script>
-</body>
-</html>
-<script>
-    document.getElementById('btn-ativação').addEventListener('click', function() {
-        const barralateral = document.getElementById('barralateral');
-        barralateral.classList.toggle('active');
-    });
-    document.querySelector('.toggle').addEventListener('click', function() {
-        const form = document.querySelector('.Cadastrar-Motoboy-Form');
-        form.classList.toggle('active');
-    });
-    document.querySelector('.toggle-text a').addEventListener('click', function(event) {
-        event.preventDefault();
-        const form = document.querySelector('.Cadastrar-Motoboy-Form');
-        form.classList.toggle('active');
-    });
-    document.querySelector('.btn-ativação').addEventListener('click', function() {
-        const barralateral = document.getElementById('barralateral');
-        barralateral.classList.toggle('active');
-    });
-    document.querySelector('.barralateral').addEventListener('click', function(event) {
-        event.stopPropagation();
-    });
-    document.addEventListener('click', function(event) {
-        const barralateral = document.getElementById('barralateral');
-        if (!barralateral.contains(event.target) && !event.target.matches('.btn-ativação')) {
-            barralateral.classList.remove('active');
-        }
-    });
-    document.querySelector('.Cadastrar-Motoboy-Form').addEventListener('submit', function(event) {
-        const motoboyName = document.getElementById('motoboy_name').value;
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
-        const vehicleType = document.getElementById('vehicle_type').value;
-        const licensePlate = document.getElementById('license_plate').value;
+    <script>
+    document.getElementById("placa").addEventListener("input", function (e) {
+    this.value = this.value.toUpperCase();
+    this.value = this.value.replace(/[^A-Z0-9]/g, '');
+    if (this.value.length > 7) {
+        this.value = this.value.slice(0, 7);
+     }
+});
+document.getElementById("registerForm").addEventListener("submit", function (e) {
+  const placa = document.getElementById("placa").value.toUpperCase();
+  const regexAntiga = /^[A-Z]{3}[0-9]{4}$/;
+  const regexMercosul = /^[A-Z]{3}[0-9][A-Z][0-9]{2}$/;
 
-        if (!motoboyName || !email || !senha || !vehicleType || !licensePlate) {
-            event.preventDefault();
-            alert('Por favor, preencha todos os campos.');
-        }
-    });
-    document.querySelector('.Cadastrar-Motoboy-Form').addEventListener('input', function() {
-        const motoboyName = document.getElementById('motoboy_name').value;
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
-        const vehicleType = document.getElementById('vehicle_type').value;
-        const licensePlate = document.getElementById('license_plate').value;
-
-        if (motoboyName && email && senha && vehicleType && licensePlate) {
-            document.querySelector('.btn-submit').disabled = false;
-        } else {
-            document.querySelector('.btn-submit').disabled = true;
-        }
-    });
-    document.querySelector('.btn-submit').disabled = true; // Disable button initially
-    document.querySelector('.Cadastrar-Motoboy-Form').addEventListener('input', function() {
-        const motoboyName = document.getElementById('motoboy_name').value;
-        const email = document.getElementById('email').value;
-        const senha = document.getElementById('senha').value;
-        const vehicleType = document.getElementById('vehicle_type').value;
-        const licensePlate = document.getElementById('license_plate').value;
-
-        if (motoboyName && email && senha && vehicleType && licensePlate) {
-            document.querySelector('.btn-submit').disabled = false;
-        } else {
-            document.querySelector('.btn-submit').disabled = true;
-        }
-    });
+  if (!regexAntiga.test(placa) && !regexMercosul.test(placa)) {
+    e.preventDefault(); // impede o envio
+    alert("Placa inválida! Use o formato AAA1234 ou ABC1D23.");
+  }
+});
 </script>
+
+    <script>
+        const loginForm = document.querySelector('.Entrar-Form');
+        loginForm.addEventListener('submit', function (event) {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            if (!email || !password) {
+                event.preventDefault();
+                document.getElementById('loginError').style.display = 'block';
+            }
+        });
+    </script>
+    <style>
+        .motoboy-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .btn-motoboy {
+            display: inline-block;
+            background-color: #a20908;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-motoboy:hover {
+            background-color: #FF3131;
+            transform: scale(1.05);
+        }
+    </style>
+</body>

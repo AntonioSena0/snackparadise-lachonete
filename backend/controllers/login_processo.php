@@ -48,7 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'profile_picture' => $user['profile_picture'] ?? null,
                 'partner' => $user['partner'] ?? false
             ];
-            header("Location: ../views/Conta.php");
+            header("Location: ../../frontend/PerfilUser/index.php");
             exit();
         }
 

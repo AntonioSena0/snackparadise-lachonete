@@ -16,67 +16,100 @@ document.querySelectorAll("a").forEach(link => {
     });
 });
 
-// Menu lateral
 document.addEventListener('DOMContentLoaded', function() {
-    const btnAtivacao = document.getElementById('btn-ativação');
-    const barraLateral = document.getElementById('barralateral');
-    const btnCardapio = document.getElementById('btn-cardapio');
+    // Menu Lateral
+    const btnMenuLateral = document.getElementById('btnMenuLateral');
+    const menuLateral = document.getElementById('menuLateral');
+
+    btnMenuLateral.addEventListener('click', function(event) {
+        event.stopPropagation();
+        
+        if (menuLateral.classList.contains('ativo')) {
+            menuLateral.classList.remove('ativo');
+            btnMenuLateral.classList.remove('active');
+            btnMenuLateral.innerHTML = '☰';
+        } else {
+            menuLateral.classList.add('ativo');
+            btnMenuLateral.classList.add('active');
+            btnMenuLateral.innerHTML = '✖';
+        }
+    });
+
+    // Submenu Cardápio
+    const cardapioBtn = document.getElementById('cardapioBtn');
     const submenu = document.getElementById('submenu');
 
-    // Menu lateral
-    if (btnAtivacao && barraLateral) {
-        btnAtivacao.addEventListener('click', function(event) {
+    if (cardapioBtn && submenu) {
+        cardapioBtn.addEventListener('click', function(event) {
             event.stopPropagation();
             
-            if (barraLateral.style.left === '0px') {
-                barraLateral.style.left = '-200px';
-                btnAtivacao.classList.remove('active');
+            if (submenu.classList.contains('ativo')) {
+                submenu.classList.remove('ativo');
+                cardapioBtn.classList.remove('active');
             } else {
-                barraLateral.style.left = '0px';
-                btnAtivacao.classList.add('active');
+                submenu.classList.add('ativo');
+                cardapioBtn.classList.add('active');
             }
         });
 
-        // Fechar menu ao clicar fora
-        document.addEventListener('click', function(event) {
-            if (!barraLateral.contains(event.target) && !btnAtivacao.contains(event.target)) {
-                barraLateral.style.left = '-200px';
-                btnAtivacao.classList.remove('active');
-            }
+        // Evitar que cliques no submenu o fechem
+        submenu.addEventListener('click', function(event) {
+            event.stopPropagation();
         });
     }
 
-    // Submenu cardápio
-    if (btnCardapio && submenu) {
-        btnCardapio.addEventListener('click', function(event) {
-            event.stopPropagation();
-            
-            if (submenu.style.display === 'flex') {
-                submenu.style.display = 'none';
-                submenu.style.opacity = '0';
-                submenu.style.visibility = 'hidden';
-            } else {
-                submenu.style.display = 'flex';
-                submenu.style.opacity = '1';
-                submenu.style.visibility = 'visible';
-            }
-        });
+    // Fechar menus ao clicar fora
+    document.addEventListener('click', function(event) {
+        if (!menuLateral.contains(event.target) && 
+            !btnMenuLateral.contains(event.target)) {
+            menuLateral.classList.remove('ativo');
+            btnMenuLateral.classList.remove('active');
+            btnMenuLateral.innerHTML = '☰';
+        }
 
-        // Fechar submenu ao clicar fora
-        document.addEventListener('click', function(event) {
-            if (!submenu.contains(event.target) && !btnCardapio.contains(event.target)) {
-                submenu.style.display = 'none';
-                submenu.style.opacity = '0';
-                submenu.style.visibility = 'hidden';
-            }
-        });
-    }
+        if (submenu && !submenu.contains(event.target) && 
+            !cardapioBtn.contains(event.target)) {
+            submenu.classList.remove('ativo');
+            cardapioBtn.classList.remove('active');
+        }
+    });
 
     // Inicializar campos ativos
     initializeActiveFields();
 
     // Event listeners para formulários
     setupFormEventListeners();
+});
+
+// Buscar CEP
+async function lookupCEP(cep) {
+    try {
+        const cepClean = cep.replace(/\D/g, '');
+        if (cepClean.length !== 8) return;
+
+        const response = await fetch(`https://viacep.com.br/ws/${cepClean}/json/`);
+        const data = await response.json();
+
+        if (data.erro) {
+            showNotification('CEP não encontrado.', 'error');
+            return;
+        }
+
+        // Preencher campos automaticamente
+        document.getElementById('endereco').value = data.logradouro;
+        document.getElementById('bairro').value = data.bairro;
+        document.getElementById('cidade').value = data.localidade;
+
+        showNotification('Endereço preenchido automaticamente!', 'success');
+    } catch (error) {
+        console.error('Erro ao buscar CEP:', error);
+        showNotification('Erro ao buscar CEP.', 'error');
+    }
+}
+
+// Adicionar evento ao campo CEP
+document.getElementById('cep')?.addEventListener('blur', function() {
+    lookupCEP(this.value);
 });
 
 // Inicializar campos com valor como ativos
@@ -128,16 +161,38 @@ function setupFormEventListeners() {
         });
     }
 
-    // CEP lookup
-    const cepField = document.getElementById('cep');
-    if (cepField) {
-        cepField.addEventListener('blur', function() {
-            const cep = this.value.replace(/\D/g, '');
-            if (cep.length === 8) {
-                lookupCEP(cep);
+    // Upload de foto
+    const photoInput = document.getElementById('profilePicture');
+    if (photoInput) {
+        photoInput.addEventListener('change', function(event) {
+            if (this.files && this.files[0]) {
+                previewProfilePicture(this.files[0]);
             }
         });
     }
+}
+
+// Preview da foto de perfil
+function previewProfilePicture(file) {
+    // Validar tipo e tamanho do arquivo
+    if (!file.type.startsWith('image/')) {
+        showNotification('Por favor, selecione apenas arquivos de imagem.', 'error');
+        return;
+    }
+    
+    if (file.size > 5 * 1024 * 1024) { // 5MB
+        showNotification('A imagem deve ter no máximo 5MB.', 'error');
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const avatarCircle = document.querySelector('.avatar-circle img');
+        if (avatarCircle) {
+            avatarCircle.src = e.target.result;
+        }
+    };
+    reader.readAsDataURL(file);
 }
 
 // Alternar modo de edição
@@ -201,26 +256,37 @@ function cancelEdit(section) {
 async function savePersonalInfo() {
     const form = document.getElementById('personal-form');
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+    
+    // Adicionar action para identificar a operação
+    formData.append('action', 'update_personal_info');
 
     try {
-        // Simular chamada para API
-        await simulateAPICall('/api/user/personal', data);
-        
-        // Desabilitar campos novamente
-        const fields = form.querySelectorAll('.input-field');
-        fields.forEach(field => {
-            field.setAttribute('readonly', 'readonly');
-            field.style.background = '#f8f9fa';
-            field.style.cursor = 'not-allowed';
+        const response = await fetch('../../backend/controllers/ProfileController.php', {
+            method: 'POST',
+            body: formData
         });
 
-        // Alternar botões
-        document.getElementById('edit-personal').classList.remove('hidden');
-        document.getElementById('save-personal').classList.add('hidden');
-        document.getElementById('cancel-personal').classList.add('hidden');
+        if (response.ok) {
+            // Desabilitar campos novamente
+            const fields = form.querySelectorAll('.input-field');
+            fields.forEach(field => {
+                field.setAttribute('readonly', 'readonly');
+                field.style.background = '#f8f9fa';
+                field.style.cursor = 'not-allowed';
+            });
 
-        showNotification('Informações pessoais atualizadas com sucesso!', 'success');
+            // Alternar botões
+            document.getElementById('edit-personal').classList.remove('hidden');
+            document.getElementById('save-personal').classList.add('hidden');
+            document.getElementById('cancel-personal').classList.add('hidden');
+
+            // Recarregar a página para mostrar dados atualizados
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        } else {
+            throw new Error('Erro na resposta do servidor');
+        }
     } catch (error) {
         showNotification('Erro ao salvar informações pessoais.', 'error');
         console.error('Erro:', error);
@@ -231,26 +297,37 @@ async function savePersonalInfo() {
 async function saveAddressInfo() {
     const form = document.getElementById('address-form');
     const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+    
+    // Adicionar action para identificar a operação
+    formData.append('action', 'update_address');
 
     try {
-        // Simular chamada para API
-        await simulateAPICall('/api/user/address', data);
-        
-        // Desabilitar campos novamente
-        const fields = form.querySelectorAll('.input-field');
-        fields.forEach(field => {
-            field.setAttribute('readonly', 'readonly');
-            field.style.background = '#f8f9fa';
-            field.style.cursor = 'not-allowed';
+        const response = await fetch('../../backend/controllers/ProfileController.php', {
+            method: 'POST',
+            body: formData
         });
 
-        // Alternar botões
-        document.getElementById('edit-address').classList.remove('hidden');
-        document.getElementById('save-address').classList.add('hidden');
-        document.getElementById('cancel-address').classList.add('hidden');
+        if (response.ok) {
+            // Desabilitar campos novamente
+            const fields = form.querySelectorAll('.input-field');
+            fields.forEach(field => {
+                field.setAttribute('readonly', 'readonly');
+                field.style.background = '#f8f9fa';
+                field.style.cursor = 'not-allowed';
+            });
 
-        showNotification('Endereço atualizado com sucesso!', 'success');
+            // Alternar botões
+            document.getElementById('edit-address').classList.remove('hidden');
+            document.getElementById('save-address').classList.add('hidden');
+            document.getElementById('cancel-address').classList.add('hidden');
+
+            // Recarregar a página para mostrar dados atualizados
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        } else {
+            throw new Error('Erro na resposta do servidor');
+        }
     } catch (error) {
         showNotification('Erro ao salvar endereço.', 'error');
         console.error('Erro:', error);
@@ -280,112 +357,79 @@ async function changePassword() {
     }
 
     try {
-        // Simular chamada para API
-        await simulateAPICall('/api/user/change-password', {
-            current_password: senhaAtual,
-            new_password: novaSenha
+        const formData = new FormData();
+        formData.append('action', 'change_password');
+        formData.append('current_password', senhaAtual);
+        formData.append('new_password', novaSenha);
+        formData.append('confirm_password', confirmarSenha);
+
+        const response = await fetch('../../backend/controllers/ProfileController.php', {
+            method: 'POST',
+            body: formData
         });
 
-        // Limpar campos
-        document.getElementById('senha-atual').value = '';
-        document.getElementById('nova-senha').value = '';
-        document.getElementById('confirmar-senha').value = '';
+        if (response.ok) {
+            // Limpar campos
+            document.getElementById('senha-atual').value = '';
+            document.getElementById('nova-senha').value = '';
+            document.getElementById('confirmar-senha').value = '';
 
-        showNotification('Senha alterada com sucesso!', 'success');
+            // Recarregar a página
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        } else {
+            throw new Error('Erro na resposta do servidor');
+        }
     } catch (error) {
         showNotification('Erro ao alterar senha. Verifique a senha atual.', 'error');
         console.error('Erro:', error);
     }
 }
 
-// Alterar foto do perfil
-function changePhoto() {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
-    
-    input.onchange = function(event) {
-        const file = event.target.files[0];
-        if (file) {
-            // Validar tipo e tamanho do arquivo
-            if (!file.type.startsWith('image/')) {
-                showNotification('Por favor, selecione apenas arquivos de imagem.', 'error');
-                return;
-            }
-            
-            if (file.size > 5 * 1024 * 1024) { // 5MB
-                showNotification('A imagem deve ter no máximo 5MB.', 'error');
-                return;
-            }
+// Upload da foto de perfil
+function uploadProfilePicture(event) {
+    const input = event.target;
 
-            // Preview da imagem
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const avatarCircle = document.querySelector('.avatar-circle');
-                avatarCircle.innerHTML = `<img src="${e.target.result}" alt="Foto do perfil" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">`;
-            };
-            reader.readAsDataURL(file);
+    if (input.files && input.files[0]) {
+        const file = input.files[0];
 
-            // Simular upload
-            uploadPhoto(file);
-        }
-    };
-    
-    input.click();
-}
-
-// Upload da foto
-async function uploadPhoto(file) {
-    try {
-        // Simular upload
-        await simulateAPICall('/api/user/upload-photo', { photo: file });
-        showNotification('Foto do perfil atualizada com sucesso!', 'success');
-    } catch (error) {
-        showNotification('Erro ao fazer upload da foto.', 'error');
-        console.error('Erro:', error);
-    }
-}
-
-// Buscar CEP
-async function lookupCEP(cep) {
-    try {
-        const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-        const data = await response.json();
-
-        if (data.erro) {
-            showNotification('CEP não encontrado.', 'error');
+        // Validar tipo e tamanho do arquivo
+        if (!file.type.startsWith('image/')) {
+            showNotification('Por favor, selecione apenas arquivos de imagem.', 'error');
             return;
         }
 
-        // Preencher campos
-        document.getElementById('endereco').value = data.logradouro;
-        document.getElementById('bairro').value = data.bairro;
-        document.getElementById('cidade').value = data.localidade;
+        if (file.size > 5 * 1024 * 1024) { // 5MB
+            showNotification('A imagem deve ter no máximo 5MB.', 'error');
+            return;
+        }
 
-        // Ativar campos preenchidos
-        document.getElementById('endereco').classList.add('active');
-        document.getElementById('bairro').classList.add('active');
-        document.getElementById('cidade').classList.add('active');
+        const formData = new FormData();
+        formData.append('action', 'upload_photo');
+        formData.append('profilePicture', file);
 
-    } catch (error) {
-        console.error('Erro ao buscar CEP:', error);
+        // Evitar múltiplas chamadas
+        fetch('../../backend/controllers/ProfileController.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                showNotification('Foto de perfil atualizada com sucesso!', 'success');
+                setTimeout(() => {
+                    window.location.reload();
+                }, 2000);
+            } else {
+                throw new Error('Erro no upload');
+            }
+        })
+        .catch(error => {
+            showNotification('Erro ao fazer upload da foto.', 'error');
+            console.error('Erro:', error);
+        });
     }
 }
-
-// Simular chamada de API
-function simulateAPICall(endpoint, data) {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            // Simular sucesso na maioria dos casos
-            if (Math.random() > 0.1) {
-                resolve({ success: true, data });
-            } else {
-                reject(new Error('Erro simulado na API'));
-            }
-        }, 1000 + Math.random() * 1000);
-    });
-}
-
 // Mostrar notificação
 function showNotification(message, type = 'info') {
     // Remover notificação existente
@@ -481,5 +525,20 @@ style.textContent = `
             opacity: 0;
         }
     }
+    
+    .hidden {
+        display: none !important;
+    }
 `;
 document.head.appendChild(style);
+
+// Adicionar evento para o botão de alterar foto
+document.querySelector('.btn-change-photo')?.addEventListener('click', function() {
+    document.getElementById('profilePicture').click();
+});
+
+// Adicionar evento para o formulário de upload de foto
+document.querySelector('form[enctype="multipart/form-data"]')?.addEventListener('submit', function(event) {
+    event.preventDefault();
+    uploadProfilePicture();
+});

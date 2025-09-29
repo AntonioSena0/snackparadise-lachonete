@@ -2,11 +2,34 @@
 session_start();
 
 if (!isset($_SESSION['user'])) {
-    header("Location: ../../Tela de login/index.html");
+    header("Location: ../../frontend/Tela de login/index.php");
     exit();
 }
 
+include_once '../../backend/config/DatabaseManager.php';
+
+$db = new DatabaseManager();
 $user = $_SESSION['user'];
+
+// Buscar dados atualizados do usuário
+$userData = $db->getUserById($user['id']);
+if ($userData) {
+    $user = array_merge($user, $userData);
+    $_SESSION['user'] = $user;
+}
+
+// Buscar pedidos do usuário
+$orders = $db->getUserOrders($user['id']);
+
+// Buscar histórico de entregas
+$deliveries = $db->getDeliveryHistory($user['id']);
+
+// Buscar avaliações
+$reviews = $db->getUserReviews($user['id']);
+
+// Verificar se há mensagens de sucesso/erro
+$success = $_GET['success'] ?? '';
+$error = $_GET['error'] ?? '';
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -19,54 +42,57 @@ $user = $_SESSION['user'];
     <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
 </head>
 <body>
-    <header id="header">
-        <div class="container">
-            <div class="flex">
-                <nav>
-                    <ul>
-                        <li class="list-menu2">
-                            <button class="btn-ativação" id="btn-ativação">☰</button>
-                            <div class="barralateral" id="barralateral">
-                                <a href="../Menu/index.php" target="_self">Início</a>
-                                <a href="../PerfilUser/index.php" target="_self">Perfil</a>
-                                <a href="#" target="_self">Pontos</a>
-                                <a href="#" target="_self">Seja Parceiro</a>
-                                <a href="#" target="_self">Avaliações</a>
-                                <a href="../Quem somos/index.php" target="_self">Sobre nós</a>
-                                <a href="../Auxílio Preferencial/auxilio.php" target="_self">Auxílio Preferencial</a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <button id="btn-cardapio">&darr;Cardápio</button>
-                            <div class="submenu" id="submenu">
-                                <a href="../Cardápio/index.php" target="_self"><button>Hamburgueres</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Acompanhamentos</button></a>
-                                <hr>
-                                <a href="#" target="_self"><button>Bebidas</button></a>
-                            </div>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Promoções</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">Pedidos</a>
-                        </li>
-                        <li class="list-menu1">
-                            <a href="#" target="_self">App SP</a>
-                        </li>
-                    </ul>
-                </nav>
+    <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+            <a href="../Cardápio/index.php" class="logo">
+                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
+                </a>           
+             </div>
+        </div>
 
-                <div class="btn-conta">
-                    <a href="../Tela de login/index.php"><button id="btn-conta" class="conta">Sair</button></a>
+        <div class="header-center">
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
+            <div class="menu-item cardapio-btn" id="cardapioBtn">
+                Cardápio
+                <div class="submenu" id="submenu">
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
+            <a href="#" class="menu-item">Promoções</a>
+            <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
+
+        <a href="../Tela de Login/index.php" class="btn-conta">Sair</a>
     </header>
+
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
+        <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
+        <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
 
     <main>
         <div class="main-container">
+            <?php if ($success): ?>
+                <div class="alert alert-success">
+                    <?php echo htmlspecialchars($success); ?>
+                </div>
+            <?php endif; ?>
+
+            <?php if ($error): ?>
+                <div class="alert alert-error">
+                    <?php echo htmlspecialchars($error); ?>
+                </div>
+            <?php endif; ?>
             <div class="profile-box">
                 <div class="profile-header">
                     <div class="logo2">
@@ -79,16 +105,21 @@ $user = $_SESSION['user'];
                 <div class="profile-content">
                     <div class="profile-avatar">
                         <div class="avatar-circle">
-                            <img src="<?php echo isset($user['profile_picture']) && file_exists($user['profile_picture']) ? $user['profile_picture'] : '../../backend/views/uploads/Default_pfp.png'; ?>" alt="Foto de Perfil" class="bx bx-user" width="150">
+                            <?php if (!empty($user['profile_picture'])): ?>
+                                <img src="../../backend/uploads/profiles/<?php echo htmlspecialchars($user['profile_picture']); ?>?t=<?php echo time(); ?>" 
+                                    alt="Foto de perfil" 
+                                    style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
+                            <?php else: ?>
+                                <i class='bx bxs-user'></i>
+                            <?php endif; ?>
                         </div>
-                        <button class="btn-change-photo">Alterar Foto</button>
-                        <form method="POST" action="../../backend/views/upload2.php" enctype="multipart/form-data">
-                            <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg" alt="Alterar Foto">
-                            <button type="submit" class="btn-voltar">Salvar</button>
-                        </form>
-                        <i class='bx bx-camera'></i>
+                        <button class="btn-change-photo" onclick="document.getElementById('profilePicture').click();">
+                            <i class='bx bx-camera'></i>
+                            Alterar Foto
                         </button>
+                        <input type="file" id="profilePicture" name="profilePicture" accept="image/png, image/jpeg" style="display: none;" onchange="uploadProfilePicture(event)">
                     </div>
+
 
                     <div class="profile-forms">
                         <!-- Informações Pessoais -->
@@ -98,14 +129,17 @@ $user = $_SESSION['user'];
                                 Informações Pessoais
                             </h3>
                             
-                            <form class="profile-form" id="personal-form">
+                            <form class="profile-form" id="personal-form" method="POST" action="../../backend/controllers/ProfileController.php">
+                                <input type="hidden" name="action" value="update_personal_info">
                                 <div class="form-row">
                                     <div class="input-wrap">
-                                        <input type="text" class="input-field" id="nome" name="nome" value="<?php echo htmlspecialchars($user['username']); ?>" readonly />
+                                        <input type="text" class="input-field" id="username" name="username" 
+                                            value="<?php echo htmlspecialchars($user['username'] ?? ''); ?>" readonly />
                                         <label>Username</label>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="email" class="input-field" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" readonly />
+                                        <input type="email" class="input-field" id="email" name="email" 
+                                            value="<?php echo htmlspecialchars($user['email'] ?? ''); ?>" readonly />
                                         <label>E-mail</label>
                                     </div>
                                 </div>
@@ -134,25 +168,28 @@ $user = $_SESSION['user'];
                                 Endereço de Entrega
                             </h3>
                             
-                            <form class="profile-form" id="address-form">
+                            <form class="profile-form" id="address-form" method="POST" action="../../backend/controllers/ProfileController.php">
+                                <input type="hidden" name="action" value="update_address">
                                 <div class="form-row">
                                     <div class="input-wrap">
-                                        <input type="text" class="input-field" id="cep" name="cep" value="01234-567" readonly />
+                                        <input type="text" class="input-field" id="cep" name="cep" 
+                                            value="<?php echo htmlspecialchars($user['cep'] ?? ''); ?>" readonly />
                                         <label>CEP</label>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="text" class="input-field" id="endereco" name="endereco" value="Rua das Flores, 123" readonly />
+                                        <input type="text" class="input-field" id="endereco" name="endereco" 
+                                            value="<?php echo htmlspecialchars($user['endereco'] ?? ''); ?>" readonly />
                                         <label>Endereço</label>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="input-wrap">
-                                        <input type="text" class="input-field" id="bairro" name="bairro" value="Centro" readonly />
+                                        <input type="text" class="input-field" id="bairro" name="bairro" value="<?php echo htmlspecialchars($user['bairro'] ?? ''); ?>" readonly />
                                         <label>Bairro</label>
                                     </div>
                                     <div class="input-wrap">
-                                        <input type="text" class="input-field" id="cidade" name="cidade" value="São Paulo" readonly />
+                                        <input type="text" class="input-field" id="cidade" name="cidade" value="<?php echo htmlspecialchars($user['cidade'] ?? ''); ?>"" readonly />
                                         <label>Cidade</label>
                                     </div>
                                 </div>
@@ -181,7 +218,8 @@ $user = $_SESSION['user'];
                                 Segurança
                             </h3>
                             
-                            <form class="profile-form" id="password-form">
+                            <form class="profile-form" id="password-form" method="POST" action="../../backend/controllers/ProfileController.php">
+                            <input type="hidden" name="action" value="change_password">
                                 <div class="form-row">
                                     <div class="input-wrap">
                                         <input type="password" class="input-field" id="senha-atual" name="senha-atual" />
@@ -215,41 +253,76 @@ $user = $_SESSION['user'];
                                 <i class='bx bx-history'></i>
                                 Meus Pedidos
                             </h3>
-                            
                             <div class="orders-container" id="orders-container">
-                                <div class="order-item">
-                                    <div class="order-header">
-                                        <span class="order-number">#001</span>
-                                        <span class="order-date">15/12/2024</span>
-                                        <span class="order-status status-entregue">Entregue</span>
+                                <?php if (empty($orders)): ?>
+                                    <div class="no-orders">
+                                        <p>Nenhum pedido realizado ainda.</p>
                                     </div>
-                                    <div class="order-items">
-                                        <p>X-Burger Tradicional x1, Batata Frita x1</p>
+                                <?php else: ?>
+                                    <?php foreach ($orders as $order): ?>
+                                        <div class="order-item">
+                                            <div class="order-header">
+                                                <span class="order-number">#<?php echo str_pad($order['id'], 3, '0', STR_PAD_LEFT); ?></span>
+                                                <span class="order-date"><?php echo date('d/m/Y H:i', strtotime($order['criado_em'])); ?></span>
+                                                <span class="order-status status-entregue">
+                                                    <?php 
+                                                    // Você pode adicionar status dinâmico se tiver essa coluna
+                                                    echo 'Finalizado'; 
+                                                    ?>
+                                                </span>
+                                            </div>
+                                            <div class="order-items">
+                                                <p><?php echo htmlspecialchars($order['itens_descricao'] ?? 'Itens do pedido'); ?></p>
+                                            </div>
+                                            <div class="order-total">
+                                                <strong>Total: R$ <?php echo number_format($order['total'] ?? 0, 2, ',', '.'); ?></strong>
+                                            </div>
+                                            <div class="order-address">
+                                                <small>Entregar em: <?php echo htmlspecialchars($order['endereco'] ?? ''); ?></small>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                        <div class="profile-section">
+                            <h3 class="section-title">
+                                <i class='bx bx-map-pin'></i>
+                                Acompanhar Entrega
+                            </h3>
+                            
+                            <div id="tracking-container">
+                                <?php
+                                // Buscar entrega ativa do usuário
+                                $activeDelivery = $db->getUserActiveDelivery($user['id']);
+                                if ($activeDelivery && $activeDelivery['status'] == 'em_entrega'):
+                                ?>
+                                    <div class="tracking-card">
+                                        <h4>Seu pedido está a caminho! 🛵</h4>
+                                        <p><strong>Motoboy:</strong> <?php echo htmlspecialchars($activeDelivery['motoboy_name']); ?></p>
+                                        <p><strong>Status:</strong> Em entrega</p>
+                                        <p><strong>Previsão:</strong> 15-25 minutos</p>
+                                        <div class="tracking-progress">
+                                            <div class="progress-bar">
+                                                <div class="progress-fill" style="width: 70%"></div>
+                                            </div>
+                                            <div class="progress-labels">
+                                                <span>Preparando</span>
+                                                <span>Saiu para entrega</span>
+                                                <span>Entregue</span>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="order-total">
-                                        <strong>Total: R$ 25,90</strong>
-                                    </div>
-                                </div>
-
-                                <div class="order-item">
-                                    <div class="order-header">
-                                        <span class="order-number">#002</span>
-                                        <span class="order-date">10/12/2024</span>
-                                        <span class="order-status status-preparando">Em preparo</span>
-                                    </div>
-                                    <div class="order-items">
-                                        <p>X-Salada x2, Coca-Cola x2</p>
-                                    </div>
-                                    <div class="order-total">
-                                        <strong>Total: R$ 42,80</strong>
-                                    </div>
-                                </div>
+                                <?php else: ?>
+                                    <p>Nenhuma entrega em andamento no momento.</p>
+                                <?php endif; ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </main>
 
     <footer>

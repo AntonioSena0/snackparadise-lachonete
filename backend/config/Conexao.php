@@ -2,41 +2,38 @@
 class Conectar extends PDO
 {
     private static $instancia;
-    private $query;
-    private $host = "127.0.0.1"; //servidor da etec 3306 casa
-    private $usuario = "root"; //idem etec e casa
-    private $senha = ""; //se aplica ao server Etec / Senha casa MariaDb 465877
-    private $db = "snack"; // nome Sql / importar para casa sempre
+    private $host = "127.0.0.1";
+    private $usuario = "root";
+    private $senha = "";
+    private $db = "snack";
 
-    public function __construct ()
+    public function __construct()
     {
-        parent::__construct("mysql:host=$this->host;dbname=$this->db","$this->usuario","$this->senha");
+        try {
+            parent::__construct("mysql:host=$this->host;dbname=$this->db", $this->usuario, $this->senha);
+            $this->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch (PDOException $e) {
+            throw new Exception("Erro de conexão: " . $e->getMessage());
+        }
     }
-
-    // getInstance
 
     public static function getInstance()
     {
-        if(!isset(self::$instancia))
-        {
+        if(!isset(self::$instancia)) {
             try {
-                self::$instancia = new Conectar;
-                echo 'Conectado com sucesso';
+                self::$instancia = new Conectar();
             } catch (Exception $e) {
-                echo 'Erro de Conexão';
-                exit();
+                throw new Exception("Erro de Conexão: " . $e->getMessage());
             }
         }
         return self::$instancia;
     }
 
-    public function sql ($query)
+    public function sql($query)
     {
         $pdo = self::getInstance();
-        $this->query = $query;
-        $stmt = $pdo->prepare($this->query);
-        $stmt->execute();
-        $pdo = null;
+        $stmt = $pdo->prepare($query);
+        return $stmt->execute();
     }
 }
 ?>

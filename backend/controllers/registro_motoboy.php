@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $sql->bindParam(':license_plate', $license_plate);
         $sql->execute();
 
-        header("Location: ../views/ContaMotoboy.php");
+        header("Location: ../../frontend/PerfilMotoboy/index.php");
         exit();
     } catch (PDOException $e) {
         error_log("Erro ao cadastrar motoboy: " . $e->getMessage());

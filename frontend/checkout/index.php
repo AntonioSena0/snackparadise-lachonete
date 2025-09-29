@@ -153,122 +153,210 @@ if (isset($_SESSION['user'])) {
         </div>
     </footer>
 <script>
-(function () {
-  // Roda após DOM pronto
-  document.addEventListener('DOMContentLoaded', () => {
-    safePopulateCheckout();
-  });
+document.addEventListener("DOMContentLoaded", function() {
+    carregarCarrinhoNoCheckout();
+    setupFormSubmit();
+});
 
-  function safePopulateCheckout() {
+function carregarCarrinhoNoCheckout() {
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
     const ul = document.getElementById('itensCheckout');
     const totalSpan = document.getElementById('totalCheckout');
 
-    if (!ul) {
-      console.error('Elemento #itensCheckout NÃO encontrado no DOM.');
-      return;
-    }
-    if (!totalSpan) {
-      console.error('Elemento #totalCheckout NÃO encontrado no DOM.');
-      return;
-    }
-
-    // Tenta obter o carrinho de forma robusta
-    const cart = findCartInLocalStorage();
-    console.log('DEBUG: cart encontrado =', cart);
-
-    if (!cart || !Array.isArray(cart) || cart.length === 0) {
-      ul.innerHTML = '<li>Seu carrinho está vazio.</li>';
-      totalSpan.textContent = '0.00';
-      return;
-    }
-
-    // Preenche a lista e calcula total
     ul.innerHTML = '';
     let total = 0;
-    cart.forEach(item => {
-      // normalize keys (pt/en)
-      const nome = item.nome ?? item.name ?? 'Sem nome';
-      const quantidade = item.quantidade ?? item.qty ?? item.qtd ?? 1;
-      const preco = Number(item.preco ?? item.price ?? 0) || 0;
 
-      const li = document.createElement('li');
-      li.textContent = `${nome} (x${quantidade}) - R$ ${(preco * quantidade).toFixed(2)}`;
-      ul.appendChild(li);
+    if (carrinho.length === 0) {
+        ul.innerHTML = '<li>Carrinho vazio.</li>';
+        totalSpan.textContent = '0.00';
+        return;
+    }
 
-      total += preco * quantidade;
+    carrinho.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = `${item.nome} (x${item.quantidade}) - R$ ${(item.preco * item.quantidade).toFixed(2)}`;
+        ul.appendChild(li);
+        total += item.preco * item.quantidade;
     });
 
     totalSpan.textContent = total.toFixed(2);
-  }
+}
 
-  // Procura possíveis chaves de carrinho no localStorage e retorna o array (ou null)
-  function findCartInLocalStorage() {
-    const triedKeys = [];
-    // 1) tenta chaves óbvias
-    const possibleKeys = ['carrinho', 'cart', 'carrinhoUsuario', 'shoppingCart', 'cartItems', 'itensCarrinho'];
-
-    for (const k of possibleKeys) {
-      triedKeys.push(k);
-      const raw = localStorage.getItem(k);
-      if (!raw) continue;
-      try {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) return parsed;
-        // se for objeto com array interno
-        if (parsed && typeof parsed === 'object') {
-          // procura um campo que seja array de itens
-          for (const f of Object.keys(parsed)) {
-            if (Array.isArray(parsed[f]) && parsed[f].length && isCartArrayLike(parsed[f])) {
-              return parsed[f];
-            }
-          }
-        }
-      } catch (e) {
-        // não JSON -> ignora
-      }
-    }
-
-    // 2) varre todo o localStorage e tenta achar um array de objetos parecido com carrinho
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (possibleKeys.includes(key)) continue; // já tentado
-      triedKeys.push(key);
-      const raw = localStorage.getItem(key);
-      try {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) && parsed.length && isCartArrayLike(parsed)) {
-          console.warn('Detectei carrinho na key localStorage:', key);
-          return parsed;
-        }
-        // se for objeto com campo array
-        if (parsed && typeof parsed === 'object') {
-          for (const f of Object.keys(parsed)) {
-            if (Array.isArray(parsed[f]) && parsed[f].length && isCartArrayLike(parsed[f])) {
-              console.warn('Detectei carrinho dentro do objeto na key:', key, 'campo:', f);
-              return parsed[f];
-            }
-          }
-        }
-      } catch (e) { /* ignore parse errors */ }
-    }
-
-    console.log('Tentei keys:', triedKeys);
-    return null;
-  }
-  function isCartArrayLike(arr) {
-    if (!Array.isArray(arr) || arr.length === 0) return false;
-    // aceita se pelo menos metade dos itens tiverem "nome" ou "name" e "preco" ou "price"
-    let match = 0;
-    arr.slice(0, 10).forEach(it => {
-      if (!it || typeof it !== 'object') return;
-      const hasName = ('nome' in it) || ('name' in it);
-      const hasPrice = ('preco' in it) || ('price' in it);
-      if (hasName && hasPrice) match++;
+function setupFormSubmit() {
+    const form = document.getElementById('payment-form');
+    
+    form.addEventListener('submit', async function(event) {
+        event.preventDefault();
+        
+        await finalizarPedido();
     });
-    return match >= Math.max(1, Math.floor(arr.length / 2));
-  }
+}
 
-})();
+async function finalizarPedido() {
+    // Verificar se o usuário está logado
+    <?php if (!$logged): ?>
+        alert('Você precisa estar logado para finalizar o pedido!');
+        window.location.href = '../Tela de Login/index.php';
+        return;
+    <?php endif; ?>
+
+    const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+    
+    if (carrinho.length === 0) {
+        alert('Seu carrinho está vazio!');
+        return;
+    }
+
+    // Coletar dados do formulário
+    const formData = new FormData(document.getElementById('payment-form'));
+    const enderecoCompleto = `${formData.get('rua')}, ${formData.get('numero')}${formData.get('complemento') ? ' - ' + formData.get('complemento') : ''}`;
+    const formaPagamento = formData.get('forma');
+
+    // Verificar se é Pix e mostrar QR Code
+    if (formaPagamento === 'pix') {
+        mostrarQRCodePix();
+        return; // O pedido será finalizado após confirmação do Pix
+    }
+
+    // Para outras formas de pagamento, finalizar diretamente
+    await criarPedidoNoBanco(carrinho, enderecoCompleto, formaPagamento);
+}
+
+function mostrarQRCodePix() {
+    const total = document.getElementById('totalCheckout').textContent;
+    
+    // Gerar QR Code Pix (exemplo com dados fictícios)
+    const qrCodeData = `00020126580014br.gov.bcb.pix0136123e4567-e12b-12d1-a456-4266141740005204000053039865406${total}5802BR5909SnackParadise6008Sao Paulo62070503***6304`;
+    
+    // Limpar QR Code anterior
+    document.getElementById('qrcode').innerHTML = '';
+    
+    // Gerar novo QR Code
+    new QRCode(document.getElementById('qrcode'), {
+        text: qrCodeData,
+        width: 200,
+        height: 200
+    });
+    
+    // Mostrar modal
+    const modal = new bootstrap.Modal(document.getElementById('modal-qrcode'));
+    modal.show();
+    
+    // Configurar botão de confirmação do Pix
+    document.querySelector('#modal-qrcode .btn-primary').onclick = async function() {
+        const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];
+        const formData = new FormData(document.getElementById('payment-form'));
+        const enderecoCompleto = `${formData.get('rua')}, ${formData.get('numero')}${formData.get('complemento') ? ' - ' + formData.get('complemento') : ''}`;
+        
+        await criarPedidoNoBanco(carrinho, enderecoCompleto, 'pix');
+        modal.hide();
+    };
+}
+
+async function criarPedidoNoBanco(carrinho, endereco, pagamento) {
+    try {
+        // Preparar dados para enviar
+        const pedidoData = {
+            itens: carrinho,
+            endereco: endereco,
+            pagamento: pagamento,
+            total: document.getElementById('totalCheckout').textContent
+        };
+
+        const response = await fetch('../../backend/controllers/PedidoController.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                action: 'criar_pedido',
+                data: pedidoData
+            })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            // Limpar carrinho
+            localStorage.removeItem('carrinho');
+            
+            // Mostrar mensagem de sucesso
+            showNotification('Pedido realizado com sucesso! Nº ' + result.pedido_id, 'success');
+            
+            // Redirecionar para página de confirmação
+            setTimeout(() => {
+                window.location.href = `../ConfirmacaoPedido/index.php?pedido_id=${result.pedido_id}`;
+            }, 2000);
+            
+        } else {
+            throw new Error(result.error || 'Erro ao criar pedido');
+        }
+        
+    } catch (error) {
+        console.error('Erro:', error);
+        showNotification('Erro ao finalizar pedido: ' + error.message, 'error');
+    }
+}
+
+// Função para mostrar notificação
+function showNotification(message, type = 'info') {
+    const notification = document.createElement('div');
+    notification.className = `notification notification-${type}`;
+    notification.innerHTML = `
+        <span>${message}</span>
+        <button onclick="this.parentElement.remove()">&times;</button>
+    `;
+
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 1rem 1.5rem;
+        border-radius: 0.8rem;
+        color: white;
+        z-index: 1000;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        min-width: 300px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        animation: slideIn 0.3s ease-out;
+    `;
+
+    const colors = {
+        success: '#28a745',
+        error: '#dc3545',
+        warning: '#ffc107',
+        info: '#17a2b8'
+    };
+
+    notification.style.background = colors[type] || colors.info;
+
+    const closeBtn = notification.querySelector('button');
+    closeBtn.style.cssText = `
+        background: none;
+        border: none;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    `;
+
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        if (notification.parentElement) {
+            notification.style.animation = 'slideOut 0.3s ease-in forwards';
+            setTimeout(() => notification.remove(), 300);
+        }
+    }, 5000);
+}
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>

@@ -8,28 +8,43 @@
   <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
 </head>
 <body>
-  <!-- Header -->
-  <header id="header" role="banner">
-    <div class="container flex">
-    <a href="../Menu/index.html" class="logo">
+      <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+            <a href="../Cardápio/index.php" class="logo">
                     <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
-                </a>
-      </a>
-      <nav role="navigation" aria-label="Menu principal">
-        <ul>
-          <li><a href="../Menu/index.php">Menu</a></li>
-          <li><a href="../Cardápio/index.php">Cardápio</a></li>
-          <li><a href="#">Promoções</a></li>
-          <li><a href="../Auxílio Preferencial/auxilio.php">Outros</a></li>
-        </ul>
-      </nav>
-      <div class="btn-conta">
-        <a href="../Tela de login/index.html">
-          <button class="conta" aria-label="Acessar conta">Conta</button>
-        </a>
-      </div>
-    </div>
-  </header>
+                </a>           
+             </div>
+        </div>
+
+        <div class="header-center">
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
+            <div class="menu-item cardapio-btn" id="cardapioBtn">
+                Cardápio
+                <div class="submenu" id="submenu">
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
+                </div>
+            </div>
+            <a href="#" class="menu-item">Promoções</a>
+            <a href="index.php" class="menu-item">Sobre Nós</a>
+        </div>
+
+        <a href="../PerfilUser/index.php" class="btn-conta">Conta</a>
+    </header>
+
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
+        <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
+        <a href="index.php" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem Somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
 
   <!-- Conteúdo principal -->
    <div class="fundo">
