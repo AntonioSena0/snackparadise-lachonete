@@ -203,10 +203,10 @@
                     </div>
                 </div>
                 
-                <a href="menu.html" class="view-menu-btn">
-                    <i class="fas fa-arrow-right"></i>
-                    Ver Menu Completo
-                </a>
+                <a href="menu.php" class="hero-btn primary">
+                        <i class="fas fa-utensils"></i>
+                        Ver Menu Completo
+                    </a>
             </div>
         </section>
     </main>

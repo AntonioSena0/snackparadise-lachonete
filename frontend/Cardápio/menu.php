@@ -51,7 +51,9 @@
         <h2>Seu Carrinho</h2>
         <ul id="itensCarrinho"></ul>
         <p>Total: R$ <span id="totalCarrinho">0.00</span></p>
-        <button id="finalizarCompra" class="btn">Finalizar Compra</button>
+        <!--<button id="finalizarCompra" class="btn">Finalizar Compra</button> -->
+        <a href="../checkout/index.php" id="finalizarCompra" class="btn">Finalizar Compra</a>
+
     </div>
 
     <main class="main">

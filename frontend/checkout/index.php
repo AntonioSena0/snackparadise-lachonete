@@ -132,7 +132,8 @@ if (isset($_SESSION['user'])) {
         <div id="qrcode" class="qrcode"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Confirmar pagamento por Pix</button>
+     <!--   <a class="btn btn-primary" class="btn">Confirmar pagamento por Pix</a> -->
+        <a href="../checkout/index.php" id="finalizarCompra" class="btn btn-primary" class="btn">Confirmar pagamento por Pix</a>
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
       </div>
     </div>

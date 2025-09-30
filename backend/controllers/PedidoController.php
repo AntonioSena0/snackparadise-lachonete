@@ -15,21 +15,22 @@ class PedidoController {
     public function handleRequest() {
         $input = json_decode(file_get_contents('php://input'), true);
         $action = $input['action'] ?? '';
-        
+
         switch ($action) {
             case 'criar_pedido':
                 $this->criarPedido($input['data'] ?? []);
                 break;
-                
             case 'get_pedidos_usuario':
                 $this->getPedidosUsuario();
                 break;
-                
+            case 'get_endereco_usuario':
+                $this->getEnderecoUsuario();
+                break;
             default:
                 $this->jsonResponse(['error' => 'Ação inválida'], 400);
         }
     }
-    
+
     private function criarPedido($data) {
         try {
             // Verificar se usuário está logado
@@ -119,6 +120,19 @@ class PedidoController {
             error_log("Erro getPedidosUsuario: " . $e->getMessage());
             $this->jsonResponse(['error' => 'Erro ao buscar pedidos'], 500);
         }
+    }
+
+    private function getEnderecoUsuario() {
+        if (!isset($_SESSION['user'])) {
+            $this->jsonResponse(['error' => 'Usuário não autenticado'], 401);
+            return;
+        }
+        $userId = $_SESSION['user']['id'];
+        $endereco = $this->db->getUserAddress($userId); // Implemente este método no DatabaseManager
+        $this->jsonResponse([
+            'success' => true,
+            'endereco' => $endereco
+        ]);
     }
     
     private function jsonResponse($data, $statusCode = 200) {

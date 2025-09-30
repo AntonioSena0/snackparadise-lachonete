@@ -1,6 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
+    carregarEnderecoUsuario();
     carregarCarrinhoNoCheckout();
+    setupFormSubmit();
 });
+
+async function carregarEnderecoUsuario() {
+    try {
+        const response = await fetch('../../backend/controllers/PedidoController.php', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({action: 'get_endereco_usuario'})
+        });
+        const result = await response.json();
+        if (result.success && result.endereco) {
+            // Supondo que o campo do endereço tenha id="endereco"
+            document.getElementById('endereco').value = result.endereco.endereco || '';
+            // Se tiver campos separados, preencha cada um
+            // document.getElementById('rua').value = result.endereco.rua || '';
+            // document.getElementById('numero').value = result.endereco.numero || '';
+            // document.getElementById('bairro').value = result.endereco.bairro || '';
+            // document.getElementById('cidade').value = result.endereco.cidade || '';
+        }
+    } catch (e) {
+        // Silencie ou mostre erro se quiser
+    }
+}
 
 function carregarCarrinhoNoCheckout() {
     const carrinho = JSON.parse(localStorage.getItem('carrinho')) || [];

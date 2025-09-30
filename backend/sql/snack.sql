@@ -7,6 +7,11 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
+    cep VARCHAR(10) NOT NULL,
+    cidade VARCHAR(50) NOT NULL,
+    bairro VARCHAR(50) NOT NULL,
+    rua VARCHAR(100) NOT NULL,
+    numero VARCHAR(10) NOT NULL,
     profile_picture VARCHAR(255) DEFAULT NULL,
     partner BOOLEAN DEFAULT FALSE
 );
