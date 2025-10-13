@@ -7,11 +7,11 @@ CREATE TABLE users (
     username VARCHAR(50) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
     senha VARCHAR(255) NOT NULL,
-    cep VARCHAR(10) NOT NULL,
-    cidade VARCHAR(50) NOT NULL,
-    bairro VARCHAR(50) NOT NULL,
-    rua VARCHAR(100) NOT NULL,
-    numero VARCHAR(10) NOT NULL,
+    cep VARCHAR(10) ,
+    cidade VARCHAR(50) ,
+    bairro VARCHAR(50),
+    rua VARCHAR(100),
+    numero VARCHAR(10) ,
     profile_picture VARCHAR(255) DEFAULT NULL,
     partner BOOLEAN DEFAULT FALSE
 );
@@ -46,6 +46,7 @@ CREATE TABLE pedidos (
     endereco TEXT NOT NULL,
     pagamento VARCHAR(50) NOT NULL,
     criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status VARCHAR(20) NOT NULL DEFAULT 'pendente',
     FOREIGN KEY (usuario_id) REFERENCES users(id)
 );
 
