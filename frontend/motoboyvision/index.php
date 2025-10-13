@@ -141,7 +141,8 @@
         enderecoDiv.innerHTML = pedido.endereco;
         pagamentoDiv.innerHTML = pedido.pagamento;
 
-        acoesDiv.innerHTML = `<button class="btn" onclick="aceitarPedido(${pedido.id})" aria-label="Aceitar pedido número ${pedido.id}">ACEITAR PEDIDO</button>`;
+        acoesDiv.innerHTML = `<button class="btn" onclick="aceitarPedido(${pedido.id})" aria-label="Aceitar pedido número ${pedido.id}">ACEITAR PEDIDO</button>
+        <button class="btn" onclick="recusarPedido(${pedido.id})" aria-label="Recusar pedido número ${pedido.id}">RECUSAR PEDIDO</button>`;
       } catch (e) {
         pedidosDiv.innerHTML = 'Erro ao carregar pedidos!';
       }
@@ -174,4 +175,27 @@
             alert('Erro ao processar a solicitação.');
         }
         }
-    </script>   
+
+        // Função para recusar o pedido
+        async function recusarPedido(pedidoId) {
+        if (!confirm('Você tem certeza que deseja recusar este pedido?')) return;
+    
+        try {
+            const resp = await fetch('../back/controllers/recusar_pedido.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: pedidoId })
+            });
+            const result = await resp.json();
+    
+            if (result.success) {
+            alert('Pedido recusado com sucesso!');
+            carregarPedido(); // Recarrega para mostrar o próximo pedido
+            } else {
+            alert('Erro ao recusar o pedido. Tente novamente.');
+            }
+        } catch (e) {
+            alert('Erro ao processar a solicitação.');
+        }
+        }
+    </script>

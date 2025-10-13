@@ -264,14 +264,13 @@ async function criarPedidoNoBanco(carrinho, endereco, pagamento) {
             total: document.getElementById('totalCheckout').textContent
         };
 
-        const response = await fetch('../../backend/controllers/PedidoController.php', {
+        const response = await fetch('../../backend/controllers/criar_pedido.php', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                action: 'criar_pedido',
-                data: pedidoData
+                itens: carrinho, // array de itens
+                endereco: endereco, // use o parâmetro recebido
+                pagamento: pagamento // use o parâmetro recebido
             })
         });
 

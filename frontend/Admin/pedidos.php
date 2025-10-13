@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['admin'])) {
-    header("Location: ../Tela de login/index.php");
+    header("Location: ../CadAdmin/index.php");
     exit();
 }
 

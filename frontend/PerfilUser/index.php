@@ -280,6 +280,8 @@ $error = $_GET['error'] ?? '';
                                             <div class="order-address">
                                                 <small>Entregar em: <?php echo htmlspecialchars($order['endereco'] ?? ''); ?></small>
                                             </div>
+                                            <!-- Exemplo de botão no loop de pedidos -->
+                                            <button onclick="cancelarPedido(<?php echo $order['id']; ?>)">Cancelar Pedido</button>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
