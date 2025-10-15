@@ -99,20 +99,16 @@
                 <div class="section-icon">
                     <i class="fas fa-play"></i>
                 </div>
-                <h2 class="section-title">Conheça Nossa História</h2>
+                <h2 class="section-title">Entenda como usar nosso site</h2>
                 <p class="section-description">
-                    Assista ao vídeo e descubra como fazemos os melhores lanches da cidade. 
-                    Conheça nosso processo artesanal e a paixão por trás de cada receita.
+                    Assista ao vídeo e descubra como acessar nossos serviços!
                 </p>
                 
                 <div class="video-container">
-                    <div class="video-placeholder">
-                        <div class="video-play-content">
-                            <i class="fas fa-play-circle"></i>
-                            <p>Vídeo Institucional</p>
-                            <span>Clique para assistir!</span>
-                        </div>
-                    </div>
+                        <video width="794" height="400" controls>
+                            <source src="../imgs/tutorial eba.mp4" type="video/mp4">
+                            seu navegador não suporta vídeos HTML5
+                        </video>
                 </div>
             </div>
         </section>
