@@ -30,6 +30,11 @@ $reviews = $db->getUserReviews($user['id']);
 // Verificar se há mensagens de sucesso/erro
 $success = $_GET['success'] ?? '';
 $error = $_GET['error'] ?? '';
+
+
+// Buscar todos os pedidos para exibição
+$allPedidos = $db->getAllPedidos();
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -254,25 +259,37 @@ $error = $_GET['error'] ?? '';
                                 Meus Pedidos
                             </h3>
                             <div class="orders-container" id="orders-container">
-                                <?php if (empty($orders)): ?>
-                                    <div class="no-orders">
-                                        <p>Nenhum pedido realizado ainda.</p>
-                                    </div>
-                                <?php else: ?>
-                                    <?php foreach ($orders as $order): ?>
-                                        <div class="order-item">
-                                            <h4>Pedido #<?php echo htmlspecialchars($order['id']); ?></h4>
-                                            <p><strong>Itens:</strong> <?php echo htmlspecialchars($order['itens_descricao'] ?? $order['itens']); ?></p>
-                                            <p><strong>Total:</strong> R$ <?php echo number_format($order['total'] ?? 0, 2, ',', '.'); ?></p>
-                                            <p><strong>Status:</strong> <?php echo htmlspecialchars($order['status']); ?></p>
-                                            <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
-                                            <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
-                                            <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </div>
+                               <?php if (empty($allPedidos)): ?>
+                <p>Nenhum pedido registrado.</p>
+            <?php else: ?>
+                <?php foreach ($allPedidos as $order): ?>
+                    <div class="order-card">
+                        <h3>Pedido #<?php echo htmlspecialchars($order['id']); ?></h3>
+                        <p><strong>Cliente:</strong> <?php echo htmlspecialchars($order['cliente_nome'] ?? '—'); ?></p>
+                        <div><strong>Itens:</strong>
+                            <ul style="margin: 6px 0 0 0; padding-left: 18px;">
+                                <?php foreach ($order['itens_array'] as $item): ?>
+                                    <?php if (is_array($item)): ?>
+                                        <li>
+                                            <?php echo htmlspecialchars(($item['quantidade'] ?? 1) . 'x ' . ($item['nome'] ?? $item['produto'] ?? 'Item') . (isset($item['preco']) ? ' - R$ ' . number_format($item['preco'], 2, ',', '.') : '')); ?>
+                                        </li>
+                                    <?php else: ?>
+                                        <li><?php echo htmlspecialchars($item); ?></li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
                         </div>
+                        <p><strong>Total:</strong> R$ <?php echo isset($order['total']) ? number_format($order['total'], 2, ',', '.') : '—'; ?></p>
+                        <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
+                        <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
+                        <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
+                        <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+
                         <div class="profile-section">
                             <h3 class="section-title">
                                 <i class='bx bx-map-pin'></i>

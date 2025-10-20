@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Área Restrita - Snack Paradise</title>
   <link rel="stylesheet" href="style.css">
+
   <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
 </head>
 <body>
@@ -68,7 +69,9 @@ if (empty($pedidosMotoboy)) {
   <main role="main">
     <section class="area-restrita-section" aria-labelledby="titulo-area-restrita">
       <h1 id="titulo-area-restrita" style="display:none;">Área restrita - Gerenciamento de Pedidos</h1>
-      <div id="motoboy-orders">
+
+      <!-- Todos os Pedidos -->
+      <div id="all-orders">
         <h2>Todos os Pedidos</h2>
         <div class="orders-grid">
           <?php if (empty($allPedidos)): ?>
@@ -96,8 +99,19 @@ if (empty($pedidosMotoboy)) {
                 <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
                 <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
                 <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
-                <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
+                <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p> 
+                
+                <!-- Botões de ação -->
+                <div class="order-actions">
+                  <button class="btn btn-aceitar" onclick="iniciarEntrega(<?php echo htmlspecialchars($order['status']); ?>)">
+                    Iniciar Entrega
+                  </button>
+                  <button class="btn btn-recusar" onclick="recusarPedidoMotoboy(<?php echo htmlspecialchars($order['status']); ?>)">
+                    Recusar Pedido
+                  </button>
+                </div>
               </div>
+              
             <?php endforeach; ?>
           <?php endif; ?>
         </div>
@@ -134,93 +148,5 @@ if (empty($pedidosMotoboy)) {
 
   <!-- Scripts -->
   <script src="menu.js"></script>
-  <script>
-    // Busca e exibe o pedido mais recente
-    async function carregarPedido() {
-      const pedidosDiv = document.getElementById('checkout-pedidos');
-      const enderecoDiv = document.getElementById('checkout-endereco');
-      const pagamentoDiv = document.getElementById('checkout-pagamento');
-      const acoesDiv = document.getElementById('acoes-pedido');
-
-      pedidosDiv.innerHTML = 'Carregando...';
-      enderecoDiv.innerHTML = '';
-      pagamentoDiv.innerHTML = '';
-      acoesDiv.innerHTML = '';
-
-      try {
-        const resp = await fetch('../back/controllers/listar_pedidos.php');
-        const pedidos = await resp.json();
-
-        if (!pedidos.length) {
-          pedidosDiv.innerHTML = 'Sem pedidos novos por enquanto...';
-          return;
-        }
-
-        const pedido = pedidos[0];
-        const itens = JSON.parse(pedido.itens);
-
-        pedidosDiv.innerHTML = itens.map(item => 
-          `<div>${item.nome} (x${item.quantidade}) - R$ ${(item.preco * item.quantidade).toFixed(2)}</div>`
-        ).join('');
-
-        enderecoDiv.innerHTML = pedido.endereco;
-        pagamentoDiv.innerHTML = pedido.pagamento;
-
-        acoesDiv.innerHTML = `<button class="btn" onclick="aceitarPedido(${pedido.id})" aria-label="Aceitar pedido número ${pedido.id}">ACEITAR PEDIDO</button>
-        <button class="btn" onclick="recusarPedido(${pedido.id})" aria-label="Recusar pedido número ${pedido.id}">RECUSAR PEDIDO</button>`;
-      } catch (e) {
-        pedidosDiv.innerHTML = 'Erro ao carregar pedidos!';
-      }
-    }
-
-    carregarPedido();
-  </script>
-</body>
+  
 </html>
-    <script>
-        // Função para aceitar o pedido
-        async function aceitarPedido(pedidoId) {
-        if (!confirm('Você tem certeza que deseja aceitar este pedido?')) return;
-    
-        try {
-            const resp = await fetch('../back/controllers/aceitar_pedido.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: pedidoId })
-            });
-            const result = await resp.json();
-    
-            if (result.success) {
-            alert('Pedido aceito com sucesso!');
-            carregarPedido(); // Recarrega para mostrar o próximo pedido
-            } else {
-            alert('Erro ao aceitar o pedido. Tente novamente.');
-            }
-        } catch (e) {
-            alert('Erro ao processar a solicitação.');
-        }
-        }
-
-        // Função para recusar o pedido
-        async function recusarPedido(pedidoId) {
-        if (!confirm('Você tem certeza que deseja recusar este pedido?')) return;
-    
-        try {
-            const resp = await fetch('../back/controllers/recusar_pedido.php', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ id: pedidoId })
-            });
-            const result = await resp.json();
-    
-            if (result.success) {
-            alert('Pedido recusado com sucesso!');
-            carregarPedido(); // Recarrega para mostrar o próximo pedido
-            } else {
-            alert('Erro ao recusar o pedido. Tente novamente.');
-            }
-        } catch (e) {
-            alert('Erro ao processar a solicitação.');
-        }
-        }
-    </script>
