@@ -7,6 +7,9 @@ if (!isset($_SESSION['admin'])) {
 
 include_once '../../backend/config/DatabaseManager.php';
 $db = new DatabaseManager();
+
+// Buscar todos os pedidos para exibição
+$allPedidos = $db->getAllPedidos();
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,41 +17,45 @@ $db = new DatabaseManager();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciar Pedidos - Snack Paradise</title>
-    <style>
-        .orders-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .order-card {
-            border: 1px solid #ddd;
-            padding: 15px;
-            border-radius: 8px;
-            background: white;
-        }
-        .order-status {
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            font-weight: bold;
-        }
-        .status-pendente { background: #fff3cd; color: #856404; }
-        .status-preparando { background: #d1ecf1; color: #0c5460; }
-        .status-pronto { background: #d4edda; color: #155724; }
-        .btn-assign {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="pedidos.css">
 </head>
 <body>
     <h1>Gerenciar Pedidos - Atribuir Motoboys</h1>
     
+    <div id="all-orders">
+        <h2>Todos os Pedidos (visão rápida)</h2>
+        <div class="orders-grid">
+            <?php if (empty($allPedidos)): ?>
+                <p>Nenhum pedido registrado.</p>
+            <?php else: ?>
+                <?php foreach ($allPedidos as $order): ?>
+                    <div class="order-card">
+                        <h3>Pedido #<?php echo htmlspecialchars($order['id']); ?></h3>
+                        <p><strong>Cliente:</strong> <?php echo htmlspecialchars($order['cliente_nome'] ?? '—'); ?></p>
+                        <div><strong>Itens:</strong>
+                            <ul style="margin: 6px 0 0 0; padding-left: 18px;">
+                                <?php foreach ($order['itens_array'] as $item): ?>
+                                    <?php if (is_array($item)): ?>
+                                        <li>
+                                            <?php echo htmlspecialchars(($item['quantidade'] ?? 1) . 'x ' . ($item['nome'] ?? $item['produto'] ?? 'Item') . (isset($item['preco']) ? ' - R$ ' . number_format($item['preco'], 2, ',', '.') : '')); ?>
+                                        </li>
+                                    <?php else: ?>
+                                        <li><?php echo htmlspecialchars($item); ?></li>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </ul>
+                        </div>
+                        <p><strong>Total:</strong> R$ <?php echo isset($order['total']) ? number_format($order['total'], 2, ',', '.') : '—'; ?></p>
+                        <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
+                        <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
+                        <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
+                        <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+
     <div id="pending-orders">
         <h2>Pedidos Pendentes de Entrega</h2>
         <div class="orders-grid" id="orders-container">

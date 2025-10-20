@@ -261,27 +261,13 @@ $error = $_GET['error'] ?? '';
                                 <?php else: ?>
                                     <?php foreach ($orders as $order): ?>
                                         <div class="order-item">
-                                            <div class="order-header">
-                                                <span class="order-number">#<?php echo str_pad($order['id'], 3, '0', STR_PAD_LEFT); ?></span>
-                                                <span class="order-date"><?php echo date('d/m/Y H:i', strtotime($order['criado_em'])); ?></span>
-                                                <span class="order-status status-entregue">
-                                                    <?php 
-                                                    // Você pode adicionar status dinâmico se tiver essa coluna
-                                                    echo 'Finalizado'; 
-                                                    ?>
-                                                </span>
-                                            </div>
-                                            <div class="order-items">
-                                                <p><?php echo htmlspecialchars($order['itens_descricao'] ?? 'Itens do pedido'); ?></p>
-                                            </div>
-                                            <div class="order-total">
-                                                <strong>Total: R$ <?php echo number_format($order['total'] ?? 0, 2, ',', '.'); ?></strong>
-                                            </div>
-                                            <div class="order-address">
-                                                <small>Entregar em: <?php echo htmlspecialchars($order['endereco'] ?? ''); ?></small>
-                                            </div>
-                                            <!-- Exemplo de botão no loop de pedidos -->
-                                            <button onclick="cancelarPedido(<?php echo $order['id']; ?>)">Cancelar Pedido</button>
+                                            <h4>Pedido #<?php echo htmlspecialchars($order['id']); ?></h4>
+                                            <p><strong>Itens:</strong> <?php echo htmlspecialchars($order['itens_descricao'] ?? $order['itens']); ?></p>
+                                            <p><strong>Total:</strong> R$ <?php echo number_format($order['total'] ?? 0, 2, ',', '.'); ?></p>
+                                            <p><strong>Status:</strong> <?php echo htmlspecialchars($order['status']); ?></p>
+                                            <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
+                                            <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
+                                            <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>

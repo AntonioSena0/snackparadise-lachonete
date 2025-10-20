@@ -7,7 +7,6 @@
     font-family: "Biko", sans-serif;
 }
 
-/* Configuração fundamental para footer sticky */
 html, body {
     height: 100%;
 }
@@ -49,11 +48,7 @@ a {
     justify-content: space-between;
 }
 
-/* Header */
-a {
-    text-decoration: none;
-}
-
+/* CORES */
 :root {
     --cor-primaria: #a20908;
     --cor-secundaria: #f40919;
@@ -65,8 +60,7 @@ a {
     --cor-cinza-escuro: #333333;
 }
 
-/* Header */ 
-/* ====== HEADER ====== */
+/* HEADER */
 header {
     background: var(--cor-branco);
     width: 100%;
@@ -148,12 +142,6 @@ header {
     transform: translateY(-2px);
 }
 
-.menu-item.cardapio-btn {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
 .menu-item.cardapio-btn::after {
     content: "▼";
     font-size: 0.9rem;
@@ -174,7 +162,6 @@ header {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    text-decoration: none;
 }
 
 .btn-conta:hover {
@@ -184,9 +171,7 @@ header {
     box-shadow: 0 4px 12px rgba(162, 9, 8, 0.3);
 }
 
-/* ==== FIM DO HEADER ==== */
-
-/* Menu Lateral */
+/* MENU LATERAL */
 .menu-lateral {
     position: fixed;
     top: 0;
@@ -214,7 +199,6 @@ header {
     border-bottom: 1px solid #f0f0f0;
     cursor: pointer;
     transition: all 0.3s ease;
-    display: block;
 }
 
 .menu-lateral-item:hover,
@@ -224,7 +208,7 @@ header {
     padding-left: 40px;
 }
 
-/* Submenu */
+/* SUBMENU */
 .submenu {
     position: absolute;
     top: 100%;
@@ -255,11 +239,6 @@ header {
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
-    display: block;
-}
-
-.submenu-item:last-child {
-    border-bottom: none;
 }
 
 .submenu-item:hover {
@@ -267,103 +246,90 @@ header {
     color: var(--cor-branco);
 }
 
-.btn-danger:hover {
-    color: black;
-}
-
-main .janelas {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    gap: 200px;
-    padding-top: 100px;
-}
-
-/* --- MAIN --- */
-main {
-    flex: 1; /* Isso faz o main crescer e empurrar o footer para baixo */
-    display: flex;
-    flex-direction: column;
-}
-
-/* --- ÁREA RESTRITA --- */
+/* ÁREA RESTRITA */
 .area-restrita-section {
     padding: 40px 8%;
-    flex: 1; /* Garante que a seção ocupe o espaço disponível */
+    flex: 1;
 }
 
-.tabela {
-    background: #a20908;
-    border-radius: 15px;
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.order-card {
+    background-color: #fff;
     padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
-    gap: 25px;
-    box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+    gap: 12px;
+    word-break: break-word;
 }
 
-.tabela-container1 {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.coluna1, .coluna2, .coluna3 {
-    flex: 1;
-    min-width: 280px;
-    background: #fff;
-    border-radius: 10px;
-    padding: 40px;
-    text-align: left;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-}
-
-/* animação para cima */
-.coluna1:hover, 
-.coluna2:hover, 
-.coluna3:hover {
-    transform: translateY(-10px);
+.order-card:hover {
+    transform: translateY(-5px);
     box-shadow: 0 12px 20px rgba(0,0,0,0.15);
 }
 
-.coluna1 h2, .coluna2 h2, .coluna3 h2 {
-    font-size: 1.4rem;
-    margin-bottom: 15px;
-    color: #fff;
-    background: #a20908;
-    padding: 10px;
+.order-card h3 {
+    color: var(--cor-primaria);
+    font-size: 1.3rem;
+}
+
+.order-card p {
+    font-size: 0.95rem;
+    color: var(--cor-cinza-escuro);
+    margin: 4px 0;
+}
+
+.order-status {
+    padding: 4px 10px;
     border-radius: 6px;
-    text-align: center;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 0.9rem;
+    text-transform: capitalize;
 }
 
-/* --- BOTÕES --- */
-.btn {
-    background: #000;
-    color: #fff;
-    font-size: 1rem;
-    padding: 12px 24px;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+.status-pendente {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
 }
 
-.btn:hover, .btn:focus {
-    background: #333;
-    transform: scale(1.05);
-    outline: 2px solid #fff;
-    outline-offset: 2px;
+.status-entregue {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
 }
 
-/* --- FOOTER CORRIGIDO --- */
+.status-cancelado,
+.status-recusado {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.status-aceito,
+.status-em-andamento {
+    background-color: #cce5ff;
+    color: #004085;
+    border: 1px solid #b8daff;
+}
+
+/* FOOTER */
 footer {
     background: #000;
     color: #fff;
     padding: 30px 15px;
     text-align: center;
-    margin-top: auto; /* Força o footer para o final */
-    width: 100%; /* Garante largura total */
+    margin-top: auto;
+    width: 100%;
 }
 
 footer .footer-links {
@@ -383,13 +349,13 @@ footer .footer-links a:hover {
     text-decoration: underline;
 }
 
-/* --- RESPONSIVIDADE --- */
+/* RESPONSIVO */
 @media screen and (max-width: 768px) {
-    header nav ul {
-        gap: 15px;
+    .header-center {
+        gap: 20px;
     }
-    .tabela-container1 {
-        flex-direction: column;
+    .orders-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -399,27 +365,15 @@ footer .footer-links a:hover {
         gap: 10px;
         padding: 10px;
     }
-    header nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .logo {
-        width: 60px;
-        height: 60px;
-    }
-    .btn-conta button {
+    .btn-conta {
         font-size: 1rem;
-        padding: 6px 12px;
+        padding: 8px 16px;
     }
 }
 
 @media (max-width: 360px) {
-    .logo {  
+    .logo {
         width: 50px;
         height: 50px;
-    }
-    .btn-conta button {
-        font-size: 0.9rem;
-        padding: 5px 10px;
     }
 }

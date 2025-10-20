@@ -595,5 +595,62 @@ public function getUserActiveDelivery($userId) {
     }
 }
 
+public function getAllPedidos()
+{
+    try {
+        $sql = "SELECT p.id, p.usuario_id, u.username as cliente_nome, p.itens, p.endereco, p.pagamento, p.criado_em, p.status
+                FROM pedidos p
+                LEFT JOIN users u ON p.usuario_id = u.id
+                ORDER BY p.criado_em DESC";
+        $stmt = $this->prepare($sql);
+        $stmt->execute();
+        $pedidos = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($pedidos as &$pedido) {
+            // Tentar decodificar itens como JSON, senão separar por vírgula
+            $itens = json_decode($pedido['itens'], true);
+            if (is_array($itens)) {
+                $pedido['itens_array'] = $itens;
+                // Calcular total
+                $total = 0;
+                foreach ($itens as $item) {
+                    $preco = isset($item['preco']) ? floatval($item['preco']) : 0;
+                    $qtd = isset($item['quantidade']) ? intval($item['quantidade']) : 1;
+                    $total += $preco * $qtd;
+                }
+                $pedido['total'] = $total;
+            } else {
+                $pedido['itens_array'] = explode(',', $pedido['itens']);
+                $pedido['total'] = null; // Não é possível calcular
+            }
+        }
+        return $pedidos;
+    } catch (Exception $e) {
+        error_log('Erro getAllPedidos: ' . $e->getMessage());
+        return [];
+    }
+}
+
+public function getPedidosByMotoboy($motoboyId)
+{
+    try {
+        $sql = "SELECT p.*, u.username as cliente_nome,
+                GROUP_CONCAT(CONCAT(pi.quantidade, 'x ', pi.produto) SEPARATOR ', ') as itens_descricao,
+                SUM(pi.preco * pi.quantidade) as total
+                FROM pedidos p
+                LEFT JOIN users u ON p.usuario_id = u.id
+                LEFT JOIN pedido_itens pi ON p.id = pi.pedido_id
+                WHERE p.motoboy_id = :motoboy_id
+                GROUP BY p.id
+                ORDER BY p.criado_em DESC";
+        $stmt = $this->prepare($sql);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (Exception $e) {
+        error_log("Erro getPedidosByMotoboy: " . $e->getMessage());
+        return [];
+    }
+}
+
 }
 ?>

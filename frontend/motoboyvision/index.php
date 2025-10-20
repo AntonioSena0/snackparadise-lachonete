@@ -47,34 +47,59 @@
     </nav>
 
   <!-- Conteúdo principal -->
-   <div class="fundo">
+  <?php
+session_start();
+include_once '../../backend/config/DatabaseManager.php';
+$db = new DatabaseManager();
+// Fallback para testes: se não houver sessão, usa id=1
+$motoboyId = isset($_SESSION['motoboy']['id']) ? $_SESSION['motoboy']['id'] : 1;
+$pedidosMotoboy = $motoboyId ? $db->getPedidosByMotoboy($motoboyId) : [];
+$allPedidos = $db->getAllPedidos();
+// Mensagem de depuração
+if (!$motoboyId) {
+  echo '<div style="color:red">Motoboy não logado. Usando fallback id=1.</div>';
+}
+if (empty($pedidosMotoboy)) {
+  echo '<div style="color:orange">Nenhum pedido atribuído ao motoboy (id=' . htmlspecialchars($motoboyId) . ').</div>';
+}
+?>
+
+<div class="fundo">
   <main role="main">
     <section class="area-restrita-section" aria-labelledby="titulo-area-restrita">
       <h1 id="titulo-area-restrita" style="display:none;">Área restrita - Gerenciamento de Pedidos</h1>
-      <div class="tabela">
-        <div class="tabela-container1">
-          <!-- Coluna pedidos -->
-          <div class="coluna1" role="region" aria-labelledby="pedidos-title">
-            <h2 id="pedidos-title">Pedidos</h2>
-            <div class="pedido tabela-card1" id="checkout-pedidos" aria-live="polite">
-              <!-- Itens carregados dinamicamente -->
-            </div>
-          </div>
-          <!-- Coluna endereço -->
-          <div class="coluna2" role="region" aria-labelledby="endereco-title">
-            <h2 id="endereco-title">Endereço</h2>
-            <div class="tabela-card2" id="checkout-endereco" aria-live="polite"></div>
-          </div>
-          <!-- Coluna pagamento -->
-          <div class="coluna3" role="region" aria-labelledby="pagamento-title">
-            <h2 id="pagamento-title">Forma de Pagamento</h2>
-            <div class="tabela-card3" id="checkout-pagamento" aria-live="polite"></div>
-          </div>
-        </div>
-
-        <!-- Botão de ação -->
-        <div class="tabela-container2" id="acoes-pedido">
-          <!-- Botão ACEITAR PEDIDO será inserido via JS -->
+      <div id="motoboy-orders">
+        <h2>Todos os Pedidos</h2>
+        <div class="orders-grid">
+          <?php if (empty($allPedidos)): ?>
+            <p>Nenhum pedido encontrado.</p>
+          <?php else: ?>
+            <?php foreach ($allPedidos as $order): ?>
+              <div class="order-card">
+                <h3>Pedido #<?php echo htmlspecialchars($order['id']); ?></h3>
+                <p><strong>Cliente:</strong> <?php echo htmlspecialchars($order['cliente_nome'] ?? '—'); ?></p>
+                <div><strong>Itens:</strong>
+                  <ul style="margin: 6px 0 0 0; padding-left: 18px;">
+                    <?php if (!empty($order['itens'])): ?>
+                      <?php $itens = json_decode($order['itens'], true); ?>
+                      <?php if (is_array($itens)): ?>
+                        <?php foreach ($itens as $item): ?>
+                          <li><?php echo htmlspecialchars(($item['quantidade'] ?? 1) . 'x ' . ($item['nome'] ?? $item['produto'] ?? 'Item') . (isset($item['preco']) ? ' - R$ ' . number_format($item['preco'], 2, ',', '.') : '')); ?></li>
+                        <?php endforeach; ?>
+                      <?php else: ?>
+                        <li><?php echo htmlspecialchars($order['itens']); ?></li>
+                      <?php endif; ?>
+                    <?php endif; ?>
+                  </ul>
+                </div>
+                <p><strong>Total:</strong> R$ <?php echo isset($order['total']) ? number_format($order['total'], 2, ',', '.') : '—'; ?></p>
+                <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
+                <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
+                <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
+                <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
+              </div>
+            <?php endforeach; ?>
+          <?php endif; ?>
         </div>
       </div>
     </section>

@@ -24,6 +24,7 @@ try {
     
     $stats = $db->getMotoboyStats($motoboyId);
     $recentDeliveries = $db->getRecentDeliveries($motoboyId, 3);
+    $pedidosMotoboy = $db->getPedidosByMotoboy($motoboyId);
     
 } catch (Exception $e) {
     die("Erro ao carregar dados: " . $e->getMessage());
@@ -271,6 +272,34 @@ try {
                                     Ver Mais Entregas
                                 </button>
                             <?php endif; ?>
+                        </div>
+
+                        <!-- Meus Pedidos Atribuídos -->
+                        <div class="profile-section">
+                            <h3 class="section-title">
+                                <i class='bx bx-list-ul'></i>
+                                Meus Pedidos Atribuídos
+                            </h3>
+                            <div class="orders-container" id="orders-motoboy">
+                                <?php if (empty($pedidosMotoboy)): ?>
+                                    <div class="no-orders">
+                                        <p>Nenhum pedido atribuído.</p>
+                                    </div>
+                                <?php else: ?>
+                                    <?php foreach ($pedidosMotoboy as $order): ?>
+                                        <div class="order-item">
+                                            <h4>Pedido #<?php echo htmlspecialchars($order['id']); ?></h4>
+                                            <p><strong>Cliente:</strong> <?php echo htmlspecialchars($order['cliente_nome'] ?? '—'); ?></p>
+                                            <p><strong>Itens:</strong> <?php echo htmlspecialchars($order['itens_descricao'] ?? $order['itens']); ?></p>
+                                            <p><strong>Total:</strong> R$ <?php echo number_format($order['total'] ?? 0, 2, ',', '.'); ?></p>
+                                            <p><strong>Status:</strong> <?php echo htmlspecialchars($order['status']); ?></p>
+                                            <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
+                                            <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
+                                            <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
 
                         <!-- Alterar Senha -->

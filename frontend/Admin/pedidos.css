@@ -1,0 +1,99 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f7f7fb;
+    margin: 0;
+    color: #222;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 30px;
+    color: #007bff;
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.orders-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+    margin: 30px auto 0 auto;
+    max-width: 1200px;
+}
+
+.order-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    padding: 22px 18px;
+    border: 1px solid #e3e3e3;
+    transition: box-shadow 0.2s;
+}
+.order-card:hover {
+    box-shadow: 0 4px 16px rgba(0,123,255,0.10);
+    border-color: #007bff33;
+}
+.order-card h3 {
+    margin: 0 0 10px 0;
+    color: #007bff;
+    font-size: 1.3rem;
+}
+.order-card p {
+    margin: 6px 0;
+    font-size: 1rem;
+}
+.order-status {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-top: 4px;
+}
+.status-pendente {
+    background: #fff3cd;
+    color: #856404;
+}
+.status-preparando {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+.status-pronto {
+    background: #d4edda;
+    color: #155724;
+}
+.status-em_entrega {
+    background: #cce5ff;
+    color: #004085;
+}
+.status-entregue {
+    background: #e2ffe2;
+    color: #218838;
+}
+.btn-assign {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 10px;
+    transition: background 0.2s;
+}
+.btn-assign:hover {
+    background: #0056b3;
+}
+@media (max-width: 700px) {
+    .orders-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 8px;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    .order-card {
+        padding: 16px 10px;
+    }
+}
