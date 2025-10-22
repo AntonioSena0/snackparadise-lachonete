@@ -21,6 +21,9 @@ SET time_zone = "+00:00";
 -- Banco de dados: `snack`
 --
 
+create database snack;
+use snack;
+
 -- --------------------------------------------------------
 
 --
@@ -79,8 +82,6 @@ CREATE TABLE `pedidos` (
 --
 -- Extraindo dados da tabela `pedidos`
 --
-
- '2025-10-22 13:33:01', 'pendente');
 
 -- --------------------------------------------------------
 
