@@ -12,15 +12,22 @@ html, body {
 }
 
 body {
-    background-image: url('../imgs/Background.jpeg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: #fff;
     transition: opacity 0.5s ease-in-out;
     opacity: 0;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+main{
+    padding-bottom: 15%;
+}
+
+.fundo{
+    background-image: url('../imgs/Background.jpeg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-color: #fff;
 }
 
 body.loaded {
@@ -239,6 +246,16 @@ header {
     cursor: pointer;
     transition: all 0.3s ease;
     text-align: center;
+    display: block;
+}
+
+.submenu-item:last-child {
+    border-bottom: none;
+}
+
+.submenu-item:hover {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
 }
 
 .submenu-item:hover {
@@ -247,9 +264,28 @@ header {
 }
 
 /* ÁREA RESTRITA */
+.motomsg{
+    background-color: white;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 300px;
+    border-radius: 30px;
+    border-width: 2px;
+    border-color: black;
+    border-style: solid;
+    padding: 20px;
+    color: black;
+}
+
 .area-restrita-section {
     padding: 40px 8%;
     flex: 1;
+}
+
+.tit{
+    color: white;
+    text-shadow: #000 0px 0px 4px,   #000 0px 0px 4px,   #000 0px 0px 4px,
+             #000 0px 0px 4px,   #000 0px 0px 4px,   #000 0px 0px 4px;
 }
 
 .orders-grid {
@@ -322,13 +358,27 @@ header {
     border: 1px solid #b8daff;
 }
 
+.btn-aceitar, .btn-recusar{
+    background-color: #a20908;
+    border-color: #721c24;
+    height: 50px;
+    width: 150px;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-aceitar:hover, .btn-recusar:hover{
+    opacity: 85%;
+}
+
 /* FOOTER */
 footer {
     background: #000;
     color: #fff;
     padding: 30px 15px;
     text-align: center;
-    margin-top: auto;
+    margin-top: 0;
     width: 100%;
 }
 

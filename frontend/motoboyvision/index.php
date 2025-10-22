@@ -56,23 +56,27 @@ $db = new DatabaseManager();
 $motoboyId = isset($_SESSION['motoboy']['id']) ? $_SESSION['motoboy']['id'] : 1;
 $pedidosMotoboy = $motoboyId ? $db->getPedidosByMotoboy($motoboyId) : [];
 $allPedidos = $db->getAllPedidos();
-// Mensagem de depuração
-if (!$motoboyId) {
-  echo '<div style="color:red">Motoboy não logado. Usando fallback id=1.</div>';
-}
-if (empty($pedidosMotoboy)) {
-  echo '<div style="color:orange">Nenhum pedido atribuído ao motoboy (id=' . htmlspecialchars($motoboyId) . ').</div>';
-}
+
 ?>
 
 <div class="fundo">
   <main role="main">
+    <div class="motomsg"><?php
+      // Mensagem de depuração
+      if (!$motoboyId) {
+        echo '<div style="color:red">Motoboy não logado. Usando fallback id=1.</div>';
+      }
+      if (empty($pedidosMotoboy)) {
+        echo '<div style="color:orange">Nenhum pedido atribuído ao motoboy (id=' . htmlspecialchars($motoboyId) . ').</div>';
+      }
+    ?>
+    </div>
     <section class="area-restrita-section" aria-labelledby="titulo-area-restrita">
       <h1 id="titulo-area-restrita" style="display:none;">Área restrita - Gerenciamento de Pedidos</h1>
 
       <!-- Todos os Pedidos -->
       <div id="all-orders">
-        <h2>Todos os Pedidos</h2>
+        <h2 class="tit">Todos os Pedidos</h2>
         <div class="orders-grid">
           <?php if (empty($allPedidos)): ?>
             <p>Nenhum pedido encontrado.</p>
@@ -103,10 +107,10 @@ if (empty($pedidosMotoboy)) {
                 
                 <!-- Botões de ação -->
                 <div class="order-actions">
-                  <button class="btn btn-aceitar" onclick="iniciarEntrega(<?php echo htmlspecialchars($order['status']); ?>)">
+                  <button class="btn-aceitar" onclick="iniciarEntrega(<?php echo htmlspecialchars($order['status']); ?>)">
                     Iniciar Entrega
                   </button>
-                  <button class="btn btn-recusar" onclick="recusarPedidoMotoboy(<?php echo htmlspecialchars($order['status']); ?>)">
+                  <button class="btn-recusar" onclick="recusarPedidoMotoboy(<?php echo htmlspecialchars($order['status']); ?>)">
                     Recusar Pedido
                   </button>
                 </div>
