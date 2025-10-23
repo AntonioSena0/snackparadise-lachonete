@@ -20,6 +20,43 @@ $allPedidos = $db->getAllPedidos();
     <link rel="stylesheet" href="pedidos.css">
 </head>
 <body>
+    <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+                <a href="../Cardápio/index.php" class="logo">
+                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
+                </a>           
+             </div>
+        </div>
+
+        <div class="header-center">
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
+            <div class="menu-item cardapio-btn" id="cardapioBtn">
+                Cardápio
+                <div class="submenu" id="submenu">
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
+                </div>
+            </div>
+            <a href="#" class="menu-item">Promoções</a>
+            <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
+        </div>
+
+        <a href="../../backend/controllers/logout.php" class="btn-conta">Sair</a>
+    </header>
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
+        <a href="../PerfilMotoboy/index.php" class="menu-lateral-item active">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item">Pontos</a>
+        <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
+    <main>
     <h1>Gerenciar Pedidos - Atribuir Motoboys</h1>
     
     <div id="all-orders">
@@ -55,13 +92,27 @@ $allPedidos = $db->getAllPedidos();
             <?php endif; ?>
         </div>
     </div>
-
-    <div id="pending-orders">
+    
+    <div id="pending-orders" class="pending-orders">
         <h2>Pedidos Pendentes de Entrega</h2>
         <div class="orders-grid" id="orders-container">
         </div>
     </div>
-
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="../Menu/index.html">Início</a>
+                <a href="../Quem somos/index.html">Sobre</a>
+                <a href="../Auxílio Preferencial/auxilio.html">Serviços</a>
+                <a href="https://www.instagram.com/_snackparadise_/profilecard/?igsh=OHh2eWpsOXBuOWRp">Contato</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SnackParadise. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
     <script>
         async function loadPendingOrders() {
             try {
@@ -143,5 +194,6 @@ $allPedidos = $db->getAllPedidos();
         loadPendingOrders();
         setInterval(loadPendingOrders, 30000);
     </script>
+    
 </body>
 </html>
