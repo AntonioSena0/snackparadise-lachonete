@@ -87,6 +87,7 @@ $allPedidos = $db->getAllPedidos();
                         <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
                         <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
                         <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
+                        <button class="excpedido">Excluir</button>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>

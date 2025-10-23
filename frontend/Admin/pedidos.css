@@ -356,6 +356,24 @@ h1 {
     background: #0056b3;
 }
 
+.excpedido{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 40px;
+    width: 100px;
+    background-color: var(--cor-primaria);
+    font-weight: bold;
+    color: white;
+    border-color:#721c24;
+    border-width: 2px;
+    border-radius: 10px;
+}
+
+.excpedido:hover{
+    opacity: 85%;
+    cursor: pointer;
+}
+
 .pending-orders{
     margin-top: 5%;
 }
