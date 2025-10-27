@@ -20,44 +20,42 @@ $allPedidos = $db->getAllPedidos();
     <link rel="stylesheet" href="pedidos.css">
 </head>
 <body>
-       <header>
+    <header>
         <div class="header-left">
             <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
             <div class="logo-container">
-            <a href="../Menu/index.php" class="logo">
+                <a href="../Cardápio/index.php" class="logo">
                     <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
                 </a>           
              </div>
         </div>
 
         <div class="header-center">
-            <a href="../Menu/index.php" class="menu-item">Menu</a>
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
             <div class="menu-item cardapio-btn" id="cardapioBtn">
                 Cardápio
                 <div class="submenu" id="submenu">
-                    <a href="../Cardápio/index.php" class="submenu-item">Hambúrgueres</a>
-                    <a href="../Cardápio/index.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
-                    <a href="../Cardápio/index.php#bebidas" class="submenu-item">Bebidas</a>
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
-            <a href="pontos.php" class="menu-item">Promoções</a>
+            <a href="#" class="menu-item">Promoções</a>
             <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
 
-        <a href="../Tela de login/index.php" class="btn-conta">Conta</a>
+        <a href="../../backend/controllers/logout.php" class="btn-conta">Sair</a>
     </header>
-
     <!-- Menu Lateral -->
     <nav class="menu-lateral" id="menuLateral">
-        <a href="../Menu/index.php" class="menu-lateral-item">Início</a>
-        <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
-        <a href="../Acumular Pontos/pontos.php" class="menu-lateral-item active">Pontos</a>
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
+        <a href="../PerfilMotoboy/index.php" class="menu-lateral-item active">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item">Pontos</a>
         <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
         <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
         <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
         <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
     </nav>
-
     <main>
     <h1>Gerenciar Pedidos - Atribuir Motoboys</h1>
     
@@ -93,11 +91,11 @@ $allPedidos = $db->getAllPedidos();
                             <a class="btn-edit-order" href="editar_pedido.php?id=<?php echo htmlspecialchars($order['id']); ?>">Editar</a>
                             <form method="POST" action="../../backend/controllers/admin_hide_pedido.php" style="margin:0;">
                                 <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
-                                <button type="submit" class="btn-hide-order">Ocultar</button>
+                                <button type="submit" class="excpedido">Ocultar</button>
                             </form>
                             <form method="POST" action="../../backend/controllers/admin_delete_pedido.php" style="margin:0;" onsubmit="return confirm('Deseja excluir o pedido #'+<?php echo json_encode($order['id']); ?>+'? Isso removerá permanentemente o pedido.');">
                                 <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
-                                <button type="submit" class="btn-delete-order">Excluir</button>
+                                <button type="submit" class="excpedido">Excluir</button>
                             </form>
                         </div>
                     </div>

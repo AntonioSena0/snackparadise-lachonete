@@ -1062,3 +1062,9 @@ footer {
         font-size: 1.15rem;
     }
 }
+
+@media (max-width: 850px){
+    .header-center{
+        display: inline-block;
+    }
+}

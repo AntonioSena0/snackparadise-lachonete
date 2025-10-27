@@ -750,46 +750,33 @@ form {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
     header {
-        flex-direction: row;
-        height: auto;
-        padding: 80px;
-    }
-
-    header .header-text {
-        font-size: 1.2rem; /* Ajusta o tamanho do texto */
-    }
-
-    header .submenu-button,
-    header .right-button {
-        font-size: 1rem; /* Ajusta o tamanho dos botões */
+        padding: 15px 20px;
     }
     
-}
-
-@media screen and (max-width: 530px) {
-    header{
-        text-align: center;
+    .header-center {
+        display: none;
+    }
+    
+    .btn-conta {
         font-size: 1rem;
+        padding: 10px 20px;
+    }
+    
+    .logo {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .btn-menu-lateral {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
     }
 }
 
-@media screen and (max-width: 480px) {
-    header {
-        flex-direction: column; /* Empilha os itens em telas muito pequenas */
-        align-items: center;
-    }
 
-    header .submenu-button,
-    header .right-button {
-        margin: 5px 0; /* Ajusta o espaçamento dos botões */
-    }
-
-    header .header-text {
-        font-size: 1rem; /* Reduz o tamanho do texto */
-    }
-}
 
 @media screen and (max-width: 850px){
     .main-container{
@@ -888,21 +875,6 @@ form {
         height: auto;
     }
 }
-@media (max-width: 530px) {
-    header{
-        text-align: center;
-        font-size: 1rem;
-        margin-bottom: -50%;
-    }
-    main{
-        margin-top: 90%;
-    }
-}
-@media (max-width: 480px) {
-    header{
-        font-size: 0.7rem;
-    }
-}
 
 @media screen and (max-width: 530px){
     main{
@@ -928,5 +900,11 @@ form {
 
     form{
         padding: 1rem 2rem 1.5rem;
+    }
+}
+
+@media (max-width: 850px){
+    .header-center{
+        display: inline-block;
     }
 }

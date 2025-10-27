@@ -157,6 +157,13 @@ header {
     text-decoration: none;
 }
 
+.btn-conta:hover {
+    background-color: var(--cor-branco);
+    color: var(--cor-primaria);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(162, 9, 8, 0.3);
+}
+
 /* ==== FIM DO HEADER ==== */
 
 /* Menu Lateral */
@@ -735,7 +742,7 @@ header {
     display: none;
 }
 .submenu.active {
-    display: flex;
+    display: inline-block;
     opacity: 1;
     visibility: visible;
 }
@@ -897,5 +904,11 @@ header {
     
     .menu-item.cardapio-btn.active::after {
         content: "▼";
+    }
+}
+
+@media (max-width: 850px){
+    .header-center{
+        display: inline-block;
     }
 }

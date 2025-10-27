@@ -67,7 +67,7 @@ a {
     --cor-cinza-escuro: #333333;
 }
 
-/* HEADER */
+/* ====== HEADER ====== */
 header {
     background: var(--cor-branco);
     width: 100%;
@@ -149,6 +149,12 @@ header {
     transform: translateY(-2px);
 }
 
+.menu-item.cardapio-btn {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
 .menu-item.cardapio-btn::after {
     content: "▼";
     font-size: 0.9rem;
@@ -169,6 +175,7 @@ header {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .btn-conta:hover {
@@ -178,7 +185,9 @@ header {
     box-shadow: 0 4px 12px rgba(162, 9, 8, 0.3);
 }
 
-/* MENU LATERAL */
+/* ==== FIM DO HEADER ==== */
+
+/* Menu Lateral */
 .menu-lateral {
     position: fixed;
     top: 0;
@@ -206,6 +215,7 @@ header {
     border-bottom: 1px solid #f0f0f0;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: block;
 }
 
 .menu-lateral-item:hover,
@@ -215,7 +225,7 @@ header {
     padding-left: 40px;
 }
 
-/* SUBMENU */
+/* Submenu */
 .submenu {
     position: absolute;
     top: 100%;
@@ -258,9 +268,23 @@ header {
     color: var(--cor-branco);
 }
 
-.submenu-item:hover {
-    background-color: var(--cor-primaria);
-    color: var(--cor-branco);
+/* Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 998;
+}
+
+.overlay.ativo {
+    opacity: 1;
+    visibility: visible;
 }
 
 /* ÁREA RESTRITA */
@@ -400,30 +424,16 @@ footer .footer-links a:hover {
 }
 
 /* RESPONSIVO */
-@media screen and (max-width: 768px) {
-    .header-center {
-        gap: 20px;
-    }
-    .orders-grid {
-        grid-template-columns: 1fr;
-    }
-}
 
-@media (max-width: 480px) {
-    header {
-        flex-direction: column;
-        gap: 10px;
-        padding: 10px;
-    }
-    .btn-conta {
-        font-size: 1rem;
-        padding: 8px 16px;
-    }
-}
 
-@media (max-width: 360px) {
-    .logo {
-        width: 50px;
-        height: 50px;
+
+@media (max-width: 850px){
+    .header-center{
+        display: inline-block;
+    }
+    header{
+        position: relative;
+        padding-top: 100px;
+        padding-bottom: 100px;
     }
 }

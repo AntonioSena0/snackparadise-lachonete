@@ -917,3 +917,9 @@ form {
         padding: 1rem 2rem 1.5rem;
     }
 }
+
+@media (max-width: 850px){
+    .header-center{
+        display: inline-block;
+    }
+}
