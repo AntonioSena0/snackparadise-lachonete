@@ -681,11 +681,30 @@ public function getAllPedidos()
     {
         try {
             $this->beginTransaction();
+
+            // Remover registros dependentes para evitar violação de FK
+            $sql = "DELETE FROM pedido_assignments WHERE pedido_id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $sql = "DELETE FROM registro WHERE pedido_id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $sql = "DELETE FROM reviews WHERE pedido_id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Itens do pedido
             $sql = "DELETE FROM pedido_itens WHERE pedido_id = :id";
             $stmt = $this->prepare($sql);
             $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
             $stmt->execute();
 
+            // Por fim apagar o pedido
             $sql = "DELETE FROM pedidos WHERE id = :id";
             $stmt = $this->prepare($sql);
             $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);

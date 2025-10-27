@@ -111,11 +111,11 @@ $allPedidos = $db->getAllPedidos();
                                                 <?php if ($status === 'em_entrega'): ?>
                                                     <button class="btn-disabled" disabled>Em Entrega</button>
                                                 <?php else: ?>
-                                                    <form method="POST" action="../../backend/controllers/aceitar_pedido.php" style="display:inline-block; margin-right:6px;">
+                          <form method="POST" action="../../backend/controllers/aceitar_pedido_form.php" style="display:inline-block; margin-right:6px;">
                                                         <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
                                                         <button type="submit" class="btn-aceitar">Iniciar Entrega</button>
                                                     </form>
-                                                    <form method="POST" action="../../backend/controllers/recusar_pedido.php" style="display:inline-block;">
+                          <form method="POST" action="../../backend/controllers/recusar_pedido_form.php" style="display:inline-block;">
                                                         <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
                                                         <button type="submit" class="btn-recusar">Recusar Pedido</button>
                                                     </form>
