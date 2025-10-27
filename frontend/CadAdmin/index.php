@@ -14,6 +14,15 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
 </head>
 <body>
+    <header>
+        <div class="header-left">
+            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
+            <div class="logo-container">
+            <a href="../Cardápio/index.php" class="logo">
+                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
+                </a>           
+             </div>
+        </div>
     <div class="header-center">
             <a href="../Cardápio/index.php" class="menu-item">Menu</a>
             <div class="menu-item cardapio-btn" id="cardapioBtn">
