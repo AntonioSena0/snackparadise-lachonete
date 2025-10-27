@@ -30,7 +30,10 @@ body {
 
 a {
     text-decoration: none;
+    
 }
+
+
 
 body.loaded {
     opacity: 1;
@@ -367,6 +370,7 @@ h1 {
     border-color:#721c24;
     border-width: 2px;
     border-radius: 10px;
+    cursor: pointer
 }
 
 .excpedido:hover{
@@ -422,6 +426,125 @@ footer {
 .footer-bottom p {
     margin-bottom: 0.5rem;
 }
+
+/* ==== PÁGINA EDITAR PEDIDO ==== */
+
+.editar-pedido-container {
+    background: var(--cor-branco);
+    max-width: 600px;
+    margin: 80px auto;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border: 1px solid #eee;
+}
+
+.editar-pedido-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cor-primaria);
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--cor-amarelo);
+    padding-bottom: 10px;
+    letter-spacing: 0.5px;
+}
+
+.editar-pedido-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.editar-pedido-container label {
+    font-weight: 600;
+    color: var(--cor-cinza-escuro);
+    margin-bottom: 5px;
+}
+
+.editar-pedido-container input[type="text"],
+.editar-pedido-container select {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.editar-pedido-container input[type="text"]:focus,
+.editar-pedido-container select:focus {
+    outline: none;
+    border-color: var(--cor-primaria);
+    box-shadow: 0 0 0 3px rgba(162, 9, 8, 0.15);
+    background: #fff;
+}
+
+.editar-pedido-container button {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(162, 9, 8, 0.25);
+}
+
+.editar-pedido-container button:hover {
+    background-color: var(--cor-secundaria);
+    transform: translateY(-2px);
+}
+
+.editar-pedido-container a {
+    display: inline-block;
+    text-align: center;
+    color: var(--cor-primaria);
+    background: #f0f0f0;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.editar-pedido-container a:hover {
+    background: #e2e2e2;
+    color: var(--cor-preto);
+}
+
+.editar-pedido-botoes {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .editar-pedido-container {
+        margin: 40px 15px;
+        padding: 25px 20px;
+    }
+
+    .editar-pedido-container h1 {
+        font-size: 1.6rem;
+    }
+
+    .editar-pedido-botoes {
+        flex-direction: column;
+    }
+
+    .editar-pedido-container button,
+    .editar-pedido-container a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
 
 @media (max-width: 700px) {
     .orders-grid {

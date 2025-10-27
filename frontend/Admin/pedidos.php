@@ -40,7 +40,7 @@ $allPedidos = $db->getAllPedidos();
                     <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
-            <a href="#" class="menu-item">Promoções</a>
+            <a href="../Acumular Pontos/pontos.html" class="menu-item">Promoções</a>
             <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
 
@@ -88,7 +88,7 @@ $allPedidos = $db->getAllPedidos();
                         <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
                         <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
                         <div style="display:flex; gap:8px; margin-top:8px;">
-                            <a class="btn-edit-order" href="editar_pedido.php?id=<?php echo htmlspecialchars($order['id']); ?>">Editar</a>
+                            <button class="excpedido" type="button" onclick="location.href='editar_pedido.php?id=<?php echo htmlspecialchars($order['id']); ?>'">Editar</button>
                             <form method="POST" action="../../backend/controllers/admin_hide_pedido.php" style="margin:0;">
                                 <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
                                 <button type="submit" class="excpedido">Ocultar</button>
@@ -104,11 +104,7 @@ $allPedidos = $db->getAllPedidos();
         </div>
     </div>
     
-    <div id="pending-orders" class="pending-orders">
-        <h2>Pedidos Pendentes de Entrega</h2>
-        <div class="orders-grid" id="orders-container">
-        </div>
-    </div>
+   
     </main>
     <footer>
         <div class="footer-container">
