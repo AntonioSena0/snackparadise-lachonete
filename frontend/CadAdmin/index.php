@@ -14,16 +14,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <link rel="shortcut icon" href="../imgs/Logo.png" type="image/x-icon">
 </head>
 <body>
-    <header>
-        <div class="header-left">
-            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
-            <div class="logo-container">
-                <a href="../Cardápio/index.php" class="logo">
-                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
-                </a>
-            </div>
-        </div>
-        <div class="header-center">
+    <div class="header-center">
             <a href="../Cardápio/index.php" class="menu-item">Menu</a>
             <div class="menu-item cardapio-btn" id="cardapioBtn">
                 Cardápio
@@ -33,10 +24,11 @@ if (session_status() === PHP_SESSION_NONE) {
                     <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
-            <a href="#" class="menu-item">Promoções</a>
-            <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
+            <a href="../Acumular Pontos/pontos.html" class="menu-item">Promoções</a>
+            <a href="../Quem Somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
-        <a href="../Tela de Login/index.php" class="btn-conta">Sair</a>
+
+        <a href="../PerfilUser/index.php" class="btn-conta">Conta</a>
     </header>
 
     <!-- Menu Lateral -->
@@ -46,7 +38,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
         <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
         <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
-        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Quem Somos/index.php" class="menu-lateral-item">Sobre nós</a>
         <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
     </nav>
 

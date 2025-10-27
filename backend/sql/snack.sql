@@ -79,6 +79,8 @@ CREATE TABLE `pedidos` (
   `status` varchar(20) NOT NULL DEFAULT 'pendente'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
+
+
 --
 -- Extraindo dados da tabela `pedidos`
 --

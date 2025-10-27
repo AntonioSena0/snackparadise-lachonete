@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'vehicle_type' => $motoboy['vehicle_type'],
                 'license_plate' => $motoboy['license_plate']
             ];
-            header("Location: ../views/ContaMotoboy.php");
+            header("Location: ../PerfilMotoboy/index.php");
             exit();
         }
 
@@ -53,12 +53,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         $_SESSION['login_error'] = "E-mail ou senha inválidos.";
-        header("Location: ../../frontend/Tela de login/index.html");
+        header("Location: ../../frontend/Tela de login/index.php");
         exit();
     } catch (Exception $e) {
         error_log("Erro ao conectar ou autenticar: " . $e->getMessage());
         $_SESSION['login_error'] = "Não foi possível processar sua solicitação no momento. Tente novamente mais tarde.";
-        header("Location: ../../Tela de login/index.html");
+        header("Location: ../../frontend/Tela de login/index.php");
         exit();
     }
 }

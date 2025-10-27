@@ -9,32 +9,33 @@
 </head>
 <body>
    
-      <header>
-        <div class="header-left">
-            <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
-            <div class="logo-container">
-            <a href="../Menu/index.html" class="logo">
-                    <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
-                </a>           
-             </div>
-        </div>
-
-        <div class="header-center">
-            <a href="../Menu/index.html" class="menu-item">Menu</a>
+      <div class="header-center">
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
             <div class="menu-item cardapio-btn" id="cardapioBtn">
                 Cardápio
                 <div class="submenu" id="submenu">
-                    <a href="../Cardápio/index.html" class="submenu-item">Hambúrgueres</a>
-                    <a href="#" class="submenu-item">Acompanhamentos</a>
-                    <a href="#" class="submenu-item">Bebidas</a>
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
-            <a href="#" class="menu-item">Promoções</a>
-            <a href="../Quem somos/index.html" class="menu-item">Sobre Nós</a>
+            <a href="../Acumular Pontos/pontos.html" class="menu-item">Promoções</a>
+            <a href="../Quem Somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
 
-        <a href="../Tela de login/index.html" class="btn-conta">Conta</a>
+        <a href="../PerfilUser/index.php" class="btn-conta">Conta</a>
     </header>
+
+    <!-- Menu Lateral -->
+    <nav class="menu-lateral" id="menuLateral">
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
+        <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
+        <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
+        <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
+        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+        <a href="../Quem Somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    </nav>
 
     <!-- Menu Lateral -->
     <nav class="menu-lateral" id="menuLateral">

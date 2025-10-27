@@ -207,8 +207,8 @@
                     <h2>Faça Parte da Nossa História</h2>
                     <p>Junte-se a nós nessa jornada de sabores e descubra por que a SnackParadise é mais que um restaurante - é uma experiência!</p>
                     <div class="cta-buttons">
-                        <a href="../Menu/index.html" class="btn-cta primario">Ver Cardápio</a>
-                        <a href="#" class="btn-cta secundario">Fazer Pedido</a>
+                        <a href="../Cardápio/menu.php" class="btn-cta primario">Ver Cardápio</a>
+                        <a href="../Cardápio/index.php" class="btn-cta secundario">Fazer Pedido</a>
                     </div>
                 </div>
             </section>

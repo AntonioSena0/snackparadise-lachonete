@@ -19,17 +19,17 @@
         </div>
 
         <div class="header-center">
-            <a href="index.php" class="menu-item">Menu</a>
+            <a href="../Cardápio/index.php" class="menu-item">Menu</a>
             <div class="menu-item cardapio-btn" id="cardapioBtn">
                 Cardápio
                 <div class="submenu" id="submenu">
-                    <a href="#subheader2" class="submenu-item">Hambúrgueres</a>
-                    <a href="#acompanhamentos" class="submenu-item">Acompanhamentos</a>
-                    <a href="#bebidas" class="submenu-item">Bebidas</a>
+                    <a href="../Cardápio/menu.php#subheader2" class="submenu-item">Hambúrgueres</a>
+                    <a href="../Cardápio/menu.php#acompanhamentos" class="submenu-item">Acompanhamentos</a>
+                    <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
-            <a href="#" class="menu-item">Promoções</a>
-            <a href="../Quem somos/index.html" class="menu-item">Sobre Nós</a>
+            <a href="../Acumular Pontos/pontos.html" class="menu-item">Promoções</a>
+            <a href="../Quem Somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
 
         <a href="../PerfilUser/index.php" class="btn-conta">Conta</a>
@@ -37,12 +37,12 @@
 
     <!-- Menu Lateral -->
     <nav class="menu-lateral" id="menuLateral">
-        <a href="index.php" class="menu-lateral-item">Início</a>
+        <a href="../Cardápio/index.php" class="menu-lateral-item">Início</a>
         <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
         <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
         <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
         <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
-        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Quem Somos/index.php" class="menu-lateral-item">Sobre nós</a>
         <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
     </nav>
 

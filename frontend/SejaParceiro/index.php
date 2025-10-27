@@ -27,8 +27,8 @@
                     <a href="../Cardápio/menu.php#bebidas" class="submenu-item">Bebidas</a>
                 </div>
             </div>
-            <a href="#" class="menu-item">Promoções</a>
-            <a href="index.php" class="menu-item">Sobre Nós</a>
+            <a href="../Acumular Pontos/pontos.html" class="menu-item">Promoções</a>
+            <a href="../Quem Somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
 
         <a href="../PerfilUser/index.php" class="btn-conta">Conta</a>
