@@ -105,10 +105,15 @@ try {
                             <i class='bx bx-camera'></i>
                             Alterar Foto
                         </button>
-                        <div class="rider-status <?php echo $motoboyData['status'] ?? 'offline'; ?>" id="riderStatus">
+                        <?php $status = $motoboyData['status'] ?? 'offline'; ?>
+                        <div class="rider-status <?php echo htmlspecialchars($status); ?>" id="riderStatus">
                             <i class='bx bx-circle'></i>
-                            <span><?php echo ucfirst($motoboyData['status'] ?? 'offline'); ?></span>
+                            <span id="riderStatusText"><?php echo htmlspecialchars(ucfirst($status)); ?></span>
                         </div>
+                            <a class="btn-view-orders " role="button" href="../motoboyvision/index.php">
+                                Ver Pedidos Disponíveis
+                            </a>
+
                         <div class="rating-display">
                             <div class="stars">
                                 <i class='bx bxs-star'></i>
@@ -296,6 +301,21 @@ try {
                                             <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
                                             <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
                                             <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
+                                            <div class="order-actions">
+                                                <?php $status = $order['status'] ?? ''; ?>
+                                                <?php if ($status === 'em_entrega'): ?>
+                                                    <button class="btn-disabled" disabled>Em Entrega</button>
+                                                <?php else: ?>
+                                                    <form method="POST" action="../../backend/controllers/aceitar_pedido_form.php" style="display:inline-block; margin-right:6px;">
+                                                        <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
+                                                        <button type="submit" class="btn-aceitar">Iniciar Entrega</button>
+                                                    </form>
+                                                    <form method="POST" action="../../backend/controllers/recusar_pedido_form.php" style="display:inline-block;">
+                                                        <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
+                                                        <button type="submit" class="btn-recusar">Recusar Pedido</button>
+                                                    </form>
+                                                <?php endif; ?>
+                                            </div>
                                         </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>

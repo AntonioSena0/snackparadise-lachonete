@@ -630,6 +630,89 @@ public function getAllPedidos()
     }
 }
 
+    public function getPedidoById($pedidoId)
+    {
+        try {
+            $sql = "SELECT p.*, u.username as cliente_nome FROM pedidos p LEFT JOIN users u ON p.usuario_id = u.id WHERE p.id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
+            $stmt->execute();
+            $pedido = $stmt->fetch(PDO::FETCH_ASSOC);
+            if ($pedido) {
+                $itens = json_decode($pedido['itens'], true);
+                if (is_array($itens)) {
+                    $pedido['itens_array'] = $itens;
+                    $total = 0;
+                    foreach ($itens as $item) {
+                        $preco = isset($item['preco']) ? floatval($item['preco']) : 0;
+                        $qtd = isset($item['quantidade']) ? intval($item['quantidade']) : 1;
+                        $total += $preco * $qtd;
+                    }
+                    $pedido['total'] = $total;
+                } else {
+                    $pedido['itens_array'] = explode(',', $pedido['itens']);
+                    $pedido['total'] = null;
+                }
+            }
+            return $pedido;
+        } catch (Exception $e) {
+            error_log('Erro getPedidoById: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function updatePedidoBasic($pedidoId, $data)
+    {
+        try {
+            $sql = "UPDATE pedidos SET endereco = :endereco, pagamento = :pagamento, status = :status WHERE id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':endereco', $data['endereco']);
+            $stmt->bindParam(':pagamento', $data['pagamento']);
+            $stmt->bindParam(':status', $data['status']);
+            $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log('Erro updatePedidoBasic: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function deletePedido($pedidoId)
+    {
+        try {
+            $this->beginTransaction();
+            $sql = "DELETE FROM pedido_itens WHERE pedido_id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $sql = "DELETE FROM pedidos WHERE id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $this->commit();
+            return true;
+        } catch (Exception $e) {
+            try { $this->rollBack(); } catch (Exception $ex) {}
+            error_log('Erro deletePedido: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function hidePedido($pedidoId)
+    {
+        try {
+            $sql = "UPDATE pedidos SET status = 'oculto' WHERE id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $pedidoId, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log('Erro hidePedido: ' . $e->getMessage());
+            return false;
+        }
+    }
+
 public function getPedidosByMotoboy($motoboyId)
 {
     try {

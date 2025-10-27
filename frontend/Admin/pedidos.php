@@ -87,7 +87,17 @@ $allPedidos = $db->getAllPedidos();
                         <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
                         <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
                         <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
-                        <button class="excpedido">Excluir</button>
+                        <div style="display:flex; gap:8px; margin-top:8px;">
+                            <a class="btn-edit-order" href="editar_pedido.php?id=<?php echo htmlspecialchars($order['id']); ?>">Editar</a>
+                            <form method="POST" action="../../backend/controllers/admin_hide_pedido.php" style="margin:0;">
+                                <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
+                                <button type="submit" class="btn-hide-order">Ocultar</button>
+                            </form>
+                            <form method="POST" action="../../backend/controllers/admin_delete_pedido.php" style="margin:0;" onsubmit="return confirm('Deseja excluir o pedido #'+<?php echo json_encode($order['id']); ?>+'? Isso removerá permanentemente o pedido.');">
+                                <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
+                                <button type="submit" class="btn-delete-order">Excluir</button>
+                            </form>
+                        </div>
                     </div>
                 <?php endforeach; ?>
             <?php endif; ?>

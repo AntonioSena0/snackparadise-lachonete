@@ -1,6 +1,11 @@
 <?php
 include_once __DIR__ . '/../../backend/config/Conexao.php';
+include_once __DIR__ . '/../../backend/config/DatabaseManager.php';
+
+
 session_start();
+
+
 
 if (!isset($_SESSION['motoboy'])) {
     http_response_code(401);

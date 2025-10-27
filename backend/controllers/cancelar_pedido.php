@@ -1,5 +1,6 @@
 <?php
 include_once __DIR__ . '/../config/Conexao.php';
+include_once __DIR__ . '/../config/DatabaseManager.php';
 session_start();
 
 if (!isset($_SESSION['user'])) {

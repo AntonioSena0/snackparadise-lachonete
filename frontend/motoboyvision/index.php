@@ -106,14 +106,22 @@ $allPedidos = $db->getAllPedidos();
                 <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p> 
                 
                 <!-- Botões de ação -->
-                <div class="order-actions">
-                  <button class="btn-aceitar" onclick="iniciarEntrega(<?php echo htmlspecialchars($order['status']); ?>)">
-                    Iniciar Entrega
-                  </button>
-                  <button class="btn-recusar" onclick="recusarPedidoMotoboy(<?php echo htmlspecialchars($order['status']); ?>)">
-                    Recusar Pedido
-                  </button>
-                </div>
+              <div class="order-actions">
+                                                <?php $status = $order['status'] ?? ''; ?>
+                                                <?php if ($status === 'em_entrega'): ?>
+                                                    <button class="btn-disabled" disabled>Em Entrega</button>
+                                                <?php else: ?>
+                                                    <form method="POST" action="../../backend/controllers/aceitar_pedido.php" style="display:inline-block; margin-right:6px;">
+                                                        <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
+                                                        <button type="submit" class="btn-aceitar">Iniciar Entrega</button>
+                                                    </form>
+                                                    <form method="POST" action="../../backend/controllers/recusar_pedido.php" style="display:inline-block;">
+                                                        <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
+                                                        <button type="submit" class="btn-recusar">Recusar Pedido</button>
+                                                    </form>
+                                                <?php endif; ?>
+                                            </div>
+                                        </div>
               </div>
               
             <?php endforeach; ?>

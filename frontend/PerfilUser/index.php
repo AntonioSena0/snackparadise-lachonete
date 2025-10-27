@@ -259,38 +259,49 @@ $allPedidos = $db->getAllPedidos();
                                 Meus Pedidos
                             </h3>
                             <div class="orders-container" id="orders-container">
-                               <?php if (empty($allPedidos)): ?>
-                <p>Nenhum pedido registrado.</p>
-            <?php else: ?>
-                <?php foreach ($allPedidos as $order): ?>
-                    <div class="order-card">
-                        <h3>Pedido #<?php echo htmlspecialchars($order['id']); ?></h3>
-                        <p><strong>Cliente:</strong> <?php echo htmlspecialchars($order['cliente_nome'] ?? '—'); ?></p>
-                        <div><strong>Itens:</strong>
-                            <ul style="margin: 6px 0 0 0; padding-left: 18px;">
-                                <?php foreach ($order['itens_array'] as $item): ?>
-                                    <?php if (is_array($item)): ?>
-                                        <li>
-                                            <?php echo htmlspecialchars(($item['quantidade'] ?? 1) . 'x ' . ($item['nome'] ?? $item['produto'] ?? 'Item') . (isset($item['preco']) ? ' - R$ ' . number_format($item['preco'], 2, ',', '.') : '')); ?>
-                                        </li>
-                                    <?php else: ?>
-                                        <li><?php echo htmlspecialchars($item); ?></li>
-                                    <?php endif; ?>
-                                <?php endforeach; ?>
-                            </ul>
-                        </div>
-                        <p><strong>Total:</strong> R$ <?php echo isset($order['total']) ? number_format($order['total'], 2, ',', '.') : '—'; ?></p>
-                        <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
-                        <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
-                        <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
-                        <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
-                        <button class="cancelpedido">Cancelar</button>
-                        <hr>
-                    </div>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </div>
-    </div>
+                                <?php if (empty($orders)): ?>
+                                    <p>Nenhum pedido registrado.</p>
+                                <?php else: ?>
+                                    <?php foreach ($orders as $order): ?>
+                                        <div class="order-card">
+                                            <h3>Pedido #<?php echo htmlspecialchars($order['id']); ?></h3>
+                                            <p><strong>Cliente:</strong> <?php echo htmlspecialchars($order['cliente_nome'] ?? '—'); ?></p>
+                                            <div><strong>Itens:</strong>
+                                                <ul style="margin: 6px 0 0 0; padding-left: 18px;">
+                                                    <?php foreach ($order['itens_array'] as $item): ?>
+                                                        <?php if (is_array($item)): ?>
+                                                            <li>
+                                                                <?php echo htmlspecialchars(($item['quantidade'] ?? 1) . 'x ' . ($item['nome'] ?? $item['produto'] ?? 'Item') . (isset($item['preco']) ? ' - R$ ' . number_format($item['preco'], 2, ',', '.') : '')); ?>
+                                                            </li>
+                                                        <?php else: ?>
+                                                            <li><?php echo htmlspecialchars($item); ?></li>
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            </div>
+                                            <p><strong>Total:</strong> R$ <?php echo isset($order['total']) ? number_format($order['total'], 2, ',', '.') : '—'; ?></p>
+                                            <p><strong>Endereço:</strong> <?php echo htmlspecialchars($order['endereco']); ?></p>
+                                            <p><strong>Pagamento:</strong> <?php echo htmlspecialchars($order['pagamento']); ?></p>
+                                            <p><strong>Status:</strong> <span class="order-status status-<?php echo htmlspecialchars($order['status']); ?>"><?php echo htmlspecialchars($order['status']); ?></span></p>
+                                            <p><strong>Data:</strong> <?php echo htmlspecialchars($order['criado_em']); ?></p>
+
+                                            <?php if (!in_array($order['status'], ['cancelado', 'entregue', 'em_entrega'])): ?>
+                                                <div style="display:flex; gap:8px; align-items:center;">
+                                                    <a href="editar_pedido.php?id=<?php echo htmlspecialchars($order['id']); ?>" class="btn-edit-order">Editar Pedido</a>
+                                                    <form method="POST" action="../../backend/controllers/cancelar_pedido_form.php" onsubmit="return confirm('Deseja realmente cancelar o pedido #'+<?php echo json_encode($order['id']); ?>+'?');" style="margin:0;">
+                                                        <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
+                                                        <button type="submit" class="cancelpedido">Cancelar Pedido</button>
+                                                    </form>
+                                                </div>
+                                            <?php else: ?>
+                                                <button class="cancelpedido" >Cancelar</button>
+                                            <?php endif; ?>
+
+                                            <hr>
+                                        </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
 
                         <div class="profile-section">
                             <h3 class="section-title">

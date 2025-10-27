@@ -728,6 +728,43 @@ select.input-field:not([value=""]) + label {
     transform: translateY(-2px);
 }
 
+/* Botão Ver Pedidos Disponíveis (Perfil do Motoboy) */
+.btn-view-orders {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    border: 2px solid var(--cor-primaria);
+    padding: 0.7rem 1rem;
+    border-radius: 1rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0.8rem 0 1rem 0;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
+}
+
+.btn-view-orders i {
+    font-size: 1.1rem;
+    transform: translateY(1px);
+}
+
+.btn-view-orders:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(162,9,8,0.18);
+}
+
+/* Quando o motoboy está offline, aplica aparência visual (mas mantém clicável) */
+.rider-status.offline + .btn-view-orders {
+    background-color: #FF3131;
+    color: #f0f0f0;
+    border-color: #e0e0e0;
+    cursor: pointer; /* permitir clique mesmo quando offline */
+    opacity: 0.9;
+    transform: none;
+    box-shadow: none;
+}
+
 .hidden {
     display: none !important;
 }
@@ -999,5 +1036,29 @@ footer {
     .delivery-earnings {
         text-align: left;
         margin-top: 0.5rem;
+    }
+}
+
+/* Ajustes para telas grandes: tornar o botão mais visível e com largura adequada */
+@media screen and (min-width: 1200px) {
+    .profile-avatar {
+        padding: 3rem 2.5rem;
+    }
+
+    .btn-view-orders {
+        display: inline-flex;
+        width: auto;             /* evita esticar demais */
+        max-width: 300px;        /* limita largura em telas grandes */
+        font-size: 1.05rem;      /* ligeiramente maior em telas grandes */
+        padding: 0.9rem 1.1rem;   /* botão mais alto para toque/visibilidade */
+        border-radius: 1.25rem;
+        justify-content: center; /* centraliza ícone+texto */
+        box-shadow: 0 12px 30px rgba(162,9,8,0.12);
+        position: sticky;        /* mantém visível ao rolar */
+        top: 28px;
+    }
+
+    .btn-view-orders i {
+        font-size: 1.15rem;
     }
 }

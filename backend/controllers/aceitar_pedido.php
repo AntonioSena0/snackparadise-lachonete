@@ -1,6 +1,7 @@
 
 <?php
 include_once __DIR__ . '/../config/Conexao.php';
+include_once __DIR__ . '/../config/DatabaseManager.php';
 session_start();
 
 $data = json_decode(file_get_contents('php://input'), true);
