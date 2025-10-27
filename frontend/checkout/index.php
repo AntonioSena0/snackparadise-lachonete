@@ -21,21 +21,22 @@ if (isset($_SESSION['user'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css"> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     
 </head>
 <body>
-    <header>
+ <header>
         <div class="header-left">
             <button class="btn-menu-lateral" id="btnMenuLateral">☰</button>
             <div class="logo-container">
-            <a href="../Menu/index.html" class="logo">
+            <a href="../Cardápio/index.php" class="logo">
                     <img src="../imgs/Logo.png" class="logo" alt="Snack Paradise Logo">
                 </a>           
              </div>
         </div>
 
-       <div class="header-center">
+        <div class="header-center">
             <a href="../Cardápio/index.php" class="menu-item">Menu</a>
             <div class="menu-item cardapio-btn" id="cardapioBtn">
                 Cardápio
@@ -46,10 +47,10 @@ if (isset($_SESSION['user'])) {
                 </div>
             </div>
             <a href="../Acumular Pontos/pontos.html" class="menu-item">Promoções</a>
-            <a href="../Quem Somos/index.php" class="menu-item">Sobre Nós</a>
+            <a href="../Quem somos/index.php" class="menu-item">Sobre Nós</a>
         </div>
 
-        <a href="../PerfilUser/index.php" class="btn-conta">Conta</a>
+        <a href="../Tela de Login/index.php" class="btn-conta">Sair</a>
     </header>
 
     <!-- Menu Lateral -->
@@ -59,7 +60,7 @@ if (isset($_SESSION['user'])) {
         <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
         <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
         <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
-        <a href="../Quem Somos/index.php" class="menu-lateral-item">Sobre nós</a>
+        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
         <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
     </nav>
 
