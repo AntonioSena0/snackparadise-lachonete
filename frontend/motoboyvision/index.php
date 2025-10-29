@@ -55,7 +55,6 @@ $db = new DatabaseManager();
 $motoboyId = isset($_SESSION['motoboy']['id']) ? $_SESSION['motoboy']['id'] : 1;
 $pedidosMotoboy = $motoboyId ? $db->getPedidosByMotoboy($motoboyId) : [];
 $allPedidos = $db->getAllPedidos();
-
 ?>
 
 <div class="fundo">

@@ -92,35 +92,18 @@ let acompanhamentos = [];
 let bebidas = [];
 
 function carregarDados() {
-    // Primeiro tenta carregar do backend
-    fetch('../../backend/controllers/ProdutoController.php?action=get_produtos')
-        .then(response => {
-            if (!response.ok) throw new Error('Backend não respondeu');
-            return response.json();
-        })
+    // Carregar apenas do JSON local, ignorando backend
+    fetch('main.json')
+        .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                console.log('Dados carregados do backend:', data);
-                processarDadosBackend(data.produtos);
-            } else {
-                throw new Error('Erro no backend');
-            }
+            lanches = data.lanches || [];
+            acompanhamentos = data.acompanhamentos || [];
+            bebidas = data.bebidas || [];
+            adicionarItens();
         })
         .catch(error => {
-            console.log('Backend não disponível, carregando do JSON local:', error);
-            // Fallback para JSON local
-            fetch('main.json')
-                .then(response => response.json())
-                .then(data => {
-                    lanches = data.lanches || [];
-                    acompanhamentos = data.acompanhamentos || [];
-                    bebidas = data.bebidas || [];
-                    adicionarItens();
-                })
-                .catch(error => {
-                    console.error('Erro ao carregar dados:', error);
-                    showNotification('Erro ao carregar cardápio', 'error');
-                });
+            console.error('Erro ao carregar dados:', error);
+            showNotification('Erro ao carregar cardápio', 'error');
         });
 }
 
@@ -192,7 +175,7 @@ function adicionarAcompanhamentos() {
         imgElement.src = corrigirCaminhoImagem(item.img || item.imagem || '');
         imgElement.alt = item.nome;
         imgElement.onerror = function() {
-            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbSBuw6NvIGNhcnJlZ2FkYTwvdGV4dD48L3N2Zz4=';
+            this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjE1MCIgeG1zbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZGRkIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkltYWdlbSBuw6NvIGNhcnJlZ2FkYTwvdGV4dD48L3N2Zz4=';
         };
         
         lancheItem.querySelector('.lanche-item--preco').textContent = `R$ ${parseFloat(item.preco).toFixed(2)}`;
@@ -391,14 +374,11 @@ function showNotification(message, type = 'info') {
 // Corrigir caminhos das imagens
 function corrigirCaminhoImagem(caminhoOriginal) {
     if (!caminhoOriginal) return '';
-    
-    let caminhoCorrigido = caminhoOriginal.replace(/^\.\.\//, '');
-    
-    if (!caminhoCorrigido.startsWith('Assets/') && !caminhoCorrigido.startsWith('../Assets/')) {
-        caminhoCorrigido = 'Assets/' + caminhoCorrigido;
+    // Corrige para caminho relativo à pasta atual
+    if (caminhoOriginal.startsWith('Assets/')) {
+        return caminhoOriginal;
     }
-    
-    return caminhoCorrigido;
+    return 'Assets/' + caminhoOriginal.replace(/^\.\//, '').replace(/^\.\.\//, '');
 }
 
 // Adicionar estilos CSS dinamicamente

@@ -58,22 +58,21 @@
 
     <main class="main">
         <div class="modelos">
+            <div class="lanche-item">
+                <div class="lanche-item--img"><img src="" alt="Imagem do lanche" loading="lazy"/></div>
+                <div class="lanche-item--info">
+                    <strong>
+                        <div class="lanche-item--preco"></div>
+                        <div class="lanche-item--nome"></div>
+                    </strong>
+                    <div class="lanche-item--desc"></div>
+                    <button class="btn-comprar">Adicionar ao Carrinho</button>
+                </div>
+            </div>
         </div>
-        <div class="modelos">
-    <div class="lanche-item">
-        <div class="lanche-item--img"><img src=""/></div>
-        <div class="lanche-item--info">
-            <strong>
-                <div class="lanche-item--preco"></div>
-                <div class="lanche-item--nome"></div>
-            </strong>
-            <div class="lanche-item--desc"></div>
-            <button class="btn-comprar">Adicionar ao Carrinho</button>
-        </div>
-    </div>
-</div>
         <div class="itens">
-            <h2 class="subheaderh2" id="subheaderh2">Lanches</h2>
+            <div id="aviso-cardapio" style="display:none; color:#dc3545; font-weight:bold; margin-bottom:16px; text-align:center;">Cardápio indisponível no momento.</div>
+            <h2 class="subheaderh2" id="subheader2">Lanches</h2>
             <div class="area-lanches"></div>
             <h2 id="acompanhamentos">Acompanhamentos</h2>
             <div class="area-acompanhamentos"></div>
@@ -107,6 +106,23 @@
     new window.VLibras.Widget('https://vlibras.gov.br/app');
   </script>
     <script src="menu.js"></script>
-    <script src="main.json"></script>
+    <script>
+    // Exibe aviso se não houver itens carregados
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            var lanches = document.querySelector('.area-lanches');
+            var acompanhamentos = document.querySelector('.area-acompanhamentos');
+            var bebidas = document.querySelector('.area-bebidas');
+            var aviso = document.getElementById('aviso-cardapio');
+            if (
+                (!lanches || lanches.innerHTML.trim() === '') &&
+                (!acompanhamentos || acompanhamentos.innerHTML.trim() === '') &&
+                (!bebidas || bebidas.innerHTML.trim() === '')
+            ) {
+                aviso.style.display = 'block';
+            }
+        }, 1500);
+    });
+    </script>
 </body>
 </html>

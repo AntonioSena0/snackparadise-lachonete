@@ -21,17 +21,19 @@ if (!$pedido || $pedido['usuario_id'] != $_SESSION['user']['id']) {
     exit();
 }
 
-if (in_array($pedido['status'], ['em_entrega', 'entregue', 'cancelado'])) {
+// Permitir cancelar apenas se o status for 'pendente' ou 'preparando'
+if (!in_array($pedido['status'], ['pendente', 'preparando'])) {
     header('Location: ../../frontend/PerfilUser/index.php?error=Não é possível cancelar este pedido');
     exit();
 }
 
-$ok = $db->updateOrderStatus(intval($pedido_id), 'cancelado');
+// Remove o pedido do banco
+$ok = $db->deletePedido(intval($pedido_id));
 
 if ($ok) {
-    header('Location: ../../frontend/PerfilUser/index.php?success=Pedido cancelado');
+    header('Location: ../../frontend/Cardápio/menu.php?deleted=1');
 } else {
-    header('Location: ../../frontend/PerfilUser/index.php?error=Falha ao cancelar pedido');
+    header('Location: ../../frontend/PerfilUser/index.php?error=Falha ao remover pedido');
 }
 exit();
 

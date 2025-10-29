@@ -263,19 +263,25 @@ $allPedidos = $db->getAllPedidos();
                                     <p>Nenhum pedido registrado.</p>
                                 <?php else: ?>
                                     <?php foreach ($orders as $order): ?>
-                                        <div class="order-card">
+                                        <?php
+                                        // Monta array de itens a partir do campo itens_descricao se itens_array não existir
+                                        if (!isset($order['itens_array'])) {
+                                            $order['itens_array'] = [];
+                                            if (!empty($order['itens_descricao'])) {
+                                                $itens = explode(',', $order['itens_descricao']);
+                                                foreach ($itens as $item) {
+                                                    $order['itens_array'][] = trim($item);
+                                                }
+                                            }
+                                        }
+                                        ?>
+                                        <div class="order-card <?php echo !in_array($order['status'], ['cancelado', 'entregue', 'em_entrega']) ? 'order-editable' : 'order-uneditable'; ?>">
                                             <h3>Pedido #<?php echo htmlspecialchars($order['id']); ?></h3>
                                             <p><strong>Cliente:</strong> <?php echo htmlspecialchars($order['cliente_nome'] ?? '—'); ?></p>
                                             <div><strong>Itens:</strong>
                                                 <ul style="margin: 6px 0 0 0; padding-left: 18px;">
                                                     <?php foreach ($order['itens_array'] as $item): ?>
-                                                        <?php if (is_array($item)): ?>
-                                                            <li>
-                                                                <?php echo htmlspecialchars(($item['quantidade'] ?? 1) . 'x ' . ($item['nome'] ?? $item['produto'] ?? 'Item') . (isset($item['preco']) ? ' - R$ ' . number_format($item['preco'], 2, ',', '.') : '')); ?>
-                                                            </li>
-                                                        <?php else: ?>
-                                                            <li><?php echo htmlspecialchars($item); ?></li>
-                                                        <?php endif; ?>
+                                                        <li><?php echo htmlspecialchars($item); ?></li>
                                                     <?php endforeach; ?>
                                                 </ul>
                                             </div>
@@ -289,12 +295,12 @@ $allPedidos = $db->getAllPedidos();
                                                 <div style="display:flex; gap:8px; align-items:center;">
                                                     <a href="editar_pedido.php?id=<?php echo htmlspecialchars($order['id']); ?>" class="btn-edit-order">Editar Pedido</a>
                                                     <form method="POST" action="../../backend/controllers/cancelar_pedido_form.php" onsubmit="return confirm('Deseja realmente cancelar o pedido #'+<?php echo json_encode($order['id']); ?>+'?');" style="margin:0;">
-                                                        <input type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
+                                                        <input class="cancelpedido" type="hidden" name="pedido_id" value="<?php echo htmlspecialchars($order['id']); ?>">
                                                         <button type="submit" class="cancelpedido">Cancelar Pedido</button>
                                                     </form>
                                                 </div>
                                             <?php else: ?>
-                                                <button class="cancelpedido" >Cancelar</button>
+                                                <span class="order-uneditable-msg">Este pedido não pode ser editado/cancelado.</span>
                                             <?php endif; ?>
 
                                             <hr>
@@ -302,16 +308,15 @@ $allPedidos = $db->getAllPedidos();
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>
-
+                        </div>
+                        <!-- Card de acompanhamento de entrega separado -->
                         <div class="profile-section">
                             <h3 class="section-title">
                                 <i class='bx bx-map-pin'></i>
                                 Acompanhar Entrega
                             </h3>
-                            
                             <div id="tracking-container">
                                 <?php
-                                // Buscar entrega ativa do usuário
                                 $activeDelivery = $db->getUserActiveDelivery($user['id']);
                                 if ($activeDelivery && $activeDelivery['status'] == 'em_entrega'):
                                 ?>
