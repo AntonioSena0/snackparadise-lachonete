@@ -42,9 +42,10 @@
         <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
         <a href="../Acumular Pontos/pontos.php" class="menu-lateral-item active">Pontos</a>
         <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
-        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
-        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
-        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+    <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+    <a href="../Duvidas/index.php" class="menu-lateral-item">Dúvidas</a>
+    <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
     </nav>
 
     <!-- Overlay -->

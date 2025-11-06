@@ -214,5 +214,15 @@
     <!-- <script src="menu.js"></script> script antigo, vê o que ele faz e vê se ele serve pra página-->>
      <script src="carrinho.js"></script>
    <!--<script src="newmenu.js"></script>-->
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 </html>

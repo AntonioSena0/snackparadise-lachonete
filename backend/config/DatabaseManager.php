@@ -74,9 +74,9 @@ class DatabaseManager extends Conectar
     {
         try {
             // Total de entregas confirmadas
-            $sql = "SELECT COUNT(*) as total_entregas FROM registro WHERE id = :id AND confirmar = 1";
+            $sql = "SELECT COUNT(*) as total_entregas FROM registro WHERE motoboy_id = :motoboy_id AND confirmar = 1";
             $stmt = $this->prepare($sql);
-            $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+            $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
             $stmt->execute();
             $entregas = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -85,9 +85,9 @@ class DatabaseManager extends Conectar
                     COUNT(*) as total,
                     SUM(CASE WHEN confirmar = 1 THEN 1 ELSE 0 END) as entregues
                     FROM registro 
-                    WHERE id = :id";
+                    WHERE motoboy_id = :motoboy_id";
             $stmt = $this->prepare($sql);
-            $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+            $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
             $stmt->execute();
             $taxa = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -120,11 +120,11 @@ class DatabaseManager extends Conectar
             $sql = "SELECT r.*, p.itens, p.endereco, p.pagamento
                     FROM registro r 
                     JOIN pedidos p ON r.pedido_id = p.id 
-                    WHERE r.id = :id 
+                    WHERE r.motoboy_id = :motoboy_id 
                     ORDER BY r.criado_em DESC 
                     LIMIT :limit";
             $stmt = $this->prepare($sql);
-            $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+            $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
             $stmt->bindParam(':limit', $limit, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -287,25 +287,19 @@ class DatabaseManager extends Conectar
     public function getUserOrders($userId)
     {
         try {
-            $sql = "SELECT * FROM pedidos WHERE usuario_id = :usuario_id ORDER BY criado_em DESC LIMIT 10";
+            $sql = "SELECT p.*, 
+                    GROUP_CONCAT(CONCAT(pi.quantidade, 'x ', pi.produto, ' - R$ ', pi.preco) SEPARATOR ', ') as itens_descricao,
+                    SUM(pi.preco * pi.quantidade) as total
+                    FROM pedidos p
+                    LEFT JOIN pedido_itens pi ON p.id = pi.pedido_id
+                    WHERE p.usuario_id = :usuario_id
+                    GROUP BY p.id
+                    ORDER BY p.criado_em DESC 
+                    LIMIT 10";
             $stmt = $this->prepare($sql);
             $stmt->bindParam(':usuario_id', $userId, PDO::PARAM_INT);
             $stmt->execute();
-            $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
-            // Adapta para frontend: monta itens_array a partir do campo 'itens'
-            foreach ($orders as &$order) {
-                $order['itens_descricao'] = $order['itens'];
-                $order['itens_array'] = [];
-                if (!empty($order['itens'])) {
-                    $itens = explode(',', $order['itens']);
-                    foreach ($itens as $item) {
-                        $order['itens_array'][] = trim($item);
-                    }
-                }
-                // Calcula total se possível (opcional)
-                $order['total'] = null;
-            }
-            return $orders;
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
             error_log("Erro getUserOrders: " . $e->getMessage());
             return [];
@@ -351,7 +345,7 @@ class DatabaseManager extends Conectar
         try {
             $sql = "SELECT r.*, m.name as motoboy_name 
                     FROM registro r
-                    LEFT JOIN motoboys m ON r.id = m.id
+                    LEFT JOIN motoboys m ON r.motoboy_id = m.id
                     WHERE r.cliente_id = :cliente_id
                     ORDER BY r.criado_em DESC 
                     LIMIT 10";
@@ -372,7 +366,7 @@ class DatabaseManager extends Conectar
         try {
             $sql = "SELECT r.*, m.name as motoboy_name, p.id as pedido_id
                     FROM reviews r
-                    LEFT JOIN motoboys m ON r.id = m.id
+                    LEFT JOIN motoboys m ON r.motoboy_id = m.id
                     LEFT JOIN pedidos p ON r.pedido_id = p.id
                     WHERE r.usuario_id = :usuario_id
                     ORDER BY r.criado_em DESC";
@@ -389,11 +383,11 @@ class DatabaseManager extends Conectar
     public function addReview($userId, $pedidoId, $motoboyId, $nota, $comentario)
     {
         try {
-            $sql = "INSERT INTO reviews (pedido_id, id, usuario_id, nota, comentario) 
-                    VALUES (:pedido_id, :id, :usuario_id, :nota, :comentario)";
+            $sql = "INSERT INTO reviews (pedido_id, motoboy_id, usuario_id, nota, comentario) 
+                    VALUES (:pedido_id, :motoboy_id, :usuario_id, :nota, :comentario)";
             $stmt = $this->prepare($sql);
             $stmt->bindParam(':pedido_id', $pedidoId, PDO::PARAM_INT);
-            $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+            $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
             $stmt->bindParam(':usuario_id', $userId, PDO::PARAM_INT);
             $stmt->bindParam(':nota', $nota, PDO::PARAM_INT);
             $stmt->bindParam(':comentario', $comentario);
@@ -416,7 +410,7 @@ public function getPendingOrders()
                 JOIN users u ON p.usuario_id = u.id
                 LEFT JOIN pedido_itens pi ON p.id = pi.pedido_id
                 WHERE p.status IN ('pronto', 'preparando')
-                AND p.id IS NULL
+                AND p.motoboy_id IS NULL
                 GROUP BY p.id
                 ORDER BY p.criado_em ASC";
         $stmt = $this->prepare($sql);
@@ -450,24 +444,24 @@ public function assignOrderToMotoboy($pedidoId, $motoboyId)
         $this->beginTransaction();
         
         // Atualizar pedido
-        $sql = "UPDATE pedidos SET id = :id, status = 'em_entrega' WHERE id = :pedido_id";
+        $sql = "UPDATE pedidos SET motoboy_id = :motoboy_id, status = 'em_entrega' WHERE id = :pedido_id";
         $stmt = $this->prepare($sql);
-        $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
         $stmt->bindParam(':pedido_id', $pedidoId, PDO::PARAM_INT);
         $stmt->execute();
         
         // Atualizar status do motoboy
-        $sql = "UPDATE motoboys SET status = 'ocupado' WHERE id = :id";
+        $sql = "UPDATE motoboys SET status = 'ocupado' WHERE id = :motoboy_id";
         $stmt = $this->prepare($sql);
-        $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
         $stmt->execute();
         
         // Registrar na tabela de assignments
-        $sql = "INSERT INTO pedido_assignments (pedido_id, id, status) 
-                VALUES (:pedido_id, :id, 'assigned')";
+        $sql = "INSERT INTO pedido_assignments (pedido_id, motoboy_id, status) 
+                VALUES (:pedido_id, :motoboy_id, 'assigned')";
         $stmt = $this->prepare($sql);
         $stmt->bindParam(':pedido_id', $pedidoId, PDO::PARAM_INT);
-        $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
         $stmt->execute();
         
         // Commit da transação
@@ -508,22 +502,22 @@ public function completeDelivery($pedidoId, $motoboyId)
         $stmt->execute();
         
         // Liberar motoboy
-        $sql = "UPDATE motoboys SET status = 'disponivel' WHERE id = :id";
+        $sql = "UPDATE motoboys SET status = 'disponivel' WHERE id = :motoboy_id";
         $stmt = $this->prepare($sql);
-        $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
         $stmt->execute();
         
         // Atualizar assignment
         $sql = "UPDATE pedido_assignments SET status = 'completed' 
-                WHERE pedido_id = :pedido_id AND id = :id";
+                WHERE pedido_id = :pedido_id AND motoboy_id = :motoboy_id";
         $stmt = $this->prepare($sql);
         $stmt->bindParam(':pedido_id', $pedidoId, PDO::PARAM_INT);
-        $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
         $stmt->execute();
         
         // Registrar no registro de entregas
-        $sql = "INSERT INTO registro (pedido_id, cliente_id, id, itens, endereco, pagamento, confirmar) 
-                SELECT p.id, p.usuario_id, p.id, 
+        $sql = "INSERT INTO registro (pedido_id, cliente_id, motoboy_id, itens, endereco, pagamento, confirmar) 
+                SELECT p.id, p.usuario_id, p.motoboy_id, 
                        GROUP_CONCAT(CONCAT(pi.quantidade, 'x ', pi.produto) SEPARATOR ', '),
                        p.endereco, p.pagamento, 1
                 FROM pedidos p
@@ -553,12 +547,12 @@ public function getMotoboyActiveDelivery($motoboyId)
                 FROM pedidos p
                 JOIN users u ON p.usuario_id = u.id
                 LEFT JOIN pedido_itens pi ON p.id = pi.pedido_id
-                WHERE p.id = :id 
+                WHERE p.motoboy_id = :motoboy_id 
                 AND p.status = 'em_entrega'
                 GROUP BY p.id
                 LIMIT 1";
         $stmt = $this->prepare($sql);
-        $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
@@ -570,11 +564,11 @@ public function getMotoboyActiveDelivery($motoboyId)
 public function updateMotoboyLocation($motoboyId, $latitude, $longitude)
 {
     try {
-        $sql = "UPDATE motoboys SET latitude = :latitude, longitude = :longitude WHERE id = :id";
+        $sql = "UPDATE motoboys SET latitude = :latitude, longitude = :longitude WHERE id = :motoboy_id";
         $stmt = $this->prepare($sql);
         $stmt->bindParam(':latitude', $latitude);
         $stmt->bindParam(':longitude', $longitude);
-        $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
         return $stmt->execute();
     } catch (Exception $e) {
         error_log("Erro updateMotoboyLocation: " . $e->getMessage());
@@ -586,7 +580,7 @@ public function getUserActiveDelivery($userId) {
     try {
         $sql = "SELECT p.*, m.name as motoboy_name 
                 FROM pedidos p 
-                LEFT JOIN motoboys m ON p.id = m.id 
+                LEFT JOIN motoboys m ON p.motoboy_id = m.id 
                 WHERE p.usuario_id = :usuario_id 
                 AND p.status = 'em_entrega' 
                 ORDER BY p.criado_em DESC 
@@ -747,18 +741,103 @@ public function getPedidosByMotoboy($motoboyId)
                 FROM pedidos p
                 LEFT JOIN users u ON p.usuario_id = u.id
                 LEFT JOIN pedido_itens pi ON p.id = pi.pedido_id
-                WHERE p.id = :id
+                WHERE p.motoboy_id = :motoboy_id
                 GROUP BY p.id
                 ORDER BY p.criado_em DESC";
         $stmt = $this->prepare($sql);
-        $stmt->bindParam(':id', $motoboyId, PDO::PARAM_INT);
+        $stmt->bindParam(':motoboy_id', $motoboyId, PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } catch (Exception $e) {
         error_log("Erro getPedidosByMotoboy: " . $e->getMessage());
         return [];
     }
-}
+
+    }
+
+    // ========== DÚVIDAS ==========
+
+    public function getAllDuvidas()
+    {
+        try {
+            $sql = "SELECT d.*, u.username as usuario_nome FROM duvidas d LEFT JOIN users u ON d.usuario_id = u.id ORDER BY d.criado_em DESC";
+            $stmt = $this->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            error_log('Erro getAllDuvidas: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getDuvidaById($duvidaId)
+    {
+        try {
+            $sql = "SELECT d.*, u.username as usuario_nome FROM duvidas d LEFT JOIN users u ON d.usuario_id = u.id WHERE d.id = :id LIMIT 1";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $duvidaId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            error_log('Erro getDuvidaById: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function getDuvidasByUser($userId)
+    {
+        try {
+            $sql = "SELECT * FROM duvidas WHERE usuario_id = :usuario_id ORDER BY criado_em DESC";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':usuario_id', $userId, PDO::PARAM_INT);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            error_log('Erro getDuvidasByUser: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function getDuvidasByEmail($email)
+    {
+        try {
+            $sql = "SELECT * FROM duvidas WHERE email = :email ORDER BY criado_em DESC";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (Exception $e) {
+            error_log('Erro getDuvidasByEmail: ' . $e->getMessage());
+            return [];
+        }
+    }
+
+    public function deleteDuvida($duvidaId)
+    {
+        try {
+            $sql = "DELETE FROM duvidas WHERE id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':id', $duvidaId, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log('Erro deleteDuvida: ' . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function replyDuvida($duvidaId, $resposta)
+    {
+        try {
+            $sql = "UPDATE duvidas SET resposta = :resposta, respondida = 1, resposta_em = NOW() WHERE id = :id";
+            $stmt = $this->prepare($sql);
+            $stmt->bindParam(':resposta', $resposta);
+            $stmt->bindParam(':id', $duvidaId, PDO::PARAM_INT);
+            return $stmt->execute();
+        } catch (Exception $e) {
+            error_log('Erro replyDuvida: ' . $e->getMessage());
+            return false;
+        }
+    }
 
 }
 ?>

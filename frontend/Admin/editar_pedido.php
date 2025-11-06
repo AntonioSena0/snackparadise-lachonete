@@ -62,8 +62,9 @@ if (empty($_SESSION['csrf_token'])) {
         <a href="dashboard.php" class="menu-lateral-item">🏠 Dashboard</a>
         <a href="pedidos.php" class="menu-lateral-item active">📦 Pedidos</a>
         <a href="clientes.php" class="menu-lateral-item">👥 Clientes</a>
-        <a href="produtos.php" class="menu-lateral-item">🍔 Produtos</a>
-        <a href="config.php" class="menu-lateral-item">⚙️ Configurações</a>
+    <a href="produtos.php" class="menu-lateral-item">🍔 Produtos</a>
+    <a href="../Duvidas/index.php" class="menu-lateral-item">Dúvidas</a>
+    <a href="config.php" class="menu-lateral-item">⚙️ Configurações</a>
     </nav>
     <div class="overlay" id="overlay"></div>
 
@@ -140,6 +141,15 @@ if (empty($_SESSION['csrf_token'])) {
             btnMenu.classList.remove('active');
         });
     </script>
-
+ <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 </html>

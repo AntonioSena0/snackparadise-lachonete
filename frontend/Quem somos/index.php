@@ -44,6 +44,7 @@
         <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
         <a href="index.php" class="menu-lateral-item">Sobre nós</a>
         <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+        <a href="../Duvidas/index.php" class="menu-lateral-item">Dúvidas</a>
     </nav>
 
 

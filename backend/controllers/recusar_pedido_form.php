@@ -19,22 +19,22 @@ try {
     $conn = Conectar::getInstance();
     $conn->beginTransaction();
 
-    $sql = $conn->prepare("SELECT id FROM pedidos WHERE id = ?");
+    $sql = $conn->prepare("SELECT motoboy_id FROM pedidos WHERE id = ?");
     $sql->execute([$pedido_id]);
     $pedido = $sql->fetch(PDO::FETCH_ASSOC);
 
-    if (!$pedido || $pedido['id'] != $_SESSION['motoboy']['id']) {
+    if (!$pedido || $pedido['motoboy_id'] != $_SESSION['motoboy']['id']) {
         throw new Exception('Pedido não pertence a este motoboy');
     }
 
-    $sql = $conn->prepare("UPDATE pedidos SET id = NULL, status = 'pronto' WHERE id = ?");
+    $sql = $conn->prepare("UPDATE pedidos SET motoboy_id = NULL, status = 'pronto' WHERE id = ?");
     $sql->execute([$pedido_id]);
 
     $sql = $conn->prepare("UPDATE motoboys SET status = 'disponivel' WHERE id = ?");
     $sql->execute([$_SESSION['motoboy']['id']]);
 
     try {
-        $sql = $conn->prepare("INSERT INTO pedido_assignments (pedido_id, id, status, observacao) VALUES (?, ?, 'recusado', 'Recusado via formulário')");
+        $sql = $conn->prepare("INSERT INTO pedido_assignments (pedido_id, motoboy_id, status, observacao) VALUES (?, ?, 'recusado', 'Recusado via formulário')");
         $sql->execute([$pedido_id, $_SESSION['motoboy']['id']]);
     } catch (Exception $e) {
         error_log('pedido_assignments insert failed: ' . $e->getMessage());

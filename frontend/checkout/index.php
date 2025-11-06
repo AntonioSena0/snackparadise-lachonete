@@ -60,8 +60,9 @@ if (isset($_SESSION['user'])) {
         <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
         <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
         <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
-        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
-        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+    <a href="../Duvidas/index.php" class="menu-lateral-item">Dúvidas</a>
+    <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
     </nav>
 
     <!-- Overlay -->
@@ -362,5 +363,15 @@ function showNotification(message, type = 'info') {
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script src="menu.js"></script>
+     <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
     </body>
 </html>

@@ -40,9 +40,10 @@
         <a href="../PerfilUser/index.php" class="menu-lateral-item">Perfil</a>
         <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item active">Pontos</a>
         <a href="index.php" class="menu-lateral-item">Seja Parceiro</a>
-        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
-        <a href="../Quem Somos/index.php" class="menu-lateral-item">Sobre nós</a>
-        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+    <a href="../Quem Somos/index.php" class="menu-lateral-item">Sobre nós</a>
+    <a href="../Duvidas/index.php" class="menu-lateral-item">Dúvidas</a>
+    <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
     </nav>
 
     <!-- Overlay -->
@@ -137,5 +138,16 @@
     </main>
 
     <script src="script.js"></script>
+
+     <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
 </body>
 </html>

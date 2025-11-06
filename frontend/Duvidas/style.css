@@ -1,0 +1,80 @@
+/* frontend/Duvidas/style.css
+  Estilos atualizados para a página de Dúvidas
+*/
+
+/* Importa estilos comuns (menu/header) usados nas outras páginas */
+@import url('../checkout/style.css');
+
+:root{
+  --primary: #a20908;
+  --accent: #ff3131;
+  --bg: #f7f7f8;
+  --card: #ffffff;
+  --muted: #6b6b6b;
+  --max-width: 1100px;
+  --menu-width: 220px;
+}
+
+*{box-sizing:border-box}
+body{
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  /* fundo similar à página "Junte a nós" */
+  background: linear-gradient(135deg, #797979 0%, #ffffff 50%, #777575 100%);
+  min-height:100vh;
+  color:#222;
+  margin:0;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* Header/menu são fornecidos pelo CSS comum importado acima.
+   Regras locais abaixo mantêm apenas estilos específicos da página Duvidas
+   (formulário, cards e tabela). */
+
+main{padding:28px}
+.main-container{max-width:var(--max-width);margin:0 auto;background:transparent}
+
+/* Card */
+.card{background:var(--card);border-radius:10px;box-shadow:0 6px 18px rgba(34,34,34,0.06);padding:20px}
+
+h1{margin:0 0 12px;font-size:26px}
+p{color:var(--muted);line-height:1.45}
+
+/* Form */
+form{margin-top:18px;background:var(--card);padding:18px;border-radius:10px;border:1px solid #f0f0f0}
+.form-row{margin-bottom:14px;display:flex;flex-direction:column}
+label{font-weight:600;margin-bottom:6px}
+input[type="text"], input[type="email"], textarea{
+  width:100%;padding:12px 14px;border:1px solid #e7e7e7;border-radius:8px;background:#fff;font-size:15px;resize:vertical
+}
+textarea{min-height:160px}
+
+.botao-login{background:var(--primary);color:#fff;border:0;padding:12px 18px;border-radius:8px;cursor:pointer;font-weight:700;font-size:15px}
+.botao-login:hover{background:var(--accent)}
+
+.alert{padding:10px 12px;border-radius:8px;margin-bottom:12px}
+.alert-success{background: #e6f7ef;color:#0a6b3c;border:1px solid #d0f1dd}
+.alert-error{background:#fff0f0;color:#8b0000;border:1px solid #ffd6d6}
+
+/* Table styles para listagem (quando usada dentro o mesmo css) */
+table{width:100%;border-collapse:collapse;background:transparent}
+th, td{padding:10px 12px;border-bottom:1px solid #f1f1f1;text-align:left;vertical-align:top}
+th{background:#fafafa;font-weight:600}
+.table-actions button{background:#a20908;color:#fff;border:0;padding:6px 10px;border-radius:6px;cursor:pointer}
+
+/* Pequenos ajustes mobile */
+@media(max-width:899px){
+  header{padding:10px}
+  .logo-container img{height:36px}
+  .menu-item{display:none}
+  .btn-conta{padding:8px}
+  main{padding:16px}
+  .menu-lateral{position:fixed;left:0;top:60px;width:70%;transform:translateX(-100%);transition:transform .22s ease}
+  .menu-lateral.ativo{transform:translateX(0)}
+  body.show-menu{overflow:hidden}
+}
+
+/* foco acessível */
+input:focus, textarea:focus, button:focus{outline:3px solid rgba(162,9,8,0.12);outline-offset:2px}
+
+/* espaçamento para forms dentro do conteúdo */
+.main-container .form-row .hint{font-size:13px;color:var(--muted);margin-top:6px}

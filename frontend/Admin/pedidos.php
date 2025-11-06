@@ -52,13 +52,18 @@ $allPedidos = $db->getAllPedidos();
         <a href="../PerfilMotoboy/index.php" class="menu-lateral-item active">Perfil</a>
         <a href="../Acumular Pontos/pontos.html" class="menu-lateral-item">Pontos</a>
         <a href="../SejaParceiro/index.php" class="menu-lateral-item">Seja Parceiro</a>
-        <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
-        <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
-        <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
+    <a href="../Feedback/index.php" class="menu-lateral-item">Avaliações</a>
+    <a href="../Quem somos/index.php" class="menu-lateral-item">Sobre nós</a>
+    <a href="../Duvidas/index.php" class="menu-lateral-item">Dúvidas</a>
+    <a href="../Auxílio Preferencial/auxilio.php" class="menu-lateral-item">Auxílio Preferencial</a>
     </nav>
     <main>
     <h1>Gerenciar Pedidos - Atribuir Motoboys</h1>
-    
+
+   <form method="POST" action="duvidas.php" style="margin:0;">
+                                
+                                <button type="submit" class="excpedido">Ver Duvidas</button>
+                            </form>
     <div id="all-orders">
         <h2>Todos os Pedidos (visão rápida)</h2>
         <div class="orders-grid">
@@ -200,6 +205,16 @@ $allPedidos = $db->getAllPedidos();
         
         loadPendingOrders();
         setInterval(loadPendingOrders, 30000);
+    </script>
+     <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
     
 </body>
